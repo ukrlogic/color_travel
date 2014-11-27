@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Color Travel{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets
+        'bundles/applicationukrlogicmain/css/template.css'
+        'bundles/applicationukrlogicmain/css/flags.css'
+        'bundles/applicationukrlogicmain/css/jquery.datepick.css'
+        'bundles/applicationukrlogicmain/css/selectordie.css'
+        'bundles/applicationukrlogicmain/css/jquery.mCustomScrollbar.css'
+        'bundles/applicationukrlogicmain/css/uikit-custom.css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=latin,cyrillic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans&amp;subset=latin,cyrillic' rel='stylesheet'
+          type='text/css'>
+
+    {% javascripts
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/modernizr.custom.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery.plugin.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery.datepick.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery-ui.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery.masonry.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery.quickflip.source.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/selectordie.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery.mCustomScrollbar.concat.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jcarousellite_1.0.1.min.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/jquery-animate-css-rotate-scale.js'
+    '@ApplicationUkrLogicMainBundle/Resources/public/js/template.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% block javascripts %}
+    {% endblock %}
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="main">
+{% block header %}{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% javascripts '@ApplicationUkrLogicMainBundle/Resources/public/js/uikit.min.js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+/* ========================================================================
+   Component: Tooltip
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set fixed position
+ * 3. Set dimensions
+ * 4. Set style
+ */
+.uk-tooltip {
+background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+border-radius: 8px;
+box-sizing: border-box;
+color: rgba(255, 255, 255, 0.8);
+display: none;
+font-family: 'Open Sans',Tahoma,sans-serif;
+font-size: 13px;
+line-height: 18px;
+max-width: 200px;
+padding: 5px 11px;
+position: absolute;
+text-align: center;
+z-index: 1030;
+}
+/* Triangle
+ ========================================================================== */
+/*
+ * 1. Dashed is less antialised than solid
+ */
+.uk-tooltip:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  /* 1 */
+  border: 5px dashed rgba(0,0,0,0.7);
+}
+/* Direction modifiers
+ ========================================================================== */
+/*
+ * Top
+ */
+.uk-tooltip-top:after,
+.uk-tooltip-top-left:after,
+.uk-tooltip-top-right:after {
+  bottom: -5px;
+  border-top-style: solid;
+  border-bottom: none;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: rgba(0,0,0,0.7);
+}
+/*
+ * Bottom
+ */
+.uk-tooltip-bottom:after,
+.uk-tooltip-bottom-left:after,
+.uk-tooltip-bottom-right:after {
+  top: -5px;
+  border-bottom-style: solid;
+  border-top: none;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgba(0,0,0,0.7);
+}
+/*
+ * Top/Bottom center
+ */
+.uk-tooltip-top:after,
+.uk-tooltip-bottom:after {
+  left: 50%;
+  margin-left: -5px;
+}
+/*
+ * Top/Bottom left
+ */
+.uk-tooltip-top-left:after,
+.uk-tooltip-bottom-left:after {
+  left: 10px;
+}
+/*
+ * Top/Bottom right
+ */
+.uk-tooltip-top-right:after,
+.uk-tooltip-bottom-right:after {
+  right: 10px;
+}
+/*
+ * Left
+ */
+.uk-tooltip-left:after {
+  right: -5px;
+  top: 50%;
+  margin-top: -5px;
+  border-left-style: solid;
+  border-right: none;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgba(0,0,0,0.7);
+}
+/*
+ * Right
+ */
+.uk-tooltip-right:after {
+  left: -5px;
+  top: 50%;
+  margin-top: -5px;
+  border-right-style: solid;
+  border-left: none;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: rgba(0,0,0,0.7);
+}

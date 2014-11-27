@@ -1,0 +1,2291 @@
+{% extends '@ApplicationUkrLogicMain/layout-main.html.twig' %}
+
+{% block content %}
+    <div class="content container">
+    <div id="container" class="masonry">
+    <div class="box w filter">
+    <div class="filter-search clear">
+        <input type="text" placeholder="Введите ваш поисковый запрос">
+    </div>
+    <div class="filter-variant clear">
+        <button>Автобусный тур</button>
+        <button class="active">Авиа тур</button>
+    </div>
+
+    <div class="avia-section">
+        <div class="filter-section from clear">
+            <h3>Вылет из города</h3>
+
+            <div>
+                <div class="from-group customscroll short">
+                    <div>
+                        <input type="checkbox" id="dnepropetrovsk" name="dnepropetrovsk">
+                        <label for="dnepropetrovsk">Днепропетровск</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="donetsk" name="donetsk">
+                        <label for="donetsk">Донецк</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="zaporozhie" name="zaporozhie">
+                        <label for="zaporozhie">Запорожье</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ivano-frankovsk" name="ivano-frankovsk">
+                        <label for="ivano-frankovsk">Ивано-Франковск</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kiev" name="kiev">
+                        <label for="kiev">Киев</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="krivoy-rog" name="krivoy-rog">
+                        <label for="krivoy-rog">Кривой Рог</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="lugansk" name="lugansk">
+                        <label for="lugansk">Луганск</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="lvov" name="lvov">
+                        <label for="lvov">Львов</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mariupol" name="mariupol">
+                        <label for="mariupol">Мариуполь</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kharkov" name="kharkov">
+                        <label for="kharkov">Харьков</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter-section to clear">
+            <h3>Страна прибытия</h3>
+
+            <div>
+                <div class="from-group customscroll to">
+                    <div>
+                        <input type="checkbox" id="abhazia" name="abhazia">
+                        <label for="abhazia">Абхазия <i class="flag-ABKHAZIA"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="avstralia" name="avstralia">
+                        <label for="avstralia">Австралия <i class="flag-AU"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="avstiya" name="avstiya">
+                        <label for="avstiya">Австрия <i class="flag-AT"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="azerbaydzhan" name="azerbaydzhan">
+                        <label for="azerbaydzhan">Азербайджан <i class="flag-AZ"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="alandskie-ostrova" name="alandskie-ostrova">
+                        <label for="alandskie-ostrova">Аландские острова <i class="flag-AX"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="albaniya" name="albaniya">
+                        <label for="albaniya">Албания <i class="flag-AL"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="alzhir" name="alzhir">
+                        <label for="alzhir">Алжир <i class="flag-DZ"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="angilya" name="angilya">
+                        <label for="angilya">Ангилья <i class="flag-AI"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="angola" name="angola">
+                        <label for="angola">Ангола <i class="flag-AO"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="andorra" name="andorra">
+                        <label for="andorra">Андорра <i class="flag-AD"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="argentina" name="argentina">
+                        <label for="argentina">Аргентина <i class="flag-AR"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="armeny" name="armeny">
+                        <label for="armeny">Армения <i class="flag-AM"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="afgan" name="afgan">
+                        <label for="afgan">Афганистан <i class="flag-AF"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bagam" name="bagam">
+                        <label for="bagam">Багамские острова <i class="flag-BS"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bangladesh" name="bangladesh">
+                        <label for="bangladesh">Бангладеш <i class="flag-BD"></i>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="barbados" name="barbados">
+                        <label for="barbados">Барбадос <i class="flag-BB"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter-section clear">
+            <h3>Курорт</h3>
+
+            <div>
+                <div id="rangeInlinePicker"></div>
+                <h4>Продолжительность тура</h4>
+
+                <div class="subcategory">
+                    <div id="slider-day">
+                        <p class="start">1</p>
+
+                        <p class="end">30</p>
+                    </div>
+                </div>
+
+                <h4>Категория отеля</h4>
+
+                <div class="subcategory">
+                    <div class="stars">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </div>
+                    <div class="intext">
+                        <div>HV-1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter-section clear">
+            <h3>Отель</h3>
+
+            <div>
+                <h4>Количество туристов</h4>
+
+                <div class="subcategory">
+                    <select name="" id="adult" class="selectordie">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                    <select name="" id="child" class="selectordie">
+                        <option value="">0</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-section clear">
+            <h3>Стоимость тура</h3>
+
+            <div>
+                <div class="subcategory">
+                    <div id="slider-cost">
+                        <p class="start">100</p>
+
+                        <p class="end">10 000</p>
+                    </div>
+                    <!-- <input class="cost" type="text" placeholder="...или точная сумма"> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bus -->
+    <div class="bus-section">
+        <div class="filter-section from clear">
+            <h3>Выезд из города</h3>
+
+            <div>
+                <div class="from-group customscroll short">
+                    <div>
+                        <input type="checkbox" id="dnepropetrovsk" name="dnepropetrovsk">
+                        <label for="dnepropetrovsk">Днепропетровск</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="donetsk" name="donetsk">
+                        <label for="donetsk">Донецк</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="zaporozhie" name="zaporozhie">
+                        <label for="zaporozhie">Запорожье</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ivano-frankovsk" name="ivano-frankovsk">
+                        <label for="ivano-frankovsk">Ивано-Франковск</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kiev" name="kiev">
+                        <label for="kiev">Киев</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="krivoy-rog" name="krivoy-rog">
+                        <label for="krivoy-rog">Кривой Рог</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="lugansk" name="lugansk">
+                        <label for="lugansk">Луганск</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="lvov" name="lvov">
+                        <label for="lvov">Львов</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mariupol" name="mariupol">
+                        <label for="mariupol">Мариуполь</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kharkov" name="kharkov">
+                        <label for="kharkov">Харьков</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="searchTourButton">Поиск</button>
+    </div>
+
+
+    <a href="#" class="box w flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-1.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-AE"></i>
+                    <i class="flag-AS"></i>
+                    <i class="flag-UA"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Мальдивы</span>
+                    <span>600 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Мальдивы</span>
+                    <span>600 &euro;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at metus in urna eleifend
+                    pulvinar. Mauris mattis sapien massa, vitae scelerisque mi tincidunt id. Sed sed arcu non lacus
+                    scelerisque rutrum ac sit amet nulla. Sed at leo nec nunc tempor facilisis nec a orci. Praesent
+                    felis mauris, hendrerit vitae suscipit sed, elementum ut leo. Proin feugiat libero lorem, nec
+                    posuere sapien pretium a. Sed commodo tristique tincidunt. Mauris vitae risus cursus, cursus ligula
+                    sit amet, placerat turpis. Nunc mattis faucibus nulla non viverra. Vestibulum mollis enim vehicula
+                    tincidunt tincidunt.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-7.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-4.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-4.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-8.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-8.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-7.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-1.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-AE"></i>
+                    <i class="flag-AS"></i>
+                    <i class="flag-UA"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Мальдивы</span>
+                    <span>600 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Мальдивы</span>
+                    <span>600 &euro;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at metus in urna eleifend
+                    pulvinar. Mauris mattis sapien massa, vitae scelerisque mi tincidunt id. Sed sed arcu non lacus
+                    scelerisque rutrum ac sit amet nulla. Sed at leo nec nunc tempor facilisis nec a orci. Praesent
+                    felis mauris, hendrerit vitae suscipit sed, elementum ut leo. Proin feugiat libero lorem, nec
+                    posuere sapien pretium a. Sed commodo tristique tincidunt. Mauris vitae risus cursus, cursus ligula
+                    sit amet, placerat turpis. Nunc mattis faucibus nulla non viverra. Vestibulum mollis enim vehicula
+                    tincidunt tincidunt.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-7.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-4.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front exclusive">
+                <img src="img/box/box-bg-2.jpg" alt="">
+
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="ship"></i>
+                </div>
+                <div class="country">
+                    <span>Италия</span>
+                    <span>580 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front hot">
+                <img src="img/box/box-bg-5.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-DM"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-3.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-4.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back red">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-8.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-8.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back blue">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+
+
+    <a href="#" class="box flip-container">
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-6.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back green">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    <a href="#" class="box w flip-container">
+
+        <div class="flipper">
+            <div class="front">
+                <img src="img/box/box-bg-7.jpg" alt="">
+
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="flags">
+                    <i class="flag-IT"></i>
+                </div>
+                <div class="country">
+                    <span>Альпы</span>
+                    <span>1000 &euro;</span>
+                </div>
+            </div>
+            <div class="back yellow">
+                <div class="vehicle">
+                    <i class="plain"></i>
+                    <i class="bus"></i>
+                </div>
+                <div class="country">
+                    <span>Дания</span>
+                    <span>800 &#36;</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis nisi, rem, sint aliquid minus rerum
+                    distinctio maiores ullam a quis similique facere aperiam dolore hic culpa libero eos consequuntur
+                    minima.</p>
+            </div>
+        </div>
+    </a>
+    </div>
+    </div>
+{% endblock %}

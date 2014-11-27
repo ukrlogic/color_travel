@@ -1,0 +1,12 @@
+parameters:
+#    application.ukrlogic.main.example.class: Application\UkrLogic\MainBundle\Example
+
+services:
+#    application.ukrlogic.main.example:
+#        class: %application.ukrlogic.main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+#        calls:
+#            - [setService, [@service_id]]
+#        tags:
+#            - { name: twig.extension }
+#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

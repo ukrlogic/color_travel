@@ -1,0 +1,95 @@
+{% extends '@ApplicationUkrLogicMain/layout-main.html.twig' %}
+
+{% block content %}
+    <div class="maps">
+        <img class="mapimg world-image" src="{{ asset('bundles/applicationukrlogicmain/img/world.png') }}" height="1287"
+             width="1700" alt="">
+        <img class="mapimg europe-image" src="{{ asset('bundles/applicationukrlogicmain/img/europe.png') }}"
+             height="1287"
+             width="1980" alt="">
+
+        <div class="content-flags world">
+            <a href="javascript:void(0)" class="cloud europe-flag" data-uk-tooltip="{pos:'top'}"
+               title="Европейские страны"></a>
+            <a href="{{ path('tours_search') }}?country=belorussia" class="cloud belorussia-m" data-uk-tooltip="{pos:'top'}"
+               title="Белоруссия"></a>
+            <a href="{{ path('tours_search') }}?country=russia" class="cloud russia-m" data-uk-tooltip="{pos:'top'}" title="Россия"></a>
+            <a href="{{ path('tours_search') }}?country=china" class="cloud china" data-uk-tooltip="{pos:'top'}" title="Китай"></a>
+            <a href="{{ path('tours_search') }}?country=morocco" class="cloud morocco-m" data-uk-tooltip="{pos:'top'}" title="Марокко"></a>
+            <a href="{{ path('tours_search') }}?country=tunis" class="cloud tunis-m" data-uk-tooltip="{pos:'top'}" title="Тунис"></a>
+            <a href="{{ path('tours_search') }}?country=egypt" class="cloud egypt" data-uk-tooltip="{pos:'top'}" title="Египет"></a>
+            <a href="{{ path('tours_search') }}?country=turkey" class="cloud turkey-m" data-uk-tooltip="{pos:'top'}" title="Турция"></a>
+            <a href="{{ path('tours_search') }}?country=cyprus" class="cloud cyprus-m" data-uk-tooltip="{pos:'left'}" title="Кипр"></a>
+            <a href="{{ path('tours_search') }}?country=israel" class="cloud israel" data-uk-tooltip="{pos:'left'}" title="Израиль"></a>
+            <a href="{{ path('tours_search') }}?country=jordan" class="cloud jordan" data-uk-tooltip="{pos:'right'}" title="Иордания"></a>
+            <a href="{{ path('tours_search') }}?country=uae" class="cloud uae" data-uk-tooltip="{pos:'top'}" title="ОАЭ"></a>
+            <a href="{{ path('tours_search') }}?country=india" class="cloud india" data-uk-tooltip="{pos:'top'}" title="Индия"></a>
+            <a href="{{ path('tours_search') }}?country=maldives" class="cloud maldives" data-uk-tooltip="{pos:'top'}" title="Мальдивы"></a>
+            <a href="{{ path('tours_search') }}?country=srilanka" class="cloud srilanka" data-uk-tooltip="{pos:'top'}"
+               title="Шри-Ланка"></a>
+            <a href="{{ path('tours_search') }}?country=vietnam" class="cloud vietnam" data-uk-tooltip="{pos:'top'}" title="Вьетнам"></a>
+            <a href="{{ path('tours_search') }}?country=thailand" class="cloud thailand" data-uk-tooltip="{pos:'bottom'}"
+               title="Тайланд"></a>
+            <a href="{{ path('tours_search') }}?country=singapore" class="cloud singapore" data-uk-tooltip="{pos:'bottom'}"
+               title="Сингапур"></a>
+            <a href="{{ path('tours_search') }}?country=indonesia" class="cloud indonesia" data-uk-tooltip="{pos:'bottom'}"
+               title="Индонезия"></a>
+            <a href="{{ path('tours_search') }}?country=japan" class="cloud japan" data-uk-tooltip="{pos:'left'}" title="Япония"></a>
+            <a href="{{ path('tours_search') }}?country=mexico" class="cloud mexico" data-uk-tooltip="{pos:'top'}" title="Мексика"></a>
+            <a href="{{ path('tours_search') }}?country=cuba" class="cloud cuba" data-uk-tooltip="{pos:'top'}" title="Куба"></a>
+            <a href="{{ path('tours_search') }}?country=jamaica" class="cloud jamaica" data-uk-tooltip="{pos:'bottom'}" title="Ямайка"></a>
+            <a href="{{ path('tours_search') }}?country=dominicana" class="cloud dominicana" data-uk-tooltip="{pos:'top'}"
+               title="Доминикана"></a>
+
+
+        </div>
+        <div class="content-flags europe">
+            <a href="{{ path('tours_search') }}?country=norway" class="cloud norway" data-uk-tooltip="{pos:'top'}" title="Норвегия"></a>
+            <a href="{{ path('tours_search') }}?country=sweden" class="cloud sweden" data-uk-tooltip="{pos:'top'}" title="Швеция"></a>
+            <a href="{{ path('tours_search') }}?country=finland" class="cloud finland" data-uk-tooltip="{pos:'bottom'}"
+               title="Финляндия"></a>
+            <a href="{{ path('tours_search') }}?country=estonia" class="cloud estonia" data-uk-tooltip="{pos:'top'}" title="Эстония"></a>
+            <a href="{{ path('tours_search') }}?country=latvia" class="cloud latvia" data-uk-tooltip="{pos:'bottom'}" title="Латвия"></a>
+            <a href="{{ path('tours_search') }}?country=litva" class="cloud litva" data-uk-tooltip="{pos:'bottom'}" title="Литва"></a>
+            <a href="{{ path('tours_search') }}?country=belorussia" class="cloud belorussia" data-uk-tooltip="{pos:'top'}"
+               title="Белоруссия"></a>
+            <a href="{{ path('tours_search') }}?country=russia" class="cloud russia" data-uk-tooltip="{pos:'left'}" title="Россия"></a>
+            <a href="{{ path('tours_search') }}?country=ukraine" class="cloud ukraine" data-uk-tooltip="{pos:'bottom'}" title="Украина"></a>
+            <a href="{{ path('tours_search') }}?country=poland" class="cloud poland" data-uk-tooltip="{pos:'top'}" title="Польша"></a>
+            <a href="{{ path('tours_search') }}?country=denmark" class="cloud denmark" data-uk-tooltip="{pos:'top'}" title="Дания"></a>
+            <a href="{{ path('tours_search') }}?country=uk" class="cloud uk" data-uk-tooltip="{pos:'top'}" title="Великобритания"></a>
+            <a href="{{ path('tours_search') }}?country=germany" class="cloud germany" data-uk-tooltip="{pos:'top'}" title="Германия"></a>
+            <a href="{{ path('tours_search') }}?country=netherlands" class="cloud netherlands" data-uk-tooltip="{pos:'top'}"
+               title="Нидерланды"></a>
+            <a href="{{ path('tours_search') }}?country=belgium" class="cloud belgium" data-uk-tooltip="{pos:'top'}" title="Бельгия"></a>
+            <a href="{{ path('tours_search') }}?country=france" class="cloud france" data-uk-tooltip="{pos:'top'}" title="Франция"></a>
+            <a href="{{ path('tours_search') }}?country=czeh" class="cloud czeh" data-uk-tooltip="{pos:'top'}" title="Чехия"></a>
+            <a href="{{ path('tours_search') }}?country=slovakia" class="cloud slovakia" data-uk-tooltip="{pos:'top'}" title="Словакия"></a>
+            <a href="{{ path('tours_search') }}?country=austria" class="cloud austria" data-uk-tooltip="{pos:'top'}" title="Австрия"></a>
+            <a href="{{ path('tours_search') }}?country=hungary" class="cloud hungary" data-uk-tooltip="{pos:'top'}" title="Венгрия"></a>
+            <a href="{{ path('tours_search') }}?country=switzerland" class="cloud switzerland" data-uk-tooltip="{pos:'top'}"
+               title="Швейцария"></a>
+            <a href="{{ path('tours_search') }}?country=slovenia" class="cloud slovenia" data-uk-tooltip="{pos:'top'}" title="Словения"></a>
+            <a href="{{ path('tours_search') }}?country=italy" class="cloud italy" data-uk-tooltip="{pos:'top'}" title="Италия"></a>
+            <a href="{{ path('tours_search') }}?country=croatia" class="cloud croatia" data-uk-tooltip="{pos:'top'}" title="Хорватия"></a>
+            <a href="{{ path('tours_search') }}?country=serbia" class="cloud serbia" data-uk-tooltip="{pos:'top'}" title="Сербия"></a>
+            <a href="{{ path('tours_search') }}?country=montenegro" class="cloud montenegro" data-uk-tooltip="{pos:'bottom'}"
+               title="Черногория"></a>
+            <a href="{{ path('tours_search') }}?country=bolgary" class="cloud bolgary" data-uk-tooltip="{pos:'right'}" title="Болгария"></a>
+            <a href="{{ path('tours_search') }}?country=greece" class="cloud greece" data-uk-tooltip="{pos:'top'}" title="Греция"></a>
+            <a href="{{ path('tours_search') }}?country=turkey" class="cloud turkey" data-uk-tooltip="{pos:'top'}" title="Турция"></a>
+            <a href="{{ path('tours_search') }}?country=cyprus" class="cloud cyprus" data-uk-tooltip="{pos:'top'}" title="Кипр"></a>
+            <a href="{{ path('tours_search') }}?country=georgia" class="cloud georgia" data-uk-tooltip="{pos:'left'}" title="Грузия"></a>
+            <a href="{{ path('tours_search') }}?country=romania" class="cloud romania" data-uk-tooltip="{pos:'top'}" title="Румыния"></a>
+            <a href="{{ path('tours_search') }}?country=tunis" class="cloud tunis" data-uk-tooltip="{pos:'top'}" title="Тунис"></a>
+            <a href="{{ path('tours_search') }}?country=andorra" class="cloud andorra" data-uk-tooltip="{pos:'top'}" title="Андорра"></a>
+            <a href="{{ path('tours_search') }}?country=spain" class="cloud spain" data-uk-tooltip="{pos:'top'}" title="Испания"></a>
+            <a href="{{ path('tours_search') }}?country=portugal" class="cloud portugal" data-uk-tooltip="{pos:'right'}"
+               title="Португалия"></a>
+            <a href="{{ path('tours_search') }}?country=morocco" class="cloud morocco" data-uk-tooltip="{pos:'top'}" title="Марокко"></a>
+        </div>
+    </div>
+
+    <div class="container-map"></div>
+    <!-- .container -->
+{% endblock %}

@@ -1,0 +1,561 @@
+.form-side .expandable {
+	margin-bottom: 0.85em;
+}
+
+#simple {
+	clear: left;
+}
+
+#complex {
+	clear: both;
+	position: relative;
+	z-index: 2;
+}
+
+.form .expander {
+	float: right;
+	margin: 0 4.75em 0.85em 0;
+	position: relative;
+}
+
+
+.form .segments {
+	position: relative;
+	zoom: 1;
+}
+
+
+.form-side {
+text-align: right;
+vertical-align: top;
+width: 96%;
+z-index: 1;
+}
+.form-side.subm input {
+    background: none repeat scroll 0 0 #556c76;
+    border: medium none;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: Segoe UI;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 4px 21px;
+    text-transform: uppercase;
+}
+
+.form-side.subm input.btn.default{
+	background: #099229;
+}
+
+
+.form-side .input.time {
+    width: 110px;
+}
+
+.input.money {
+	width: 45px;
+}
+
+
+
+.form .etc {
+	margin: 0.5em 0 0;
+}
+
+
+.form .icon-segment {
+background: url("../../img/icon-oneway-mid-white.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+height: 22px;
+margin-top: 9px;
+margin-bottom: 10px;
+}
+
+* html .form .icon-route {	
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/icon-oneway-big-white.png', sizingMethod='crop');
+}
+
+* html .form .icon-segment {	
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/icon-oneway-mid-white.png', sizingMethod='crop');
+}
+
+.form .icon-route.roundtrip {
+	background-image: url(../../img/icon-roundtrip-big-white.png);
+}
+
+* html .form div.roundtrip {	
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/icon-roundtrip-big-white.png', sizingMethod='crop');
+}
+
+#complex .add, #complex .remove {
+border-bottom: 1px dotted #ffffff;
+color: #ffffff;
+font-size: 13px;
+margin: 10px;
+text-decoration: none;
+}
+
+#complex .segment:hover a.icon-segment {
+	background: url(../../img/icon-cancel-mid-blue-fade.gif) no-repeat center center;
+}
+
+#complex .segment a.icon-segment:hover {
+	background-image: url(../../img/icon-cancel-mid-white.gif);
+}
+
+* html #complex .segment a.icon-segment:hover {
+	filter: none;
+	background: url(../../img/icon-cancel-mid-white.gif) no-repeat center center;
+}
+
+* html input.to {
+	background: #f9f9f9 url(../../img/input-shade.png) repeat-x left top;
+}
+.main .pagination {
+	height: 1.5em;
+}
+
+.pagination ul {
+	float: left;
+	width: 70%;
+	margin: 0 0 0.75em;
+}
+
+.pagination ul li {
+	margin: 0 7px 0 0;
+}
+
+.pagination li a {
+	display: block;
+	padding: 2px 5px;
+}
+
+.pagination .current {
+	background: #87b654 url(../../img/btn-small-bk-active.png) repeat-x left top;
+	text-shadow: 0 -1px #426422;
+	border-radius: 3px;
+}
+
+.pagination .current a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.pagination .total {
+	float: right;
+	padding: 2px 0 0;
+}
+
+#variants {
+	clear: left;
+}
+
+.variant {
+	padding: 10px 0;
+	margin: 0 0 0.75em;
+	background: #e2f3cf url(../../img/box-green-light-bk.png) repeat-x left top;
+	text-shadow: 0 1px #fff;
+	position: relative;
+}
+
+#variants .minimized {
+	background: #f4f4f4 url(../../img/box-gray-bk.png) repeat-x left top;
+}
+
+.oneway .variant, .oneway.variant {
+	padding: 7px 0;
+}
+
+.variant .fade {
+	color: #a6a695;
+}
+
+.variant .num {
+	position: absolute;
+	left: 7px;
+	top: 7px;
+	padding: 1px 4px;
+	font-size: 0.75em;
+	color: #fff;
+	background: #87B654 url(../../img/btn-small-bk-active.png) repeat-x left top;
+	border-radius: 3px 3px 3px 3px;
+	text-shadow: 0 -1px #426422;
+}
+
+.variant.minimized .num {
+	background-color: #d3d3d3;
+	background-image: url(../../img/btn-small-bk-active-fade.png);
+	text-shadow: 0 -1px #999;
+}
+
+.variant td {
+	padding: 1px 0 1px 10px;
+}
+
+.variant .brief .col-carrier {
+	width: 6.5%;
+	padding: 0 0 0 10px;
+}
+
+.col-carrier div {
+	border-radius: 2px 2px 2px 2px;
+	height: 32px;
+	width: 32px;
+	background: #fff url(../../img/carrier-big.png) no-repeat center center;
+}
+
+.variant .brief .col-route {
+	width: 14%;
+	border-right: 1px solid #cedac2;
+}
+
+.variant.minimized .brief .col-route {
+	border-right: 1px solid #ccc;
+}
+
+.variant .brief .col-time-dep {
+	width: 11%;
+	border-left: 1px solid #fff;
+}
+
+.variant .brief .col-time-arr {
+	width: 11%;
+}
+
+.variant .brief .col-time {
+	width: 17%;
+	border-right: 1px solid #cedac2;
+}
+
+.variant.minimized .brief .col-time {
+	border-right: 1px solid #ccc;
+}
+
+.variant .brief .col-transit {
+	width: 8%;
+	border-left: 1px solid #fff;
+}
+
+.variant .brief .col-days {
+	width: 10%;
+	border-right: 1px solid #cedac2;
+}
+
+.variant.minimized .brief .col-days {
+	border-right: 1px solid #ccc;
+}
+
+.variant .brief .col-price {
+	line-height: 140%;
+	border-left: 1px solid #fff;
+}
+
+.oneway .brief .col-price {
+	line-height: 120%;
+}
+
+.variant .brief .col-price .btn {
+	padding: 0 3px;
+	margin-right: -1em;
+	width: 130px;
+	text-align: center;
+}
+
+.variant .brief .col-price .price {
+	font-size: 1.33em;
+	font-weight: bold;
+}
+
+.variant .details .option td {
+	background-color: #f6ffcf;
+	padding: 2px 0 5px 10px;
+}
+
+.variant .details .odd td {
+    background-color: #fdffee;
+}
+
+.variant .details .selected td {
+    background-color: #fbfab2;
+}
+
+.variant .details .option .radio {
+	width: 5%;
+}
+
+.variant .details tr.option:first-child .radio, .variant .details tr.option:first-child .info {
+	background-image: url(../../img/input-shade.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+	padding-top: 10px;
+}
+
+.variant .details caption {
+	text-align: left;
+	padding: 12px 0 3px 10px;
+}
+
+.variant .col-airport {
+	width: 40%;
+}
+
+.variant .col-time .bordered {
+	display: inline-block;
+	padding: 2px 4px 2px;
+	border-radius: 3px;
+	border: 1px solid #a3cc7a;
+	*display: inline;
+	zoom: 1;
+}
+
+.variant .col-time .date {
+	font-size: 0.9em;
+}
+
+.variant .details .time.input {
+	width: 100%;
+	border: 1px solid #a3cc7a;
+	padding: 2px;
+	background: #fff;
+}
+
+.variant .details .col-divider {
+	width: 15px;
+	text-align: center;
+	padding: 0 !important;
+}
+
+.variant  .code {
+	display: block;
+	height: 2em;
+	margin-top: -1em;
+	width: 80px;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	background: url(../../img/fade-hor-yellow-light-2-80-right.png) repeat-y right top;
+	line-height: 2em;
+	text-align: right;
+}
+
+.variant .odd  .code {
+	background: url(../../img/fade-hor-yellow-light-1-80-right.png) repeat-y right top;
+}
+
+.variant .selected  .code {
+	background-image: url(../../img/fade-hor-yellow-light-3-80-right.png);
+}
+
+* html .variant .code {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/fade-hor-green-light-2-80-right.png', sizingMethod='scale');
+}
+
+* html .variant .odd .code {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/fade-hor-green-light-1-80-right.png', sizingMethod='scale');
+}
+
+* html .variant .selected .code {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/fade-hor-green-light-3-80-right.png', sizingMethod='scale');
+}
+.variant .details .col-desc {
+	padding: 2px 0 10px 10px;
+}
+
+.variant .actions {
+	background: #cae6aa url(../../img/actions-green-light-bk.png) repeat-x left top !important;
+	padding: 10px;
+	margin-bottom: -10px;
+	position: relative;
+}
+
+.variant .actions hr {
+	margin: 0.33em 0;
+	border-color: #3d8;
+}
+
+.variant .actions .expander {
+	zoom: 1;
+}
+
+.variant .actions .buttons {
+	width: 160px;
+	float: right;
+	text-align: right;
+	position: relative;
+}
+
+.variant .fare {
+	width: 500px;
+	float: left;
+	position: relative;
+	background: none !important;
+}
+
+.variant .fare .ib {
+	margin-right: 1em;
+	vertical-align: top;
+}
+.side h1 {
+	margin: 0 0 1em;
+}
+
+.side .minimized h1 {
+	margin: 0 0 0.5em;
+}
+
+.side h1 .pseudo {
+	color: #474747;
+	border-bottom: 1px dotted #474747;
+}
+
+.side h1 .pseudo.expander.after {
+	background-image: url(../../img/icon-arrow-up-fade.gif);
+}
+
+.side .minimized h1 .pseudo.expander.after {
+	background-image: url(../../img/icon-arrow-down-fade.gif);
+}
+
+.side h1 .pseudo:hover {
+	color: #70a63a;
+	border-bottom: 1px dotted #70a63a;
+}
+
+.side h1 .pseudo.expander.after:hover {
+	background-image: url(../../img/icon-arrow-up-green.gif);
+}
+
+.side .minimized h1 .pseudo.expander.after:hover {
+	background-image: url(../../img/icon-arrow-down-green.gif);
+}
+
+.side h2 {
+	font-size: 1em;
+}
+
+.side .field {
+	margin: 0 0 0.75em;
+	*margin: 0 0 0.15em;
+}
+
+.filter .list .field {
+	margin: 0 0 0.5em;
+	*margin: 0 0 0.15em;
+}
+
+.side .input {
+	width: 100%;
+	background-color: #f9f9f9;
+}
+
+.side .actions {
+	background: none;
+}
+
+.expandable .side {
+	padding-top: 0.5em;
+}
+
+.filter {
+	margin: 0 0 1.75em;
+	position: relative;
+	zoom: 1;
+	*margin: 0 0 1em;
+}
+
+.filter .controls, .filter .desc {
+	display: inline-block;
+	vertical-align: top;
+	*display: inline;
+	zoom: 1;
+}
+
+.filter .controls {
+	width: 85%;
+}
+
+.filter .controls label {
+	width: 85%;
+	vertical-align: middle;
+}
+
+.filter .desc {
+	width: 10%;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.filter .actions {
+	padding: 0;
+	margin: 1em 0 0;
+}
+
+.filter .actions .pseudo {
+	margin: 0 15px 0 0;
+}
+
+.filter .desc-below {
+	margin: 0.25em 0 0;
+}
+
+.filter .slider-container {
+	padding: 0 6px;
+	height: 5px;
+	background: #e1e1e1 url(../../img/bar-bk-fade.png) repeat-x left top;
+	margin: 0.5em 0 0.5em;
+}
+
+.filter .time-range {
+	padding: 0 0 1em;
+	*padding: 0 0 0.5em;
+}
+
+.filter .time-range span.min {
+	float: left;
+}
+
+.filter .time-range span.max {
+	float: right;
+}
+
+.side .list a {
+	text-decoration: none;
+}
+
+.side .list a span {
+	text-decoration: underline;
+}
+
+.side .list a .icon {
+	display: inline-block;
+	width: 22px;
+	height: 16px;
+	background: #fff url(../../img/icon-oneway.gif) no-repeat center center;
+	vertical-align: middle;
+	text-decoration: none;
+	*display: inline;
+	zoom: 1;
+}
+
+.side .list a:hover .icon {
+	background-image: url(../../img/icon-oneway-green.gif);
+}
+
+.side .list a .roundtrip {
+	background-image: url(../../img/icon-roundtrip.gif);
+}
+
+.side .list a:hover .roundtrip {
+	background-image: url(../../img/icon-roundtrip-green.gif);
+}
+.z-1 {
+  z-index: 1 !important;
+}
+.z-100 {
+  z-index: 100 !important;
+}

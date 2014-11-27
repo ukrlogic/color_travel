@@ -1,0 +1,7 @@
+services:
+    application_ukrlogic_tourbundle.service.gatewaycontainer:
+        class: Application\UkrLogic\TourBundle\Service\GatewayContainer
+
+    application_ukrlogic_tourbundle.service.tourrepository:
+        class: Application\UkrLogic\TourBundle\Service\TourRepository
+        arguments: [ @application_ukrlogic_tourbundle.service.gatewaycontainer, @doctrine.orm.entity_manager ]

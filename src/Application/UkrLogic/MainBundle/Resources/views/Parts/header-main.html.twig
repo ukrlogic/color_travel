@@ -1,0 +1,22 @@
+<header class="">
+    <div id="logo">
+        <a href="{{ path('main_page') }}">Color Travel</a>
+        <p>Туристическое агенство</p>
+    </div>
+    <div class="info">
+        <i class="phone"></i>
+        <div class="social">
+            <a href="#" class="google"></a>
+            <a href="#" class="vk"></a>
+            <a href="#" class="pint"></a>
+            <a href="#" class="twitter"></a>
+            <a href="#" class="fb"></a>
+            <a href="#" class="insta"></a>
+        </div>
+    </div>
+    <div class="signup">
+        {% include '@ApplicationUkrLogicMain/Parts/login.html.twig' %}
+        {% include '@ApplicationUkrLogicMain/Parts/recovery.html.twig' %}
+        {% include '@ApplicationUkrLogicMain/Parts/registration.html.twig' %}
+    </div>
+</header>
