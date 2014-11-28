@@ -1,17 +1,10 @@
 services:
-    application_ukr_logic_akkord_tour.country_repository:
-        class: Doctrine\ORM\EntityRepository
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments:
-            - 'ApplicationUkrLogicAkkordTourBundle:AkkordCountry'
-
-    application_ukrlogic_akkordtourbundle.requestadapter:
-        class: Application\UkrLogic\AkkordTourBundle\Service\RequestAdapter
-        arguments: [ @application_ukr_logic_akkord_tour.country_repository ]
-
     application_ukrlogic_akkordtourbundle.akkordgateway:
-        class: Application\UkrLogic\AkkordTourBundle\Service\AkkordGateway
-        arguments: [ @guzzle.akkord_tour, @application_ukrlogic_akkordtourbundle.requestadapter ]
+        class: Application\UkrLogic\AkkordTourBundle\Service\BusTours
+        arguments:
+            - @guzzle.akkord_tour_bus
+            - @application_ukr_logic_akkord_tour.country_repository
+            - @application_ukr_logic_tourbundle.tour_repository
+            - @doctrine.orm.entity_manager
         tags:
-            -  { name: 'application_ukrlogic_tourbundle.service.gateway', alias: 'akkord_tour' }
+            -  { name: 'application_ukrlogic_tourbundle.service.gateway', alias: 'akkord_tour_bus' }

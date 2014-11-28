@@ -18,43 +18,19 @@ use Symfony\Component\HttpFoundation\Request;
 abstract class GatewayAbstract
 {
     /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
      * @var string
      */
     protected $alias;
 
     /**
-     * @return Tour[]
+     * @return array
      */
-    public abstract function getTours();
+    public abstract function loadTours();
 
     /**
      * @return boolean
      */
     public abstract function isActive();
-
-    /**
-     * @return Request
-     */
-    protected final function getRequest()
-    {
-        return $this->request;
-    }
-
-    /**
-     * @param Request $request
-     * @return $this
-     */
-    public final function setRequest(Request $request)
-    {
-        $this->request = $request;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -75,4 +51,14 @@ abstract class GatewayAbstract
         return $this;
     }
 
+    /**
+     * @param \SimpleXMLElement $xml
+     * @return \SimpleXMLElement
+     */
+    protected final function repairXML(\SimpleXMLElement $xml)
+    {
+        $xml->saveXML('/tmp/response.xml');
+
+        return simplexml_load_file('/tmp/response.xml', 'SimpleXMLElement', LIBXML_NOCDATA);
+    }
 }

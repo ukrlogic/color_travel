@@ -109,7 +109,7 @@ sonata_block:
 # Guzzle Curl Configuration
 lsw_guzzle:
     clients:
-        akkord_tour:
+        akkord_tour_bus:
             config:
                 curl.options:
                     CURLOPT_CONNECTTIMEOUT: 10

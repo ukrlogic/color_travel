@@ -18,7 +18,7 @@ class TourController extends Controller
      * @Route("/tours", name="tours_search")
      * @Template()
      */
-    public function searchAction(Request $request)
+    public function searchAction()
     {
         return [];
     }
@@ -29,14 +29,8 @@ class TourController extends Controller
      */
     public function testAction()
     {
-        $tours = $this->get('application_ukrlogic_tourbundle.service.tourrepository')->getTours();
+        $this->get('application_ukrlogic_tourbundle.service.tourparser')->parse();
 
         return new Response();
-
-        $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment;filename="test.xml"');
-
-        $response->setContent($content);
-        return $response;
     }
 }

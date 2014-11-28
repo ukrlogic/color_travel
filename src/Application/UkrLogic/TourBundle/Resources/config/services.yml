@@ -2,6 +2,20 @@ services:
     application_ukrlogic_tourbundle.service.gatewaycontainer:
         class: Application\UkrLogic\TourBundle\Service\GatewayContainer
 
-    application_ukrlogic_tourbundle.service.tourrepository:
-        class: Application\UkrLogic\TourBundle\Service\TourRepository
-        arguments: [ @application_ukrlogic_tourbundle.service.gatewaycontainer, @doctrine.orm.entity_manager ]
+    application_ukrlogic_tourbundle.service.tourparser:
+        class: Application\UkrLogic\TourBundle\Service\TourParser
+        arguments: [ @application_ukrlogic_tourbundle.service.gatewaycontainer ]
+
+    application_ukr_logic_tourbundle.tour_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - 'ApplicationUkrLogicTourBundle:BusTour'
+
+    application_ukr_logic_akkord_tour.country_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - 'ApplicationUkrLogicTourBundle:Country'

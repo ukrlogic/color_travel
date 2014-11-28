@@ -12,21 +12,6 @@ class BusTour
     /**
      * @var integer
      */
-    private $id;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    /**
-     * @var integer
-     */
     private $tourId;
 
     /**
@@ -45,24 +30,34 @@ class BusTour
     private $days;
 
     /**
-     * @var \DateTime
+     * @var string
      */
-    private $dateFrom;
-
-    /**
-     * @var \DateTime
-     */
-    private $dateTo;
+    private $dates;
 
     /**
      * @var float
      */
-    private $price;
+    private $price_uah;
+
+    /**
+     * @var float
+     */
+    private $price_usd;
+
+    /**
+     * @var float
+     */
+    private $price_eur;
 
     /**
      * @var string
      */
     private $currency;
+
+    /**
+     * @var integer
+     */
+    private $id;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -170,72 +165,95 @@ class BusTour
     }
 
     /**
-     * Set dateFrom
+     * Set dates
      *
-     * @param \DateTime $dateFrom
+     * @param string $dates
      * @return BusTour
      */
-    public function setDateFrom($dateFrom)
+    public function setDates($dates)
     {
-        $this->dateFrom = $dateFrom;
+        $this->dates = $dates;
 
         return $this;
     }
 
     /**
-     * Get dateFrom
+     * Get dates
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getDateFrom()
+    public function getDates()
     {
-        return $this->dateFrom;
+        return $this->dates;
     }
 
     /**
-     * Set dateTo
+     * Set price_uah
      *
-     * @param \DateTime $dateTo
+     * @param float $priceUah
      * @return BusTour
      */
-    public function setDateTo($dateTo)
+    public function setPriceUah($priceUah)
     {
-        $this->dateTo = $dateTo;
+        $this->price_uah = $priceUah;
 
         return $this;
     }
 
     /**
-     * Get dateTo
-     *
-     * @return \DateTime 
-     */
-    public function getDateTo()
-    {
-        return $this->dateTo;
-    }
-
-    /**
-     * Set price
-     *
-     * @param float $price
-     * @return BusTour
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
+     * Get price_uah
      *
      * @return float 
      */
-    public function getPrice()
+    public function getPriceUah()
     {
-        return $this->price;
+        return $this->price_uah;
+    }
+
+    /**
+     * Set price_usd
+     *
+     * @param float $priceUsd
+     * @return BusTour
+     */
+    public function setPriceUsd($priceUsd)
+    {
+        $this->price_usd = $priceUsd;
+
+        return $this;
+    }
+
+    /**
+     * Get price_usd
+     *
+     * @return float 
+     */
+    public function getPriceUsd()
+    {
+        return $this->price_usd;
+    }
+
+    /**
+     * Set price_eur
+     *
+     * @param float $priceEur
+     * @return BusTour
+     */
+    public function setPriceEur($priceEur)
+    {
+        $this->price_eur = $priceEur;
+
+        return $this;
+    }
+
+    /**
+     * Get price_eur
+     *
+     * @return float 
+     */
+    public function getPriceEur()
+    {
+        return $this->price_eur;
     }
 
     /**
@@ -259,6 +277,16 @@ class BusTour
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

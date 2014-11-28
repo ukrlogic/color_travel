@@ -4,14 +4,8 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="255" nullable="false"/>
-    <field name="nameEng" type="string" column="name_eng" length="255" nullable="false"/>
-    <field name="nameR" type="string" column="name_r" length="255" nullable="true"/>
-    <field name="nick" type="string" column="nick" length="255" nullable="true"/>
-    <field name="active" type="integer" column="active" nullable="false"/>
-    <field name="label" type="string" column="label" length="255" nullable="true"/>
-    <field name="region" type="integer" column="region" nullable="false"/>
-    <field name="regionname" type="string" column="regionname" length="255" nullable="false"/>
+    <field name="name" type="string" column="name" length="255" nullable="true"/>
+    <field name="nameRu" type="string" column="name_r" length="255" nullable="true"/>
     <field name="search" type="boolean" column="search" nullable="false"/>
   </entity>
 </doctrine-mapping>
