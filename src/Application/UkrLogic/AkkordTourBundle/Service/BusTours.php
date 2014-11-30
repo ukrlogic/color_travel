@@ -15,6 +15,8 @@ use Application\UkrLogic\TourBundle\Service\GatewayAbstract;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Guzzle\Service\Client;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class BusTours
@@ -85,7 +87,13 @@ class BusTours extends GatewayAbstract
             $tour->setGateway($this->getAlias());
             $tour->setName((string)$xmlTour->name);
             $tour->setDays((int)preg_replace('/[^0-9]*/', '', (string)$xmlTour->days));
+
+            $dates = $this->getDatesArray($xmlTour->dates);
+
+            $tour->setDateFrom($dates['from']);
+            $tour->setDateTo($dates['to']);
             $tour->setDates((string)$xmlTour->dates);
+
             $tour->setPriceUah((float)$xmlTour->price);
             $tour->setPriceUsd((float)$xmlTour->price_usd);
             $tour->setPriceEur((float)$xmlTour->price_eur);
@@ -117,6 +125,37 @@ class BusTours extends GatewayAbstract
         }
 
         return $country;
+    }
+
+    /**
+     * @param \SimpleXMLElement $xmlDates
+     * @return \DateTime[]
+     */
+    private function getDatesArray(\SimpleXMLElement $xmlDates)
+    {
+        $dates = explode(';', (string) $xmlDates);
+
+        if (count($dates) === 1) {
+            $date = $dates[0];
+            return [
+                'from' => new \DateTime($date),
+                'to' => new \DateTime($date)
+            ];
+        }
+
+        usort($dates, function ($a, $b) {
+            $a = new \DateTime($a);
+            $b = new \DateTime($b);
+            return $a > $b;
+        });
+
+        $from = array_shift($dates);
+        $to = array_pop($dates);
+
+        return [
+            'from' => new \DateTime($from),
+            'to' => new \DateTime($to)
+        ];
     }
 
     /**

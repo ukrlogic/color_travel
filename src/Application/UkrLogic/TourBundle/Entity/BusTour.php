@@ -321,4 +321,60 @@ class BusTour
     {
         return $this->counties;
     }
+    /**
+     * @var \DateTime
+     */
+    private $dateFrom;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateTo;
+
+
+    /**
+     * Set dateFrom
+     *
+     * @param \DateTime $dateFrom
+     * @return BusTour
+     */
+    public function setDateFrom($dateFrom)
+    {
+        $this->dateFrom = $dateFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFrom
+     *
+     * @return \DateTime 
+     */
+    public function getDateFrom()
+    {
+        return $this->dateFrom;
+    }
+
+    /**
+     * Set dateTo
+     *
+     * @param \DateTime $dateTo
+     * @return BusTour
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->dateTo = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateTo
+     *
+     * @return \DateTime 
+     */
+    public function getDateTo()
+    {
+        return $this->dateTo;
+    }
 }

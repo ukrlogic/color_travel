@@ -11,6 +11,8 @@
         <field name="name" type="string" column="name" length="255"/>
         <field name="days" type="integer" column="days"/>
         <field name="dates" type="string" column="dates"/>
+        <field name="dateFrom" type="date" column="date_from"/>
+        <field name="dateTo" type="date" column="date_to"/>
         <field name="price_uah" type="float" column="price_uah"/>
         <field name="price_usd" type="float" column="price_usd"/>
         <field name="price_eur" type="float" column="price_eur"/>
