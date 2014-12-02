@@ -54,7 +54,7 @@ $('.e404, .e404>div').css('height',$(window).height()-e404 -60);
         }
 
 
-    })
+    });
 
 
 
@@ -146,7 +146,7 @@ $('.e404, .e404>div').css('height',$(window).height()-e404 -60);
         columnWidth: ColumnWidth,
         isAnimated: true,
         transitionDuration: 0
-    }
+    };
     masonryOptionsNews = {
         itemSelector: '.box:not(.invisible)',
         gutterWidth: 5,
@@ -154,7 +154,7 @@ $('.e404, .e404>div').css('height',$(window).height()-e404 -60);
         isAnimated: true,
         cornerStampSelector: '.m-header',
         stamp: ".stamp"
-    }
+    };
     $('.masonry').masonry(masonryOptions);
     $('.masonry-news').masonry(masonryOptionsNews);
 
@@ -163,7 +163,7 @@ $('.e404, .e404>div').css('height',$(window).height()-e404 -60);
         $(this).find('.flipper .back').fadeIn(200);
     }).mouseleave(function() {
         $(this).find('.flipper .back').stop().fadeOut(200);
-    })
+    });
 
 
 
@@ -183,15 +183,15 @@ $('.e404, .e404>div').css('height',$(window).height()-e404 -60);
             $('.login').show();
         });
 
-    })
+    });
     $('.forget').click(function() {
         $('.login').hide();
         $('.recovery').fadeIn(200);
-    })
+    });
     $('.registr').click(function() {
         $('.login').hide();
         $('.registration').fadeIn(200);
-    })
+    });
 
     $('.signup form').submit(function(event) {
         console.log($(this).serialize());
@@ -203,13 +203,13 @@ $('.e404, .e404>div').css('height',$(window).height()-e404 -60);
             $('#signup').trigger('click');
         });
         return false;
-    })
+    });
 /***** заказать тур *****/
 
 $('#order').click(function(){
     $('.order_tour').toggleClass('show');
     return false;
-})
+});
 $('#addComment').click(function(){
     $('.add_comment').toggleClass('show');
     return false;
@@ -222,7 +222,7 @@ $('.filter-variant button:first').click(function(){
     $('.avia-section').hide();
     $('.bus-section').show();
     $('#container').masonry('reload');
-})
+});
 $('.filter-variant button:last').click(function(){
     $('.filter-variant button').removeClass('active');
     $(this).addClass('active');
@@ -230,28 +230,21 @@ $('.filter-variant button:last').click(function(){
     $('.avia-section').show();
     $('#container').masonry('reload');
 
-})
+});
 
     /**** Календарь ****/
-    $('#rangeInlinePicker').datepick({
+    $('.rangeInlinePicker').datepick({
         rangeSelect: true,
         monthsToShow: [1, 1],
         firstDay: 1,
         onSelect: function(dates) {
-            var value = '';
-            for (var i = 0; i < dates.length; i++) {
-                value += (i == 0 ? '' : ',') + $.datepick.formatDate(dates[i]);
-            }
-            value = value.replace(/\//g, '.'); // дата в формате дд.мм.гг,дд.мм.гг
-            console.log(value);
-            // function(){
-            //                                  // ajax запрос
-            // }
+            $('input.date_from').val($.datepicker.formatDate('yy-mm-dd', dates[0]));
+            $('input.date_to').val($.datepicker.formatDate('yy-mm-dd', dates[1]));
         }
     });
 
     /**** Слайдер выбора продолжительности тура ****/
-    $('#slider-day').slider({
+    $('.slider-day').slider({
         min: 1,
         max: 30,
         step: 1,
@@ -259,25 +252,22 @@ $('.filter-variant button:last').click(function(){
         range: true,
         values: [5,15],
         change: function(event, ui) {
-            value = ui.values[0] + ',' + ui.values[1];
-            console.log(value);
-            // function(){
-            //                                  // ajax запрос
-            // }
+            $('input.days_from').val(ui.values[0]);
+            $('input.days_to').val(ui.values[1]);
         },
         slide: function(event, ui) {
            // $("#slider-day .ui-slider-handle").attr('data-content', ui.value + ' дней');
 
-            $("#slider-day .ui-slider-handle:first").attr('data-content', ui.values[0] + ' дней');
-            $("#slider-day .ui-slider-handle:last").attr('data-content', ui.values[1] + ' дней');
+            $(".slider-day .ui-slider-handle:first").attr('data-content', ui.values[0] + ' дней');
+            $(".slider-day .ui-slider-handle:last").attr('data-content', ui.values[1] + ' дней');
         }
     });
-    $("#slider-day .ui-slider-handle:first").attr('data-content', '5 дней');
-    $("#slider-day .ui-slider-handle:last").attr('data-content', '15 дней');
+    $(".slider-day .ui-slider-handle:first").attr('data-content', '5 дней');
+    $(".slider-day .ui-slider-handle:last").attr('data-content', '15 дней');
 
 
     /**** Слайдер выбора стоимости тура ****/
-    $('#slider-cost').slider({
+    $('.slider-cost').slider({
         min: 100,
         max: 10000,
         step: 50,
@@ -285,19 +275,16 @@ $('.filter-variant button:last').click(function(){
         range: true,
         values: [500, 3500],
         change: function(event, ui) {
-            value = ui.values[0] + ',' + ui.values[1];
-            console.log(value);
-            // function(){
-            //                                  // ajax запрос
-            // }
+            $('input.price_from').val(ui.values[0]);
+            $('input.price_to').val(ui.values[1]);
         },
         slide: function(event, ui) {
-            $("#slider-cost .ui-slider-handle:first").attr('data-content', ui.values[0]);
-            $("#slider-cost .ui-slider-handle:last").attr('data-content', ui.values[1]);
+            $(".slider-cost .ui-slider-handle:first").attr('data-content', ui.values[0]);
+            $(".slider-cost .ui-slider-handle:last").attr('data-content', ui.values[1]);
         }
     });
-    $("#slider-cost .ui-slider-handle:first").attr('data-content', 500);
-    $("#slider-cost .ui-slider-handle:last").attr('data-content', 3500);
+    $(".slider-cost .ui-slider-handle:first").attr('data-content', 500);
+    $(".slider-cost .ui-slider-handle:last").attr('data-content', 3500);
 
     $('.cost').on('keyup', function() {
         $(this).val($(this).val().replace(/\D/, ''));
@@ -321,7 +308,7 @@ $('.filter-variant button:last').click(function(){
     $('.intext>div').click(function() {
         $(this).addClass('active');
         $('.stars .star').removeClass('active').css('opacity', 0.5);
-    })
+    });
 
     /**** Селекты выбора количества туристов ****/
     $("#adult.selectordie").selectOrDie({
@@ -365,7 +352,7 @@ $('.filter-variant button:last').click(function(){
         $(this).find('img').show();
         $.ajax({
             url: 'send.php',
-            method: 'post',
+            method: 'post'
         }).done(function() {
 
             function lazy() {
@@ -399,7 +386,7 @@ $('.europe-image').velocity({
         });
         $('.content-flags.europe').velocity({
             scale: 0.5,
-            opacity: 0,
+            opacity: 0
         }).velocity("fadeOut", { duration: 50 });
         $('.world-image, .content-flags.world').show().velocity({
             opacity: 1,

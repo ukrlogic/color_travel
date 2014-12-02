@@ -1,0 +1,15 @@
+services:
+#    application_sonata_admin.example:
+#        class: Application\Sonata\AdminBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    application_sonata_admin.admin.bus_tour:
+        class: Application\Sonata\AdminBundle\Admin\BusTourAdmin
+        arguments: [~, Application\UkrLogic\TourBundle\Entity\BusTour, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: BusTour}
+
+    application_sonata_admin.admin.country:
+        class: Application\Sonata\AdminBundle\Admin\CountryAdmin
+        arguments: [~, Application\UkrLogic\TourBundle\Entity\Country, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Country}

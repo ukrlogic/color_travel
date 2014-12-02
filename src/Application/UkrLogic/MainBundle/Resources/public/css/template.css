@@ -491,7 +491,7 @@ width: 135%;
     padding-bottom: 15px;
     margin-top: 5px;
 }
-.box.w.filter.masonry-brick > button {
+.box.w.filter.masonry-brick button[type="submit"] {
   background: none repeat scroll 0 0 #1c6281;
   border: medium none;
   color: rgba(255, 255, 255, 0.5);
@@ -503,7 +503,7 @@ width: 135%;
   padding: 7px;
   width: 100%;
 }
-.box.w.filter.masonry-brick > button:hover{
+.box.w.filter.masonry-brick button[type="submit"]:hover{
     background: none repeat scroll 0 0 #0b5170;
     color: rgba(255, 255, 255, 0.8);
 }

@@ -4,9 +4,9 @@
     <div class="content container">
     <div id="container" class="masonry">
     <div class="box w filter">
-    <div class="filter-search clear">
-        <input type="text" placeholder="Введите ваш поисковый запрос">
-    </div>
+    {#<div class="filter-search clear">#}
+    {#<input type="text" placeholder="Введите ваш поисковый запрос">#}
+    {#</div>#}
     <div class="filter-variant clear">
         <button>Автобусный тур</button>
         <button class="active">Авиа тур</button>
@@ -153,11 +153,11 @@
         <h3>Курорт</h3>
 
         <div>
-            <div id="rangeInlinePicker"></div>
+            <div class="rangeInlinePicker"></div>
             <h4>Продолжительность тура</h4>
 
             <div class="subcategory">
-                <div id="slider-day">
+                <div class="slider-day">
                     <p class="start">1</p>
 
                     <p class="end">30</p>
@@ -209,7 +209,7 @@
 
         <div>
             <div class="subcategory">
-                <div id="slider-cost">
+                <div class="slider-cost">
                     <p class="start">100</p>
 
                     <p class="end">10 000</p>
@@ -222,56 +222,57 @@
     </div>
     <!-- bus -->
     <div class="bus-section">
-        <div class="filter-section from clear">
-            <h3>Выезд из города</h3>
+        {{ form_start(bus_form) }}
+        <div class="filter-section to clear">
+            <h3>Страна прибытия</h3>
 
             <div>
-                <div class="from-group customscroll short">
-                    <div>
-                        <input type="checkbox" id="dnepropetrovsk" name="dnepropetrovsk">
-                        <label for="dnepropetrovsk">Днепропетровск</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="donetsk" name="donetsk">
-                        <label for="donetsk">Донецк</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="zaporozhie" name="zaporozhie">
-                        <label for="zaporozhie">Запорожье</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="ivano-frankovsk" name="ivano-frankovsk">
-                        <label for="ivano-frankovsk">Ивано-Франковск</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="kiev" name="kiev">
-                        <label for="kiev">Киев</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="krivoy-rog" name="krivoy-rog">
-                        <label for="krivoy-rog">Кривой Рог</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="lugansk" name="lugansk">
-                        <label for="lugansk">Луганск</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="lvov" name="lvov">
-                        <label for="lvov">Львов</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="mariupol" name="mariupol">
-                        <label for="mariupol">Мариуполь</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="kharkov" name="kharkov">
-                        <label for="kharkov">Харьков</label>
+                <div class="from-group customscroll to">
+                    {% for field in bus_form.countries %}
+                        <div>
+                            {{ form_widget(field) }}
+                            <label for="{{ field.vars.id }}">{{ field.vars.label | trans | raw }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="filter-section clear">
+            <h3>Курорт</h3>
+
+            <div>
+                <div class="rangeInlinePicker"></div>
+                <h4>Продолжительность тура</h4>
+
+                <div class="subcategory">
+                    <div class="slider-day">
+                        <p class="start">1</p>
+
+                        <p class="end">30</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="filter-section clear">
+            <h3>Стоимость тура</h3>
+
+            <div>
+                <div class="subcategory">
+                    <div class="slider-cost">
+                        <p class="start">100</p>
+
+                        <p class="end">10 000</p>
+                    </div>
+                    <!-- <input class="cost" type="text" placeholder="...или точная сумма"> -->
+
+                </div>
+            </div>
+        </div>
+        {{ form_widget(bus_form.submit) }}
+        <div style="display: none;">{{ form_rest(bus_form) }}</div>
+        {{ form_end(bus_form) }}
     </div>
-    <button id="searchTourButton">Поиск</button>
+
     </div>
 
 

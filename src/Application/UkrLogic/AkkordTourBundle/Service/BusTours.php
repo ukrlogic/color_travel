@@ -110,18 +110,14 @@ class BusTours extends GatewayAbstract
     /**
      * @param string $countryName
      * @return Country
+     * @throws \Exception
      */
     private function getCountry($countryName)
     {
         $country = $this->countryRepository->findOneBy(['nameRu' => $countryName]);
 
         if (!$country) {
-            $country = new Country();
-            $country->setNameRu($countryName);
-            $country->setSearch(false);
-
-            $this->entityManager->persist($country);
-            $this->entityManager->flush();
+            throw new \Exception(sprintf("Country '%s' not found", $countryName));
         }
 
         return $country;

@@ -1,12 +1,12 @@
-parameters:
-#    application.ukrlogic.main.example.class: Application\UkrLogic\MainBundle\Example
-
 services:
-#    application.ukrlogic.main.example:
-#        class: %application.ukrlogic.main.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
-#        calls:
-#            - [setService, [@service_id]]
-#        tags:
-#            - { name: twig.extension }
-#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+    application.ukrlogic.main.form.country:
+        class: Application\UkrLogic\MainBundle\Form\CountryType
+        arguments: [@application_ukr_logic_akkord_tour.country_repository]
+        tags:
+            - { name: form.type, alias: 'country_form' }
+
+    application.ukrlogic.main.form.bus_tour:
+        class: Application\UkrLogic\MainBundle\Form\BusTourFilterForm
+        arguments: [@application.ukrlogic.main.form.country]
+        tags:
+            - { name: form.type, alias: 'bus_tour_filter' }

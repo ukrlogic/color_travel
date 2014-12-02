@@ -4,8 +4,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="255" nullable="true"/>
-    <field name="nameRu" type="string" column="name_r" length="255" nullable="true"/>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
+    <field name="nameRu" type="string" column="name_r" length="255" nullable="false"/>
+    <field name="fullNameRu" type="string" column="full_name_r" length="255" nullable="true"/>
     <field name="search" type="boolean" column="search" nullable="false"/>
+    <field name="alpha2" type="string" column="alpha_two" length="2" nullable="false"/>
+    <field name="alpha3" type="string" column="alpha_three" length="3" nullable="false"/>
+    <field name="iso" type="string" column="iso" length="3" nullable="false"/>
+    <field name="location" type="string" column="location" length="255" nullable="false"/>
+    <field name="location_precise" type="string" column="location_precise" length="255" nullable="false"/>
   </entity>
 </doctrine-mapping>

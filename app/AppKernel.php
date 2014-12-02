@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Application\UkrLogic\MainBundle\ApplicationUkrLogicMainBundle(),
             new Application\UkrLogic\TourBundle\ApplicationUkrLogicTourBundle(),
             new Application\UkrLogic\AkkordTourBundle\ApplicationUkrLogicAkkordTourBundle(),
+            new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
