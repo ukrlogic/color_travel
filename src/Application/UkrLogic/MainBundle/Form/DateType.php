@@ -29,13 +29,15 @@ class DateType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'date_from'
-                ]
+                ],
+                'required' => false,
             ])
             ->add('date_to', 'date', [
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'date_to'
-                ]
+                ],
+                'required' => false,
             ]);
     }
 

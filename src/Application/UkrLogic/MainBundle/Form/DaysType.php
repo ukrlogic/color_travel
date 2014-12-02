@@ -25,8 +25,8 @@ class DaysType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('days_from', 'integer', ['attr' => ['class' => 'days_from']])
-            ->add('days_to', 'integer', ['attr' => ['class' => 'days_to']]);
+            ->add('days_from', 'integer', ['attr' => ['class' => 'days_from'], 'required' => false])
+            ->add('days_to', 'integer', ['attr' => ['class' => 'days_to'], 'required' => false]);
     }
 
     /**

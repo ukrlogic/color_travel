@@ -62,14 +62,14 @@ class BusTour
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $counties;
+    private $countries;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->counties = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->countries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -290,26 +290,26 @@ class BusTour
     }
 
     /**
-     * Add counties
+     * Add country
      *
-     * @param \Application\UkrLogic\TourBundle\Entity\Country $counties
+     * @param \Application\UkrLogic\TourBundle\Entity\Country $country
      * @return BusTour
      */
-    public function addCounty(\Application\UkrLogic\TourBundle\Entity\Country $counties)
+    public function addCountry(\Application\UkrLogic\TourBundle\Entity\Country $country)
     {
-        $this->counties[] = $counties;
+        $this->countries[] = $country;
 
         return $this;
     }
 
     /**
-     * Remove counties
+     * Remove country
      *
-     * @param \Application\UkrLogic\TourBundle\Entity\Country $counties
+     * @param \Application\UkrLogic\TourBundle\Entity\Country $country
      */
-    public function removeCounty(\Application\UkrLogic\TourBundle\Entity\Country $counties)
+    public function removeCountry(\Application\UkrLogic\TourBundle\Entity\Country $country)
     {
-        $this->counties->removeElement($counties);
+        $this->countries->removeElement($country);
     }
 
     /**
@@ -317,9 +317,9 @@ class BusTour
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCounties()
+    public function getCountries()
     {
-        return $this->counties;
+        return $this->countries;
     }
     /**
      * @var \DateTime

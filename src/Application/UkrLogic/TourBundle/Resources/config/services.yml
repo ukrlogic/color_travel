@@ -1,3 +1,5 @@
+parameters:
+    application_ukrlogic_tourbundle.images_dir: "%kernel.root_dir%/../web/images"
 services:
     application_ukrlogic_tourbundle.service.gatewaycontainer:
         class: Application\UkrLogic\TourBundle\Service\GatewayContainer
@@ -7,11 +9,13 @@ services:
         arguments: [ @application_ukrlogic_tourbundle.service.gatewaycontainer ]
 
     application_ukr_logic_tourbundle.tour_repository:
-        class: Doctrine\ORM\EntityRepository
+        class: Application\UkrLogic\TourBundle\Repository\BusTourRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
             - 'ApplicationUkrLogicTourBundle:BusTour'
+        calls:
+            - [setCountryRepository, [@application_ukr_logic_akkord_tour.country_repository]]
 
     application_ukr_logic_akkord_tour.country_repository:
         class: Doctrine\ORM\EntityRepository
@@ -19,3 +23,10 @@ services:
         factory_method: getRepository
         arguments:
             - 'ApplicationUkrLogicTourBundle:Country'
+
+    application_ukr_logic_tourbundle.tour_image_extension:
+        class: Application\UkrLogic\MainBundle\Twig\TourImageExtension
+        calls:
+            - [setImagesDir, [%application_ukrlogic_tourbundle.images_dir%]]
+        tags:
+            - { name: twig.extension }
