@@ -46,7 +46,7 @@ class Country
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -69,7 +69,7 @@ class Country
     /**
      * Get nameRu
      *
-     * @return string 
+     * @return string
      */
     public function getNameRu()
     {
@@ -92,7 +92,7 @@ class Country
     /**
      * Get search
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getSearch()
     {
@@ -102,12 +102,13 @@ class Country
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
+
     /**
      * @var string
      */
@@ -155,7 +156,7 @@ class Country
     /**
      * Get fullNameRu
      *
-     * @return string 
+     * @return string
      */
     public function getFullNameRu()
     {
@@ -178,7 +179,7 @@ class Country
     /**
      * Get alpha2
      *
-     * @return string 
+     * @return string
      */
     public function getAlpha2()
     {
@@ -201,7 +202,7 @@ class Country
     /**
      * Get alpha3
      *
-     * @return string 
+     * @return string
      */
     public function getAlpha3()
     {
@@ -224,7 +225,7 @@ class Country
     /**
      * Get iso
      *
-     * @return string 
+     * @return string
      */
     public function getIso()
     {
@@ -247,7 +248,7 @@ class Country
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -270,10 +271,15 @@ class Country
     /**
      * Get location_precise
      *
-     * @return string 
+     * @return string
      */
     public function getLocationPrecise()
     {
         return $this->location_precise;
+    }
+
+    public function __toString()
+    {
+        return $this->getNameRu();
     }
 }

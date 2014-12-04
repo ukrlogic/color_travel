@@ -1,9 +1,10 @@
-application_sonata_admin:
-    resource: "@ApplicationSonataAdminBundle/Resources/config/routing.yml"
-    prefix:   /
-
 application_ukr_logic_main:
     resource: "@ApplicationUkrLogicMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+application_sonata_admin:
+    resource: "@ApplicationSonataAdminBundle/Controller/"
     type:     annotation
     prefix:   /
 

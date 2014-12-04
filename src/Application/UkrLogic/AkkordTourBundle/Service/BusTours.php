@@ -100,7 +100,7 @@ class BusTours extends GatewayAbstract
             $tour->setCurrency((string)$xmlTour->tour_currency);
 
             foreach ($xmlTour->countries as $country) {
-                $tour->addCounty($this->getCountry((string)$country->country));
+                $tour->addCountry($this->getCountry((string)$country->country));
             }
 
             $this->entityManager->persist($tour);

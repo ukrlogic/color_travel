@@ -23,7 +23,8 @@
         "sonata-project/user-bundle": "~2.2",
         "friendsofsymfony/user-bundle": "~1.3",
         "sonata-project/easy-extends-bundle": "~2.1",
-        "leaseweb/guzzle-bundle": "~1.0"
+        "leaseweb/guzzle-bundle": "~1.0",
+        "punkave/symfony2-file-uploader-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

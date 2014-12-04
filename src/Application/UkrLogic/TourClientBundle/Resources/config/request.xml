@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request>
+    <TourSearchRequest>
+        <dataOffset>0</dataOffset>
+        <dataLimit>25</dataLimit>
+        <durationFrom>1</durationFrom>
+        <seatStatus>3</seatStatus>
+        <currency>1</currency>
+    </TourSearchRequest>
+    <TourExtraEntities>             <!-- [Опционально] Дополнительные объекты которые нужно добавить к объекту тур. Возможные значения перечислены в ниже. -->
+        <entity>OnlineSeatsState</entity>
+        <entity>ExtraCharges</entity>
+        <entity>City</entity>
+        <entity>Country</entity>
+        <entity>RoomSize</entity>
+        <entity>Resort</entity>
+        <entity>ResortPlace</entity>
+        <entity>Allocation</entity>
+        <entity>AllocCat</entity>
+        <entity>Meal</entity>
+        <entity>RoomType</entity>
+        <entity>RoomView</entity>
+        <entity>Operator</entity>
+    </TourExtraEntities>
+</Request>

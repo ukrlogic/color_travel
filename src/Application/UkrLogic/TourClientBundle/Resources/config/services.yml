@@ -1,0 +1,10 @@
+services:
+#    application_ukr_logic_tour_client.example:
+#        class: Application\UkrLogic\TourClientBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    application_ukrlogic_tourclientbundle.service.aviatours:
+        class: Application\UkrLogic\TourClientBundle\Service\AviaTours
+        arguments:
+            - @guzzle.tour_client_avia
+        tags:
+            -  { name: 'application_ukrlogic_tourbundle.service.gateway', alias: 'tour_client_avia' }

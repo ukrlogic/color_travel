@@ -37,25 +37,12 @@ class BusTourAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('tourId')
-            ->add('gateway')
-            ->add('name')
+            ->addIdentifier('name')
             ->add('days')
-            ->add('dates')
             ->add('dateFrom')
             ->add('dateTo')
             ->add('price_uah')
-            ->add('price_usd')
-            ->add('price_eur')
-            ->add('currency')
-            ->add('id')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+            ->add('countries', null, ['editable' => true])
         ;
     }
 

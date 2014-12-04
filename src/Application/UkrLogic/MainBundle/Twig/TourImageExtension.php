@@ -24,16 +24,21 @@ class TourImageExtension extends \Twig_Extension
         ];
     }
 
-    public function getImages($id, $gateway)
+    public function getImages($id, $path)
     {
         $finder = new Finder();
 
         $images = [];
 
         try {
+            $dir = sprintf("%s/%s/%d", $this->imagesDir, $path, $id);
+            $large = file_exists($dir . '/large');
+            if ($large) {
+                $dir .= '/large';
+            }
             /** @var SplFileInfo $file */
-            foreach ($finder->files()->in(sprintf("%s/%s/%d", $this->imagesDir, $gateway, $id)) as $file) {
-                $images[] = sprintf("images/%d/%s", $id, $file->getRelativePathname());
+            foreach ($finder->files()->in($dir) as $file) {
+                $images[] = sprintf("images/%s/%d/%s", $path, $id, ($large ? 'large/' : '') . $file->getRelativePathname());
             }
         } catch (\Exception $e) {
             //folder does not exists, possibly write log or notify administrator

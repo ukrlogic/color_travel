@@ -1,0 +1,23 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+
+    <div id="hotel_{{ object.id }}" class="hotel-row">
+        {% for src in getTourImages(object.id, 'hotels') %}
+            <a href="{{ asset(src) }}" data-gallery="#hotel{{ object.id }}" data-description="{{ object.name }}">
+                <img src="{{ asset(src) }}" class="hotel-thumbnail">
+            </a>
+        {% endfor %}
+
+
+        <div class="file-uploader-{{ object.id }}"></div>
+        <script type="text/javascript">
+            $(function () {
+                new PunkAveFileUploader({
+                    'uploadUrl': '{{ path('upload_hotels', { id: object.id })}}',
+                    'el': '.file-uploader-{{ object.id }}'
+                });
+            });
+        </script>
+    </div>
+{% endblock %}

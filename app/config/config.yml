@@ -30,6 +30,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        image_locator: "@application_sonata_admin.image_locator"
 
 # Assetic Configuration
 assetic:
@@ -42,7 +44,7 @@ assetic:
         #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
-
+    bundles: [ ApplicationSonataAdminBundle ]
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -124,3 +126,17 @@ lsw_guzzle:
                     get_tours:
                         httpMethod: "GET"
                         uri: "/get-xml.php/?lang=ru&travel_type=1"
+        tour_client_avia:
+            config:
+                curl.option:
+                    CURLOPT_CONNECTTIMEOUT: 10
+                    CURLOPT_SSL_VERIFYPEER: false
+                    CURLOPT_USERAGENT: "LeaseWeb API Caller"
+                    CURLOPT_FOLLOWLOCATION: true
+                    CURLOPT_RETURNTRANSFER: true
+            description:
+                baseUrl: "http://tourclient.ru"
+                operations:
+                    get_tours:
+                        httpMethod: "POST"
+                        uri: "/f/exml/58658/tours_export"

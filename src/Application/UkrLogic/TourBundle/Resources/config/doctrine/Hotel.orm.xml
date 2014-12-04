@@ -8,8 +8,8 @@
     <field name="nameAlt" type="string" column="name_alt" length="255" nullable="true"/>
     <field name="nameEng" type="string" column="name_eng" length="255" nullable="true"/>
     <field name="nameIndx" type="string" column="name_indx" length="255" nullable="true"/>
-    <field name="trash" type="integer" column="trash" nullable="false"/>
-    <field name="active" type="integer" column="active" nullable="false"/>
+    <field name="trash" type="boolean" column="trash" nullable="false"/>
+    <field name="active" type="boolean" column="active" nullable="false"/>
     <field name="cat" type="integer" column="cat" nullable="false"/>
     <field name="chagebaby" type="integer" column="chagebaby" nullable="false"/>
     <field name="chagesmall" type="integer" column="chagesmall" nullable="false"/>
