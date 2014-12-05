@@ -27,7 +27,7 @@
                     <ul>
                         {% for img in getTourImages(tour.Allocation.id, 'hotels') %}
                             <li>
-                                <img src="{{ asset(img) }}">
+                                <img src="{{ asset(img) }}" width="120" height="81">
                             </li>
                         {% endfor %}
                     </ul>
