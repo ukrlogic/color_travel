@@ -93,7 +93,8 @@ class TourController extends Controller
     public function aviaTourAction($id)
     {
         $lastSearch = $this->get('session')->get('lastSearch');
-        $id = explode('@', $id)[0];
+
+        $id = intval($id);
 
         if (! array_key_exists($id, $lastSearch)) {
             throw new NotFoundHttpException("Tour not found");
