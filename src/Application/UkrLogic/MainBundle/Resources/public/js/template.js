@@ -260,7 +260,7 @@ $(function () {
     /**** Слайдер выбора стоимости тура ****/
     $('.slider-cost').slider({
         min: 100,
-        max: 10000,
+        max: 50000,
         step: 50,
         value: 100,
         range: true,
