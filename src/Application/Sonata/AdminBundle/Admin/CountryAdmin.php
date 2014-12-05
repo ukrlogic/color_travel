@@ -17,14 +17,13 @@ class CountryAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('nameEng')
             ->add('nameRu')
-            ->add('fullNameRu')
-            ->add('search')
-            ->add('alpha2')
-            ->add('alpha3')
-            ->add('iso')
-            ->add('location')
-            ->add('location_precise')
+            ->add('nick')
+            ->add('active')
+            ->add('label')
+            ->add('region')
+            ->add('regionName')
             ->add('id')
         ;
     }
@@ -35,23 +34,11 @@ class CountryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
-            ->add('nameRu')
-            ->add('fullNameRu')
-            ->add('search', null, ['editable' => true])
-            ->add('alpha2')
-            ->add('alpha3')
-            ->add('iso')
-            ->add('location')
-            ->add('location_precise')
-            ->add('id')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+            ->addIdentifier('name')
+            ->add('nick')
+            ->add('active')
+            ->add('label', null, ['editable' => true])
+            ->add('regionName')
         ;
     }
 
@@ -62,14 +49,13 @@ class CountryAdmin extends Admin
     {
         $formMapper
             ->add('name')
+            ->add('nameEng')
             ->add('nameRu')
-            ->add('fullNameRu')
-            ->add('search')
-            ->add('alpha2')
-            ->add('alpha3')
-            ->add('iso')
-            ->add('location')
-            ->add('location_precise')
+            ->add('nick')
+            ->add('active')
+            ->add('label')
+            ->add('region')
+            ->add('regionName')
             ->add('id')
         ;
     }
@@ -81,14 +67,13 @@ class CountryAdmin extends Admin
     {
         $showMapper
             ->add('name')
+            ->add('nameEng')
             ->add('nameRu')
-            ->add('fullNameRu')
-            ->add('search')
-            ->add('alpha2')
-            ->add('alpha3')
-            ->add('iso')
-            ->add('location')
-            ->add('location_precise')
+            ->add('nick')
+            ->add('active')
+            ->add('label')
+            ->add('region')
+            ->add('regionName')
             ->add('id')
         ;
     }

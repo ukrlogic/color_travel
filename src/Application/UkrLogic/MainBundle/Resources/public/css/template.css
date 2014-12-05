@@ -282,6 +282,10 @@ nav ul li ul li:hover {
     width: 485px;
 }
 
+.flipper p span {
+    display: block;
+}
+
 /**** FILTER ****/
 
 .box.filter {
@@ -382,7 +386,7 @@ position: relative;
 .filter-variant{
 padding-bottom: 10px;
 }
-.filter-variant button{
+.filter-variant .button{
 background: url("../img/ccheck.png") no-repeat scroll 0 -26px rgba(0, 0, 0, 0);
 border: medium none;
 color: #fff;
@@ -394,7 +398,7 @@ margin: 10px 10px 10px 25px;
 padding-left: 34px;
 cursor: pointer;
 }
-.filter-variant button.active{
+.filter-variant .button.active{
 background: url("../img/ccheck.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);   
 }
 .filter h4 {

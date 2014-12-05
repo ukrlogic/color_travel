@@ -3,9 +3,8 @@
     <TourSearchRequest>
         <dataOffset>0</dataOffset>
         <dataLimit>25</dataLimit>
-        <durationFrom>1</durationFrom>
-        <seatStatus>3</seatStatus>
-        <currency>1</currency>
+        <seatStatus>2</seatStatus>
+        <currency>4</currency>
     </TourSearchRequest>
     <TourExtraEntities>             <!-- [Опционально] Дополнительные объекты которые нужно добавить к объекту тур. Возможные значения перечислены в ниже. -->
         <entity>OnlineSeatsState</entity>

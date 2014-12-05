@@ -5,8 +5,20 @@ services:
         tags:
             - { name: form.type, alias: 'country_form' }
 
-    application.ukrlogic.main.form.bus_tour:
-        class: Application\UkrLogic\MainBundle\Form\BusTourFilterForm
-        arguments: [@application.ukrlogic.main.form.country]
+    application.ukrlogic.main.form.city:
+        class: Application\UkrLogic\MainBundle\Form\CityType
         tags:
-            - { name: form.type, alias: 'bus_tour_filter' }
+            - { name: form.type, alias: 'city_form' }
+
+    application.ukrlogic.main.form.tour:
+        class: Application\UkrLogic\MainBundle\Form\TourType
+        arguments:
+            - @application.ukrlogic.main.form.country
+            - @application.ukrlogic.main.form.city
+        tags:
+            - { name: form.type, alias: 'tour_form' }
+
+    application.ukrlogic.main.xml_to_database:
+        class: Application\UkrLogic\MainBundle\Service\XmlToDatabase
+        arguments:
+            - @doctrine.orm.entity_manager

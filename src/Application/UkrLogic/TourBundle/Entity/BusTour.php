@@ -35,6 +35,16 @@ class BusTour
     private $dates;
 
     /**
+     * @var \DateTime
+     */
+    private $dateFrom;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateTo;
+
+    /**
      * @var float
      */
     private $price_uah;
@@ -188,6 +198,52 @@ class BusTour
     }
 
     /**
+     * Set dateFrom
+     *
+     * @param \DateTime $dateFrom
+     * @return BusTour
+     */
+    public function setDateFrom($dateFrom)
+    {
+        $this->dateFrom = $dateFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFrom
+     *
+     * @return \DateTime 
+     */
+    public function getDateFrom()
+    {
+        return $this->dateFrom;
+    }
+
+    /**
+     * Set dateTo
+     *
+     * @param \DateTime $dateTo
+     * @return BusTour
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->dateTo = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateTo
+     *
+     * @return \DateTime 
+     */
+    public function getDateTo()
+    {
+        return $this->dateTo;
+    }
+
+    /**
      * Set price_uah
      *
      * @param float $priceUah
@@ -290,91 +346,35 @@ class BusTour
     }
 
     /**
-     * Add country
+     * Add countries
      *
-     * @param \Application\UkrLogic\TourBundle\Entity\Country $country
+     * @param \Application\UkrLogic\TourBundle\Entity\Country $countries
      * @return BusTour
      */
-    public function addCountry(\Application\UkrLogic\TourBundle\Entity\Country $country)
+    public function addCountry(\Application\UkrLogic\TourBundle\Entity\Country $countries)
     {
-        $this->countries[] = $country;
+        $this->countries[] = $countries;
 
         return $this;
     }
 
     /**
-     * Remove country
+     * Remove countries
      *
-     * @param \Application\UkrLogic\TourBundle\Entity\Country $country
+     * @param \Application\UkrLogic\TourBundle\Entity\Country $countries
      */
-    public function removeCountry(\Application\UkrLogic\TourBundle\Entity\Country $country)
+    public function removeCountry(\Application\UkrLogic\TourBundle\Entity\Country $countries)
     {
-        $this->countries->removeElement($country);
+        $this->countries->removeElement($countries);
     }
 
     /**
-     * Get counties
+     * Get countries
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
     public function getCountries()
     {
         return $this->countries;
-    }
-    /**
-     * @var \DateTime
-     */
-    private $dateFrom;
-
-    /**
-     * @var \DateTime
-     */
-    private $dateTo;
-
-
-    /**
-     * Set dateFrom
-     *
-     * @param \DateTime $dateFrom
-     * @return BusTour
-     */
-    public function setDateFrom($dateFrom)
-    {
-        $this->dateFrom = $dateFrom;
-
-        return $this;
-    }
-
-    /**
-     * Get dateFrom
-     *
-     * @return \DateTime 
-     */
-    public function getDateFrom()
-    {
-        return $this->dateFrom;
-    }
-
-    /**
-     * Set dateTo
-     *
-     * @param \DateTime $dateTo
-     * @return BusTour
-     */
-    public function setDateTo($dateTo)
-    {
-        $this->dateTo = $dateTo;
-
-        return $this;
-    }
-
-    /**
-     * Get dateTo
-     *
-     * @return \DateTime 
-     */
-    public function getDateTo()
-    {
-        return $this->dateTo;
     }
 }

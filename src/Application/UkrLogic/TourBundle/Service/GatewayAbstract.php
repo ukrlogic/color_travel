@@ -51,14 +51,4 @@ abstract class GatewayAbstract
         return $this;
     }
 
-    /**
-     * @param \SimpleXMLElement $xml
-     * @return \SimpleXMLElement
-     */
-    protected final function repairXML(\SimpleXMLElement $xml)
-    {
-        $xml->saveXML('/tmp/response.xml');
-
-        return simplexml_load_file('/tmp/response.xml', 'SimpleXMLElement', LIBXML_NOCDATA);
-    }
 }

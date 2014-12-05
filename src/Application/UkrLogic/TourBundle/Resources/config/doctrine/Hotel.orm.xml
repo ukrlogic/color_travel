@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Application\UkrLogic\TourBundle\Entity\Hotel" table="hotel">
-    <id name="id" type="integer" column="id">
-      <generator strategy="IDENTITY"/>
-    </id>
+    <id name="id" type="integer" column="id"/>
     <field name="name" type="string" column="name" length="255" nullable="false"/>
     <field name="nameAlt" type="string" column="name_alt" length="255" nullable="true"/>
     <field name="nameEng" type="string" column="name_eng" length="255" nullable="true"/>
@@ -16,11 +14,9 @@
     <field name="chagebig" type="integer" column="chagebig" nullable="false"/>
     <field name="resort" type="integer" column="resort" nullable="false"/>
     <field name="resortname" type="string" column="resortname" length="255" nullable="false"/>
-    <field name="country" type="integer" column="country" nullable="false"/>
-    <field name="countryname" type="string" column="countryname" length="255" nullable="false"/>
-    <field name="catname" type="string" column="catname" length="255" nullable="false"/>
-    <field name="assoc" type="integer" column="assoc" nullable="false"/>
-    <field name="description" type="text" column="description" nullable="true"/>
-    <field name="fullDescription" type="text" column="full_description" nullable="false"/>
+      <field name="countryname" type="string" column="countryname" length="255" nullable="false"/>
+      <field name="catname" type="string" column="catname" length="255" nullable="false"/>
+      <field name="assoc" type="integer" column="assoc" nullable="false"/>
+      <many-to-one target-entity="Application\UkrLogic\TourBundle\Entity\Country" field="country"/>
   </entity>
 </doctrine-mapping>

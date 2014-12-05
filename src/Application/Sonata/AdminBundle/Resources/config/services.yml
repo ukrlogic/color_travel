@@ -8,12 +8,6 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: BusTour}
 
-    application_sonata_admin.admin.country:
-        class: Application\Sonata\AdminBundle\Admin\CountryAdmin
-        arguments: [~, Application\UkrLogic\TourBundle\Entity\Country, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Country}
-
     application_sonata_admin.admin.hotel:
         class: Application\Sonata\AdminBundle\Admin\HotelAdmin
         arguments: [~, Application\UkrLogic\TourBundle\Entity\Hotel, SonataAdminBundle:CRUD]
@@ -21,3 +15,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Hotel}
         calls:
             - [ setTemplate, [list, ApplicationSonataAdminBundle:Hotel:list.html.twig]]
+
+    application_sonata_admin.admin.country:
+        class: Application\Sonata\AdminBundle\Admin\CountryAdmin
+        arguments: [~, Application\UkrLogic\TourBundle\Entity\Country, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Country}

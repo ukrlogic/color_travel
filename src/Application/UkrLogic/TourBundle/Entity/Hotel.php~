@@ -17,11 +17,6 @@ class Hotel
     /**
      * @var string
      */
-    private $nameAlt;
-
-    /**
-     * @var string
-     */
     private $nameEng;
 
     /**
@@ -30,12 +25,12 @@ class Hotel
     private $nameIndx;
 
     /**
-     * @var integer
+     * @var boolean
      */
     private $trash;
 
     /**
-     * @var integer
+     * @var boolean
      */
     private $active;
 
@@ -70,11 +65,6 @@ class Hotel
     private $resortname;
 
     /**
-     * @var integer
-     */
-    private $country;
-
-    /**
      * @var string
      */
     private $countryname;
@@ -90,19 +80,14 @@ class Hotel
     private $assoc;
 
     /**
-     * @var string
-     */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $fullDescription;
-
-    /**
      * @var integer
      */
     private $id;
+
+    /**
+     * @var \Application\UkrLogic\TourBundle\Entity\Country
+     */
+    private $country;
 
 
     /**
@@ -126,29 +111,6 @@ class Hotel
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set nameAlt
-     *
-     * @param string $nameAlt
-     * @return Hotel
-     */
-    public function setNameAlt($nameAlt)
-    {
-        $this->nameAlt = $nameAlt;
-
-        return $this;
-    }
-
-    /**
-     * Get nameAlt
-     *
-     * @return string 
-     */
-    public function getNameAlt()
-    {
-        return $this->nameAlt;
     }
 
     /**
@@ -200,7 +162,7 @@ class Hotel
     /**
      * Set trash
      *
-     * @param integer $trash
+     * @param boolean $trash
      * @return Hotel
      */
     public function setTrash($trash)
@@ -213,7 +175,7 @@ class Hotel
     /**
      * Get trash
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getTrash()
     {
@@ -223,7 +185,7 @@ class Hotel
     /**
      * Set active
      *
-     * @param integer $active
+     * @param boolean $active
      * @return Hotel
      */
     public function setActive($active)
@@ -236,7 +198,7 @@ class Hotel
     /**
      * Get active
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getActive()
     {
@@ -382,29 +344,6 @@ class Hotel
     }
 
     /**
-     * Set country
-     *
-     * @param integer $country
-     * @return Hotel
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return integer 
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
      * Set countryname
      *
      * @param string $countryname
@@ -474,49 +413,16 @@ class Hotel
     }
 
     /**
-     * Set description
+     * Set id
      *
-     * @param string $description
+     * @param integer $id
      * @return Hotel
      */
-    public function setDescription($description)
+    public function setId($id)
     {
-        $this->description = $description;
+        $this->id = $id;
 
         return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set fullDescription
-     *
-     * @param string $fullDescription
-     * @return Hotel
-     */
-    public function setFullDescription($fullDescription)
-    {
-        $this->fullDescription = $fullDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get fullDescription
-     *
-     * @return string 
-     */
-    public function getFullDescription()
-    {
-        return $this->fullDescription;
     }
 
     /**
@@ -527,5 +433,56 @@ class Hotel
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Application\UkrLogic\TourBundle\Entity\Country $country
+     * @return Hotel
+     */
+    public function setCountry(\Application\UkrLogic\TourBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Application\UkrLogic\TourBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+    /**
+     * @var string
+     */
+    private $nameAlt;
+
+
+    /**
+     * Set nameAlt
+     *
+     * @param string $nameAlt
+     * @return Hotel
+     */
+    public function setNameAlt($nameAlt)
+    {
+        $this->nameAlt = $nameAlt;
+
+        return $this;
+    }
+
+    /**
+     * Get nameAlt
+     *
+     * @return string 
+     */
+    public function getNameAlt()
+    {
+        return $this->nameAlt;
     }
 }

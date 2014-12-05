@@ -30,16 +30,16 @@ class FilterOption
 
     /**
      * @param string $key
+     * @param mixed $default
      * @return mixed Value
-     * @throws \Exception
      */
-    public function get($key)
+    public function get($key, $default = null)
     {
-        if (array_key_exists($key, $this->options)) {
+        if (array_key_exists($key, $this->options) && $this->options[$key] !== null) {
             return $this->options[$key];
         }
 
-        throw new \Exception(sprintf("Key '%s' not found", $key));
+        return $default;
     }
 
     /**

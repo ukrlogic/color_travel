@@ -61,7 +61,7 @@ class BusTours extends GatewayAbstract
     {
         /** @var \SimpleXMLElement $response */
         $response = $this->curl->getCommand('get_tours')->execute();
-        $xml = $this->repairXML($response);
+        $xml = simplexml_load_string($response->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
         $this->convertTours($xml);
         $this->entityManager->flush();
     }
@@ -114,7 +114,7 @@ class BusTours extends GatewayAbstract
      */
     private function getCountry($countryName)
     {
-        $country = $this->countryRepository->findOneBy(['nameRu' => $countryName]);
+        $country = $this->countryRepository->findOneBy(['name' => $countryName]);
 
         if (!$country) {
             throw new \Exception(sprintf("Country '%s' not found", $countryName));

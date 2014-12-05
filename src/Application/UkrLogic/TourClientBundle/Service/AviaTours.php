@@ -9,66 +9,43 @@
 namespace Application\UkrLogic\TourClientBundle\Service;
 
 
-use Application\UkrLogic\TourBundle\Service\GatewayAbstract;
-use Guzzle\Service\Client;
+use Application\UkrLogic\TourBundle\Service\FilterOption;
 
 /**
  * Class AviaTours
  * @package Application\UkrLogic\TourClientBundle\Service
  */
-class AviaTours extends GatewayAbstract
+class AviaTours
 {
-    /**
-     * @var Client
-     */
-    private $curl;
-
-    /**
-     * @param Client $curl
-     */
-    function __construct(Client $curl)
+    public function loadTours(FilterOption $options, $page = 1)
     {
-        $this->curl = $curl;
-    }
-
-    /**
-     *
-     */
-    public function loadTours()
-    {
-        $repeat = true;
-        $offset = 0;
         $request = simplexml_load_file(dirname(__FILE__) . '/../Resources/config/request.xml', 'SimpleXMLElement', LIBXML_NOCDATA);
-        $request->addChild('departureFrom', (new \DateTime())->format('Y-m-d'));
 
-        while ($repeat) {
-            $ch = curl_init();
-            $request->TourSearchRequest->dataOffset = $offset;
+        $request->TourSearchRequest->dataOffset = ($page - 1) * intval($request->TourSearchRequest->dataLimit);
+        $request->TourSearchRequest->addChild('cityId', array_search(true, $options->get('cities', ['668' => true])) ? : '668');
+        $request->TourSearchRequest->addChild('countryId', array_search(true, $options->get('countries', ['12' => true])) ? : '12');
+        $request->TourSearchRequest->addChild('durationFrom', $options->get('days_from', 5));
+        $request->TourSearchRequest->addChild('durationTill', $options->get('days_to', 15));
+        $request->TourSearchRequest->addChild('departureFrom', $options->get('date_from', (new \DateTime('+1 day'))->format('Y-m-d')));
+        $request->TourSearchRequest->addChild('departureTill', $options->get('date_to', (new \DateTime('+1 week'))->format('Y-m-d')));
+        $request->TourSearchRequest->addChild('priceFrom', $options->get('price_from', 500));
+        $request->TourSearchRequest->addChild('priceTill', $options->get('price_to', 5000));
+        $request->TourSearchRequest->addChild('allocRate', $options->get('hotel_rate', 3));
+        $request->TourSearchRequest->addChild('adults', $options->get('adults', 1));
+        $request->TourSearchRequest->addChild('children', $options->get('children', 0));
 
-//            var_dump($request);die;
-            $data = array('request' => $request->asXML());
+        $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, "http://tourclient.ru/f/exml/58658/tours_export");
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $data = array('request' => $request->asXML());
 
-            $response=curl_exec($ch);
-            curl_close($ch);
+        curl_setopt($ch, CURLOPT_URL, "http://tourclient.ru/f/exml/58658/tours_export");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-            $response = str_replace('&', 'and', $response);
-            $response = new \SimpleXMLElement($response);
+        $response = curl_exec($ch);
 
-            var_dump($response);die;
-        }
+        return simplexml_load_string(str_replace('&', 'and', $response), "SimpleXMLElement", LIBXML_NOCDATA);
     }
 
-    /**
-     * @return boolean
-     */
-    public function isActive()
-    {
-        return false;
-    }
-
-} 
+}

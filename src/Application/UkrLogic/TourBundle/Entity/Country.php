@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Country
 {
     /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    /**
      * @var string
      */
     private $name;
@@ -17,12 +24,37 @@ class Country
     /**
      * @var string
      */
+    private $nameEng;
+
+    /**
+     * @var string
+     */
     private $nameRu;
+
+    /**
+     * @var string
+     */
+    private $nick;
 
     /**
      * @var boolean
      */
-    private $search;
+    private $active;
+
+    /**
+     * @var string
+     */
+    private $label;
+
+    /**
+     * @var string
+     */
+    private $region;
+
+    /**
+     * @var string
+     */
+    private $regionName;
 
     /**
      * @var integer
@@ -46,11 +78,34 @@ class Country
     /**
      * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set nameEng
+     *
+     * @param string $nameEng
+     * @return Country
+     */
+    public function setNameEng($nameEng)
+    {
+        $this->nameEng = $nameEng;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEng
+     *
+     * @return string 
+     */
+    public function getNameEng()
+    {
+        return $this->nameEng;
     }
 
     /**
@@ -69,7 +124,7 @@ class Country
     /**
      * Get nameRu
      *
-     * @return string
+     * @return string 
      */
     public function getNameRu()
     {
@@ -77,209 +132,127 @@ class Country
     }
 
     /**
-     * Set search
+     * Set nick
      *
-     * @param boolean $search
+     * @param string $nick
      * @return Country
      */
-    public function setSearch($search)
+    public function setNick($nick)
     {
-        $this->search = $search;
+        $this->nick = $nick;
 
         return $this;
     }
 
     /**
-     * Get search
+     * Get nick
      *
-     * @return boolean
+     * @return string 
      */
-    public function getSearch()
+    public function getNick()
     {
-        return $this->search;
+        return $this->nick;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Country
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return Country
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Country
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set regionName
+     *
+     * @param string $regionName
+     * @return Country
+     */
+    public function setRegionName($regionName)
+    {
+        $this->regionName = $regionName;
+
+        return $this;
+    }
+
+    /**
+     * Get regionName
+     *
+     * @return string 
+     */
+    public function getRegionName()
+    {
+        return $this->regionName;
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @var string
-     */
-    private $fullNameRu;
-
-    /**
-     * @var string
-     */
-    private $alpha2;
-
-    /**
-     * @var string
-     */
-    private $alpha3;
-
-    /**
-     * @var string
-     */
-    private $iso;
-
-    /**
-     * @var string
-     */
-    private $location;
-
-    /**
-     * @var string
-     */
-    private $location_precise;
-
-
-    /**
-     * Set fullNameRu
-     *
-     * @param string $fullNameRu
-     * @return Country
-     */
-    public function setFullNameRu($fullNameRu)
-    {
-        $this->fullNameRu = $fullNameRu;
-
-        return $this;
-    }
-
-    /**
-     * Get fullNameRu
-     *
-     * @return string
-     */
-    public function getFullNameRu()
-    {
-        return $this->fullNameRu;
-    }
-
-    /**
-     * Set alpha2
-     *
-     * @param string $alpha2
-     * @return Country
-     */
-    public function setAlpha2($alpha2)
-    {
-        $this->alpha2 = $alpha2;
-
-        return $this;
-    }
-
-    /**
-     * Get alpha2
-     *
-     * @return string
-     */
-    public function getAlpha2()
-    {
-        return $this->alpha2;
-    }
-
-    /**
-     * Set alpha3
-     *
-     * @param string $alpha3
-     * @return Country
-     */
-    public function setAlpha3($alpha3)
-    {
-        $this->alpha3 = $alpha3;
-
-        return $this;
-    }
-
-    /**
-     * Get alpha3
-     *
-     * @return string
-     */
-    public function getAlpha3()
-    {
-        return $this->alpha3;
-    }
-
-    /**
-     * Set iso
-     *
-     * @param string $iso
-     * @return Country
-     */
-    public function setIso($iso)
-    {
-        $this->iso = $iso;
-
-        return $this;
-    }
-
-    /**
-     * Get iso
-     *
-     * @return string
-     */
-    public function getIso()
-    {
-        return $this->iso;
-    }
-
-    /**
-     * Set location
-     *
-     * @param string $location
-     * @return Country
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Set location_precise
-     *
-     * @param string $locationPrecise
-     * @return Country
-     */
-    public function setLocationPrecise($locationPrecise)
-    {
-        $this->location_precise = $locationPrecise;
-
-        return $this;
-    }
-
-    /**
-     * Get location_precise
-     *
-     * @return string
-     */
-    public function getLocationPrecise()
-    {
-        return $this->location_precise;
-    }
-
-    public function __toString()
-    {
-        return $this->getNameRu();
     }
 }

@@ -41,7 +41,7 @@ class TourImageExtension extends \Twig_Extension
                 $images[] = sprintf("images/%s/%d/%s", $path, $id, ($large ? 'large/' : '') . $file->getRelativePathname());
             }
         } catch (\Exception $e) {
-            //folder does not exists, possibly write log or notify administrator
+            $images[] = "images/noimagew.png";
         }
 
         return $images;

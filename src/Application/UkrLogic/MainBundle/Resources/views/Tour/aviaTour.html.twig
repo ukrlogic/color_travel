@@ -1,0 +1,140 @@
+{% extends '@ApplicationUkrLogicMain/layout-main.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/applicationukrlogicmain/css/jcarousel.connected-carousels.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="content container tour">
+        <div class="connected-carousels">
+            <div class="stage">
+                <div class="carousel carousel-stage">
+                    <ul>
+                        {% for img in getTourImages(tour.Allocation.id, 'hotels') %}
+                            <li>
+                                <img src="{{ asset(img) }}" width="640" height="430">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="navigation">
+                <a href="#" class="prev prev-navigation">&lsaquo;</a>
+                <a href="#" class="next next-navigation">&rsaquo;</a>
+
+                <div class="carousel carousel-navigation">
+                    <ul>
+                        {% for img in getTourImages(tour.Allocation.id, 'hotels') %}
+                            <li>
+                                <img src="{{ asset(img) }}">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="hotel-tour-description">
+            <h1>{{ tour.Allocation.name }} {{ tour.Allocation.rate|round }}*</h1>
+
+            <div class="hotel-tour-desc">
+                <p>{{ tour.Resort.name }}, {{ tour.Country.name }}</p>
+
+                <div>
+                    <div class="vehicle-tour">
+                        <p><i class="plain"></i></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="hotel-tour-info customscroll-dark">
+                <p>
+                    <b>Кол-во человек:</b> {{ tour.RoomSize.description }}<br/>
+                    <b>Тип номера:</b> {{ tour.RoomSize.name }}<br/>
+                    <b>Тип питания:</b> {{ tour.Meal.name }} ({{ tour.Meal.description }})<br/>
+                    <b>Продолжительность тура:</b> {{ tour.duration }} ночей<br/>
+                    <b>Вылет из:</b> {{ tour.City.name }}<br/>
+                </p>
+
+                <p class="nm"><b>Описание тура</b></p>
+
+                <p>Ибица - самый близкий к Пиренейскому полуострову Балеарский остров. Здесь сосредоточено множество
+                    развлечений на любой вкус. Именно сюда, в поисках приключений и острых ощущений, приезжают
+                    молодежные компании со всего мира.</p>
+
+                <p>На этом скалистом острове, где почва бедная и каменистая, испокон веков использовали малейший клочок
+                    плодородной земли, устраивая террасы в лощинах на склонах холмов, кручах, нависающих над
+                    потоками. </p>
+
+
+            </div>
+            <p class="price">{{ tour.price }} Грн.</p>
+
+            <div class="actions">
+                <a id="order" class="button" href="">Забронировать</a>
+                <a id="addComment" class="button" href="">Оставить отзыв</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="content container">
+        <div class="content-blue">
+            <h2>Отзывы:</h2>
+        </div>
+    </div>
+    <div class="reviews container">
+        <div class="review">
+            <div class="author-info">
+                <img src="https://api.fnkr.net/testimg/200x200/00CED1/FFF/?text=img+placeholder">
+
+                <p>Имя Фамилия</p>
+            </div>
+            <p>На острове мы с мужем провели три дня из двухнедельного отдыха в Испании. Сразу перечислю все
+                положительные и отрицательные моменты отдыха на Ибице. Природа замечательная, море теплое, куча
+                развлечений, пляжи с ласковым нежным песком, вкусная кухня с разнообразием морепродуктов. Из минусов,
+                прежде всего очень много людей на пляже и дорогие цены на алкоголь и сигареты, говорят, в клубах очень
+                много наркоманов, поэтому мы туда не ходили, хоть я и обожаю танцевать. Прямо на улице к нам подошел
+                мужчина и предложил купить гашиш. Но, если не вести слишком бурную ночную жизнь и не искать приключений,
+                отдохнуть можно по высшему разряду. Остров условно делится на две части – тусовочную, с барами, клубами
+                и дискотеками и «спальную», где в основном и проживает местное население.</p>
+
+            <div class="more_content" style="display: none;">
+                <p>Ибицу недаром называют белым островом, почти все дома там белые и это смотрится очень красиво.
+                    Транспортное сообщение хорошее, автобусы все с кондиционерами. Из заведений понравилось кафе у
+                    моря</p>
+            </div>
+            <a href="javascript:void(0)" class="more_button ua" data-beforeclick="Читать полностью>"
+               data-afterclick="Свернуть"></a>
+        </div>
+        <div class="review">
+            <div class="author-info">
+                <img src="https://api.fnkr.net/testimg/200x200/00CED1/FFF/?text=img+placeholder">
+
+                <p>Имя Фамилия</p>
+            </div>
+            <p>На острове мы с мужем провели три дня из двухнедельного отдыха в Испании. Сразу перечислю все
+                положительные и отрицательные моменты отдыха на Ибице. Природа замечательная, море теплое, куча
+                развлечений, пляжи с ласковым нежным песком, вкусная кухня с разнообразием морепродуктов. Из минусов,
+                прежде всего очень много людей на пляже и дорогие цены на алкоголь и сигареты, говорят, в клубах очень
+                много наркоманов, поэтому мы туда не ходили, хоть я и обожаю танцевать. Прямо на улице к нам подошел
+                мужчина и предложил купить гашиш. Но, если не вести слишком бурную ночную жизнь и не искать приключений,
+                отдохнуть можно по высшему разряду. Остров условно делится на две части – тусовочную, с барами, клубами
+                и дискотеками и «спальную», где в основном и проживает местное население.</p>
+
+            <div class="more_content" style="display: none;">
+                <p>Ибицу недаром называют белым островом, почти все дома там белые и это смотрится очень красиво.
+                    Транспортное сообщение хорошее, автобусы все с кондиционерами. Из заведений понравилось кафе у
+                    моря</p>
+            </div>
+            <a href="javascript:void(0)" class="more_button ua" data-beforeclick="Читать полностью>"
+               data-afterclick="Свернуть"></a>
+        </div>
+    </div>
+    <div class="content container">
+        <div class="content-blue" id="more-reviews">
+            <h2>Загрузить следующие отзывы</h2>
+            <img src="img/ajax-loader.gif" height="28" width="28" alt="">
+        </div>
+    </div>
+{% endblock %}

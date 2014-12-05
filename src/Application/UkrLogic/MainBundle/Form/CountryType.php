@@ -40,9 +40,9 @@ class CountryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /** @var Country $country */
-        foreach ($this->cRepo->findAll() as $country) if ($country->getSearch()) {
-            $builder->add($country->getAlpha2(), 'checkbox', [
-                'label' => sprintf('%s <i class="flag-%s"></i>', $country->getNameRu(), $country->getAlpha2()),
+        foreach ($this->cRepo->findAll() as $country) if ($country->getActive()) {
+            $builder->add($country->getId(), 'checkbox', [
+                'label' => sprintf('%s <i class="flag-%s"></i>', $country->getName(), $country->getNick()),
                 'required' => false
             ]);
         }

@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Country
 {
     /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    /**
      * @var string
      */
     private $name;
@@ -17,12 +24,37 @@ class Country
     /**
      * @var string
      */
+    private $nameEng;
+
+    /**
+     * @var string
+     */
     private $nameRu;
+
+    /**
+     * @var string
+     */
+    private $nick;
 
     /**
      * @var boolean
      */
-    private $search;
+    private $active;
+
+    /**
+     * @var string
+     */
+    private $label;
+
+    /**
+     * @var string
+     */
+    private $region;
+
+    /**
+     * @var string
+     */
+    private $regionName;
 
     /**
      * @var integer
@@ -54,6 +86,29 @@ class Country
     }
 
     /**
+     * Set nameEng
+     *
+     * @param string $nameEng
+     * @return Country
+     */
+    public function setNameEng($nameEng)
+    {
+        $this->nameEng = $nameEng;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEng
+     *
+     * @return string 
+     */
+    public function getNameEng()
+    {
+        return $this->nameEng;
+    }
+
+    /**
      * Set nameRu
      *
      * @param string $nameRu
@@ -77,26 +132,118 @@ class Country
     }
 
     /**
-     * Set search
+     * Set nick
      *
-     * @param boolean $search
+     * @param string $nick
      * @return Country
      */
-    public function setSearch($search)
+    public function setNick($nick)
     {
-        $this->search = $search;
+        $this->nick = $nick;
 
         return $this;
     }
 
     /**
-     * Get search
+     * Get nick
+     *
+     * @return string 
+     */
+    public function getNick()
+    {
+        return $this->nick;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Country
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
      *
      * @return boolean 
      */
-    public function getSearch()
+    public function getActive()
     {
-        return $this->search;
+        return $this->active;
+    }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return Country
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Country
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set regionName
+     *
+     * @param string $regionName
+     * @return Country
+     */
+    public function setRegionName($regionName)
+    {
+        $this->regionName = $regionName;
+
+        return $this;
+    }
+
+    /**
+     * Get regionName
+     *
+     * @return string 
+     */
+    public function getRegionName()
+    {
+        return $this->regionName;
     }
 
     /**

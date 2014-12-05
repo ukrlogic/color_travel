@@ -1,0 +1,76 @@
+{% for tour in tours %}
+    {% if tour.type == 'avia' %}
+        <a href="{{ path('avia_tour', {id: tour.info.id}) }}" class="box {{ random(['w', '']) }} flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <img src="{{ asset(getTourImages(tour.info.Allocation.id, 'hotels')|first) }}" alt="">
+
+                    <div class="flags">
+                            <i class="flag-{{ countries[tour.info.Country.id|number_format].nick }}"></i>
+                    </div>
+                    <div class="vehicle">
+                        <i class="plain"></i>
+                    </div>
+                    <div class="country">
+                        <span>{{ tour.info.Country.name }}</span>
+                        <span>{{ tour.info.price }} {# добавить валюту #}</span>
+                    </div>
+                </div>
+                <div class="back {{ random(['green', 'red', 'yellow', 'blue']) }}">
+                    <div class="vehicle">
+                        <i class="plain"></i>
+                    </div>
+                    <div class="country">
+                        <span>{{ tour.info.Country.name }}</span>
+                        <span>{{ tour.info.price }} {# добавить валюту #}</span>
+                    </div>
+                    <p>
+                        {% spaceless %}
+                            <span><strong>Название: </strong>{{ tour.info.Allocation.name }}</span>
+                            <span><strong>Тип питания: </strong>{{ tour.info.Meal.name }} ({{ tour.info.Meal.description }})</span>
+                            <span><strong>Номер: </strong>{{ tour.info.RoomSize.name }} ({{ tour.info.RoomSize.description }})</span>
+                            <span><strong>Начало тура: </strong>{{ tour.info.departure }}</span>
+                            <span><strong>Конец тура: </strong>{{ tour.info.arrival }}</span>
+                        {% endspaceless %}
+                    </p>
+                </div>
+            </div>
+        </a>
+    {% else %}
+        <a href="#" class="box {{ random(['w', '']) }} flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <img src="/images/noimagew.png" alt="">
+
+                    <div class="flags">
+                        {% for country in tour.info.countries %}
+                            <i class="flag-{{ country.nick }}"></i>
+                        {% endfor %}
+                    </div>
+                    <div class="vehicle">
+                        <i class="bus"></i>
+                    </div>
+                    <div class="country">
+                        <span>{{ (tour.info.countries|last).name }}</span>
+                        <span>{{ tour.info.priceUah }} {# добавить валюту #}</span>
+                    </div>
+                </div>
+                <div class="back {{ random(['green', 'red', 'yellow', 'blue']) }}">
+                    <div class="vehicle">
+                        <i class="bus"></i>
+                    </div>
+                    <div class="country">
+                        <span>{{ (tour.info.countries|last).name }}</span>
+                        <span>{{ tour.info.priceUah }} {# добавить валюту #}</span>
+                    </div>
+                    <p>
+                        {% spaceless %}
+                            <span><strong>Название: </strong>{{ tour.info.name }}</span>
+                            <span><strong>Дней в туре: </strong>{{ tour.info.days }}</span>
+                        {% endspaceless %}
+                    </p>
+                </div>
+            </div>
+        </a>
+    {% endif %}
+{% endfor %}

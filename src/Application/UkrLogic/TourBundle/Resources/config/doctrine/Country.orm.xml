@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Application\UkrLogic\TourBundle\Entity\Country" table="country">
-    <id name="id" type="integer" column="id">
-      <generator strategy="IDENTITY"/>
-    </id>
+    <id name="id" type="integer" column="id"/>
     <field name="name" type="string" column="name" length="255" nullable="false"/>
+    <field name="nameEng" type="string" column="name_eng" length="255" nullable="false"/>
     <field name="nameRu" type="string" column="name_r" length="255" nullable="false"/>
-    <field name="fullNameRu" type="string" column="full_name_r" length="255" nullable="true"/>
-    <field name="search" type="boolean" column="search" nullable="false"/>
-    <field name="alpha2" type="string" column="alpha_two" length="2" nullable="false"/>
-    <field name="alpha3" type="string" column="alpha_three" length="3" nullable="false"/>
-    <field name="iso" type="string" column="iso" length="3" nullable="false"/>
-    <field name="location" type="string" column="location" length="255" nullable="false"/>
-    <field name="location_precise" type="string" column="location_precise" length="255" nullable="false"/>
+    <field name="nick" type="string" column="nick" length="255" nullable="true"/>
+    <field name="active" type="boolean" column="active" nullable="false"/>
+    <field name="label" type="string" column="label" length="255" nullable="false"/>
+    <field name="region" type="string" column="region" length="255" nullable="false"/>
+    <field name="regionName" type="string" column="regionname" length="255" nullable="false"/>
   </entity>
 </doctrine-mapping>
