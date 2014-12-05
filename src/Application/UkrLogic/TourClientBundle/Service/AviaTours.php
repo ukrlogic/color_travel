@@ -29,7 +29,7 @@ class AviaTours
         $request->TourSearchRequest->addChild('departureFrom', $options->get('date_from', (new \DateTime('+1 day'))->format('Y-m-d')));
         $request->TourSearchRequest->addChild('departureTill', $options->get('date_to', (new \DateTime('+1 week'))->format('Y-m-d')));
         $request->TourSearchRequest->addChild('priceFrom', $options->get('price_from', 500));
-        $request->TourSearchRequest->addChild('priceTill', $options->get('price_to', 5000));
+        $request->TourSearchRequest->addChild('priceTill', $options->get('price_to', 50000));
         $request->TourSearchRequest->addChild('allocRate', $options->get('hotel_rate', 3));
         $request->TourSearchRequest->addChild('adults', $options->get('adults', 1));
         $request->TourSearchRequest->addChild('children', $options->get('children', 0));
