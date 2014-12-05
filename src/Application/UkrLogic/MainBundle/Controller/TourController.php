@@ -47,7 +47,7 @@ class TourController extends Controller
         }
 
         if ($type === 'combined' || $type === 'bus') {
-            $bus = $this->get('application_ukr_logic_tourbundle.tour_repository')->filterBy(new FilterOption([$data]));
+            $bus = $this->get('application_ukr_logic_tourbundle.tour_repository')->filterBy(new FilterOption($data));
 
             foreach ($bus as $tour) {
                 $tours[] = [
@@ -58,7 +58,7 @@ class TourController extends Controller
         }
 
         if ($type === 'combined' || $type === 'avia') {
-            $avia = $this->get('application_ukrlogic_tourclientbundle.service.aviatours')->loadTours(new FilterOption([$data]));
+            $avia = $this->get('application_ukrlogic_tourclientbundle.service.aviatours')->loadTours(new FilterOption($data));
 
             $lastSearch = [];
 

@@ -33,7 +33,6 @@ class AviaTours
         $request->TourSearchRequest->addChild('allocRate', $options->get('hotel_rate', 3));
         $request->TourSearchRequest->addChild('adults', $options->get('adults', 1));
         $request->TourSearchRequest->addChild('children', $options->get('children', 0));
-
         $ch = curl_init();
 
         $data = array('request' => $request->asXML());
