@@ -32,6 +32,10 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         image_locator: "@application_sonata_admin.image_locator"
+    form:
+        resources:
+            - 'SonataAdminBundle:Form:silex_form_div_layout.html.twig'
+            - 'SonataFormatterBundle:Form:formatter.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -109,6 +113,14 @@ sonata_block:
         #...
         sonata.user.block.menu:    # used to display the menu in profile pages
         sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text:
+        sonata.page.block.children_pages:
+        sonata.formatter.block.formatter:
+
+sonata_admin:
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::layout.html.twig
 
 # Guzzle Curl Configuration
 lsw_guzzle:
@@ -126,17 +138,43 @@ lsw_guzzle:
                     get_tours:
                         httpMethod: "GET"
                         uri: "/get-xml.php/?lang=ru&travel_type=1"
-        tour_client_avia:
-            config:
-                curl.option:
-                    CURLOPT_CONNECTTIMEOUT: 10
-                    CURLOPT_SSL_VERIFYPEER: false
-                    CURLOPT_USERAGENT: "LeaseWeb API Caller"
-                    CURLOPT_FOLLOWLOCATION: true
-                    CURLOPT_RETURNTRANSFER: true
-            description:
-                baseUrl: "http://tourclient.ru"
-                operations:
-                    get_tours:
-                        httpMethod: "POST"
-                        uri: "/f/exml/58658/tours_export"
+
+sonata_formatter:
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig #keep this commented unless you are using media bundle.
+
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        twig:
+            service: sonata.formatter.text.twigengine
+            extensions: [] # Twig formatter cannot have extensions
+
+gregwar_captcha: ~

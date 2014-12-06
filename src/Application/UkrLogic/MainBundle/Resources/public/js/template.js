@@ -476,4 +476,30 @@ $(function () {
     //$('#avia-switcher').click();
 
     //$('form[name="tour_form"]').submit(showOverlay);
+
+
+    $(".vertical-gallery").jCarouselLite({
+        btnNext: '.next',
+        btnPrev: '.prev',
+        mouseWheel: true,
+        vertical: true,
+        visible: 4,
+        circular: true,
+        scroll: 1
+    });
+
+    //phone mask
+    $('input.phone-mask').mask('(999) 999-99-99');
+    $('input.phone-mask').on("blur", function() {
+        var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
+
+        if( last.length == 3 ) {
+            var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+            var lastfour = move + last;
+
+            var first = $(this).val().substr( 0, 9 );
+
+            $(this).val( first + '-' + lastfour );
+        }
+    });
 });

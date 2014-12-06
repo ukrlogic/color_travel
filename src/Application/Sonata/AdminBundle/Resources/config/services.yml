@@ -21,3 +21,15 @@ services:
         arguments: [~, Application\UkrLogic\TourBundle\Entity\Country, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Country}
+
+    application_sonata_admin.admin.page:
+        class: Application\Sonata\AdminBundle\Admin\PageAdmin
+        arguments: [~, Application\UkrLogic\MainBundle\Entity\Page, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Page}
+
+    application_sonata_admin.admin.feedback:
+        class: Application\Sonata\AdminBundle\Admin\FeedbackAdmin
+        arguments: [~, Application\UkrLogic\MainBundle\Entity\Feedback, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}

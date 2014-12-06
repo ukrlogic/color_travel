@@ -22,3 +22,8 @@ services:
         class: Application\UkrLogic\MainBundle\Service\XmlToDatabase
         arguments:
             - @doctrine.orm.entity_manager
+
+    application.ukrlogic.twig.extension.string_loader:
+        class: Twig_Extension_StringLoader
+        tags:
+             - { name: 'twig.extension' }

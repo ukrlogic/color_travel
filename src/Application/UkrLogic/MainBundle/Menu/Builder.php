@@ -31,8 +31,8 @@ class Builder
         $subMenu->addChild('Рассрочка на туры', ['uri' => '#']);
 
         $menu->addChild('Индивидуальный тур', ['uri' => '#']);
-        $menu->addChild('О нас', ['uri' => '#']);
-        $menu->addChild('MICE', ['uri' => '#']);
+        $menu->addChild('О нас', ['route' => 'about']);
+        $menu->addChild('MICE', ['route' => 'page', 'routeParameters' => ['name' => 'Mice']]);
         $menu->addChild('Вход / регистрация', ['attributes' => ['id' => 'signup'], 'uri' => '#']);
 
         return $menu;

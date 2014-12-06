@@ -30,3 +30,8 @@ services:
             - [setImagesDir, [%application_ukrlogic_tourbundle.images_dir%]]
         tags:
             - { name: twig.extension }
+
+    application_ukrlogic_mainbundle.form.feedbacktype:
+        class: Application\UkrLogic\MainBundle\Form\FeedbackType
+        tags:
+            - { name: form.type, alias: application_ukrlogic_mainbundle_feedback }
