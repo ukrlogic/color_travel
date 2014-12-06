@@ -36,8 +36,8 @@ class CountryAdmin extends Admin
         $listMapper
             ->addIdentifier('name')
             ->add('nick')
-            ->add('active')
-            ->add('label', null, ['editable' => true])
+            ->add('active', null, ['editable' => true])
+            ->add('label')
             ->add('regionName')
         ;
     }
