@@ -485,4 +485,60 @@ class Hotel
     {
         return $this->nameAlt;
     }
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $fullDescription;
+
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Hotel
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set fullDescription
+     *
+     * @param string $fullDescription
+     * @return Hotel
+     */
+    public function setFullDescription($fullDescription)
+    {
+        $this->fullDescription = $fullDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get fullDescription
+     *
+     * @return string 
+     */
+    public function getFullDescription()
+    {
+        return $this->fullDescription;
+    }
 }
