@@ -50,6 +50,7 @@ security:
                 use_forward:    false
                 check_path:     /login_check
                 failure_path:   null
+                success_handler: authentication_handler
             logout:             true
             anonymous:          true
 

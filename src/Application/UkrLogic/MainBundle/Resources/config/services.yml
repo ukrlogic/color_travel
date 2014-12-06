@@ -27,3 +27,15 @@ services:
         class: Twig_Extension_StringLoader
         tags:
              - { name: 'twig.extension' }
+
+    application.ukrlogic.menu_builder:
+        class: Application\UkrLogic\MainBundle\Menu\Builder
+        arguments: ["@knp_menu.factory"]
+
+    application.ukrlogic.menu.main:
+        class: Application\UkrLogic\MainBundle\Menu\Builder # the service definition requires setting the class
+        factory_service: application.ukrlogic.menu_builder
+        factory_method: mainMenu
+        arguments: ["@security.context"]
+        tags:
+            - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu

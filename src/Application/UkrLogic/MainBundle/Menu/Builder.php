@@ -8,12 +8,23 @@
 namespace Application\UkrLogic\MainBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class Builder
 {
-    public function mainMenu(FactoryInterface $factoryInterface, array $options)
+    private $factory;
+
+    /**
+     * @param FactoryInterface $factory
+     */
+    public function __construct(FactoryInterface $factory)
     {
-        $menu = $factoryInterface->createItem('root');
+        $this->factory = $factory;
+    }
+
+    public function mainMenu(SecurityContext $securityContext)
+    {
+        $menu = $this->factory->createItem('root');
 
         $menu->addChild('Поиск тура', ['route' => 'tours_search']);
         $menu->addChild('Авиабилеты', ['uri' => '#']);
@@ -33,7 +44,12 @@ class Builder
         $menu->addChild('Индивидуальный тур', ['uri' => '#']);
         $menu->addChild('О нас', ['route' => 'about']);
         $menu->addChild('MICE', ['route' => 'page', 'routeParameters' => ['name' => 'Mice']]);
-        $menu->addChild('Вход / регистрация', ['attributes' => ['id' => 'signup'], 'uri' => '#']);
+
+        if (is_object($securityContext->getToken()->getUser())) {
+            $menu->addChild('Личный кабинет', ['uri' => '#']);
+        } else {
+            $menu->addChild('Вход / регистрация', ['attributes' => ['id' => 'signup'], 'uri' => '#']);
+        }
 
         return $menu;
     }

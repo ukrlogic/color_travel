@@ -15,8 +15,12 @@
         </div>
     </div>
     <div class="signup">
-        {% include '@ApplicationUkrLogicMain/Parts/login.html.twig' %}
-        {% include '@ApplicationUkrLogicMain/Parts/recovery.html.twig' %}
-        {% include '@ApplicationUkrLogicMain/Parts/registration.html.twig' %}
+        {% block signup %}
+            {% if not app.user %}
+                {% render controller("SonataUserBundle:SecurityFOSUser1:login") %}
+                {% include '@ApplicationUkrLogicMain/Parts/recovery.html.twig' %}
+                {% render controller("SonataUserBundle:RegistrationFOSUser1:register") %}
+            {% endif %}
+        {% endblock %}
     </div>
 </header>

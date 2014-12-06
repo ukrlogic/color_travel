@@ -27,7 +27,6 @@ $(function () {
             $('.masonry-news>a.box.news').removeClass('invisible');
             $('.masonry-news>a.box.news:gt(5)').addClass('invisible');
             $('.masonry-news').masonry('reload');
-            console.log('3000');
         }
         if (w_w < 1921) {
             $('.masonry-news>a.box.news').removeClass('invisible');
@@ -184,17 +183,27 @@ $(function () {
         $('.registration').fadeIn(200);
     });
 
-    $('.signup form').submit(function (event) {
-        console.log($(this).serialize());
-        $.ajax({
-            url: 'send.php',
-            method: 'post',
-            data: $(this).serialize()
-        }).done(function () {
-            $('#signup').trigger('click');
+    function signup(event) {
+        event.preventDefault();
+
+        var $form = $(this);
+
+        $.post($form.attr('action'), $form.serialize(), function (response) {
+            console.log(response);
+            if (response.redirect) {
+                window.location = response.redirect
+            } else {
+                $form.parent().replaceWith(response);
+                $form.parent().show();
+
+                $('.signup form').submit(signup);
+            }
         });
-        return false;
-    });
+    }
+
+    $('.signup form').submit(signup);
+
+
     /***** заказать тур *****/
 
     $('#order').click(function () {

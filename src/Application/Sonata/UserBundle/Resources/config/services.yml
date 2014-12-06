@@ -1,0 +1,7 @@
+parameters:
+#    application.sonata.user.example.class: Application\Sonata\UserBundle\Example
+
+services:
+    authentication_handler:
+        class: Application\Sonata\UserBundle\Service\AuthenticationHandler
+        arguments:  [@router]
