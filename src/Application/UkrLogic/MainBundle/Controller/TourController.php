@@ -33,16 +33,8 @@ class TourController extends Controller
         $page = $request->get('page') ? : 1;
         $limit = 20;
 
-        $country = null;
-
         if ($request->get('country')) {
-            $formCountries = $form->get('countries')->getData();
-            $formCountries[$country] = true;
-            $form->get('countries')->setData($formCountries);
-        } else if ($cid = array_search(true, $form->get('countries')->getData() ?:[])) {
-            $country = $cid;
-        } else {
-            $country = 12;
+            $data['countries'] = [$request->get('country') => true];
         }
 
         $countryEntities = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:Country')->findAll();
