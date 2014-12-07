@@ -37,7 +37,7 @@
             </div>
         </a>
     {% else %}
-        <a href="#" class="box {{ random(['w', '']) }} flip-container">
+        <a href="{{ path('bus_tour', { "id": tour.info.tourId }) }}" class="box {{ random(['w', '']) }} flip-container">
             <div class="flipper">
                 <div class="front">
                     <img src="/images/noimagew.png" alt="">

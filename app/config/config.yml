@@ -148,6 +148,12 @@ lsw_guzzle:
                     get_tours:
                         httpMethod: "GET"
                         uri: "/get-xml.php/?lang=ru&travel_type=1"
+                    get_tour:
+                        httpMethod: "GET"
+                        uri: "/get-xml.php?tour_id={id}"
+                        parameters:
+                            id:
+                                location: uri
 
 sonata_formatter:
     formatters:

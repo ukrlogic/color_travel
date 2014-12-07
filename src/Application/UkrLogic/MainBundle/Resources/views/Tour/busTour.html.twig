@@ -11,7 +11,7 @@
             <div class="stage">
                 <div class="carousel carousel-stage">
                     <ul>
-                        {% for img in getTourImages(tour.Allocation.id, 'hotels') %}
+                        {% for img in getTourImages(tour.countries.country|last, 'countries') %}
                             <li>
                                 <img src="{{ asset(img) }}" width="640" height="430">
                             </li>
@@ -25,7 +25,7 @@
 
                 <div class="carousel carousel-navigation">
                     <ul>
-                        {% for img in getTourImages(tour.Allocation.id, 'hotels') %}
+                        {% for img in getTourImages(tour.countries.country|last, 'countries') %}
                             <li>
                                 <img src="{{ asset(img) }}" width="120" height="81">
                             </li>
@@ -35,14 +35,14 @@
             </div>
         </div>
         <div class="hotel-tour-description">
-            <h1>{{ tour.Allocation.name }} {{ tour.Allocation.rate|round }}*</h1>
+            <h1>{{ tour.name }}</h1>
 
             <div class="hotel-tour-desc">
-                <p>{{ tour.Resort.name }}, {{ tour.Country.name }}</p>
+                <p>{{ tour.route | raw }}</p>
 
                 <div>
                     <div class="vehicle-tour">
-                        <p><i class="plain"></i></p>
+                        <p><i class="bus"></i></p>
                     </div>
 
                 </div>
@@ -50,26 +50,18 @@
 
             <div class="hotel-tour-info customscroll-dark">
                 <p>
-                    <b>Кол-во человек:</b> {{ tour.RoomSize.description }}<br/>
-                    <b>Тип номера:</b> {{ tour.RoomSize.name }}<br/>
-                    <b>Тип питания:</b> {{ tour.Meal.name }} ({{ tour.Meal.description }})<br/>
-                    <b>Продолжительность тура:</b> {{ tour.duration }} ночей<br/>
-                    <b>Вылет из:</b> {{ tour.City.name }}<br/>
+                    <b>Продолжительность тура:</b> {{ tour.days }} ночей<br/>
+                    <b>Даты выезда:</b> {{ tour.dates }}<br/>
+                    <b>Тип тура:</b> {{ tour.tour_type }}<br/>
                 </p>
 
                 <p class="nm"><b>Описание тура</b></p>
 
-                <p>Ибица - самый близкий к Пиренейскому полуострову Балеарский остров. Здесь сосредоточено множество
-                    развлечений на любой вкус. Именно сюда, в поисках приключений и острых ощущений, приезжают
-                    молодежные компании со всего мира.</p>
-
-                <p>На этом скалистом острове, где почва бедная и каменистая, испокон веков использовали малейший клочок
-                    плодородной земли, устраивая террасы в лощинах на склонах холмов, кручах, нависающих над
-                    потоками. </p>
+                {{ tour.description | raw}}
 
 
             </div>
-            <p class="price">{{ tour.price }} $</p>
+            <p class="price">{{ tour.price_usd }} $</p>
 
             <div class="actions">
                 <a id="order" class="button" href="">Забронировать</a>
@@ -136,5 +128,34 @@
             <h2>Загрузить следующие отзывы</h2>
             <img src="img/ajax-loader.gif" height="28" width="28" alt="">
         </div>
+    </div>
+{% endblock %}
+
+{% block modal %}
+    <div class="order_tour">
+        <h3>Бронирование тура</h3>
+        <form>
+            <p class="close">x</p>
+            <input type="text" name="fio" placeholder="Ф.И.О." required="required">
+            <input type="text" name="phone" placeholder="Введите ваш контактный телефон" required="required">
+            <input type="text" name="email" placeholder="Введите ваш e-mail" required="required">
+            <p class="terms">
+                <b>Кол-во человек:</b> 1-4<br />
+                <b>Тип номера:</b> LUX<br />
+                <b>Тип питания:</b> Шведский стол<br />
+                <b>Продолжительность тура:</b> 14 дней<br />
+                <b>Вылет из Харьков:</b> Харьков<br />
+            </p>
+            <button type="submit">Забронировать</button>
+        </form>
+    </div>
+    <div class="add_comment">
+        <h3>Оставить отзыв</h3>
+        <form>
+            <p class="close">x</p>
+            <input type="text" name="fio" placeholder="Ф.И.О." required="required">
+            <textarea name="commnet"  placeholder="Введите отзыв"></textarea>
+            <button type="submit">Ок</button>
+        </form>
     </div>
 {% endblock %}

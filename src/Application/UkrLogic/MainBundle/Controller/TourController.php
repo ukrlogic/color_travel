@@ -30,7 +30,7 @@ class TourController extends Controller
         $form = $this->createForm('tour_form');
         $form->handleRequest($request);
         $data = $form->getData();
-        $page = $request->get('page') ? : 1;
+        $page = $request->get('page') ?: 1;
         $limit = 20;
 
         if ($request->get('country')) {
@@ -61,7 +61,6 @@ class TourController extends Controller
         }
 
 
-
         if ($type === 'combined' || $type === 'bus') {
             $bus = $this->get('application_ukr_logic_tourbundle.tour_repository')->filterBy(new FilterOption($data), $page, $limit);
 
@@ -84,7 +83,7 @@ class TourController extends Controller
                     'info' => $avia->Tours->Tour[$i]
                 ];
 
-                $lastSearch[(string) $avia->Tours->Tour[$i]->id] = $avia->Tours->Tour[$i];
+                $lastSearch[(string)$avia->Tours->Tour[$i]->id] = $avia->Tours->Tour[$i];
             }
 
             $this->get('session')->set('lastSearch', $array = json_decode(json_encode((array)$lastSearch), TRUE));
@@ -131,6 +130,28 @@ class TourController extends Controller
     }
 
     /**
+     * @Route("/tour/bus/{id}", name="bus_tour")
+     * @Template()
+     */
+    public function busTourAction($id)
+    {
+        $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $id])->execute();
+        $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
+        $tour = json_decode(json_encode((array)$xml, true));
+
+        if (!$tour) {
+            throw new NotFoundHttpException("Tour not found");
+        }
+
+        return ['tour' => $tour->tour];
+    }
+
+    public function commentAction()
+    {
+
+    }
+
+    /**
      * @Route("/parse")
      */
     public function parseAction()
@@ -145,32 +166,6 @@ class TourController extends Controller
      */
     public function testAction()
     {
-        $collection = $this->get('application_mongo_database.db')->selectCollection('test_collection');
-//
-//        $testObject = [
-//            'color' => 'green',
-//            'car' => [
-//                'model' => 'bmw',
-//                'color' => 'blue',
-//            ],
-//            'age' => 16,
-//        ];
-//
-//        $response = $collection->insert($testObject);
-
-        $criteria = [
-//            'color' => 'blue'
-//            'age' => [
-//                '$gt' => 15,
-//                '$lt' => 25,
-//            ]
-        ];
-
-        foreach ($collection->find($criteria) as $obj) {
-            var_dump($obj);
-        }
-
-        die;
 
         return new Response();
     }
