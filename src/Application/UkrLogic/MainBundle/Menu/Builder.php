@@ -46,7 +46,7 @@ class Builder
         $menu->addChild('MICE', ['route' => 'page', 'routeParameters' => ['name' => 'Mice']]);
 
         if (is_object($securityContext->getToken()->getUser())) {
-            $menu->addChild('Личный кабинет', ['uri' => '#']);
+            $menu->addChild('Личный кабинет', ['route' => 'profile']);
         } else {
             $menu->addChild('Вход / регистрация', ['attributes' => ['id' => 'signup'], 'uri' => '#']);
         }

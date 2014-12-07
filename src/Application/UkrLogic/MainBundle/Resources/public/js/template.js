@@ -152,11 +152,11 @@ $(function () {
     $('.masonry-news').masonry(masonryOptionsNews);
 
 
-    $('.flip-container').mouseover(function () {
-        $(this).find('.flipper .back').fadeIn(200);
-    }).mouseleave(function () {
-        $(this).find('.flipper .back').stop().fadeOut(200);
-    });
+    //$('.flip-container').mouseover(function () {
+    //    $(this).find('.flipper .back').fadeIn(200);
+    //}).mouseleave(function () {
+    //    $(this).find('.flipper .back').stop().fadeOut(200);
+    //});
 
 
     /**** Регистрация/Вход ****/
@@ -213,7 +213,7 @@ $(function () {
     $('#addComment').click(function () {
         $('.add_comment').toggleClass('show');
         return false;
-    })
+    });
     /***** Вариант тура ******/
 
     $('.filter-variant .button:first').click(function () {
@@ -269,7 +269,7 @@ $(function () {
     /**** Слайдер выбора стоимости тура ****/
     $('.slider-cost').slider({
         min: 100,
-        max: 50000,
+        max: 10000,
         step: 50,
         value: 100,
         range: true,
@@ -303,10 +303,12 @@ $(function () {
         count = $(this).index() + 1;
         $('.stars > :gt(' + (count - 1) + ')').css('opacity', '0.5');
         $('.stars > :lt(' + count + ')').addClass('active');
+        $('input.hotel_rate').val($(this).data('value'))
     });
     $('.intext>div').click(function () {
         $(this).addClass('active');
         $('.stars .star').removeClass('active').css('opacity', 0.5);
+        $('input.hotel_rate').val($(this).data('value'));
     });
 
     /**** Селекты выбора количества туристов ****/
@@ -449,38 +451,53 @@ $(function () {
         $('.loadingoverlay').velocity("fadeOut", {duration: 200});
     }
 
-    $('#searchTourButton').click(function () {
+    $('form[name="tour_form"]').submit(function (ev) {
+        ev.preventDefault();
         showOverlay();
-        $.ajax({
-            url: "",
-            dataType: "",
-            success: function (data) {
-                function loadtimeout() {
-                    //$('#container').html(data); // новую плитку в контейнер
-                    //$('#container').masonry('reload'); // перезагрузка плитки
-
-
-                    if (data) {
-                        $('.plzwait').text('Туров не найдено');
-                        $('.dots').fadeOut();
-                    }
-
-
-                    hideOverlay(); //
-
+        $form = $(this);
+        $.post($form.attr('action'), $form.serialize(), function (data) {
+            if (!data) {
+                $('.plzwait').text('Туров не найдено').click(hideOverlay);
+                $('.dots').fadeOut();
+            } else {
+                if (! $form.data('append')) {
+                    $('#container a.masonry-brick').remove();
+                } else {
+                    $form.data('append', false);
                 }
+                $('#container').append(data);
+                $('#container').masonry('reload');
 
-                setTimeout(loadtimeout, 5000);
-
-
+                hideOverlay();
             }
-        });
+
+
+        })
+    });
+
+    $('.filter-variant button, .from-group.customscroll label').click(function () {
+        $('form[name="tour_form"]').submit();
+    });
+
+    //подгрузка туров
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            var page = $('form[name="tour_form"] input.page').val();
+            $('form[name="tour_form"] input.page').val(page++);
+
+            $('form[name="tour_form"]').data('append', 'append').submit();
+        }
+    });
+
+    $('.from-group input[type="checkbox"]').click(function () {
+        $(this).parents('.mCSB_container').find('input[type="checkbox"]').attr('checked', false);
+        $(this).attr('checked', true);
     });
 
 
     $('p.close').on('click', function () {
         $(this).parent().parent().removeClass('show');
-    })
+    });
 
     //$('#avia-switcher').click();
 
@@ -499,16 +516,17 @@ $(function () {
 
     //phone mask
     $('input.phone-mask').mask('(999) 999-99-99');
-    $('input.phone-mask').on("blur", function() {
-        var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
+    $('input.phone-mask').on("blur", function () {
+        var last = $(this).val().substr($(this).val().indexOf("-") + 1);
 
-        if( last.length == 3 ) {
-            var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+        if (last.length == 3) {
+            var move = $(this).val().substr($(this).val().indexOf("-") - 1, 1);
             var lastfour = move + last;
 
-            var first = $(this).val().substr( 0, 9 );
+            var first = $(this).val().substr(0, 9);
 
-            $(this).val( first + '-' + lastfour );
+            $(this).val(first + '-' + lastfour);
         }
     });
+
 });

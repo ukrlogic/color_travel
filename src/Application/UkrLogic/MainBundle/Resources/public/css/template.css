@@ -270,6 +270,12 @@ nav ul li ul li:hover {
 .flipper:hover {
     cursor: pointer;
 }
+.flipper:hover .back {
+    display: block;
+}
+.flipper:hover .front {
+    display: none;
+}
 .box img {
     left: 0;
     position: absolute;

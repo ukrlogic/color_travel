@@ -164,4 +164,32 @@ class Page
     {
         return $this->content;
     }
+    /**
+     * @var string
+     */
+    private $url;
+
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Page
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
 }

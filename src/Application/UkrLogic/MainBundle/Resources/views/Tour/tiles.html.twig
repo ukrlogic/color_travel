@@ -13,7 +13,7 @@
                     </div>
                     <div class="country">
                         <span>{{ tour.info.Country.name }}</span>
-                        <span>{{ tour.info.price }} {# добавить валюту #}</span>
+                        <span>{{ tour.info.price }} $</span>
                     </div>
                 </div>
                 <div class="back {{ random(['green', 'red', 'yellow', 'blue']) }}">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="country">
                         <span>{{ tour.info.Country.name }}</span>
-                        <span>{{ tour.info.price }} {# добавить валюту #}</span>
+                        <span>{{ tour.info.price }} $</span>
                     </div>
                     <p>
                         {% spaceless %}
@@ -52,7 +52,7 @@
                     </div>
                     <div class="country">
                         <span>{{ (tour.info.countries|last).name }}</span>
-                        <span>{{ tour.info.priceUah }} {# добавить валюту #}</span>
+                        <span>{{ tour.info.priceUsd }} $</span>
                     </div>
                 </div>
                 <div class="back {{ random(['green', 'red', 'yellow', 'blue']) }}">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="country">
                         <span>{{ (tour.info.countries|last).name }}</span>
-                        <span>{{ tour.info.priceUah }} {# добавить валюту #}</span>
+                        <span>{{ tour.info.priceUsd }} $</span>
                     </div>
                     <p>
                         {% spaceless %}

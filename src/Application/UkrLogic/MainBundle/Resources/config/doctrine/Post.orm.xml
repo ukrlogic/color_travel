@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Application\UkrLogic\MainBundle\Entity\Post" table="post">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+      <field name="url" column="url" type="string" length="255" />
+      <field name="title" column="title" type="string" length="255" />
+      <field name="content" column="content" type="text" />
+      <field name="date" column="date" type="date" />
+      <field name="active" column="active" type="boolean" />
+      <field name="image" column="image" type="string" length="255"/>
+      <field name="metaTitle" column="meta_title" type="string" length="255" />
+      <field name="metaDescription" column="meta_description" type="string" length="255" nullable="true" />
+      <field name="metaKeywords" column="meta_keywords" type="string" length="255" nullable="true" />
+  </entity>
+</doctrine-mapping>

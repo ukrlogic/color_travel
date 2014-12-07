@@ -1,0 +1,3 @@
+application_mongo_database_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ApplicationMongoDatabaseBundle:Default:index }

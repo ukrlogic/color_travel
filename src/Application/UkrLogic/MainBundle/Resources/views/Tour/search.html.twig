@@ -3,10 +3,11 @@
 {% block content %}
     <div class="content container">
         <div id="container" class="masonry">
-            <div class="box w filter">
+            <div class="box w filter" style="height: 1760px;">
                 {{ form_start(form) }}
                 <div class="filter-variant clear">
-                    <div class="button {% if type == 'combined' or type == 'bus' %}active{% endif %}">Автобусный тур</div>
+                    <div class="button {% if type == 'combined' or type == 'bus' %}active{% endif %}">Автобусный тур
+                    </div>
                     <div class="button {% if type == 'combined' or type == 'avia' %}active{% endif %}">Авиа тур</div>
                 </div>
 
@@ -66,16 +67,32 @@
 
                             <div class="subcategory">
                                 <div class="stars">
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
-                                    <span class="star"></span>
+                                    <span class="star" data-value="1*"></span>
+                                    <span class="star" data-value="2*"></span>
+                                    <span class="star" data-value="3*"></span>
+                                    <span class="star" data-value="4*"></span>
+                                    <span class="star" data-value="5*"></span>
                                 </div>
                                 <div class="intext">
-                                    <div>HV-1</div>
+                                    <div data-value="HV-1">HV-1</div>
                                 </div>
                             </div>
+
+                            {% if form.hotels is defined %}
+                                <h4>Отель</h4>
+
+                                <div>
+                                    <div class="from-group customscroll">
+                                        {% for field in form.hotels %}
+                                            <div>
+                                                {{ form_widget(field) }}
+                                                {{ form_label(field) }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
                             <h4>Количество туристов</h4>
 
                             <div class="subcategory">
@@ -93,7 +110,7 @@
                                 <div class="slider-cost">
                                     <p class="start">100</p>
 
-                                    <p class="end">50 000</p>
+                                    <p class="end">10 000</p>
                                 </div>
                                 <!-- <input class="cost" type="text" placeholder="...или точная сумма"> -->
 
@@ -106,7 +123,9 @@
                 <div style="display: none;">{{ form_rest(form) }}</div>
                 {{ form_end(form) }}
             </div>
-            {{ include('@ApplicationUkrLogicMain/Tour/tiles.html.twig', {tours: tours}) }}
+            <div id="tiles">
+                {{ include('@ApplicationUkrLogicMain/Tour/tiles.html.twig', {tours: tours}) }}
+            </div>
         </div>
     </div>
 {% endblock %}

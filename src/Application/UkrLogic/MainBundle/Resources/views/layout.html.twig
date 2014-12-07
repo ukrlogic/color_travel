@@ -52,11 +52,27 @@
 </head>
 
 <body class="main">
-{% block header %}{% endblock %}
+<div class="loadingoverlay">
+    <div class="locontent">
 
-{% block content %}{% endblock %}
+        <div class="row">
+            <div class="cell">
+                <span class="plzwait">Пожалуйста, подождите</span>
+                <span class="l-1 dots"></span>
+                <span class="l-2 dots"></span>
+                <span class="l-3 dots"></span>
+                <span class="l-4 dots"></span>
+                <span class="l-5 dots"></span>
+                <span class="l-6 dots"></span>
+            </div>
+        </div>
+    </div>
+</div>
+    {% block header %}{% endblock %}
 
-{% block footer %}{% endblock %}
+    {% block content %}{% endblock %}
+
+    {% block footer %}{% endblock %}
 
 {% javascripts '@ApplicationUkrLogicMainBundle/Resources/public/js/uikit.min.js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
