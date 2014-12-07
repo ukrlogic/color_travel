@@ -33,3 +33,9 @@ services:
         arguments: [~, Application\UkrLogic\MainBundle\Entity\Feedback, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}
+
+    application_sonata_admin.admin.comment:
+        class: Application\Sonata\AdminBundle\Admin\CommentAdmin
+        arguments: [~, Application\UkrLogic\MainBundle\Entity\Comment, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Comment}

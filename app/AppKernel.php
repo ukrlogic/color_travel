@@ -38,7 +38,6 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
-            new Application\Mongo\DatabaseBundle\ApplicationMongoDatabaseBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,8 @@
+{% extends '@ApplicationUkrLogicMain/profile-layout.html.twig' %}
+
+{% block profile_content %}
+    <div class="m-header">
+        <h3>История посещений</h3>
+    </div>
+    {% include '@ApplicationUkrLogicMain/Tour/tiles.html.twig' with { 'tours': tours } %}
+{% endblock %}

@@ -24,13 +24,6 @@ services:
         arguments:
             - 'ApplicationUkrLogicTourBundle:Country'
 
-    application_ukr_logic_tourbundle.tour_image_extension:
-        class: Application\UkrLogic\MainBundle\Twig\TourImageExtension
-        calls:
-            - [setImagesDir, [%application_ukrlogic_tourbundle.images_dir%]]
-        tags:
-            - { name: twig.extension }
-
     application_ukrlogic_mainbundle.form.feedbacktype:
         class: Application\UkrLogic\MainBundle\Form\FeedbackType
         tags:

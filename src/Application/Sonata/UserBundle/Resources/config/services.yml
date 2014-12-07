@@ -5,3 +5,8 @@ services:
     authentication_handler:
         class: Application\Sonata\UserBundle\Service\AuthenticationHandler
         arguments:  [@router]
+
+    application_sonata_userbundle.form.usertype:
+        class: Application\Sonata\UserBundle\Form\UserType
+        tags:
+            - { name: form.type, alias: application_sonata_userbundle_user }

@@ -1,7 +1,3 @@
-application_mongo_database:
-    resource: "@ApplicationMongoDatabaseBundle/Resources/config/routing.yml"
-    prefix:   /
-
 application_ukr_logic_main:
     resource: "@ApplicationUkrLogicMainBundle/Controller/"
     type:     annotation

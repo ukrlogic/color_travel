@@ -34,12 +34,11 @@ class Comment
      */
     private $user;
 
-    /**
-     * @var guid
-     */
-    private $guid;
-
-
+    public function __construct()
+    {
+        $this->setDate(new \DateTime());
+        $this->setModerated(false);
+}
     /**
      * Get id
      *
@@ -142,28 +141,6 @@ class Comment
         return $this->user;
     }
 
-    /**
-     * Set guid
-     *
-     * @param guid $guid
-     * @return Comment
-     */
-    public function setGuid($guid)
-    {
-        $this->guid = $guid;
-
-        return $this;
-    }
-
-    /**
-     * Get guid
-     *
-     * @return guid 
-     */
-    public function getGuid()
-    {
-        return $this->guid;
-    }
     /**
      * @var string
      */

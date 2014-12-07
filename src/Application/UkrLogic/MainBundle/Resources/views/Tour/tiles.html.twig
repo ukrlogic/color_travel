@@ -1,3 +1,5 @@
+{% set countries = getCountries() %}
+
 {% for tour in tours %}
     {% if tour.type == 'avia' %}
         <a href="{{ path('avia_tour', {id: tour.info.id}) }}" class="box {{ random(['w', '']) }} flip-container">

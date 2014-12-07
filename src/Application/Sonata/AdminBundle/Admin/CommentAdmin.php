@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PageAdmin extends Admin
+class CommentAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -16,9 +16,12 @@ class PageAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('url')
-            ->add('name')
-            ->add('metaTitle');
+            ->add('text')
+            ->add('date')
+            ->add('moderated')
+            ->add('tourType')
+            ->add('tourId')
+            ->add('id');
     }
 
     /**
@@ -27,9 +30,9 @@ class PageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('url')
-            ->add('metaTitle');
+            ->addIdentifier('date')
+            ->add('text')
+            ->add('moderated', null, ['editable' => true]);
     }
 
     /**
@@ -38,19 +41,12 @@ class PageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Settings', ['class' => 'col-md-8'])
-                ->add('url')
-                ->add('name')
-            ->end()
-            ->with('Seo',['class' => 'col-md-4'])
-                ->add('metaTitle')
-                ->add('metaKeywords')
-                ->add('metaDescription')
-            ->end()
-            ->with('Content', ['class' => 'col-md-12'])
-                ->add('content', 'ckeditor', ['config' => ['allowedContent' => true]])
-            ->end();
-        ;
+            ->add('text')
+            ->add('date')
+            ->add('moderated')
+            ->add('tourType')
+            ->add('tourId')
+            ->add('id');
     }
 
     /**
@@ -59,11 +55,11 @@ class PageAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('url')
-            ->add('name')
-            ->add('metaTitle')
-            ->add('metaKeywords')
-            ->add('metaDescription')
-            ->add('content');
+            ->add('text')
+            ->add('date')
+            ->add('moderated')
+            ->add('tourType')
+            ->add('tourId')
+            ->add('id');
     }
 }

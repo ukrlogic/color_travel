@@ -34,12 +34,11 @@ class Comment
      */
     private $user;
 
-    /**
-     * @var guid
-     */
-    private $guid;
-
-
+    public function __construct()
+    {
+        $this->setDate(new \DateTime());
+        $this->setModerated(false);
+}
     /**
      * Get id
      *
@@ -143,25 +142,59 @@ class Comment
     }
 
     /**
-     * Set guid
+     * @var string
+     */
+    private $tourType;
+
+    /**
+     * @var string
+     */
+    private $tourId;
+
+
+    /**
+     * Set tourType
      *
-     * @param guid $guid
+     * @param string $tourType
      * @return Comment
      */
-    public function setGuid($guid)
+    public function setTourType($tourType)
     {
-        $this->guid = $guid;
+        $this->tourType = $tourType;
 
         return $this;
     }
 
     /**
-     * Get guid
+     * Get tourType
      *
-     * @return guid 
+     * @return string 
      */
-    public function getGuid()
+    public function getTourType()
     {
-        return $this->guid;
+        return $this->tourType;
+    }
+
+    /**
+     * Set tourId
+     *
+     * @param string $tourId
+     * @return Comment
+     */
+    public function setTourId($tourId)
+    {
+        $this->tourId = $tourId;
+
+        return $this;
+    }
+
+    /**
+     * Get tourId
+     *
+     * @return string 
+     */
+    public function getTourId()
+    {
+        return $this->tourId;
     }
 }

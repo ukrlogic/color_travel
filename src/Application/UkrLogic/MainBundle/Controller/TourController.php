@@ -2,6 +2,10 @@
 
 namespace Application\UkrLogic\MainBundle\Controller;
 
+use Application\UkrLogic\MainBundle\Entity\Comment;
+use Application\UkrLogic\MainBundle\Entity\Favorite;
+use Application\UkrLogic\MainBundle\Entity\History;
+use Application\UkrLogic\MainBundle\Form\CommentType;
 use Application\UkrLogic\MainBundle\Form\HotelsType;
 use Application\UkrLogic\TourBundle\Entity\AviaTour;
 use Application\UkrLogic\TourBundle\Entity\City;
@@ -14,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class TourController
@@ -120,13 +125,19 @@ class TourController extends Controller
             throw new NotFoundHttpException("Tour not found");
         }
 
-        $tour = new AviaTour();
-        $tour->setTourId($id)->setData($lastSearch[$id]);
+        $tour = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:AviaTour')->findOneBy(['tourId' => $id]);
 
-        $this->getDoctrine()->getManager()->persist($tour);
-        $this->getDoctrine()->getManager()->flush();
+        if (! $tour) {
+            $tour = new AviaTour();
+            $tour->setTourId($id)->setData($lastSearch[$id]);
 
-        return ['tour' => $tour->getData()];
+            $this->getDoctrine()->getManager()->persist($tour);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        $this->saveToHistory($id, 'avia');
+
+        return ['tour' => $tour->getData(), 'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'avia')];
     }
 
     /**
@@ -143,12 +154,79 @@ class TourController extends Controller
             throw new NotFoundHttpException("Tour not found");
         }
 
-        return ['tour' => $tour->tour];
+        $this->saveToHistory($id, 'bus');
+
+        return ['tour' => $tour->tour, 'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus')];
     }
 
-    public function commentAction()
-    {
 
+    public function in($entityName, $id, $type)
+    {
+        $user = $this->getUser();
+
+        if (!$user) {
+            return false;
+        }
+
+        $entity = $this->getDoctrine()->getRepository($entityName)->findOneBy([
+            'tourId' => $id,
+            'tourType' => $type,
+            'user' => $this->getUser(),
+        ]);
+
+        return boolval($entity);
+    }
+
+    /**
+     * @Route("/fave/{type}/{id}", name="fave_tour")
+     */
+    public function faveAction($id, $type, Request $request)
+    {
+        if (!$this->in('ApplicationUkrLogicMainBundle:Favorite', $id, $type)) {
+            $fave = new Favorite();
+            $fave->setTourId($id);
+            $fave->setTourType($type);
+            $fave->setUser($this->getUser());
+
+            $this->get('doctrine.orm.entity_manager')->persist($fave);
+            $this->get('doctrine.orm.entity_manager')->flush();
+        }
+
+        return $this->redirect($this->get('router')->generate($type . '_tour', ['id' => $id]));
+    }
+
+    /**
+     * @Route("/comments/{tour_type}/{tour_id}", name="comments")
+     * @Template()
+     */
+    public function commentAction(Request $request, $tour_type, $tour_id)
+    {
+        $comment = new Comment();
+
+        $form = $this->createForm('application_ukrlogic_mainbundle_comment', $comment);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $comment->setUser($this->getUser());
+            $comment->setTourId($tour_id);
+            $comment->setTourType($tour_type);
+
+            $this->getDoctrine()->getManager()->persist($comment);
+            $this->getDoctrine()->getManager()->flush();
+
+            $form = $this->createForm('application_ukrlogic_mainbundle_comment', new Comment());
+        }
+
+        $comments = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Comment')->findBy([
+            'tourType' => $tour_type,
+            'tourId' => $tour_id
+        ]);
+
+        return [
+            'form' => $form->createView(),
+            'comments' => $comments,
+        ];
     }
 
     /**
@@ -168,6 +246,19 @@ class TourController extends Controller
     {
 
         return new Response();
+    }
+
+    public function saveToHistory($id, $type)
+    {
+        if (!$this->in('ApplicationUkrLogicMainBundle:History', $id, $type)) {
+            $history = new History();
+            $history->setTourId($id);
+            $history->setTourType($type);
+            $history->setUser($this->getUser());
+
+            $this->get('doctrine.orm.entity_manager')->persist($history);
+            $this->get('doctrine.orm.entity_manager')->flush();
+        }
     }
 
 }

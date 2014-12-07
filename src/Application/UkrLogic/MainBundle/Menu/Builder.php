@@ -53,4 +53,15 @@ class Builder
 
         return $menu;
     }
+
+    public function profileMenu()
+    {
+        $menu = $this->factory->createItem('root');
+
+        $menu->addChild('Настройки', ['route' => 'profile']);
+        $menu->addChild('История посещений', ['route' => 'profile_history']);
+        $menu->addChild('Избранные туры', ['route' => 'profile_favorites']);
+
+        return $menu;
+    }
 } 

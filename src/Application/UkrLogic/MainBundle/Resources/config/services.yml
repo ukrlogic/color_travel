@@ -18,6 +18,11 @@ services:
         tags:
             - { name: form.type, alias: 'tour_form' }
 
+    application.ukrlogic.main.form.comment:
+        class: Application\UkrLogic\MainBundle\Form\CommentType
+        tags:
+            - { name: form.type, alias: 'application_ukrlogic_mainbundle_comment' }
+
     application.ukrlogic.main.xml_to_database:
         class: Application\UkrLogic\MainBundle\Service\XmlToDatabase
         arguments:
@@ -39,3 +44,24 @@ services:
         arguments: ["@security.context"]
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
+
+    application.ukrlogic.menu.profile:
+        class: Application\UkrLogic\MainBundle\Menu\Builder # the service definition requires setting the class
+        factory_service: application.ukrlogic.menu_builder
+        factory_method: profileMenu
+        tags:
+            - { name: knp_menu.menu, alias: profile } # The alias is what is used to retrieve the menu
+
+    application_ukr_logic_mainbundle.tour_image_extension:
+        class: Application\UkrLogic\MainBundle\Twig\TourImageExtension
+        calls:
+            - [setImagesDir, [%application_ukrlogic_tourbundle.images_dir%]]
+        tags:
+            - { name: twig.extension }
+
+    application_ukr_logic_mainbundle.get_countries_extension:
+        class: Application\UkrLogic\MainBundle\Twig\GetCountriesExtension
+        calls:
+            - [setCountryRepo, [@application_ukr_logic_akkord_tour.country_repository]]
+        tags:
+            - { name: twig.extension }

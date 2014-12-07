@@ -1,0 +1,30 @@
+{% block form %}
+    <div class="add_comment">
+        <h3>Оставить отзыв</h3>
+
+        {% if app.user %}
+            {{ form(form) }}
+        {% else %}
+            Авторизуйтесь для того чтобы оставлять отзывы
+        {% endif %}
+        <p class="close">x</p>
+    </div>
+{% endblock %}
+
+<div class="content container">
+    <div class="content-blue">
+        <h2>Отзывы: </h2>
+    </div>
+</div>
+<div class="reviews container">
+    {% for comment in comments if comment.moderated %}
+        <div class="review">
+            <div class="author-info">
+                <img src="https://api.fnkr.net/testimg/200x200/00CED1/FFF/?text=img+placeholder">
+
+                <p>{{ comment.user.username }}</p>
+            </div>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% endfor %}
+</div>
