@@ -35,39 +35,26 @@ class TourController extends Controller
         $form = $this->createForm('tour_form');
         $form->handleRequest($request);
         $data = $form->getData();
-        $page = $request->get('page') ?: 1;
-        $limit = 20;
-
-        if ($request->get('country') && null === $data) {
-            $data['countries'] = [$request->get('country') => true];
-        }
-
-        $countryEntities = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:Country')->findAll();
-        $countries = [];
-
-        foreach ($countryEntities as $countryEntity) {
-            $countries[$countryEntity->getId()] = $countryEntity;
-        }
-
+        $limit = 40;
         $tours = [];
 
-        if ($form->isSubmitted()) {
-            $type = $data['is_avia'] ? 'avia' : 'bus';
-            $limit *= 2;
-        } else {
-            $type = 'combined';
-
-//            $hotels = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:Hotel')->findBy(['country' => $countries[$country]]);
-//            $form->add('hotels', new HotelsType($hotels), ['required' => false]);
-        }
-
         if (null === $data) {
-            $data = [];
+            $data = [
+                'is_avia' => true,
+                'is_bus' => true,
+                'countries' => ['12' => true],
+                'cities' => ['668' => true],
+                'page' => 1
+            ];
+
+            if ($request->get('country')) {
+                $data['countries'] = [$request->get('country') => true];
+            }
         }
 
 
-        if ($type === 'combined' || $type === 'bus') {
-            $bus = $this->get('application_ukr_logic_tourbundle.tour_repository')->filterBy(new FilterOption($data), $page, $limit);
+        if ($data['is_bus']) {
+            $bus = $this->get('application_ukr_logic_tourbundle.tour_repository')->filterBy(new FilterOption($data), $data['page'], $limit);
 
             foreach ($bus as $tour) {
                 $tours[] = [
@@ -77,8 +64,8 @@ class TourController extends Controller
             }
         }
 
-        if ($type === 'combined' || $type === 'avia') {
-            $avia = $this->get('application_ukrlogic_tourclientbundle.service.aviatours')->loadTours(new FilterOption($data), $page, $limit);
+        if ($data['is_avia']) {
+            $avia = $this->get('application_ukrlogic_tourclientbundle.service.aviatours')->loadTours(new FilterOption($data), $data['page'], $limit);
 
             $lastSearch = [];
 
@@ -94,22 +81,19 @@ class TourController extends Controller
             $this->get('session')->set('lastSearch', $array = json_decode(json_encode((array)$lastSearch), TRUE));
         }
 
-        if ($type === 'combined') {
+        if ($data['is_avia'] && $data['is_bus']) {
             shuffle($tours);
         }
 
         if ($request->isXmlHttpRequest()) {
             return $this->render('ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
                 'tours' => $tours,
-                'countries' => $countries,
             ]);
         }
 
         return [
             'form' => $form->createView(),
             'tours' => $tours,
-            'countries' => $countries,
-            'type' => $type,
         ];
     }
 

@@ -23,38 +23,24 @@ class AviaTours
 
         $request->TourSearchRequest->dataLimit = $limit;
         $request->TourSearchRequest->dataOffset = ($page - 1) * $limit;
-        $cityId = null;
-        $countryId = null;
 
-        if (is_array($options->get('cities'))) {
-            $cityId = array_search(true, $options->get('cities')) ? : '668';
-        }
-
-        if (is_array($options->get('countries'))) {
-            $countryId = array_search(true, $options->get('countries')) ? : '12';
-        }
-
-        $request->TourSearchRequest->addChild('cityId', $cityId ? : '668');
-        $request->TourSearchRequest->addChild('countryId', $countryId ? : '12');
+        $request->TourSearchRequest->addChild('cityId', array_search(true, $options->get('cities')));
+        $request->TourSearchRequest->addChild('countryId', array_search(true, $options->get('countries')));
 
         if (null !== $options->get('days_from')) {
             $request->TourSearchRequest->addChild('durationFrom', $options->get('days_from'));
         }
 
-        if (null !== $options->get('days_from')) {
-            $request->TourSearchRequest->addChild('durationFrom', $options->get('days_from'));
+        if (null !==  $options->get('days_to')) {
+            $request->TourSearchRequest->addChild('durationTill', $options->get('days_to'));
         }
 
-        if (null !== $options->get('date_from')) {
-            $request->TourSearchRequest->addChild('durationTill', $options->get('date_from'));
+        if ($options->get('date_to') instanceof \DateTime) {
+            $request->TourSearchRequest->addChild('departureFrom', $options->get('date_from')->format('Y-m-d'));
         }
 
-        if (null !== $options->get('date_to')) {
-            $request->TourSearchRequest->addChild('departureFrom', $options->get('date_to'));
-        }
-
-        if (null !== $options->get('days_from')) {
-            $request->TourSearchRequest->addChild('departureTill', $options->get('days_from'));
+        if ($options->get('date_to') instanceof \DateTime) {
+            $request->TourSearchRequest->addChild('departureTill', $options->get('date_to')->format('Y-m-d'));
         }
 
         if (null !== $options->get('price_from')) {
@@ -66,16 +52,16 @@ class AviaTours
         }
 
         if (null !== $options->get('hotel_rate')) {
-            $request->TourSearchRequest->addChild('allocRate', $options->get('hotel_rate'));
+            $request->TourSearchRequest->addChild('allocRate', intval($options->get('hotel_rate')));
         }
 
-        if (null !== $options->get('adults')) {
-            $request->TourSearchRequest->addChild('adults', $options->get('adults'));
+        if (null !== $options->get('adult_count')) {
+            $request->TourSearchRequest->addChild('adults', $options->get('adult_count'));
         }
 
 
-        if (null !== $options->get('children')) {
-            $request->TourSearchRequest->addChild('children', $options->get('children'));
+        if (null !== $options->get('child_count')) {
+            $request->TourSearchRequest->addChild('children', $options->get('child_count'));
         }
 
         $ch = curl_init();

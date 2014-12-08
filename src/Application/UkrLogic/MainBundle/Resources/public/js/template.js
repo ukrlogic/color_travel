@@ -216,23 +216,36 @@ $(function () {
     });
     /***** Вариант тура ******/
 
-    $('.filter-variant .button:first').click(function () {
-        $('.filter-variant .button').removeClass('active');
-        $(this).addClass('active');
-        $('input[type="checkbox"].is_avia').attr('checked', false);
-        $('input[type="checkbox"].is_bus').attr('checked', true);
-        $('.hide-on-bus').hide();
-        //$('#container').masonry('reload');
-    });
-    $('.filter-variant .button:last').click(function () {
-        $('.filter-variant .button').removeClass('active');
-        $(this).addClass('active');
-        $('input[type="checkbox"].is_avia').attr('checked', true);
-        $('input[type="checkbox"].is_bus').attr('checked', false);
-        $('.hide-on-bus').show();
-        //$('#container').masonry('reload');
+    //$('.filter-variant .button:first').click(function () {
+    //    $('.filter-variant .button').removeClass('active');
+    //    $(this).addClass('active');
+    //    $('input[type="checkbox"].is_avia').attr('checked', false);
+    //    $('input[type="checkbox"].is_bus').attr('checked', true);
+    //    $('.hide-on-bus').hide();
+    //    //$('#container').masonry('reload');
+    //});
+    //$('.filter-variant .button:last').click(function () {
+    //    $('.filter-variant .button').removeClass('active');
+    //    $(this).addClass('active');
+    //    $('input[type="checkbox"].is_avia').attr('checked', true);
+    //    $('input[type="checkbox"].is_bus').attr('checked', false);
+    //    $('.hide-on-bus').show();
+    //    //$('#container').masonry('reload');
+    //
+    //});
 
+    $('.filter-variant .button').click(function (ev) {
+        ev.preventDefault();
+        console.log(this);
+        var dataClass = $(this).data('class');
+        var checkboxes = $('input[type="checkbox"].' + dataClass);
+        checkboxes.attr("checked", !checkboxes.attr("checked"));
+        $('form[name="tour_form"]').submit();
     });
+
+    if (! $('.filter-variant .button[data-class="is_bus"]').hasClass('active')) {
+        $('.hide-on-bus').hide();
+    }
 
     /**** Календарь ****/
     $('.rangeInlinePicker').datepick({
