@@ -31,7 +31,7 @@ class AviaTours
         }
 
         if (is_array($options->get('countries'))) {
-            $countryId = array_search(true, $options->get('countries')) ? : '668';
+            $countryId = array_search(true, $options->get('countries')) ? : '12';
         }
 
         $request->TourSearchRequest->addChild('cityId', $cityId ? : '668');

@@ -38,7 +38,7 @@ class TourController extends Controller
         $page = $request->get('page') ?: 1;
         $limit = 20;
 
-        if ($request->get('country')) {
+        if ($request->get('country') && null === $data) {
             $data['countries'] = [$request->get('country') => true];
         }
 

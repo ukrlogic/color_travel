@@ -220,6 +220,7 @@ $(function () {
         $('.filter-variant .button').removeClass('active');
         $(this).addClass('active');
         $('input[type="checkbox"].is_avia').attr('checked', false);
+        $('input[type="checkbox"].is_bus').attr('checked', true);
         $('.hide-on-bus').hide();
         //$('#container').masonry('reload');
     });
@@ -227,6 +228,7 @@ $(function () {
         $('.filter-variant .button').removeClass('active');
         $(this).addClass('active');
         $('input[type="checkbox"].is_avia').attr('checked', true);
+        $('input[type="checkbox"].is_bus').attr('checked', false);
         $('.hide-on-bus').show();
         //$('#container').masonry('reload');
 
@@ -475,10 +477,6 @@ $(function () {
         })
     });
 
-    $('.filter-variant button, .from-group.customscroll label').click(function () {
-        $('form[name="tour_form"]').submit();
-    });
-
     //подгрузка туров
     $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -492,6 +490,7 @@ $(function () {
     $('.from-group input[type="checkbox"]').click(function () {
         $(this).parents('.mCSB_container').find('input[type="checkbox"]').attr('checked', false);
         $(this).attr('checked', true);
+        $('form[name="tour_form"]').submit();
     });
 
 

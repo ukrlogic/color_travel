@@ -75,6 +75,7 @@ class TourType extends AbstractType
                 'data' => '0',
             ])
             ->add('is_avia', 'checkbox', ['attr' => ['class' => 'is_avia'], 'required' => false])
+            ->add('is_bus', 'checkbox', ['attr' => ['class' => 'is_bus'], 'required' => false])
             ->add('page', 'hidden', ['data' => 1, 'attr' => ['class' => 'page'], 'required' => false])
             ->add('submit', 'submit', ['label' => 'Поиск']);
     }
