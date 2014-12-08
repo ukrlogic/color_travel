@@ -121,7 +121,7 @@ class TourController extends Controller
     {
         $lastSearch = $this->get('session')->get('lastSearch');
 
-        if (!array_key_exists($id, $lastSearch)) {
+        if (!$lastSearch ||!array_key_exists($id, $lastSearch)) {
             throw new NotFoundHttpException("Tour not found");
         }
 
@@ -135,9 +135,18 @@ class TourController extends Controller
             $this->getDoctrine()->getManager()->flush();
         }
 
+        $hotel = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:Hotel')->find($tour->getData()['Allocation']['id']);
+
+//        $description = $hotel ? $hotel->getFullDescription() : '';
+        $description = '';
+
         $this->saveToHistory($id, 'avia');
 
-        return ['tour' => $tour->getData(), 'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'avia')];
+        return [
+            'tour' => $tour->getData(),
+            'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'avia'),
+            'description' => $description,
+        ];
     }
 
     /**

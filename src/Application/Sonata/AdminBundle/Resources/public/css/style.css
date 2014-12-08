@@ -7,6 +7,10 @@ img.hotel-thumbnail {
     border: 1px solid transparent;
 }
 
+img.hotel-thumbnail.active {
+    border-color: red;
+}
+
 /*
  * jQuery File Upload Plugin CSS 1.3.0
  * https://github.com/blueimp/jQuery-File-Upload

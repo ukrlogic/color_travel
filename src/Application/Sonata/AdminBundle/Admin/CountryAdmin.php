@@ -37,7 +37,7 @@ class CountryAdmin extends Admin
             ->addIdentifier('name')
             ->add('nick')
             ->add('active', null, ['editable' => true])
-            ->add('label')
+            ->add('photos', null, ['mapped' => false, 'template' => 'ApplicationSonataAdminBundle:Country:images.html.twig'])
             ->add('regionName')
         ;
     }
@@ -48,15 +48,18 @@ class CountryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('nameEng')
-            ->add('nameRu')
-            ->add('nick')
-            ->add('active')
-            ->add('label')
-            ->add('region')
-            ->add('regionName')
-            ->add('id')
+            ->with('Names', ['class' => 'col-md-6'])
+                ->add('name')
+                ->add('nameEng')
+                ->add('nameRu')
+                ->add('nick')
+            ->end()
+            ->with('Region', ['class' => 'col-md-6'])
+                ->add('label')
+                ->add('region')
+                ->add('regionName')
+                ->add('active')
+            ->end()
         ;
     }
 

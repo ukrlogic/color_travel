@@ -22,6 +22,49 @@
     '@PunkAveFileUploaderBundle/Resources/public/js/FileUploader.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <script>
+        $(function () {
+            $('.image-del').click(function (ev) {
+                ev.preventDefault();
+                if (confirm("Are you sure?")) {
+                    var link = $(this);
+                    $.post(link.attr('href'), {'path': link.data('src')}, function (response) {
+                        console.log(response);
+                        if (response.error) {
+                            alert(response.error);
+                        } else if (response.success) {
+                            alert('Delete successful');
+                            link.parents('.hotel-row').find('.hotel-thumbnail.active').remove();
+                        } else {
+                            alert('Unknown error');
+                        }
+                    });
+                }
+
+                return false;
+            });
+
+            document.oncontextmenu = function () {
+                return false;
+            };
+
+            $(document).mousedown(function (e) {
+                var $this = $('.hotel-thumbnail:hover');
+                if (e.button == 2 && $this) {
+                    if ($this.hasClass('active')) {
+                        $this.parents('.hotel-row').find('.image-del').data('src', null);
+                        $this.removeClass('active');
+                    } else {
+                        $this.parents('.hotel-row').find('.hotel-thumbnail.active').removeClass('active');
+                        $this.parents('.hotel-row').find('.image-del').data('src', $this.attr('src'));
+                        $this.addClass('active');
+                    }
+
+                    return false;
+                }
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block sonata_page_content %}

@@ -41,7 +41,7 @@ class TourImageExtension extends \Twig_Extension
                 $images[] = sprintf("images/%s/%d/%s", $path, $id, ($large ? 'large/' : '') . $file->getRelativePathname());
             }
         } catch (\Exception $e) {
-            $images[] = "images/noimagew.png";
+            $images[] = "images/noimagew.png?".$e->getMessage();
         }
 
         return $images;
