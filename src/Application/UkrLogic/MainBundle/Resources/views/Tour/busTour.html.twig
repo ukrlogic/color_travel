@@ -64,11 +64,14 @@
             <p class="price">{{ tour.price_usd }} $</p>
 
             <div class="actions">
-                {% if inFavorite %}
-                    <a class="button" href="#" style="margin-bottom: 5px; pointer-events: none; cursor: default;">В избранном</a>
-                {% else %}
-                    <a class="button" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}" style="margin-bottom: 5px;">В избранное</a>
-                {% endif %}                <a id="order" class="button" href="">Забронировать</a>
+                {% if app.user %}
+                    {% if inFavorite %}
+                        <a class="button" href="#" style="margin-bottom: 5px; pointer-events: none; cursor: default;">В избранном</a>
+                    {% else %}
+                        <a class="button" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}" style="margin-bottom: 5px;">В избранное</a>
+                    {% endif %}
+                {% endif %}
+                <a id="order" class="button" href="">Забронировать</a>
                 <a id="addComment" class="button" href="">Оставить отзыв</a>
             </div>
 
