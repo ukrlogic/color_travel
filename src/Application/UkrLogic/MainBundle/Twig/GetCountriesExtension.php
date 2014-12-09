@@ -30,7 +30,14 @@ class GetCountriesExtension extends \Twig_Extension
 
     public function getCountries()
     {
-        return $this->countryRepo->findAll();
+        $result = [];
+        $countries = $this->countryRepo->findAll();
+
+        foreach ($countries as $country) {
+            $result[$country->getId()] = $country;
+        }
+
+        return $result;
     }
 
     public function getName()
