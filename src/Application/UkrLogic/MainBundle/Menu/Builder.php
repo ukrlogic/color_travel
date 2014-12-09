@@ -31,19 +31,19 @@ class Builder
 
         $subMenu = $menu->addChild('Услуги', ['uri' => '#']);
 
-        $subMenu->addChild('VIP-услуги', ['uri' => '#']);
-        $subMenu->addChild('Корп. мероприятия', ['uri' => '#']);
-        $subMenu->addChild('Оплата туров', ['uri' => '#']);
-        $subMenu->addChild('Визовая поддержка', ['uri' => '#']);
-        $subMenu->addChild('Подарочные сертификаты', ['uri' => '#']);
-        $subMenu->addChild('Телефонные карты', ['uri' => '#']);
-        $subMenu->addChild('Страховки', ['uri' => '#']);
-        $subMenu->addChild('Загранпаспорта', ['uri' => '#']);
-        $subMenu->addChild('Рассрочка на туры', ['uri' => '#']);
+        $subMenu->addChild('VIP-услуги', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
+        $subMenu->addChild('Корп. мероприятия', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
+        $subMenu->addChild('Оплата туров', ['route' => 'page', 'routeParameters' => ['name' => 'oplata-turov']]);
+        $subMenu->addChild('Визовая поддержка', ['route' => 'page', 'routeParameters' => ['name' => 'viza']]);
+        $subMenu->addChild('Подарочные сертификаты', ['route' => 'page', 'routeParameters' => ['name' => 'podarochnyie-sertifikatyi']]);
+        $subMenu->addChild('Телефонные карты', ['route' => 'page', 'routeParameters' => ['name' => 'telefonnyie-kartyi-travel-sim']]);
+//        $subMenu->addChild('Страховки', ['route' => 'page', 'routeParameters' => ['name' => 'zagranpasporta']]);
+        $subMenu->addChild('Загранпаспорта', ['route' => 'page', 'routeParameters' => ['name' => 'zagranpasporta']]);
+//        $subMenu->addChild('Рассрочка на туры', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
 
         $menu->addChild('Индивидуальный тур', ['uri' => '#']);
         $menu->addChild('О нас', ['route' => 'about']);
-        $menu->addChild('MICE', ['route' => 'page', 'routeParameters' => ['name' => 'Mice']]);
+        $menu->addChild('MICE', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
 
         if (is_object($securityContext->getToken()->getUser())) {
             $menu->addChild('Личный кабинет', ['route' => 'profile']);

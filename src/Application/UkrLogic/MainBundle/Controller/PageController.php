@@ -17,7 +17,7 @@ class PageController extends Controller
      */
     public function indexAction($name)
     {
-        $page = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Page')->findOneBy(['name' => $name]);
+        $page = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Page')->findOneBy(['url' => $name]);
 
         if (!$page) {
             throw new NotFoundHttpException();

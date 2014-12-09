@@ -161,7 +161,7 @@ class TourController extends Controller
             'user' => $this->getUser(),
         ]);
 
-        return boolval($entity);
+        return $entity === null ? false : true;
     }
 
     /**
