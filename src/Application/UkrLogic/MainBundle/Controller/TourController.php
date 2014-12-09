@@ -41,7 +41,7 @@ class TourController extends Controller
         if (null === $data) {
             $data = [
                 'is_avia' => true,
-                'is_bus' => true,
+                'is_bus' => false,
                 'countries' => ['12' => true],
                 'cities' => ['668' => true],
                 'page' => 1
@@ -79,10 +79,6 @@ class TourController extends Controller
             }
 
             $this->get('session')->set('lastSearch', $array = json_decode(json_encode((array)$lastSearch), TRUE));
-        }
-
-        if ($data['is_avia'] && $data['is_bus']) {
-            shuffle($tours);
         }
 
         if ($request->isXmlHttpRequest()) {
