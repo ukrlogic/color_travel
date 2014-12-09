@@ -31,8 +31,8 @@ class Builder
 
         $subMenu = $menu->addChild('Услуги', ['uri' => '#']);
 
-        $subMenu->addChild('VIP-услуги', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
-        $subMenu->addChild('Корп. мероприятия', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
+        $subMenu->addChild('VIP-услуги', ['route' => 'page', 'routeParameters' => ['name' => 'vip-uslugi']]);
+//        $subMenu->addChild('Корп. мероприятия', ['route' => 'page', 'routeParameters' => ['name' => 'mice']]);
         $subMenu->addChild('Оплата туров', ['route' => 'page', 'routeParameters' => ['name' => 'oplata-turov']]);
         $subMenu->addChild('Визовая поддержка', ['route' => 'page', 'routeParameters' => ['name' => 'viza']]);
         $subMenu->addChild('Подарочные сертификаты', ['route' => 'page', 'routeParameters' => ['name' => 'podarochnyie-sertifikatyi']]);
