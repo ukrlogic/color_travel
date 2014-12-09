@@ -32,25 +32,25 @@ table {
 }
 @font-face {
     font-family: 'SEGOEUIL';
-    src: url('../fonts/SEGOEUIL.eot');
-    src: local('SEGOEUIL'), url('../fonts/SEGOEUIL.woff') format('woff'), url('../fonts/SEGOEUIL.ttf') format('truetype');
+    src: url('../../bundles/applicationukrlogicmain/fonts/SEGOEUIL.eot');
+    src: local('SEGOEUIL'), url('../../bundles/applicationukrlogicmain/fonts/SEGOEUIL.woff') format('woff'), url('../../bundles/applicationukrlogicmain/fonts/SEGOEUIL.ttf') format('truetype');
 }
 @font-face {
     font-family: 'SegoeLI';
-    src: url('../fonts/segoe_ui_italic.eot');
-    src: local('SEGOEUIL'), url('../fonts/segoe_ui_italic.woff') format('woff'), url('../fonts/segoe_ui_italic.ttf') format('truetype');
+    src: url('../../bundles/applicationukrlogicmain/fonts/segoe_ui_italic.eot');
+    src: local('SEGOEUIL'), url('../../bundles/applicationukrlogicmain/fonts/segoe_ui_italic.woff') format('woff'), url('../../bundles/applicationukrlogicmain/fonts/segoe_ui_italic.ttf') format('truetype');
 }
 @font-face{
 
 font-family:'bebas';
- src:url('../fonts/bebas_neue_cyrillic-webfont.eot');
- src:url('../fonts/bebas_neue_cyrillic-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/bebas_neue_cyrillic-webfont.woff') format('woff'), url('../fonts/bebas_neue_cyrillic-webfont.ttf') format('truetype'), url('../fonts/bebas_neue_cyrillic-webfont.svg#bebas_neue_cyrillicregular') format('svg');
+ src:url('../../bundles/applicationukrlogicmain/fonts/bebas_neue_cyrillic-webfont.eot');
+ src:url('../../bundles/applicationukrlogicmain/fonts/bebas_neue_cyrillic-webfont.eot?#iefix') format('embedded-opentype'), url('../../bundles/applicationukrlogicmain/fonts/bebas_neue_cyrillic-webfont.woff') format('woff'), url('../../bundles/applicationukrlogicmain/fonts/bebas_neue_cyrillic-webfont.ttf') format('truetype'), url('../../bundles/applicationukrlogicmain/fonts/bebas_neue_cyrillic-webfont.svg#bebas_neue_cyrillicregular') format('svg');
  font-weight:normal;
  font-style:normal;
 
 }
 body {
-   /* background: url("../img/bg.png") no-repeat fixed rgba(0, 0, 0, 0); */
+   /* background: url("../../bundles/applicationukrlogicmain/img/bg.png") no-repeat fixed rgba(0, 0, 0, 0); */
    background-color: #F3F4F6;
     background-size: cover;
     position: relative;
@@ -96,7 +96,7 @@ height: 110px;
 padding: 35px 0 0px;
 position: relative;
 z-index: 4;
-background: url("../img/header_bg.jpg") no-repeat scroll rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/header_bg.jpg") no-repeat scroll rgba(0, 0, 0, 0);
 }
 }
 footer, header, nav {
@@ -111,7 +111,7 @@ footer {
 }
 header #logo {
     float: left;
-background: url('../img/logo.png') no-repeat center center;
+background: url('/img/logo.png') no-repeat center center;
 height: 70px;
 width: 320px;
 margin-top: -15px;
@@ -154,7 +154,7 @@ text-shadow: -1px 1px 0 #555;
     margin-bottom: 9px;
 }
 i.phone {
-background: url("../img/phone.png") no-repeat scroll rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/phone.png") no-repeat scroll rgba(0, 0, 0, 0);
 display: inline-block;
 height: 28px;
 width: 265px;
@@ -167,7 +167,7 @@ margin-right: 25px;
 	margin-right: 25px;
 }
 .social a {
-background: url("../img/social.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/social.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 background-size: 430px;
 display: inline-block;
 float: left;
@@ -271,10 +271,10 @@ nav ul li ul li a {
     white-space: pre;
     transition: left 0.3s;
     padding: 6px 15px 6px 37px;
-    background: url("../img/menu-list-style.png") no-repeat scroll left 14px top 11px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/menu-list-style.png") no-repeat scroll left 14px top 11px rgba(0, 0, 0, 0);
 }
 nav ul li ul li a:hover {
-    background: url("../img/menu-list-style2.png") no-repeat scroll left 14px top 11px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/menu-list-style2.png") no-repeat scroll left 14px top 11px rgba(0, 0, 0, 0);
 }
 nav ul li ul li:hover {
     background: none repeat scroll 0 0 #1897E5;
@@ -328,7 +328,7 @@ width: 485px;
     background: #006699;
 }
 .filter-search input {
-    background: url("../img/search-ico.png") no-repeat scroll left 12px top 13px #006699;
+    background: url("../../bundles/applicationukrlogicmain/img/search-ico.png") no-repeat scroll left 12px top 13px #006699;
     border: medium none;
     box-sizing: border-box;
     color: #ffffff;
@@ -358,7 +358,7 @@ position: relative;
 border-radius: 5px;
 }
 .ui-accordion-header:after {
-    background: url("../img/accordion-arrow.png") no-repeat scroll 0px -13px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0px -13px rgba(0, 0, 0, 0);
     content: "";
     height: 13px;
     position: absolute;
@@ -367,7 +367,7 @@ border-radius: 5px;
     width: 21px;
 }
 .ui-accordion-header.ui-state-active:after {
-    background: url("../img/accordion-arrow.png") no-repeat scroll rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll rgba(0, 0, 0, 0);
     content: "";
     height: 13px;
     position: absolute;
@@ -404,7 +404,7 @@ top: 10px;
     position: relative;
 }
 .from-group input[type="checkbox"]:checked + label {
-    background: url("../img/cheked-city.png") no-repeat scroll left 3px top 7px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/cheked-city.png") no-repeat scroll left 3px top 7px rgba(0, 0, 0, 0);
     color: #57bdf0;
     font-weight: bold;
 }
@@ -418,7 +418,7 @@ top: 10px;
 padding-bottom: 10px;
 }
 .filter-variant .button {
-background: url("../img/ccheck.png") no-repeat scroll 0 -26px rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/ccheck.png") no-repeat scroll 0 -26px rgba(0, 0, 0, 0);
 border: medium none;
 color: #000;
 display: block;
@@ -431,7 +431,7 @@ padding-left: 30px;
 cursor: pointer;
 }
 .filter-variant .button.active{
-background: url("../img/ccheck.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);   
+background: url("../../bundles/applicationukrlogicmain/img/ccheck.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);   
 }
 .filter h4 {
 background: none repeat scroll 0 0 #97A3BB;
@@ -496,18 +496,18 @@ outline: none;
 margin-top: 3px;
 }
 .star {
-background: url("../img/star.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/star.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 display: inline-block;
 height: 25px;
 width: 25px;
 cursor: pointer;
 }
 .star:hover {
-    background: url("../img/star2.png") 
+    background: url("../../bundles/applicationukrlogicmain/img/star2.png") 
 }
 .star.active {
     opacity: 1 !important;
-	    background: url("../img/star2.png") 
+	    background: url("../../bundles/applicationukrlogicmain/img/star2.png") 
 }
 .intext {
 float: right;
@@ -610,20 +610,20 @@ margin-bottom: 3px;
     width: 32px;
 }
 .vehicle i.bus {
-    background: url("../img/vehicle/bus.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/vehicle/bus.png") no-repeat scroll center top rgba(0, 0, 0, 0);
 }
 .vehicle i.train {
-    background: url("../img/vehicle/train.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/vehicle/train.png") no-repeat scroll center top rgba(0, 0, 0, 0);
 }
 .vehicle i.plain {
-    background: url("../img/vehicle/plain.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/vehicle/plain.png") no-repeat scroll center top rgba(0, 0, 0, 0);
 }
 .vehicle i.ship {
-    background: url("../img/vehicle/ship.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/vehicle/ship.png") no-repeat scroll center top rgba(0, 0, 0, 0);
 }
 .vehicle-tour {
 box-sizing: border-box;
-float: left;
+float: right;
 padding-right: 20px;
 }
 .vehicle-tour i {
@@ -633,7 +633,8 @@ padding-right: 20px;
     width: 32px;
 }
 .vehicle-tour i.plain {
-    background: url("../img/vehicle/plain-tour.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/vehicle/plain-tour.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+	float: right;
 }
 .flip-container {} .flip-container.hover .flipper {} .flip-container, .front, .back {} .front, .back {
     width: 100%;
@@ -667,7 +668,7 @@ padding-right: 20px;
     z-index: 0;
 }
 .front.hot:after {
-    background: url(../img/hot.png) no-repeat right top;
+    background: url(../../bundles/applicationukrlogicmain/img/hot.png) no-repeat right top;
     width: 92px;
     height: 102px;
     position: absolute;
@@ -676,7 +677,7 @@ padding-right: 20px;
     content: "";
 }
 .front.exclusive:after {
-    background: url(../img/exclusive.png) no-repeat right top;
+    background: url(../../bundles/applicationukrlogicmain/img/exclusive.png) no-repeat right top;
     width: 92px;
     height: 102px;
     position: absolute;
@@ -911,7 +912,7 @@ padding-bottom: 25px;
 margin-top: 5px;
 }
 .filter-variant .button {
-background: url("../img/ccheck.png") no-repeat scroll 0 -26px rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/ccheck.png") no-repeat scroll 0 -26px rgba(0, 0, 0, 0);
 border: medium none;
 color: #000;
 display: block;
@@ -934,7 +935,7 @@ padding-left: 90px;
 position: relative;
 }
 .ui-accordion-header.ui-state-active:after {
-background: url("../img/accordion-arrow.png") no-repeat scroll rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll rgba(0, 0, 0, 0);
 content: "";
 height: 13px;
 position: absolute;
@@ -1186,7 +1187,7 @@ input[name="captcha"] {
     font-weight: 600;
 }
 .scrolltop {
-    background: url("../img/scrolltop.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/scrolltop.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     bottom: 11px;
     box-shadow: 0 0 2px 1px rgba(46, 123, 165, 0.5);
     cursor: pointer;
@@ -1203,6 +1204,9 @@ input[name="captcha"] {
 }
 .main-image {
     width: 100%;
+}
+.content img{
+width: 100%;
 }
 .content-blue {
     background: rgba(18, 93, 127, 0.7);
@@ -1262,7 +1266,7 @@ input[name="captcha"] {
     margin-right: 0;
 }
 .vertical-slider .next, .vertical-slider .prev {
-    background: url("../img/accordion-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
     display: inline-block;
     height: 13px;
@@ -1274,7 +1278,7 @@ input[name="captcha"] {
 }
 .vertical-slider .prev {
     margin-top: 15px;
-    background: url("../img/accordion-arrow.png") no-repeat scroll 0 -13px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0 -13px rgba(0, 0, 0, 0);
 }
 .description {
     box-sizing: border-box;
@@ -1303,7 +1307,7 @@ input[name="captcha"] {
     margin: 10px 0;
 }
 .content-blue ul.list li {
-    background: url("../img/menu-list-style.png") no-repeat scroll left 2px top 10px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/menu-list-style.png") no-repeat scroll left 2px top 10px rgba(0, 0, 0, 0);
     margin-bottom: 5px;
     padding-left: 30px;
     text-align: left;
@@ -1532,13 +1536,32 @@ color: #009CF8;
 text-decoration: underline;
 text-align: left;
 }
+.hotel-tour-description .button#addComment:hover {
+color: #34306B;
+text-decoration: underline;
+}
+.hotel-tour-description .button#order:hover {
+background-color: #C74445;
+text-decoration: underline;
+}
+.hotel-tour-description .button#buy_o:hover {
+background-color: #58BD9E;
+text-decoration: underline;
+}
+.hotel-tour-description .button#buy_o {
+background-color: #00B981;
+width: 30%;
+float: right;
+box-shadow: 0px 3px 0px 0px rgba(0, 162, 109, 1);
+}
 .hotel-tour-description .button#order {
-width: 33% !important;
+width: 30% !important;
 float: left;
 text-align: center;
 background-color: #B53C3D;
 margin-left: 10px;
 margin-right: 10px;
+box-shadow: 0px 3px 0px 0px rgba(151, 60, 61, 1);
 }
 .tour .hotel-tour-description .hotel-tour-desc {
     margin: 0px 0;
@@ -1569,7 +1592,7 @@ margin-right: 10px;
     position: relative;
 }
 .review:before {
-    background: url("../img/quote-ico.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/quote-ico.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     content: "";
     height: 38px;
     left: 20px;
@@ -1578,7 +1601,7 @@ margin-right: 10px;
     width: 50px;
 }
 .review:after {
-    background: url("../img/quote-ico.png") no-repeat scroll 0 -38px rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/quote-ico.png") no-repeat scroll 0 -38px rgba(0, 0, 0, 0);
     content: "";
     height: 38px;
     position: absolute;
@@ -1688,7 +1711,7 @@ margin-right: 10px;
     display: none;
 }
 .user-info .photo-edit {
-    background: url("../img/edit-ico.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/edit-ico.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
     display: inline-block;
     height: 19px;
@@ -1743,7 +1766,7 @@ margin-right: 10px;
     background: #04618e;
 }
 .user .navigation li a.active {
-    background: url("../img/cheked-city.png") no-repeat scroll left 20px top 12px #c2dce7;
+    background: url("../../bundles/applicationukrlogicmain/img/cheked-city.png") no-repeat scroll left 20px top 12px #c2dce7;
     color: #3399cc;
     font-weight: bold;
 }
@@ -1966,7 +1989,7 @@ footer .half.left {
     width: 50%;
 }
 footer .half.right {
-background: url("../img/ukrlogik.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/ukrlogik.png") no-repeat scroll left center rgba(0, 0, 0, 0);
 float: right;
 height: 80px;
 left: 0px;
@@ -2060,266 +2083,266 @@ body.main {
     box-shadow: none;
 }
 .europe-flag {
-    background: url("../img/main-countr/europe.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/europe.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 120px;
     left: 775px;
     top: 162px;
     width: 120px;
 }
 .norway {
-    background: url("../img/main-countr/norway.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/norway.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 110px;
     left: 616px;
     top: 13px;
     width: 110px;
 }
 .sweden {
-    background: url("../img/main-countr/sweden.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/sweden.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 170px;
     left: 776px;
     top: 22px;
     width: 170px;
 }
 .finland {
-    background: url("../img/main-countr/finland.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/finland.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 110px;
     left: 992px;
     top: -11px;
     width: 110px;
 }
 .estonia {
-    background: url("../img/main-countr/estonia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/estonia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 76px;
     left: 1050px;
     top: 130px;
     width: 76px;
 }
 .latvia {
-    background: url("../img/main-countr/latvia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/latvia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 76px;
     left: 1061px;
     top: 200px;
     width: 76px;
 }
 .litva {
-    background: url("../img/main-countr/litva.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/litva.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 76px;
     left: 988px;
     top: 224px;
     width: 76px;
 }
 .belorussia {
-    background: url("../img/main-countr/belorussia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/belorussia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 110px;
     left: 1234px;
     top: 261px;
     width: 110px;
 }
 .russia {
-    background: url("../img/main-countr/russia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/russia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 220px;
     left: 1344px;
     top: 114px;
     width: 220px;
 }
 .ukraine {
-    background: url("../img/main-countr/ukraine.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/ukraine.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 170px;
     left: 1194px;
     top: 383px;
     width: 170px;
 }
 .poland {
-    background: url("../img/main-countr/poland.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/poland.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 110px;
     left: 895px;
     top: 301px;
     width: 110px;
 }
 .denmark {
-    background: url("../img/main-countr/denmark.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/denmark.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 94px;
     left: 681px;
     top: 208px;
     width: 94px;
 }
 .uk {
-    background: url("../img/main-countr/uk.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/uk.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 120px;
     left: 386px;
     top: 292px;
     width: 120px;
 }
 .germany {
-    background: url("../img/main-countr/germany.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/germany.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 170px;
     left: 648px;
     top: 327px;
     width: 170px;
 }
 .netherlands {
-    background: url("../img/main-countr/netherlands.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/netherlands.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 55px;
     left: 590px;
     top: 333px;
     width: 55px;
 }
 .belgium {
-    background: url("../img/main-countr/belgium.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/belgium.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 49px;
     left: 574px;
     top: 390px;
     width: 49px;
 }
 .france {
-    background: url("../img/main-countr/france.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/france.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 170px;
     left: 484px;
     top: 448px;
     width: 170px;
 }
 .czeh {
-    background: url("../img/main-countr/czeh.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/czeh.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 57px;
     left: 831px;
     top: 400px;
     width: 57px;
 }
 .slovakia {
-    background: url("../img/main-countr/slovakia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/slovakia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 53px;
     left: 956px;
     top: 457px;
     width: 53px;
 }
 .austria {
-    background: url("../img/main-countr/austria.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/austria.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 76px;
     left: 763px;
     top: 485px;
     width: 76px;
 }
 .hungary {
-    background: url("../img/main-countr/hungary.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/hungary.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 76px;
     left: 876px;
     top: 495px;
     width: 76px;
 }
 .switzerland {
-    background: url("../img/main-countr/switzerland.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/switzerland.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 57px;
     left: 703px;
     top: 541px;
     width: 57px;
 }
 .slovenia {
-    background: url("../img/main-countr/slovenia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/slovenia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 810px;
     top: 571px;
     width: 33px;
 }
 .italy {
-    background: url("../img/main-countr/italy.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/italy.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 94px;
     left: 749px;
     top: 632px;
     width: 94px;
 }
 .croatia {
-    background: url("../img/main-countr/croatia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/croatia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 57px;
     left: 878px;
     top: 608px;
     width: 57px;
 }
 .serbia {
-    background: url("../img/main-countr/serbia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/serbia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 57px;
     left: 943px;
     top: 617px;
     width: 57px;
 }
 .montenegro {
-    background: url("../img/main-countr/montenegro.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/montenegro.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 35px;
     left: 916px;
     top: 666px;
     width: 35px;
 }
 .bolgary {
-    background: url("../img/main-countr/bolgary.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/bolgary.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 94px;
     left: 1040px;
     top: 627px;
     width: 94px;
 }
 .greece {
-    background: url("../img/main-countr/greece.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/greece.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 120px;
     left: 964px;
     top: 726px;
     width: 120px;
 }
 .turkey {
-    background: url("../img/main-countr/turkey.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/turkey.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 110px;
     left: 1151px;
     top: 730px;
     width: 110px;
 }
 .cyprus {
-    background: url("../img/main-countr/cyprus.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/cyprus.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 35px;
     left: 1254px;
     top: 869px;
     width: 35px;
 }
 .georgia {
-    background: url("../img/main-countr/georgia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/georgia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 57px;
     left: 1435px;
     top: 610px;
     width: 57px;
 }
 .romania {
-    background: url("../img/main-countr/romania.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/romania.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 110px;
     left: 1066px;
     top: 511px;
     width: 110px;
 }
 .tunis {
-    background: url("../img/main-countr/tunis.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/tunis.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 53px;
     left: 686px;
     top: 845px;
     width: 53px;
 }
 .andorra {
-    background: url("../img/main-countr/andorra.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/andorra.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 32px;
     left: 472px;
     top: 695px;
     width: 33px;
 }
 .spain {
-    background: url("../img/main-countr/spain.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/spain.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 120px;
     left: 292px;
     top: 679px;
     width: 120px;
 }
 .portugal {
-    background: url("../img/main-countr/portugal.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/portugal.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 76px;
     left: 239px;
     top: 780px;
     width: 76px;
 }
 .morocco {
-    background: url("../img/main-countr/morocco.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/morocco.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 329px;
     top: 884px;
@@ -2329,168 +2352,168 @@ body.main {
 /* */
 
 .belorussia-m {
-    background: url("../img/main-countr/belorussia-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/belorussia-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 46px;
     left: 931px;
     top: 168px;
     width: 46px;
 }
 .russia-m {
-    background: url("../img/main-countr/russia-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/russia-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 120px;
     left: 1087px;
     top: 80px;
     width: 120px;
 }
 .china {
-    background: url("../img/main-countr/china.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/china.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 100px;
     left: 1225px;
     top: 229px;
     width: 100px;
 }
 .morocco-m {
-    background: url("../img/main-countr/morocco.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/morocco.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 736px;
     top: 324px;
     width: 33px;
 }
 .tunis-m {
-    background: url("../img/main-countr/tunis-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/tunis-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 25px;
     left: 824px;
     top: 316px;
     width: 25px;
 }
 .egypt {
-    background: url("../img/main-countr/egypt.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/egypt.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 46px;
     left: 873px;
     top: 346px;
     width: 46px;
 }
 .turkey-m {
-    background: url("../img/main-countr/turkey-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/turkey-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 34px;
     left: 918px;
     top: 283px;
     width: 34px;
 }
 .cyprus-m {
-    background: url("../img/main-countr/cyprus-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/cyprus-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 20px;
     left: 933px;
     top: 319px;
     width: 21px;
 }
 .israel {
-    background: url("../img/main-countr/israel.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/israel.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 21px;
     left: 940px;
     top: 341px;
     width: 21px;
 }
 .jordan {
-    background: url("../img/main-countr/jordan.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/jordan.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 21px;
     left: 961px;
     top: 353px;
     width: 21px;
 }
 .uae {
-    background: url("../img/main-countr/uae.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/uae.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 34px;
     left: 1020px;
     top: 367px;
     width: 34px;
 }
 .india {
-    background: url("../img/main-countr/india.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/india.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 66px;
     left: 1122px;
     top: 352px;
     width: 66px;
 }
 .maldives {
-    background: url("../img/main-countr/maldives.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/maldives.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 1111px;
     top: 449px;
     width: 33px;
 }
 .srilanka {
-    background: url("../img/main-countr/srilanka.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/srilanka.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 34px;
     left: 1152px;
     top: 446px;
     width: 34px;
 }
 .vietnam {
-    background: url("../img/main-countr/vietnam.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/vietnam.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 1249px;
     top: 390px;
     width: 33px;
 }
 .thailand {
-    background: url("../img/main-countr/thailand.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/thailand.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 1247px;
     top: 424px;
     width: 33px;
 }
 .singapore {
-    background: url("../img/main-countr/singapore.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/singapore.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 33px;
     left: 1251px;
     top: 463px;
     width: 33px;
 }
 .indonesia {
-    background: url("../img/main-countr/indonesia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/indonesia.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 66px;
     left: 1297px;
     top: 473px;
     width: 66px;
 }
 .japan {
-    background: url("../img/main-countr/japan.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/japan.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 66px;
     left: 1404px;
     top: 280px;
     width: 66px;
 }
 .mexico {
-    background: url("../img/main-countr/mexico.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/mexico.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 66px;
     left: 273px;
     top: 341px;
     width: 66px;
 }
 .cuba {
-    background: url("../img/main-countr/cuba.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/cuba.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 34px;
     left: 401px;
     top: 372px;
     width: 34px;
 }
 .jamaica {
-    background: url("../img/main-countr/jamaica.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/jamaica.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 34px;
     left: 410px;
     top: 402px;
     width: 34px;
 }
 .dominicana {
-    background: url("../img/main-countr/dominicana.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/main-countr/dominicana.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 34px;
     left: 457px;
     top: 398px;
     width: 34px;
 }
 body.airtickets:before {
-    background: url("../img/airbus-tickets.png") no-repeat scroll center top / 100% auto rgba(0, 0, 0, 0);
+    background: url("../../bundles/applicationukrlogicmain/img/airbus-tickets.png") no-repeat scroll center top / 100% auto rgba(0, 0, 0, 0);
     content: "";
     height: 100%;
     position: absolute;
@@ -2668,24 +2691,24 @@ z-index: 3;
     background-repeat: no-repeat;
 }
 .visual.search {
-    background-image: url(../images/icon-search.gif);
+    background-image: url(../../bundles/applicationukrlogicmain/images/icon-search.gif);
 }
 .visual.search:hover {
-    background-image: url(../images/icon-search-green.gif);
+    background-image: url(../../bundles/applicationukrlogicmain/images/icon-search-green.gif);
 }
 .visual.calendar {
-    background: url(../img/icon-calendar.gif) no-repeat center top;
+    background: url(../../bundles/applicationukrlogicmain/img/icon-calendar.gif) no-repeat center top;
 }
 .visual.select {
-    background-image: url("../img/accordion-arrow.png");
+    background-image: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png");
     background-position: 0 -14px;
 }
 .visual.selected {
-    background-image: url("../img/accordion-arrow.png");
+    background-image: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png");
     background-position: 0 0;
 }
 .visual.btn-x {
-    background: url(../img/icon-cancel-blue-fade.gif) no-repeat center top;
+    background: url(../../bundles/applicationukrlogicmain/img/icon-cancel-blue-fade.gif) no-repeat center top;
 }
 
 .visual-box {
@@ -2829,7 +2852,7 @@ line-height: 16px;
 width: 16px;
 }
 .picker li .none {
-    background: url(../img/icon-cancel-blue.gif) no-repeat center center;
+    background: url(../../bundles/applicationukrlogicmain/img/icon-cancel-blue.gif) no-repeat center center;
 }
 .picker li .none span {
     display: none !important;
@@ -2895,24 +2918,24 @@ width: 16px;
 }
 .form .icon-route {
     height: 35px;
-    background: url(../img/icon-oneway-big-white.png) no-repeat center center;
+    background: url(../../bundles/applicationukrlogicmain/img/icon-oneway-big-white.png) no-repeat center center;
 }
 .form .icon-segment {
     height: 22px;
     margin-top: 0;
-    background: url(../img/icon-oneway-mid-white.png) no-repeat center center;
+    background: url(../../bundles/applicationukrlogicmain/img/icon-oneway-mid-white.png) no-repeat center center;
 }
 .form .icon-route.roundtrip {
-    background-image: url(../img/icon-roundtrip-big-white.png);
+    background-image: url(../../bundles/applicationukrlogicmain/img/icon-roundtrip-big-white.png);
 }
 #complex .add, #complex .remove {
     margin: 0 0.75em 0.75em 0;
 }
 #complex .segment:hover a.icon-segment {
-    background: url(../img/icon-cancel-mid-blue-fade.gif) no-repeat center center;
+    background: url(../../bundles/applicationukrlogicmain/img/icon-cancel-mid-blue-fade.gif) no-repeat center center;
 }
 #complex .segment a.icon-segment:hover {
-    background-image: url(../img/icon-cancel-mid-white.gif);
+    background-image: url(../../bundles/applicationukrlogicmain/img/icon-cancel-mid-white.gif);
 }
 .main .pagination {
     height: 1.5em;
@@ -3047,7 +3070,7 @@ width: 16px;
     width: 5%;
 }
 .variant .details tr.option:first-child .radio, .variant .details tr.option:first-child .info {
-    background-image: url(../images/input-shade.png);
+    background-image: url(../../bundles/applicationukrlogicmain/images/input-shade.png);
     background-position: left top;
     background-repeat: repeat-x;
     padding-top: 10px;
@@ -3310,7 +3333,7 @@ float: left;
 }
 
     .filter-search input {
-        background: url("../img/search-ico.png") no-repeat scroll left 12px top 9px #006699;
+        background: url("../../bundles/applicationukrlogicmain/img/search-ico.png") no-repeat scroll left 12px top 9px #006699;
         font-size: 14px;
         height: 30px;
     }
@@ -3449,7 +3472,7 @@ text-transform: uppercase;
 
 
 .e404{
-background: url("../img/404.png") no-repeat scroll center center / auto 80% rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/404.png") no-repeat scroll center center / auto 80% rgba(0, 0, 0, 0);
 display: table;
 text-align: center;
 vertical-align: middle;
@@ -3478,7 +3501,7 @@ text-shadow: -1px 1px 0 #fff;
 /* @author Никита Иванов (исходные пиктограммы флагов), nickivanov.ru (nickivanov@nickivanov.ru) */
 /* Набор распостраняется на условиях лицензии CC-BY-SA */
 /* Эти летом я был: в <i class="flag-HN"></i> Гондурасе, <i class="flag-LI"></i> Лихтенштейне, и <i class="flag-SE"></i> Швеции. */
-.flag-NOWHERE, .flag-ABKHAZIA, .flag-AD, .flag-AE, .flag-AF, .flag-AG, .flag-AI, .flag-AL, .flag-AM, .flag-AN, .flag-AO, .flag-AQ, .flag-AR, .flag-AS, .flag-AT, .flag-AU, .flag-AW, .flag-AX, .flag-AZ, .flag-BA, .flag-BB, .flag-BD, .flag-BE, .flag-BF, .flag-BG, .flag-BH, .flag-BI, .flag-BJ, .flag-BL, .flag-BM, .flag-BN, .flag-BO, .flag-BR, .flag-BS, .flag-BT, .flag-BV, .flag-BW, .flag-BY, .flag-BZ, .flag-CA, .flag-CC, .flag-CD, .flag-CF, .flag-CG, .flag-CH, .flag-CI, .flag-CK, .flag-CL, .flag-CM, .flag-CN, .flag-CO, .flag-CR, .flag-CU, .flag-CV, .flag-CX, .flag-CY, .flag-CZ, .flag-DE, .flag-DJ, .flag-DK, .flag-DM, .flag-DO, .flag-DZ, .flag-EC, .flag-EE, .flag-EG, .flag-EH, .flag-ER, .flag-ES-CE, .flag-ES-ML, .flag-ES, .flag-ET, .flag-EU, .flag-FI, .flag-FJ, .flag-FK, .flag-FM, .flag-FO, .flag-FR, .flag-GA, .flag-GB, .flag-GD, .flag-GE, .flag-GF, .flag-GG, .flag-GH, .flag-GI, .flag-GL, .flag-GM, .flag-GN, .flag-GP, .flag-GQ, .flag-GR, .flag-GS, .flag-GT, .flag-GU, .flag-GW, .flag-GY, .flag-HK, .flag-HM, .flag-HN, .flag-HR, .flag-HT, .flag-HU, .flag-IC, .flag-ID, .flag-IE, .flag-IL, .flag-IM, .flag-IN, .flag-IO, .flag-IQ, .flag-IR, .flag-IS, .flag-IT, .flag-JE, .flag-JM, .flag-JO, .flag-JP, .flag-KE, .flag-KG, .flag-KH, .flag-KI, .flag-KM, .flag-KN, .flag-KOSOVO, .flag-KP, .flag-KR, .flag-KW, .flag-KY, .flag-KZ, .flag-LA, .flag-LB, .flag-LC, .flag-LI, .flag-LK, .flag-LR, .flag-LS, .flag-LT, .flag-LU, .flag-LV, .flag-LY, .flag-MA, .flag-MC, .flag-MD, .flag-ME, .flag-MF, .flag-MG, .flag-MH, .flag-MK, .flag-ML, .flag-MM, .flag-MN, .flag-MO, .flag-MP, .flag-MQ, .flag-MR, .flag-MS, .flag-MT, .flag-MU, .flag-MV, .flag-MW, .flag-MX, .flag-MY, .flag-MZ, .flag-NA, .flag-NC, .flag-NE, .flag-NF, .flag-NG, .flag-NI, .flag-NKR, .flag-NL, .flag-NO, .flag-NP, .flag-NR, .flag-NU, .flag-NZ, .flag-OM, .flag-PA, .flag-PE, .flag-PF, .flag-PG, .flag-PH, .flag-PK, .flag-PL, .flag-PM, .flag-PN, .flag-PR, .flag-PS, .flag-PT, .flag-PW, .flag-PY, .flag-QA, .flag-RE, .flag-RO, .flag-RS, .flag-RU, .flag-RW, .flag-SA, .flag-SB, .flag-SC, .flag-SD, .flag-SE, .flag-SG, .flag-SH, .flag-SI, .flag-SJ, .flag-SK, .flag-SL, .flag-SM, .flag-SN, .flag-SO, .flag-SOUTH-OSSETIA, .flag-SR, .flag-SS, .flag-ST, .flag-SV, .flag-SY, .flag-SZ, .flag-TC, .flag-TD, .flag-TF, .flag-TG, .flag-TH, .flag-TJ, .flag-TK, .flag-TL, .flag-TM, .flag-TN, .flag-TO, .flag-TR, .flag-TT, .flag-TV, .flag-TW, .flag-TZ, .flag-UA, .flag-UG, .flag-UM, .flag-US, .flag-UY, .flag-UZ, .flag-VA, .flag-VC, .flag-VE, .flag-VG, .flag-VI, .flag-VN, .flag-VU, .flag-WF, .flag-WS, .flag-YE, .flag-YT, .flag-ZA, .flag-ZM, .flag-ZW { background: url("../img/flags.png") no-repeat 0 9px; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; *display: inline; *zoom: 1; transform: scale(1.5);  vertical-align: baseline; position: relative; overflow: hidden; width: 16px; height: 9px; font-size: 0; line-height: 0; margin: 0 0 0 8px; padding: 0; }
+.flag-NOWHERE, .flag-ABKHAZIA, .flag-AD, .flag-AE, .flag-AF, .flag-AG, .flag-AI, .flag-AL, .flag-AM, .flag-AN, .flag-AO, .flag-AQ, .flag-AR, .flag-AS, .flag-AT, .flag-AU, .flag-AW, .flag-AX, .flag-AZ, .flag-BA, .flag-BB, .flag-BD, .flag-BE, .flag-BF, .flag-BG, .flag-BH, .flag-BI, .flag-BJ, .flag-BL, .flag-BM, .flag-BN, .flag-BO, .flag-BR, .flag-BS, .flag-BT, .flag-BV, .flag-BW, .flag-BY, .flag-BZ, .flag-CA, .flag-CC, .flag-CD, .flag-CF, .flag-CG, .flag-CH, .flag-CI, .flag-CK, .flag-CL, .flag-CM, .flag-CN, .flag-CO, .flag-CR, .flag-CU, .flag-CV, .flag-CX, .flag-CY, .flag-CZ, .flag-DE, .flag-DJ, .flag-DK, .flag-DM, .flag-DO, .flag-DZ, .flag-EC, .flag-EE, .flag-EG, .flag-EH, .flag-ER, .flag-ES-CE, .flag-ES-ML, .flag-ES, .flag-ET, .flag-EU, .flag-FI, .flag-FJ, .flag-FK, .flag-FM, .flag-FO, .flag-FR, .flag-GA, .flag-GB, .flag-GD, .flag-GE, .flag-GF, .flag-GG, .flag-GH, .flag-GI, .flag-GL, .flag-GM, .flag-GN, .flag-GP, .flag-GQ, .flag-GR, .flag-GS, .flag-GT, .flag-GU, .flag-GW, .flag-GY, .flag-HK, .flag-HM, .flag-HN, .flag-HR, .flag-HT, .flag-HU, .flag-IC, .flag-ID, .flag-IE, .flag-IL, .flag-IM, .flag-IN, .flag-IO, .flag-IQ, .flag-IR, .flag-IS, .flag-IT, .flag-JE, .flag-JM, .flag-JO, .flag-JP, .flag-KE, .flag-KG, .flag-KH, .flag-KI, .flag-KM, .flag-KN, .flag-KOSOVO, .flag-KP, .flag-KR, .flag-KW, .flag-KY, .flag-KZ, .flag-LA, .flag-LB, .flag-LC, .flag-LI, .flag-LK, .flag-LR, .flag-LS, .flag-LT, .flag-LU, .flag-LV, .flag-LY, .flag-MA, .flag-MC, .flag-MD, .flag-ME, .flag-MF, .flag-MG, .flag-MH, .flag-MK, .flag-ML, .flag-MM, .flag-MN, .flag-MO, .flag-MP, .flag-MQ, .flag-MR, .flag-MS, .flag-MT, .flag-MU, .flag-MV, .flag-MW, .flag-MX, .flag-MY, .flag-MZ, .flag-NA, .flag-NC, .flag-NE, .flag-NF, .flag-NG, .flag-NI, .flag-NKR, .flag-NL, .flag-NO, .flag-NP, .flag-NR, .flag-NU, .flag-NZ, .flag-OM, .flag-PA, .flag-PE, .flag-PF, .flag-PG, .flag-PH, .flag-PK, .flag-PL, .flag-PM, .flag-PN, .flag-PR, .flag-PS, .flag-PT, .flag-PW, .flag-PY, .flag-QA, .flag-RE, .flag-RO, .flag-RS, .flag-RU, .flag-RW, .flag-SA, .flag-SB, .flag-SC, .flag-SD, .flag-SE, .flag-SG, .flag-SH, .flag-SI, .flag-SJ, .flag-SK, .flag-SL, .flag-SM, .flag-SN, .flag-SO, .flag-SOUTH-OSSETIA, .flag-SR, .flag-SS, .flag-ST, .flag-SV, .flag-SY, .flag-SZ, .flag-TC, .flag-TD, .flag-TF, .flag-TG, .flag-TH, .flag-TJ, .flag-TK, .flag-TL, .flag-TM, .flag-TN, .flag-TO, .flag-TR, .flag-TT, .flag-TV, .flag-TW, .flag-TZ, .flag-UA, .flag-UG, .flag-UM, .flag-US, .flag-UY, .flag-UZ, .flag-VA, .flag-VC, .flag-VE, .flag-VG, .flag-VI, .flag-VN, .flag-VU, .flag-WF, .flag-WS, .flag-YE, .flag-YT, .flag-ZA, .flag-ZM, .flag-ZW { background: url("../../bundles/applicationukrlogicmain/img/flags.png") no-repeat 0 9px; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; *display: inline; *zoom: 1; transform: scale(1.5);  vertical-align: baseline; position: relative; overflow: hidden; width: 16px; height: 9px; font-size: 0; line-height: 0; margin: 0 0 0 8px; padding: 0; }
 
 .flag-ABKHAZIA { background-position: 0 0px; }
 
@@ -4282,7 +4305,7 @@ width: 176px;
     top: 12px;
 }
 .sod_select:after {
-background: url("../img/accordion-arrow.png") no-repeat scroll 0 -13px rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0 -13px rgba(0, 0, 0, 0);
 content: "";
 height: 14px;
 position: absolute;
@@ -4291,7 +4314,7 @@ top: 12px;
 width: 21px;
 }
 .sod_select.open:after {
-background: url("../img/accordion-arrow.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
 content: "";
 height: 14px;
 position: absolute;
@@ -4794,7 +4817,7 @@ yx-axis
 	.mCSB_scrollTools .mCSB_buttonDown,
 	.mCSB_scrollTools .mCSB_buttonLeft,
 	.mCSB_scrollTools .mCSB_buttonRight{
-		background-image: url(../css/mCSB_buttons.png); /* css sprites */
+		background-image: url(../../bundles/applicationukrlogicmain/css/mCSB_buttons.png); /* css sprites */
 		background-repeat: no-repeat;
 		opacity: 0.4; filter: "alpha(opacity=40)"; -ms-filter: "alpha(opacity=40)"; 
 	}
@@ -5814,7 +5837,7 @@ z-index: 1030;
 /* @author Никита Иванов (исходные пиктограммы флагов), nickivanov.ru (nickivanov@nickivanov.ru) */
 /* Набор распостраняется на условиях лицензии CC-BY-SA */
 /* Эти летом я был: в <i class="flag-HN"></i> Гондурасе, <i class="flag-LI"></i> Лихтенштейне, и <i class="flag-SE"></i> Швеции. */
-.flag-NOWHERE, .flag-ABKHAZIA, .flag-AD, .flag-AE, .flag-AF, .flag-AG, .flag-AI, .flag-AL, .flag-AM, .flag-AN, .flag-AO, .flag-AQ, .flag-AR, .flag-AS, .flag-AT, .flag-AU, .flag-AW, .flag-AX, .flag-AZ, .flag-BA, .flag-BB, .flag-BD, .flag-BE, .flag-BF, .flag-BG, .flag-BH, .flag-BI, .flag-BJ, .flag-BL, .flag-BM, .flag-BN, .flag-BO, .flag-BR, .flag-BS, .flag-BT, .flag-BV, .flag-BW, .flag-BY, .flag-BZ, .flag-CA, .flag-CC, .flag-CD, .flag-CF, .flag-CG, .flag-CH, .flag-CI, .flag-CK, .flag-CL, .flag-CM, .flag-CN, .flag-CO, .flag-CR, .flag-CU, .flag-CV, .flag-CX, .flag-CY, .flag-CZ, .flag-DE, .flag-DJ, .flag-DK, .flag-DM, .flag-DO, .flag-DZ, .flag-EC, .flag-EE, .flag-EG, .flag-EH, .flag-ER, .flag-ES-CE, .flag-ES-ML, .flag-ES, .flag-ET, .flag-EU, .flag-FI, .flag-FJ, .flag-FK, .flag-FM, .flag-FO, .flag-FR, .flag-GA, .flag-GB, .flag-GD, .flag-GE, .flag-GF, .flag-GG, .flag-GH, .flag-GI, .flag-GL, .flag-GM, .flag-GN, .flag-GP, .flag-GQ, .flag-GR, .flag-GS, .flag-GT, .flag-GU, .flag-GW, .flag-GY, .flag-HK, .flag-HM, .flag-HN, .flag-HR, .flag-HT, .flag-HU, .flag-IC, .flag-ID, .flag-IE, .flag-IL, .flag-IM, .flag-IN, .flag-IO, .flag-IQ, .flag-IR, .flag-IS, .flag-IT, .flag-JE, .flag-JM, .flag-JO, .flag-JP, .flag-KE, .flag-KG, .flag-KH, .flag-KI, .flag-KM, .flag-KN, .flag-KOSOVO, .flag-KP, .flag-KR, .flag-KW, .flag-KY, .flag-KZ, .flag-LA, .flag-LB, .flag-LC, .flag-LI, .flag-LK, .flag-LR, .flag-LS, .flag-LT, .flag-LU, .flag-LV, .flag-LY, .flag-MA, .flag-MC, .flag-MD, .flag-ME, .flag-MF, .flag-MG, .flag-MH, .flag-MK, .flag-ML, .flag-MM, .flag-MN, .flag-MO, .flag-MP, .flag-MQ, .flag-MR, .flag-MS, .flag-MT, .flag-MU, .flag-MV, .flag-MW, .flag-MX, .flag-MY, .flag-MZ, .flag-NA, .flag-NC, .flag-NE, .flag-NF, .flag-NG, .flag-NI, .flag-NKR, .flag-NL, .flag-NO, .flag-NP, .flag-NR, .flag-NU, .flag-NZ, .flag-OM, .flag-PA, .flag-PE, .flag-PF, .flag-PG, .flag-PH, .flag-PK, .flag-PL, .flag-PM, .flag-PN, .flag-PR, .flag-PS, .flag-PT, .flag-PW, .flag-PY, .flag-QA, .flag-RE, .flag-RO, .flag-RS, .flag-RU, .flag-RW, .flag-SA, .flag-SB, .flag-SC, .flag-SD, .flag-SE, .flag-SG, .flag-SH, .flag-SI, .flag-SJ, .flag-SK, .flag-SL, .flag-SM, .flag-SN, .flag-SO, .flag-SOUTH-OSSETIA, .flag-SR, .flag-SS, .flag-ST, .flag-SV, .flag-SY, .flag-SZ, .flag-TC, .flag-TD, .flag-TF, .flag-TG, .flag-TH, .flag-TJ, .flag-TK, .flag-TL, .flag-TM, .flag-TN, .flag-TO, .flag-TR, .flag-TT, .flag-TV, .flag-TW, .flag-TZ, .flag-UA, .flag-UG, .flag-UM, .flag-US, .flag-UY, .flag-UZ, .flag-VA, .flag-VC, .flag-VE, .flag-VG, .flag-VI, .flag-VN, .flag-VU, .flag-WF, .flag-WS, .flag-YE, .flag-YT, .flag-ZA, .flag-ZM, .flag-ZW { background: url("../img/flags.png") no-repeat 0 9px; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; *display: inline; *zoom: 1; transform: scale(1.5);  vertical-align: baseline; position: relative; overflow: hidden; width: 16px; height: 9px; font-size: 0; line-height: 0; margin: 0 0 0 8px; padding: 0; }
+.flag-NOWHERE, .flag-ABKHAZIA, .flag-AD, .flag-AE, .flag-AF, .flag-AG, .flag-AI, .flag-AL, .flag-AM, .flag-AN, .flag-AO, .flag-AQ, .flag-AR, .flag-AS, .flag-AT, .flag-AU, .flag-AW, .flag-AX, .flag-AZ, .flag-BA, .flag-BB, .flag-BD, .flag-BE, .flag-BF, .flag-BG, .flag-BH, .flag-BI, .flag-BJ, .flag-BL, .flag-BM, .flag-BN, .flag-BO, .flag-BR, .flag-BS, .flag-BT, .flag-BV, .flag-BW, .flag-BY, .flag-BZ, .flag-CA, .flag-CC, .flag-CD, .flag-CF, .flag-CG, .flag-CH, .flag-CI, .flag-CK, .flag-CL, .flag-CM, .flag-CN, .flag-CO, .flag-CR, .flag-CU, .flag-CV, .flag-CX, .flag-CY, .flag-CZ, .flag-DE, .flag-DJ, .flag-DK, .flag-DM, .flag-DO, .flag-DZ, .flag-EC, .flag-EE, .flag-EG, .flag-EH, .flag-ER, .flag-ES-CE, .flag-ES-ML, .flag-ES, .flag-ET, .flag-EU, .flag-FI, .flag-FJ, .flag-FK, .flag-FM, .flag-FO, .flag-FR, .flag-GA, .flag-GB, .flag-GD, .flag-GE, .flag-GF, .flag-GG, .flag-GH, .flag-GI, .flag-GL, .flag-GM, .flag-GN, .flag-GP, .flag-GQ, .flag-GR, .flag-GS, .flag-GT, .flag-GU, .flag-GW, .flag-GY, .flag-HK, .flag-HM, .flag-HN, .flag-HR, .flag-HT, .flag-HU, .flag-IC, .flag-ID, .flag-IE, .flag-IL, .flag-IM, .flag-IN, .flag-IO, .flag-IQ, .flag-IR, .flag-IS, .flag-IT, .flag-JE, .flag-JM, .flag-JO, .flag-JP, .flag-KE, .flag-KG, .flag-KH, .flag-KI, .flag-KM, .flag-KN, .flag-KOSOVO, .flag-KP, .flag-KR, .flag-KW, .flag-KY, .flag-KZ, .flag-LA, .flag-LB, .flag-LC, .flag-LI, .flag-LK, .flag-LR, .flag-LS, .flag-LT, .flag-LU, .flag-LV, .flag-LY, .flag-MA, .flag-MC, .flag-MD, .flag-ME, .flag-MF, .flag-MG, .flag-MH, .flag-MK, .flag-ML, .flag-MM, .flag-MN, .flag-MO, .flag-MP, .flag-MQ, .flag-MR, .flag-MS, .flag-MT, .flag-MU, .flag-MV, .flag-MW, .flag-MX, .flag-MY, .flag-MZ, .flag-NA, .flag-NC, .flag-NE, .flag-NF, .flag-NG, .flag-NI, .flag-NKR, .flag-NL, .flag-NO, .flag-NP, .flag-NR, .flag-NU, .flag-NZ, .flag-OM, .flag-PA, .flag-PE, .flag-PF, .flag-PG, .flag-PH, .flag-PK, .flag-PL, .flag-PM, .flag-PN, .flag-PR, .flag-PS, .flag-PT, .flag-PW, .flag-PY, .flag-QA, .flag-RE, .flag-RO, .flag-RS, .flag-RU, .flag-RW, .flag-SA, .flag-SB, .flag-SC, .flag-SD, .flag-SE, .flag-SG, .flag-SH, .flag-SI, .flag-SJ, .flag-SK, .flag-SL, .flag-SM, .flag-SN, .flag-SO, .flag-SOUTH-OSSETIA, .flag-SR, .flag-SS, .flag-ST, .flag-SV, .flag-SY, .flag-SZ, .flag-TC, .flag-TD, .flag-TF, .flag-TG, .flag-TH, .flag-TJ, .flag-TK, .flag-TL, .flag-TM, .flag-TN, .flag-TO, .flag-TR, .flag-TT, .flag-TV, .flag-TW, .flag-TZ, .flag-UA, .flag-UG, .flag-UM, .flag-US, .flag-UY, .flag-UZ, .flag-VA, .flag-VC, .flag-VE, .flag-VG, .flag-VI, .flag-VN, .flag-VU, .flag-WF, .flag-WS, .flag-YE, .flag-YT, .flag-ZA, .flag-ZM, .flag-ZW { background: url("../../bundles/applicationukrlogicmain/img/flags.png") no-repeat 0 9px; display: -moz-inline-box; -moz-box-orient: vertical; display: inline-block; *display: inline; *zoom: 1; transform: scale(1.5);  vertical-align: baseline; position: relative; overflow: hidden; width: 16px; height: 9px; font-size: 0; line-height: 0; margin: 0 0 0 8px; padding: 0; }
 
 .flag-ABKHAZIA { background-position: 0 0px; }
 
@@ -6622,7 +6645,7 @@ padding: 0;
     top: 12px;
 }
 .sod_select:after {
-background: url("../img/accordion-arrow.png") no-repeat scroll 0 -13px rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0 -13px rgba(0, 0, 0, 0);
 content: "";
 height: 14px;
 position: absolute;
@@ -6631,7 +6654,7 @@ top: 12px;
 width: 21px;
 }
 .sod_select.open:after {
-background: url("../img/accordion-arrow.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
+background: url("../../bundles/applicationukrlogicmain/img/accordion-arrow.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
 content: "";
 height: 14px;
 position: absolute;
@@ -7135,7 +7158,7 @@ yx-axis
 	.mCSB_scrollTools .mCSB_buttonDown,
 	.mCSB_scrollTools .mCSB_buttonLeft,
 	.mCSB_scrollTools .mCSB_buttonRight{
-		background-image: url(../css/mCSB_buttons.png); /* css sprites */
+		background-image: url(../../bundles/applicationukrlogicmain/css/mCSB_buttons.png); /* css sprites */
 		background-repeat: no-repeat;
 		opacity: 0.4; filter: "alpha(opacity=40)"; -ms-filter: "alpha(opacity=40)"; 
 	}
