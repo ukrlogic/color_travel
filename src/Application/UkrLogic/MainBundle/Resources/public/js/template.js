@@ -239,13 +239,16 @@ $(function () {
         console.log(this);
         var dataClass = $(this).data('class');
         var checkboxes = $('input[type="checkbox"].' + dataClass);
-        if (ckeckboxes.attr("checked")) return;
+        if (checkboxes.attr("checked")) return;
+        $('.filter-variant .button').removeClass('active');
+        $('.filter-variant .button[data-class="'+dataClass+'"]').addClass('active');
         $('input[type="checkbox"].travel_type').attr("checked", false);
         checkboxes.attr("checked", true);
+        dataClass = 'is_bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
         $('form[name="tour_form"]').submit();
     });
 
-    if (! $('.filter-variant .button[data-class="is_bus"]').hasClass('active')) {
+    if ($('.filter-variant .button[data-class="is_bus"]').hasClass('active')) {
         $('.hide-on-bus').hide();
     }
 

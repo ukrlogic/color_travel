@@ -94,7 +94,7 @@ height: 110px;
 padding: 35px 0 0px;
 position: relative;
 z-index: 4;
-background: url("/img/header_bg.jpg") no-repeat scroll rgba(0, 0, 0, 0);
+background: url("../img/header_bg.jpg") no-repeat scroll rgba(0, 0, 0, 0);
 }
 footer, header, nav {
 background: none repeat scroll 0 0 rgba(255, 255, 255, 1);
@@ -151,7 +151,7 @@ text-shadow: -1px 1px 0 #555;
     margin-bottom: 9px;
 }
 i.phone {
-background: url("/img/phone.png") no-repeat scroll rgba(0, 0, 0, 0);
+background: url("../img/phone.png") no-repeat scroll rgba(0, 0, 0, 0);
 display: inline-block;
 height: 28px;
 width: 265px;

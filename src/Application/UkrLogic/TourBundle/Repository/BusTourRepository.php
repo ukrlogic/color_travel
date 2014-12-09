@@ -41,8 +41,8 @@ class BusTourRepository extends EntityRepository
         try {
             $qb = $this->createQueryBuilder('t');
 
-            if (is_array($options->get('countries')) && $code = array_search(true, $options->get('countries'))) {
-                $country = $this->getCountryRepository()->find($code);
+            if (is_array($options->get('countries')) && $cid = array_search(true, $options->get('countries'))) {
+                $country = $this->getCountryRepository()->find($cid);
                 if (null !== $country) {
                     $qb->where(':country MEMBER OF t.countries')->setParameter('country', $country);
                 }
