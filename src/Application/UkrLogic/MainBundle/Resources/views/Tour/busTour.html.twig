@@ -35,11 +35,11 @@
             </div>
         </div>
         <div class="hotel-tour-description">
-            <h1>{{ tour.name }}</h1>
+            <h1>{{ tour.route | raw }}</h1>
 
             <div class="hotel-tour-desc">
-                <p>{{ tour.route | raw }}</p>
-
+                <p>{{ tour.name }}</p>
+                <p class="price">{{ tour.price_usd }} $</p>
                 <div>
                     <div class="vehicle-tour">
                         <p><i class="bus"></i></p>
@@ -61,9 +61,12 @@
 
 
             </div>
-            <p class="price">{{ tour.price_usd }} $</p>
+
 
             <div class="actions">
+                <a id="addComment" class="button" href="">Оставить отзыв</a>
+                <a id="order" class="button" href="">Забронировать</a>
+                <a href="#" class="button">Купить онлайн</a>
                 {% if app.user %}
                     {% if inFavorite %}
                         <a class="button" href="#" style="margin-bottom: 5px; pointer-events: none; cursor: default;">В избранном</a>
@@ -71,8 +74,7 @@
                         <a class="button" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}" style="margin-bottom: 5px;">В избранное</a>
                     {% endif %}
                 {% endif %}
-                <a id="order" class="button" href="">Забронировать</a>
-                <a id="addComment" class="button" href="">Оставить отзыв</a>
+
             </div>
 
         </div>
