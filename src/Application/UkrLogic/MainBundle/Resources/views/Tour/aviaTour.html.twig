@@ -38,7 +38,7 @@
             <h1>{{ tour.Resort.name }}, {{ tour.Country.name }}</h1>
 
             <div class="hotel-tour-desc">
-                <p>{{ tour.Allocation.name }} {{ tour.Allocation.rate|round }}*</p>
+                <p>{{ tour.Allocation.name }} {% if tour.Allocation.rate is defined %}{{ tour.Allocation.rate|round }}*{% endif %}</p>
                 <p class="price">{{ tour.price }} $</p>
                 <div>
                     <div class="vehicle-tour">
