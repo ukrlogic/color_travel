@@ -59,6 +59,7 @@ class TourType extends AbstractType
                 ],
                 'required' => false,
                 'data' => '1',
+                'empty_value' => false,
             ])
             ->add('child_count', 'choice', [
                 'choices' => [
@@ -73,9 +74,10 @@ class TourType extends AbstractType
                 ],
                 'required' => false,
                 'data' => '0',
+                'empty_value' => false,
             ])
-            ->add('is_avia', 'checkbox', ['data' => true, 'attr' => ['class' => 'is_avia travel_type'], 'required' => false])
-            ->add('is_bus', 'checkbox', ['data' => false, 'attr' => ['class' => 'is_bus travel_type'], 'required' => false])
+            ->add('is_avia', 'checkbox', ['attr' => ['class' => 'is_avia travel_type', 'checked' => false, ], 'required' => false])
+            ->add('is_bus', 'checkbox', ['attr' => ['class' => 'is_bus travel_type', 'checked' => true, ], 'required' => false])
             ->add('page', 'hidden', ['data' => 1, 'attr' => ['class' => 'page'], 'required' => false])
             ->add('submit', 'submit', ['label' => 'Поиск']);
     }

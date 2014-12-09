@@ -10,8 +10,8 @@
         {% for key, field in form.plainPassword %}
             {{ form_widget(field, { 'attr': { 'placeholder': key == 'first' ? 'Введите ваш пароль' : 'Повторно введите ваш пароль' } }) }}
         {% endfor %}
-        {#{{ form_widget(form.username, { 'attr': { 'placeholder': 'Введите ваш контактный телефон' } }) }}#}
         <p class="terms">Нажимая кнопку "Зарегистрироваться" Вы соглашаетесь с условиями.</p>
         <button type="submit">Зарегистрироваться</button>
+        {{ form_rest(form) }}
     </form>
 </div>

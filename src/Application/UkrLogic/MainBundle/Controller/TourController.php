@@ -40,10 +40,8 @@ class TourController extends Controller
 
         if (null === $data) {
             $data = [
-                'is_avia' => true,
-                'is_bus' => false,
-                'countries' => ['12' => true],
-                'cities' => ['668' => true],
+                'is_avia' => false,
+                'is_bus' => true,
                 'page' => 1
             ];
 
