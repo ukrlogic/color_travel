@@ -117,7 +117,7 @@ $(function () {
     windowWidth = $(window).width() + 17;
 
     if (windowWidth >= 1920) {
-        ColumnWidth = 229.5;
+        ColumnWidth = 171.5;
     }
     if (windowWidth <= 1919) {
         ColumnWidth = 168;
@@ -239,9 +239,7 @@ $(function () {
         console.log(this);
         var dataClass = $(this).data('class');
         var checkboxes = $('input[type="checkbox"].' + dataClass);
-        if (ckeckboxes.attr("checked")) return;
-        $('input[type="checkbox"].travel_type').attr("checked", false);
-        checkboxes.attr("checked", true);
+        checkboxes.attr("checked", !checkboxes.attr("checked"));
         $('form[name="tour_form"]').submit();
     });
 
