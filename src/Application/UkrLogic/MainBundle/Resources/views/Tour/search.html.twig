@@ -6,8 +6,12 @@
             <div class="box w filter">
                 {{ form_start(form) }}
                 <div class="filter-variant clear">
-                    <div class="button {% if form.is_bus.vars.attr.checked == true %}active{% endif %}" data-class="is_bus">Автобусный тур</div>
-                    <div class="button {% if form.is_avia.vars.attr.checked == true %}active{% endif %}" data-class="is_avia">Авиа тур</div>
+                    <div class="button {% if form.is_bus.vars.attr.checked == true %}active{% endif %}"
+                         data-class="is_bus">Автобусный тур
+                    </div>
+                    <div class="button {% if form.is_avia.vars.attr.checked == true %}active{% endif %}"
+                         data-class="is_avia">Авиа тур
+                    </div>
                     <div class="button hot">Горящие туры</div>
                 </div>
 

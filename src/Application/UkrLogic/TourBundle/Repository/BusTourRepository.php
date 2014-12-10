@@ -48,22 +48,30 @@ class BusTourRepository extends EntityRepository
                 }
             }
 
-            if ($daysFrom = $options->get('days_from') && $daysTo = $options->get('days_to')) {
+            $daysFrom = $options->get('days_from');
+            $daysTo = $options->get('days_to');
+            if ($daysFrom && $daysTo) {
                 $qb->where('t.days BETWEEN :days_from AND :days_to')
                     ->setParameter('days_from', $daysFrom ? : 6)
                     ->setParameter('days_to', $daysTo ? : 15);
             }
 
-            if ($priceFrom = $options->get('price_from') && $priceTo = $options->get('price_to')) {
+            $priceFrom = $options->get('price_from');
+            $priceTo = $options->get('price_to');
+
+            if ($priceFrom && $priceTo) {
                 $qb->where('t.price_uah BETWEEN :price_from AND :price_to')
                     ->setParameter('price_from', $priceFrom ? : 100)
                     ->setParameter('price_to', $priceTo ? : 3500);
             }
 
-            if ($dateFrom = $options->get('date_from') && $dateTo = $options->get('date_to')) {
+            $dateFrom = $options->get('date_from');
+            $dateTo = $options->get('date_to');
+
+            if ($dateFrom && $dateTo) {
                 $qb->where('t.dateFrom >= :date_from AND t.dateTo <= :date_to')
-                    ->setParameter('date_from', $dateFrom ? : new DateTime('+1 day'))
-                    ->setParameter('date_to', $dateTo ? : new DateTime('+1 week'));
+                    ->setParameter('date_from', $dateFrom)
+                    ->setParameter('date_to', $dateTo);
             }
 
             $query = $qb->setFirstResult(($page - 1) * $limit)->setMaxResults($limit)->getQuery();

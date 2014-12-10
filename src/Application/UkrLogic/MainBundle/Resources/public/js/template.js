@@ -216,23 +216,23 @@ $(function () {
     });
     /***** Вариант тура ******/
 
-    //$('.filter-variant .button:first').click(function () {
-    //    $('.filter-variant .button').removeClass('active');
-    //    $(this).addClass('active');
-    //    $('input[type="checkbox"].is_avia').attr('checked', false);
-    //    $('input[type="checkbox"].is_bus').attr('checked', true);
-    //    $('.hide-on-bus').hide();
-    //    //$('#container').masonry('reload');
-    //});
-    //$('.filter-variant .button:last').click(function () {
-    //    $('.filter-variant .button').removeClass('active');
-    //    $(this).addClass('active');
-    //    $('input[type="checkbox"].is_avia').attr('checked', true);
-    //    $('input[type="checkbox"].is_bus').attr('checked', false);
-    //    $('.hide-on-bus').show();
-    //    //$('#container').masonry('reload');
-    //
-    //});
+        //$('.filter-variant .button:first').click(function () {
+        //    $('.filter-variant .button').removeClass('active');
+        //    $(this).addClass('active');
+        //    $('input[type="checkbox"].is_avia').attr('checked', false);
+        //    $('input[type="checkbox"].is_bus').attr('checked', true);
+        //    $('.hide-on-bus').hide();
+        //    //$('#container').masonry('reload');
+        //});
+        //$('.filter-variant .button:last').click(function () {
+        //    $('.filter-variant .button').removeClass('active');
+        //    $(this).addClass('active');
+        //    $('input[type="checkbox"].is_avia').attr('checked', true);
+        //    $('input[type="checkbox"].is_bus').attr('checked', false);
+        //    $('.hide-on-bus').show();
+        //    //$('#container').masonry('reload');
+        //
+        //});
 
     $('.filter-variant .button').click(function (ev) {
         ev.preventDefault();
@@ -241,10 +241,11 @@ $(function () {
         var checkboxes = $('input[type="checkbox"].' + dataClass);
         if (checkboxes.attr("checked")) return;
         $('.filter-variant .button').removeClass('active');
-        $('.filter-variant .button[data-class="'+dataClass+'"]').addClass('active');
+        $('.filter-variant .button[data-class="' + dataClass + '"]').addClass('active');
         $('input[type="checkbox"].travel_type').attr("checked", false);
         checkboxes.attr("checked", true);
-        dataClass = 'is_bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
+
+        dataClass == 'is_bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
         $('form[name="tour_form"]').submit();
     });
 
@@ -477,10 +478,15 @@ $(function () {
         $form = $(this);
         $.post($form.attr('action'), $form.serialize(), function (data) {
             if (!data) {
-                $('.plzwait').text('Туров не найдено').click(hideOverlay);
-                $('.dots').fadeOut();
+                hideOverlay();
+                swal({
+                    title: "Ничего не найдено!",
+                    text: "К сожалению по вашему запросу ничего не найдено. Попробуйте расширить критерии поиска",
+                    type: "warning",
+                    confirmButtonText: "Ок"
+                });
             } else {
-                if (! $form.data('append')) {
+                if (!$form.data('append')) {
                     $('#container a.masonry-brick').remove();
                 } else {
                     $form.data('append', false);
@@ -496,8 +502,8 @@ $(function () {
     });
 
     //подгрузка туров
-    $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
             var page = $('form[name="tour_form"] input.page').val();
             $('form[name="tour_form"] input.page').val(page++);
 
