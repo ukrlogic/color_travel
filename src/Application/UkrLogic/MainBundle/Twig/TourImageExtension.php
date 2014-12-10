@@ -32,13 +32,16 @@ class TourImageExtension extends \Twig_Extension
 
         try {
             $dir = sprintf("%s/%s/%d", $this->imagesDir, $path, $id);
-            $large = file_exists($dir . '/large');
-            if ($large) {
-                $dir .= '/large';
+
+            if (! file_exists($dir)) {
+                @mkdir($dir);
             }
+
             /** @var SplFileInfo $file */
             foreach ($finder->files()->in($dir) as $file) {
-                $images[] = sprintf("images/%s/%d/%s", $path, $id, ($large ? 'large/' : '') . $file->getRelativePathname());
+                if (! $file->getRelativePath() || $file->getRelativePath() === 'originals') {
+                    $images[] = sprintf("images/%s/%d/%s", $path, $id, $file->getRelativePathname());
+                }
             }
         } catch (\Exception $e) {
             $images[] = "images/noimagew.png?".$e->getMessage();
