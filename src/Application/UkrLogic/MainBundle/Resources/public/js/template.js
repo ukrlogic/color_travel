@@ -503,7 +503,7 @@ $(function () {
 
     //подгрузка туров
     $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+        if ($(window).scrollTop() + $(window).height() == $(document).height() && $('.flip-container').length >= 40) {
             var page = $('form[name="tour_form"] input.page').val();
             $('form[name="tour_form"] input.page').val(page++);
 
