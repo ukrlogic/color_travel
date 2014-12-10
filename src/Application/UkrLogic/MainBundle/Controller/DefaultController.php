@@ -30,7 +30,17 @@ class DefaultController extends Controller
      * @Route("/profile", name="profile")
      * @Template()
      */
-    public function profileAction(Request $request)
+    public function profileAction()
+    {
+        return $this->getProfileNewsPageContent();
+    }
+
+
+    /**
+     * @Route("/profile/edit", name="profile_edit")
+     * @Template()
+     */
+    public function profileEditAction(Request $request)
     {
         $user = $this->getUser();
 
@@ -41,29 +51,14 @@ class DefaultController extends Controller
         $form = $this->createForm('application_sonata_userbundle_user', $user);
         $form->handleRequest($request);
 
-        $commentsTours = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Comment')->findBy(['user' => $user]);
-        $params = [];
-
-        foreach ($commentsTours as $commentTour) {
-            $params[$commentTour->getTourType()][$commentTour->getTourId()] = $commentTour->getTourId();
-        }
-
-        $tours = $this->getTours($params);
-
-        $news = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Post')->findAll();
-
         if ($form->isValid()) {
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirect($request->getRequestUri());
+            return $this->redirect($this->generateUrl('profile'));
         }
 
-        return [
-            'commentsTours' => $tours,
-            'news' => $news,
-            'form' => $form->createView(),
-        ];
+        return array_merge(['form' => $form->createView()], $this->getProfileNewsPageContent());
     }
 
     /**
@@ -149,7 +144,7 @@ class DefaultController extends Controller
                 $qb->select('t')->from('ApplicationUkrLogicTourBundle:BusTour', 't')->where($qb->expr()->in('t.tourId', $ids));
 
                 foreach ($qb->getQuery()->getResult() as $tour) {
-                    $tours[] = ['type' => 'avia', 'info' => $tour];
+                    $tours[] = ['type' => 'bus', 'info' => $tour];
                 }
 
                 break;
@@ -170,5 +165,33 @@ class DefaultController extends Controller
 
 
         return $tours;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProfileNewsPageContent()
+    {
+        $user = $this->getUser();
+
+        if (!($user instanceof UserInterface)) {
+            return new RedirectResponse($this->generateUrl('main_page'));
+        }
+
+        $commentsTours = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Comment')->findBy(['user' => $user]);
+        $params = [];
+
+        foreach ($commentsTours as $commentTour) {
+            $params[$commentTour->getTourType()][$commentTour->getTourId()] = $commentTour->getTourId();
+        }
+
+        $tours = $this->getTours($params);
+
+        $news = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Post')->findAll();
+
+        return [
+            'commentsTours' => $tours,
+            'news' => $news,
+        ];
     }
 }

@@ -1,0 +1,28 @@
+{% extends '@ApplicationUkrLogicMain/Default/profile.html.twig' %}
+
+{% block user_info %}
+    {{ form_start(form) }}
+    <h3>Личный кабинет туриста</h3>
+
+    <div class="user-info">
+        <div class="photo">
+            <img src="http://dummyimage.com/95x95/000/fff.jpg&text=profile+image">
+            <label for="photo-edit" class="photo-edit"></label>
+            <input type="file" id="photo-edit" name="photo-edit">
+        </div>
+
+        <div>
+            {{ form_errors(form) }}
+            {{ form_widget(form.firstname, { 'attr': { 'class': 'nonplace', 'placeholder': 'Имя' } }) }}
+            {{ form_widget(form.lastname, { 'attr': { 'class': 'nonplace', 'placeholder': 'Фамилия' } }) }}
+            {{ form_widget(form.username, { 'attr': { 'class': 'nonplace nickname', 'placeholder': 'Никнейм' } }) }}
+            {{ form_widget(form.phone, { 'attr': { 'class': 'nonplace', 'placeholder': 'Телефон' } }) }}
+            {{ form_widget(form.email, { 'attr': { 'class': 'nonplace', 'placeholder': 'E-mail' } }) }}
+        </div>
+    </div>
+    <div class="confirm">
+        <a href="{{ path('profile') }}">Отмена</a>
+        <button type="submit">Сохранить</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

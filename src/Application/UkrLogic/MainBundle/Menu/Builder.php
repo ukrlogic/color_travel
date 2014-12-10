@@ -58,7 +58,8 @@ class Builder
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Настройки', ['route' => 'profile']);
+        $menu->addChild('Новости', ['route' => 'profile']);
+        $menu->addChild('Настройки', ['route' => 'profile_edit']);
         $menu->addChild('История посещений', ['route' => 'profile_history']);
         $menu->addChild('Избранные туры', ['route' => 'profile_favorites']);
 
