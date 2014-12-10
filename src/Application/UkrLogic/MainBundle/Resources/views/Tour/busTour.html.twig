@@ -69,9 +69,10 @@
                 <a href="#" class="button" id="buy_o">Купить онлайн</a>
                 {% if app.user %}
                     {% if inFavorite %}
-                        <a class="button" href="#" style="margin-bottom: 5px; pointer-events: none; cursor: default;">В избранном</a>
+                        <a class="button already-in favorite" href="#" style="pointer-events: none; cursor: default;">В
+                            избранном</a>
                     {% else %}
-                        <a class="button" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}" style="margin-bottom: 5px;">В избранное</a>
+                        <a class="button favorite" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}" style="margin-bottom: 5px;">В избранное</a>
                     {% endif %}
                 {% endif %}
 
