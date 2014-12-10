@@ -4,7 +4,7 @@
         <a href="{{ path('avia_tour', {id: tour.info.id}) }}" class="box {{ random(['w', '']) }} flip-container">
             <div class="flipper">
                 <div class="front">
-                    <img src="{{ asset(getTourImages(tour.info.Allocation.id, 'hotels')|first) }}" alt="" style="height: 100%;">
+                    <img src="{{ asset(getTourImages(tour.info.Allocation.id, 'hotels')|first|default('/images/noimagew.png')) }}" alt="" style="height: 100%;">
 
                     <div class="flags">
                             <i class="flag-{{ countries[tour.info.Country.id|number_format].nick }}"></i>
