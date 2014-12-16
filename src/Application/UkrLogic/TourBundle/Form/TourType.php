@@ -66,6 +66,9 @@ class TourType extends AbstractType
             ->add('days_to', 'integer', ['attr' => ['class' => 'days_to'], 'required' => false])
             ->add('price_from', 'text', ['attr' => ['class' => 'price_from'], 'required' => false])
             ->add('price_to', 'text', ['attr' => ['class' => 'price_to'], 'required' => false])
+            ->add('hotel', 'text', [
+                'required' => false,
+            ])
             ->add('hotel_rate', 'text', ['attr' => ['class' => 'hotel_rate'], 'required' => false])
             ->add('meal', 'entity', [
                 'class'         => 'Application\UkrLogic\TourBundle\Entity\Meal',
@@ -106,7 +109,8 @@ class TourType extends AbstractType
                 'data'        => '0',
                 'empty_value' => null,
             ])
-            ->add('type', 'hidden', ['data' => 'bus', 'attr' => ['class' => 'travel_type']])
+            //->add('type', 'hidden', ['data' => 'bus', 'attr' => ['class' => 'travel_type']])
+            ->add('type', 'hidden', ['data' => 'avia', 'attr' => ['class' => 'travel_type']])
             ->add('page', 'hidden', ['data' => 1, 'attr' => ['class' => 'page']])
             ->add('submit', 'submit', ['label' => 'Поиск']);
     }

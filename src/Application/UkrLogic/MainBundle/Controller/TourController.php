@@ -6,9 +6,12 @@ use Application\UkrLogic\MainBundle\Entity\Comment;
 use Application\UkrLogic\MainBundle\Entity\Favorite;
 use Application\UkrLogic\MainBundle\Entity\History;
 use Application\UkrLogic\TourBundle\Entity\AviaTour;
+use Application\UkrLogic\TourBundle\Entity\Hotel;
+use Doctrine\ORM\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -30,12 +33,19 @@ class TourController extends Controller
         $form->handleRequest($request);
 
         $tours = $this->get('application_ukrlogic_tourbundle.service.tourrepository')
-            ->find($form, $this->get('service_container')->getParameter('tours_for_page'));
+                      ->find(
+                          $form, $this->get('service_container')
+                                      ->getParameter('tours_for_page')
+                      )
+        ;
 
         if ($request->isXmlHttpRequest()) {
-            return $this->render('ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
-                'tours' => $tours,
-            ]);
+            return $this->render(
+                'ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
+                                                                        'tours' => $tours,
+                                                                    ]
+            )
+                ;
         }
 
         return [
@@ -50,23 +60,42 @@ class TourController extends Controller
      */
     public function aviaTourAction ($id)
     {
-        $lastSearch = $this->get('session')->get('lastSearch');
+        $lastSearch = $this->get('session')
+                           ->get('lastSearch')
+        ;
 
         if (! $lastSearch || ! array_key_exists($id, $lastSearch)) {
             throw new NotFoundHttpException("Tour not found");
         }
 
-        $tour = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:AviaTour')->findOneBy(['tourId' => $id]);
+        $tour =
+            $this->getDoctrine()
+                 ->getRepository('ApplicationUkrLogicTourBundle:AviaTour')
+                 ->findOneBy(['tourId' => $id])
+        ;
 
         if (! $tour) {
             $tour = new AviaTour();
-            $tour->setTourId($id)->setData($lastSearch[$id]);
+            $tour->setTourId($id)
+                 ->setData($lastSearch[$id])
+            ;
 
-            $this->getDoctrine()->getManager()->persist($tour);
-            $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()
+                 ->getManager()
+                 ->persist($tour)
+            ;
+            $this->getDoctrine()
+                 ->getManager()
+                 ->flush()
+            ;
         }
 
-        $hotel = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:Hotel')->find($tour->getData()['Allocation']['id']);
+        $hotel = $this->getDoctrine()
+                      ->getRepository('ApplicationUkrLogicTourBundle:Hotel')
+                      ->find(
+                          $tour->getData()['Allocation']['id']
+                      )
+        ;
 
 //        $description = $hotel ? $hotel->getFullDescription() : '';
         $description = '';
@@ -86,7 +115,10 @@ class TourController extends Controller
      */
     public function busTourAction ($id)
     {
-        $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $id])->execute();
+        $resp = $this->get('guzzle.akkord_tour_bus')
+                     ->getCommand('get_tour', ['id' => $id])
+                     ->execute()
+        ;
         $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
         $tour = json_decode(json_encode((array)$xml, true));
 
@@ -96,7 +128,10 @@ class TourController extends Controller
 
         $this->saveToHistory($id, 'bus');
 
-        return ['tour' => $tour->tour, 'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus')];
+        return [
+            'tour'       => $tour->tour,
+            'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus')
+        ];
     }
 
 
@@ -108,11 +143,16 @@ class TourController extends Controller
             return false;
         }
 
-        $entity = $this->getDoctrine()->getRepository($entityName)->findOneBy([
-            'tourId'   => $id,
-            'tourType' => $type,
-            'user'     => $this->getUser(),
-        ]);
+        $entity = $this->getDoctrine()
+                       ->getRepository($entityName)
+                       ->findOneBy(
+                           [
+                               'tourId'   => $id,
+                               'tourType' => $type,
+                               'user'     => $this->getUser(),
+                           ]
+                       )
+        ;
 
         return $entity === null ? false : true;
     }
@@ -128,11 +168,19 @@ class TourController extends Controller
             $fave->setTourType($type);
             $fave->setUser($this->getUser());
 
-            $this->get('doctrine.orm.entity_manager')->persist($fave);
-            $this->get('doctrine.orm.entity_manager')->flush();
+            $this->get('doctrine.orm.entity_manager')
+                 ->persist($fave)
+            ;
+            $this->get('doctrine.orm.entity_manager')
+                 ->flush()
+            ;
         }
 
-        return $this->redirect($this->get('router')->generate($type . '_tour', ['id' => $id]));
+        return $this->redirect(
+            $this->get('router')
+                 ->generate($type . '_tour', ['id' => $id])
+        )
+            ;
     }
 
     /**
@@ -152,16 +200,27 @@ class TourController extends Controller
             $comment->setTourId($tour_id);
             $comment->setTourType($tour_type);
 
-            $this->getDoctrine()->getManager()->persist($comment);
-            $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()
+                 ->getManager()
+                 ->persist($comment)
+            ;
+            $this->getDoctrine()
+                 ->getManager()
+                 ->flush()
+            ;
 
             $form = $this->createForm('application_ukrlogic_mainbundle_comment', new Comment());
         }
 
-        $comments = $this->getDoctrine()->getRepository('ApplicationUkrLogicMainBundle:Comment')->findBy([
-            'tourType' => $tour_type,
-            'tourId'   => $tour_id
-        ]);
+        $comments = $this->getDoctrine()
+                         ->getRepository('ApplicationUkrLogicMainBundle:Comment')
+                         ->findBy(
+                             [
+                                 'tourType' => $tour_type,
+                                 'tourId'   => $tour_id
+                             ]
+                         )
+        ;
 
         return [
             'form'     => $form->createView(),
@@ -174,7 +233,9 @@ class TourController extends Controller
      */
     public function parseAction ()
     {
-        $this->get('application_ukrlogic_akkordtourbundle.service.tourparser')->loadTours();
+        $this->get('application_ukrlogic_akkordtourbundle.service.tourparser')
+             ->loadTours()
+        ;
 
         return new Response();
     }
@@ -195,9 +256,40 @@ class TourController extends Controller
             $history->setTourType($type);
             $history->setUser($this->getUser());
 
-            $this->get('doctrine.orm.entity_manager')->persist($history);
-            $this->get('doctrine.orm.entity_manager')->flush();
+            $this->get('doctrine.orm.entity_manager')
+                 ->persist($history)
+            ;
+            $this->get('doctrine.orm.entity_manager')
+                 ->flush()
+            ;
         }
+    }
+
+    /**
+     * @Route("/get_hotels", name="get_hotels", options={"expose"=true}, condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+     */
+    public function getHotelsByNameAction (Request $request)
+    {
+        $findString = $request->get('term');
+
+        $qb = $this->get('doctrine.orm.entity_manager')
+                   ->createQueryBuilder()
+        ;
+
+        $hotels = $qb->select('hotel.name, hotel.id')
+                     ->from('ApplicationUkrLogicTourBundle:Hotel', 'hotel')
+                     ->where(
+                         $qb->expr()
+                            ->like('hotel.name', ':name')
+                     )
+                     ->setParameter('name', "%$findString%")
+                     ->orderBy('hotel.name', 'ASC')
+                     ->setMaxResults(10)
+                     ->getQuery()
+                     ->getArrayResult()
+        ;
+
+        return new JsonResponse(array_column($hotels, 'name', 'id'));
     }
 
 }

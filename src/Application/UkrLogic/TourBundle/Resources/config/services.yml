@@ -17,6 +17,13 @@ services:
         arguments:
             - 'ApplicationUkrLogicTourBundle:Country'
 
+    application_ukrlogic_tourbundle.hotel_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - 'ApplicationUkrLogicTourBundle:Hotel'
+
     application_ukrlogic_tourbundle.meal_repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager

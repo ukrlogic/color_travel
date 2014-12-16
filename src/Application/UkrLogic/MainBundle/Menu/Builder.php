@@ -27,7 +27,7 @@ class Builder
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('Поиск тура', ['route' => 'tours_search']);
-        $menu->addChild('Авиабилеты', ['uri' => '#']);
+        $menu->addChild('Авиабилеты', ['route' => 'avia_tickets']);
 
         $subMenu = $menu->addChild('Услуги', ['uri' => '#']);
 

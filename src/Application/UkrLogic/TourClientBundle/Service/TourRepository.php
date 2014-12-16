@@ -11,6 +11,7 @@ namespace Application\UkrLogic\TourClientBundle\Service;
 use Application\UkrLogic\TourBundle\Entity\Meal;
 use Application\UkrLogic\TourBundle\Service\RepositoryInterface;
 use Application\UkrLogic\TourBundle\Service\Tour;
+use Doctrine\ORM\EntityRepository;
 use Guzzle\Http\Message\Response;
 use Guzzle\Service\Client;
 use Symfony\Component\DomCrawler\Crawler;
@@ -36,13 +37,19 @@ class TourRepository implements RepositoryInterface
     private $curl;
 
     /**
+     * @var EntityRepository
+     */
+    private $hotelRepository;
+
+    /**
      * @param Session $session
      * @param Client $curl
      */
-    function __construct (Session $session, Client $curl)
+    function __construct(Session $session, Client $curl, EntityRepository $hotelRepository)
     {
         $this->session = $session;
         $this->curl = $curl;
+        $this->hotelRepository = $hotelRepository;
     }
 
     /**
@@ -50,7 +57,7 @@ class TourRepository implements RepositoryInterface
      * @param integer $limit
      * @return Tour[]
      */
-    public function find (Form $form, $limit)
+    public function find(Form $form, $limit)
     {
         if ($form->get('type')->getData() !== 'avia') {
             return [];
@@ -75,11 +82,12 @@ class TourRepository implements RepositoryInterface
      * @param integer $limit
      * @return \SimpleXMLElement
      */
-    protected function loadTours (Form $form, $limit)
+    protected function loadTours(Form $form, $limit)
     {
         $request = simplexml_load_file(dirname(__FILE__) . '/../Resources/request.xml', 'SimpleXMLElement', LIBXML_NOCDATA);
 
-        $request->TourSearchRequest->addChild('cityId', $form->get('city')->getData() ? : '668');
+        /* Filter by city and country */
+        $request->TourSearchRequest->addChild('cityId', $form->get('city')->getData() ?: '668');
         $request->TourSearchRequest->addChild('countryId', $form->get('country')->getData() ? $form->get('country')->getData()->getId() : '12');
 
         /* Filter by duration */
@@ -100,7 +108,7 @@ class TourRepository implements RepositoryInterface
             $request->TourSearchRequest->addChild('departureTill', $departureTill->format('Y-m-d'));
         }
 
-        /* Filter by price */ // конвертировать валюту
+        /* Filter by price */
         $priceFrom = $form->get('price_from')->getData();
         $priceTill = $form->get('price_to')->getData();
 
@@ -109,13 +117,21 @@ class TourRepository implements RepositoryInterface
             $request->TourSearchRequest->addChild('priceTill', round($priceTill / $this->getExchangeRate()));
         }
 
-        /* Filter by hotel */ // добавить "умный" поиск по отелю
+        /* Filter by hotel */
+        $hotel = $form->get('hotel')->getData() ? $this->hotelRepository->findOneBy(['name' => $form->get('hotel')->getData()]) : null;
+
+        if ($hotel) {
+            $request->TourSearchRequest->addChild('allocationIds')->addChild('id', $hotel->getId());
+        }
+
+        /* Filter by hotel rate */
         $allocRate = $form->get('hotel_rate')->getData();
 
         if ($allocRate) {
             $request->TourSearchRequest->addChild('allocRate', intval($allocRate));
         }
 
+        /* Filter by adults and child count */
         $request->TourSearchRequest->addChild('adults', $form->get('adult_count')->getData());
         $request->TourSearchRequest->addChild('children', $form->get('child_count')->getData());
 
@@ -131,7 +147,7 @@ class TourRepository implements RepositoryInterface
             }
         }
 
-
+        /* Filter's pages */
         $request->TourSearchRequest->dataLimit = $limit;
         $request->TourSearchRequest->dataOffset = ($form->get('page')->getData() - 1) * $limit;
 
@@ -140,7 +156,7 @@ class TourRepository implements RepositoryInterface
         return simplexml_load_string(str_replace('&', 'and', $response->getBody(true)), "SimpleXMLElement", LIBXML_NOCDATA);
     }
 
-    public function getExchangeRate ()
+    public function getExchangeRate()
     {
         if ($exchangeRate = $this->session->get('exchange_rate')) {
             return $exchangeRate;
@@ -151,26 +167,26 @@ class TourRepository implements RepositoryInterface
 
         $data = json_decode($body, true);
 
-        if (! array_key_exists('organizations', $data)) {
+        if (!array_key_exists('organizations', $data)) {
             return self::STATIC_EXCHANGE_RATE;
         }
 
-        if (! count($data['organizations'])) {
+        if (!count($data['organizations'])) {
             return self::STATIC_EXCHANGE_RATE;
         }
 
         $organization = reset($data['organizations']);
 
-        if (! array_key_exists('currencies', $organization)) {
+        if (!array_key_exists('currencies', $organization)) {
             return self::STATIC_EXCHANGE_RATE;
         }
 
-        if (! array_key_exists('USD', $organization['currencies'])) {
+        if (!array_key_exists('USD', $organization['currencies'])) {
             return self::STATIC_EXCHANGE_RATE;
         }
 
-        if (! array_key_exists('ask', $organization['currencies']['USD'])
-            || ! array_key_exists('bid', $organization['currencies']['USD'])
+        if (!array_key_exists('ask', $organization['currencies']['USD'])
+            || !array_key_exists('bid', $organization['currencies']['USD'])
         ) {
             return self::STATIC_EXCHANGE_RATE;
         }

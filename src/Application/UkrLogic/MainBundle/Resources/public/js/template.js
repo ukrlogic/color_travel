@@ -439,7 +439,6 @@ $(function () {
                 hideOverlay();
             }
 
-
         })
     });
 
@@ -484,6 +483,12 @@ $(function () {
 
             $(this).val(first + '-' + lastfour);
         }
+    });
+
+    /* Умный поиск */
+    $('#hotel-widget').autocomplete({
+        source: Routing.generate('get_hotels'),
+        minLength: 2
     });
 
 });
