@@ -1,3 +1,5 @@
+parameters:
+    tours_for_page: 40
 services:
     application.ukrlogic.main.form.comment:
         class: Application\UkrLogic\MainBundle\Form\CommentType
