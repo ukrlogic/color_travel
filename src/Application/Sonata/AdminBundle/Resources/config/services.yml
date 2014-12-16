@@ -41,3 +41,9 @@ services:
         arguments: [~, Application\UkrLogic\MainBundle\Entity\Comment, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Comment}
+
+    application_sonata_admin.admin.meal:
+        class: Application\Sonata\AdminBundle\Admin\MealAdmin
+        arguments: [~, Application\UkrLogic\TourBundle\Entity\Meal, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Meal}

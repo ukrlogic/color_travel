@@ -11,18 +11,15 @@ namespace Application\UkrLogic\AkkordTourBundle\Service;
 
 use Application\UkrLogic\TourBundle\Entity\BusTour;
 use Application\UkrLogic\TourBundle\Entity\Country;
-use Application\UkrLogic\TourBundle\Service\GatewayAbstract;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Guzzle\Service\Client;
-use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
- * Class BusTours
+ * Class TourParser
  * @package Application\UkrLogic\AkkordTourBundle\Service
  */
-class BusTours extends GatewayAbstract
+class TourParser
 {
     /**
      * @var Client
@@ -84,7 +81,7 @@ class BusTours extends GatewayAbstract
 
             $tour = new BusTour();
             $tour->setTourId($tourId);
-            $tour->setGateway($this->getAlias());
+            $tour->setGateway('akkord_tour_bus');
             $tour->setName((string)$xmlTour->name);
             $tour->setDays((int)preg_replace('/[^0-9]*/', '', (string)$xmlTour->days));
 
@@ -153,14 +150,5 @@ class BusTours extends GatewayAbstract
             'to' => new \DateTime($to)
         ];
     }
-
-    /**
-     * @return boolean
-     */
-    public function isActive()
-    {
-        return true;
-    }
-
 
 }

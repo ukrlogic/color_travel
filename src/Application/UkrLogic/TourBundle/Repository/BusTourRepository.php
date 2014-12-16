@@ -9,21 +9,25 @@
 namespace Application\UkrLogic\TourBundle\Repository;
 
 
-use Application\UkrLogic\TourBundle\Service\FilterOption;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\ORM\Mapping;
+use Symfony\Component\Form\Form;
 
+/**
+ * Class BusTourRepository
+ * @package Application\UkrLogic\TourBundle\Repository
+ */
 class BusTourRepository extends EntityRepository
 {
     /**
      * @var EntityRepository
      */
-    private $countryRepository;
+    protected $countryRepository;
 
     /**
      * @return EntityRepository
      */
-    public function getCountryRepository()
+    public function getCountryRepository ()
     {
         return $this->countryRepository;
     }
@@ -31,54 +35,58 @@ class BusTourRepository extends EntityRepository
     /**
      * @param EntityRepository $cRepo
      */
-    public function setCountryRepository(EntityRepository $cRepo)
+    public function setCountryRepository (EntityRepository $cRepo)
     {
         $this->countryRepository = $cRepo;
     }
 
-    public function filterBy(FilterOption $options, $page = 1, $limit = 15)
+    /**
+     * @param Form $form
+     * @param int $limit
+     * @return array
+     */
+    public function filterBy (Form $form, $limit)
     {
-        try {
-            $qb = $this->createQueryBuilder('t');
-
-            if (is_array($options->get('countries')) && $cid = array_search(true, $options->get('countries'))) {
-                $country = $this->getCountryRepository()->find($cid);
-                if (null !== $country) {
-                    $qb->where(':country MEMBER OF t.countries')->setParameter('country', $country);
-                }
-            }
-
-            $daysFrom = $options->get('days_from');
-            $daysTo = $options->get('days_to');
-            if ($daysFrom && $daysTo) {
-                $qb->where('t.days BETWEEN :days_from AND :days_to')
-                    ->setParameter('days_from', $daysFrom ? : 6)
-                    ->setParameter('days_to', $daysTo ? : 15);
-            }
-
-            $priceFrom = $options->get('price_from');
-            $priceTo = $options->get('price_to');
-
-            if ($priceFrom && $priceTo) {
-                $qb->where('t.price_uah BETWEEN :price_from AND :price_to')
-                    ->setParameter('price_from', $priceFrom ? : 100)
-                    ->setParameter('price_to', $priceTo ? : 3500);
-            }
-
-            $dateFrom = $options->get('date_from');
-            $dateTo = $options->get('date_to');
-
-            if ($dateFrom && $dateTo) {
-                $qb->where('t.dateFrom >= :date_from AND t.dateTo <= :date_to')
-                    ->setParameter('date_from', $dateFrom)
-                    ->setParameter('date_to', $dateTo);
-            }
-
-            $query = $qb->setFirstResult(($page - 1) * $limit)->setMaxResults($limit)->getQuery();
-
-            return $query->getResult();
-        } catch (\Exception $ex) {
-            return [];
+        $qb = $this->createQueryBuilder('t')->where('1=1');
+        
+        /* Filter by country */
+        if ($country = $form->get('country')->getData()) {
+            $qb->andWhere(':country MEMBER OF t.countries')->setParameter('country', $country);
         }
+
+        /* Filter by duration */
+        $daysFrom = $form->get('days_from')->getData();
+        $daysTo = $form->get('days_to')->getData();
+
+        if ($daysFrom && $daysTo) {
+            $qb->andWhere('t.days BETWEEN :days_from AND :days_to')
+                ->setParameter('days_from', $daysFrom)
+                ->setParameter('days_to', $daysTo);
+        }
+
+        /* Filter by price */
+        $priceFrom = $form->get('price_from')->getData();
+        $priceTo = $form->get('price_to')->getData();
+
+        if ($priceFrom && $priceTo) {
+            $qb->andWhere('t.price_usd BETWEEN :price_from AND :price_to')
+                ->setParameter('price_from', $priceFrom)
+                ->setParameter('price_to', $priceTo);
+        }
+
+        /* Filter by date */
+        $dateFrom = $form->get('date_from')->getData();
+        $dateTo = $form->get('date_to')->getData();
+
+        if ($dateFrom && $dateTo) {
+            $qb->andWhere('t.dateFrom >= :date_from AND t.dateTo <= :date_to')
+                ->setParameter('date_from', $dateFrom)
+                ->setParameter('date_to', $dateTo);
+        }
+
+        $query = $qb->setFirstResult(($form->get('page')->getData() - 1) * $limit)->setMaxResults($limit)->getQuery();
+
+        return $query->getResult();
     }
-} 
+
+}

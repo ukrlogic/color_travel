@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-class GatewayCompilerPass implements CompilerPassInterface
+class ToursRepository implements CompilerPassInterface
 {
     /**
      * You can modify the container here before it is dumped to PHP code.
@@ -24,17 +24,17 @@ class GatewayCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (! $container->hasDefinition('application_ukrlogic_tourbundle.service.gatewaycontainer')) {
+        if (! $container->hasDefinition('application_ukrlogic_tourbundle.service.tourrepositorycontainer')) {
             return;
         }
 
-        $definition = $container->getDefinition('application_ukrlogic_tourbundle.service.gatewaycontainer');
+        $definition = $container->getDefinition('application_ukrlogic_tourbundle.service.tourrepositorycontainer');
 
-        $taggedServices = $container->findTaggedServiceIds('application_ukrlogic_tourbundle.service.gateway');
+        $taggedServices = $container->findTaggedServiceIds('tour_repository');
 
         foreach ($taggedServices as $id => $tags) {
             foreach ($tags as $attributes) {
-                $definition->addMethodCall('add', [new Reference($id), $attributes["alias"]]);
+                $definition->addMethodCall('addRepository', [new Reference($id), $attributes["alias"]]);
             }
         }
     }

@@ -152,13 +152,6 @@ $(function () {
     $('.masonry-news').masonry(masonryOptionsNews);
 
 
-    //$('.flip-container').mouseover(function () {
-    //    $(this).find('.flipper .back').fadeIn(200);
-    //}).mouseleave(function () {
-    //    $(this).find('.flipper .back').stop().fadeOut(200);
-    //});
-
-
     /**** Регистрация/Вход ****/
 
     jQuery.fn.fadeToggle = function (speed, easing, callback) {
@@ -214,44 +207,42 @@ $(function () {
         $('.add_comment').toggleClass('show');
         return false;
     });
+
     /***** Вариант тура ******/
 
-        //$('.filter-variant .button:first').click(function () {
-        //    $('.filter-variant .button').removeClass('active');
-        //    $(this).addClass('active');
-        //    $('input[type="checkbox"].is_avia').attr('checked', false);
-        //    $('input[type="checkbox"].is_bus').attr('checked', true);
-        //    $('.hide-on-bus').hide();
-        //    //$('#container').masonry('reload');
-        //});
-        //$('.filter-variant .button:last').click(function () {
-        //    $('.filter-variant .button').removeClass('active');
-        //    $(this).addClass('active');
-        //    $('input[type="checkbox"].is_avia').attr('checked', true);
-        //    $('input[type="checkbox"].is_bus').attr('checked', false);
-        //    $('.hide-on-bus').show();
-        //    //$('#container').masonry('reload');
-        //
-        //});
+    $('.filter-variant .filter-type').click(function () {
+        $('.filter-variant .filter-type').removeClass('active');
+        $(this).addClass('active');
+        $('input.travel_type').val($(this).data('class'));
 
-    $('.filter-variant .button').click(function (ev) {
-        ev.preventDefault();
-        console.log(this);
-        var dataClass = $(this).data('class');
-        var checkboxes = $('input[type="checkbox"].' + dataClass);
-        if (checkboxes.attr("checked")) return;
-        $('.filter-variant .button').removeClass('active');
-        $('.filter-variant .button[data-class="' + dataClass + '"]').addClass('active');
-        $('input[type="checkbox"].travel_type').attr("checked", false);
-        checkboxes.attr("checked", true);
-
-        dataClass == 'is_bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
+        $(this).data('class') == 'bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
         $('form[name="tour_form"]').submit();
     });
 
-    if ($('.filter-variant .button[data-class="is_bus"]').hasClass('active')) {
+    if ($('.filter-variant .filter-type[data-class="bus"]').hasClass('active')) {
         $('.hide-on-bus').hide();
     }
+
+    /***** Фильтр "Горящие" ******/
+    $('.filter-variant .hot').click(function () {
+        $('.rangeInlinePicker').toggle();
+        $(this).toggleClass('active');
+
+        var dateFrom = $('input.date_from');
+        var dateTill = $('input.date_to');
+
+        if ($(this).hasClass('active')) {
+            localStorage.setItem('filter.dateFrom', dateFrom.val());
+            localStorage.setItem('filter.dateTill', dateTill.val());
+            dateFrom.val($.datepicker.formatDate('yy-mm-dd', new Date()));
+            dateTill.val($.datepicker.formatDate('yy-mm-dd', new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7)));
+        } else {
+            dateFrom.val(localStorage.getItem('filter.dateFrom'));
+            dateTill.val(localStorage.getItem('filter.dateTill'));
+        }
+
+        $('form[name="tour_form"]').submit();
+    });
 
     /**** Календарь ****/
     $('.rangeInlinePicker').datepick({
@@ -354,36 +345,13 @@ $(function () {
         collapsible: true,
         heightStyle: 'content',
         create: function () {
-            //          fh = $('.filter').height();
-            // $('.filter').css('height', fh);
             $('#container').masonry(masonryOptions);
         },
         activate: function (event, ui) {
             $('.filter').addClass('flex');
-            console.log('activ');
-
             $('#container').masonry(masonryOptions);
         }
     });
-
-    /*** ajax загрузка отзывов ****/
-    $('#more-reviews').click(function () {
-        $(this).find('h2').hide();
-        $(this).find('img').show();
-        $.ajax({
-            url: 'send.php',
-            method: 'post'
-        }).done(function () {
-
-            function lazy() {
-                $('#more-reviews').find('img').hide();
-                $('#more-reviews').find('h2').show();
-            }
-
-            setInterval(lazy, 5000);
-
-        });
-    })
 
     /*** развернуть текст отзыва ****/
     $(function () {
@@ -392,7 +360,6 @@ $(function () {
             $(this).toggleClass('open');
         })
     });
-
 
     $('.europe-image').velocity({
         scale: 0.2
@@ -413,7 +380,7 @@ $(function () {
             opacity: 1,
             scale: 1
         });
-    })
+    });
     $('.europe-flag').click(function () {
         $('.world-image, .content-flags.world').velocity({
             opacity: 0,
@@ -430,33 +397,6 @@ $(function () {
         });
 
 
-    })
-
-
-    $(".slide_search").click(function () {
-        $(this).toggleClass('hide');
-        if ($(this).hasClass('hide')) {
-            $(".box.filter").velocity({
-                left: '-500px',
-                width: 0,
-                opacity: 0
-            }, 300, function () {
-                $('#container').masonry(masonryOptions);
-            });
-        } else {
-            if ($(window).width() <= 1) {
-                $(".box.filter").css({
-                    width: ColumnWidth,
-                    opacity: 1
-                });
-            } else {
-                $(".box.filter").css({
-                    width: (ColumnWidth * 2) + 5,
-                    opacity: 1
-                });
-            }
-            $('#container').masonry(masonryOptions);
-        }
     });
 
 
@@ -472,11 +412,13 @@ $(function () {
         $('.loadingoverlay').velocity("fadeOut", {duration: 200});
     }
 
+    /* отправка формы аяксом  */
+
     $('form[name="tour_form"]').submit(function (ev) {
         ev.preventDefault();
         showOverlay();
         $form = $(this);
-        $.post($form.attr('action'), $form.serialize(), function (data) {
+        $.get($form.attr('action'), $form.serialize(), function (data) {
             if (!data) {
                 hideOverlay();
                 swal({
@@ -501,31 +443,23 @@ $(function () {
         })
     });
 
-    //подгрузка туров
+    $('.from-group input[type="radio"]').click(function () {
+        $('form[name="tour_form"]').submit();
+    });
+
+    /* подгрузка туров */
     $(window).scroll(function () {
         if ($(window).scrollTop() + $(window).height() == $(document).height() && $('.flip-container').length >= 40) {
-            var page = $('form[name="tour_form"] input.page').val();
-            $('form[name="tour_form"] input.page').val(page++);
+            var page = $('form[name="tour_form"] input.page');
+            page.val(page.val() + 1);
 
             $('form[name="tour_form"]').data('append', 'append').submit();
         }
     });
 
-    $('.from-group input[type="checkbox"]').click(function () {
-        $(this).parents('.mCSB_container').find('input[type="checkbox"]').attr('checked', false);
-        $(this).attr('checked', true);
-        $('form[name="tour_form"]').submit();
-    });
-
-
     $('p.close').on('click', function () {
         $(this).parent().parent().removeClass('show');
     });
-
-    //$('#avia-switcher').click();
-
-    //$('form[name="tour_form"]').submit(showOverlay);
-
 
     $(".vertical-gallery").jCarouselLite({
         btnNext: '.next',
@@ -537,7 +471,7 @@ $(function () {
         scroll: 1
     });
 
-    //phone mask
+    /* phone mask */
     $('input.phone-mask').mask('(999) 999-99-99');
     $('input.phone-mask').on("blur", function () {
         var last = $(this).val().substr($(this).val().indexOf("-") + 1);

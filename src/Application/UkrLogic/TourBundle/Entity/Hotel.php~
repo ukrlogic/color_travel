@@ -541,4 +541,9 @@ class Hotel
     {
         return $this->fullDescription;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

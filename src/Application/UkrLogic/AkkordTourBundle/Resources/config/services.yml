@@ -1,10 +1,14 @@
 services:
-    application_ukrlogic_akkordtourbundle.akkordgateway:
-        class: Application\UkrLogic\AkkordTourBundle\Service\BusTours
+    application_ukrlogic_akkordtourbundle.service.tourparser:
+        class: Application\UkrLogic\AkkordTourBundle\Service\TourParser
         arguments:
             - @guzzle.akkord_tour_bus
-            - @application_ukr_logic_akkord_tour.country_repository
+            - @application_ukrlogic_tourbundle.country_repository
             - @application_ukr_logic_tourbundle.tour_repository
             - @doctrine.orm.entity_manager
+
+    application_ukrlogic_akkordtourbundle.service.tourrepository:
+        class: Application\UkrLogic\AkkordTourBundle\Service\TourRepository
+        arguments: [ @application_ukr_logic_tourbundle.tour_repository ]
         tags:
-            -  { name: 'application_ukrlogic_tourbundle.service.gateway', alias: 'akkord_tour_bus' }
+            - { name: 'tour_repository', alias: 'bus' }
