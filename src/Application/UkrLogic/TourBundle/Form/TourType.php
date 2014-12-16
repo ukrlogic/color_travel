@@ -109,8 +109,8 @@ class TourType extends AbstractType
                 'data'        => '0',
                 'empty_value' => null,
             ])
-            //->add('type', 'hidden', ['data' => 'bus', 'attr' => ['class' => 'travel_type']])
-            ->add('type', 'hidden', ['data' => 'avia', 'attr' => ['class' => 'travel_type']])
+            ->add('type', 'hidden', ['data' => 'bus', 'attr' => ['class' => 'travel_type']])
+//            ->add('type', 'hidden', ['data' => 'avia', 'attr' => ['class' => 'travel_type']])
             ->add('page', 'hidden', ['data' => 1, 'attr' => ['class' => 'page']])
             ->add('submit', 'submit', ['label' => 'Поиск']);
     }
