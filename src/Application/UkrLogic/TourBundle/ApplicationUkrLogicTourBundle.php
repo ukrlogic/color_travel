@@ -2,7 +2,7 @@
 
 namespace Application\UkrLogic\TourBundle;
 
-use Application\UkrLogic\TourBundle\CompilerPass\GatewayCompilerPass;
+use Application\UkrLogic\TourBundle\CompilerPass\ToursRepository;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -12,6 +12,6 @@ class ApplicationUkrLogicTourBundle extends Bundle
     {
         parent::build($builder);
 
-        $builder->addCompilerPass(new GatewayCompilerPass());
+        $builder->addCompilerPass(new ToursRepository());
     }
 }

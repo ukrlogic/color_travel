@@ -1,23 +1,4 @@
 services:
-    application.ukrlogic.main.form.country:
-        class: Application\UkrLogic\MainBundle\Form\CountryType
-        arguments: [@application_ukr_logic_akkord_tour.country_repository]
-        tags:
-            - { name: form.type, alias: 'country_form' }
-
-    application.ukrlogic.main.form.city:
-        class: Application\UkrLogic\MainBundle\Form\CityType
-        tags:
-            - { name: form.type, alias: 'city_form' }
-
-    application.ukrlogic.main.form.tour:
-        class: Application\UkrLogic\MainBundle\Form\TourType
-        arguments:
-            - @application.ukrlogic.main.form.country
-            - @application.ukrlogic.main.form.city
-        tags:
-            - { name: form.type, alias: 'tour_form' }
-
     application.ukrlogic.main.form.comment:
         class: Application\UkrLogic\MainBundle\Form\CommentType
         tags:
@@ -61,7 +42,19 @@ services:
 
     application_ukr_logic_mainbundle.get_countries_extension:
         class: Application\UkrLogic\MainBundle\Twig\GetCountriesExtension
-        calls:
-            - [setCountryRepo, [@application_ukr_logic_akkord_tour.country_repository]]
+        arguments:
+            - @application_ukrlogic_tourbundle.country_repository
         tags:
             - { name: twig.extension }
+
+    application_ukr_logic_mainbundle.get_meals_extension:
+        class: Application\UkrLogic\MainBundle\Twig\GetMealExtension
+        arguments:
+            - @application_ukrlogic_tourbundle.meal_repository
+        tags:
+            - { name: twig.extension }
+
+    application_ukrlogic_mainbundle.form.feedbacktype:
+        class: Application\UkrLogic\MainBundle\Form\FeedbackType
+        tags:
+            - { name: form.type, alias: application_ukrlogic_mainbundle_feedback }

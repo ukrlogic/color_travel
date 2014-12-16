@@ -1,13 +1,6 @@
 parameters:
     application_ukrlogic_tourbundle.images_dir: "%kernel.root_dir%/../web/images"
 services:
-    application_ukrlogic_tourbundle.service.gatewaycontainer:
-        class: Application\UkrLogic\TourBundle\Service\GatewayContainer
-
-    application_ukrlogic_tourbundle.service.tourparser:
-        class: Application\UkrLogic\TourBundle\Service\TourParser
-        arguments: [ @application_ukrlogic_tourbundle.service.gatewaycontainer ]
-
     application_ukr_logic_tourbundle.tour_repository:
         class: Application\UkrLogic\TourBundle\Repository\BusTourRepository
         factory_service: doctrine.orm.entity_manager
@@ -15,16 +8,40 @@ services:
         arguments:
             - 'ApplicationUkrLogicTourBundle:BusTour'
         calls:
-            - [setCountryRepository, [@application_ukr_logic_akkord_tour.country_repository]]
+            - [setCountryRepository, [@application_ukrlogic_tourbundle.country_repository]]
 
-    application_ukr_logic_akkord_tour.country_repository:
+    application_ukrlogic_tourbundle.country_repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
             - 'ApplicationUkrLogicTourBundle:Country'
 
-    application_ukrlogic_mainbundle.form.feedbacktype:
-        class: Application\UkrLogic\MainBundle\Form\FeedbackType
+    application_ukrlogic_tourbundle.meal_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - 'ApplicationUkrLogicTourBundle:Meal'
+
+    application_ukrlogic_tourbundle.service.tourrepositorycontainer:
+        class: Application\UkrLogic\TourBundle\Service\TourRepositoryContainer
+
+    application_ukrlogic_tourbundle.service.tourrepository:
+        class: Application\UkrLogic\TourBundle\Service\TourRepository
+        arguments: [ @application_ukrlogic_tourbundle.service.tourrepositorycontainer ]
+
+    application_ukrlogic_tourbundle.form.country:
+        class: Application\UkrLogic\TourBundle\Form\CountryType
         tags:
-            - { name: form.type, alias: application_ukrlogic_mainbundle_feedback }
+            - { name: form.type, alias: 'color_country' }
+
+    application_ukrlogic_tourbundle.form.city:
+        class: Application\UkrLogic\TourBundle\Form\CityType
+        tags:
+            - { name: form.type, alias: 'color_city' }
+
+    application_ukrlogic_tourbundle.form.tour:
+        class: Application\UkrLogic\TourBundle\Form\TourType
+        tags:
+            - { name: form.type, alias: 'tour_form' }    	

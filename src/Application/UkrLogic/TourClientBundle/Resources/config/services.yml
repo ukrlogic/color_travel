@@ -1,3 +1,8 @@
 services:
-    application_ukrlogic_tourclientbundle.service.aviatours:
-        class: Application\UkrLogic\TourClientBundle\Service\AviaTours
+    application_ukrlogic_tourclientbundle.service.tourrepository:
+        class: Application\UkrLogic\TourClientBundle\Service\TourRepository
+        arguments:
+            - @session
+            - @guzzle.tour_client_avia
+        tags:
+            - { name: 'tour_repository', alias: 'avia' }
