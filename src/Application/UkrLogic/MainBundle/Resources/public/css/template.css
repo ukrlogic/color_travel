@@ -2272,11 +2272,11 @@ input[name="captcha"] {
 }
 
 footer {
-    margin: 10px auto 0 !important;
-    position: relative;
-    text-shadow: -1px 1px 2px #000;
-    z-index: 2;
-    background-color: #8F98A4;
+margin: 10px auto 0 !important;
+position: relative;
+text-shadow: 0px 1px 3px #000;
+z-index: 2;
+background-color: #2C2A31;
 }
 
 footer p {
@@ -5247,7 +5247,7 @@ select.input {
 .datepick-nav, .datepick-ctrl {
     float: left;
     width: 100%;
-    background-color: #33ccff;
+    background-color: #1DADF8;
     color: #fff;
     font-size: 90%;
     font-weight: bold;
@@ -5369,11 +5369,11 @@ button.datepick-cmd {
 }
 
 .datepick-month-header, .datepick-month-header select, .datepick-month-header input {
-    background-color: #33ccff;
-    color: #000000;
-    font-family: Segoe UI;
-    font-weight: 100;
-    padding: 12px 0 4px;
+background-color: #1DADF8;
+color: #ffffff;
+font-family: Segoe UI;
+font-weight: 100;
+padding: 12px 0 4px;
 }
 
 .datepick-month-header select, .datepick-month-header input {
@@ -8583,13 +8583,13 @@ yx-axis
 }
 
 .datepick {
-    background-color: #F3F4F6;
-    color: #000000;
-    font-family: Arial, Helvetica, Sans-serif;
-    font-size: 90%;
-    width: 95% !important;
-    margin: 0 auto;
-    padding-top: 5px;
+background-color: #ffffff;
+color: #000000;
+font-family: Arial,Helvetica,Sans-serif;
+font-size: 90%;
+width: 94% !important;
+margin-left: 9px;
+margin-right: 9px;
 }
 
 .datepick-rtl {
@@ -8663,7 +8663,9 @@ yx-axis
 }
 
 a.datepick-cmd {
-    height: 1.5em;
+height: 1.5em;
+font-style: normal;
+color: white !important;
 }
 
 button.datepick-cmd {
