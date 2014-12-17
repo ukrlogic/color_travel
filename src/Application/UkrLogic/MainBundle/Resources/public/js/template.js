@@ -497,7 +497,7 @@ $(function () {
     $('#back_to_seach').click(function (ev) {
         ev.preventDefault();
         showOverlay();
-        window.history.back();
+        window.location.href = document.referrer;;
     });
 
     $('.cloud:not(.europe-flag), .show-overlay').click(function () {
