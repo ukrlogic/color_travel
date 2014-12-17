@@ -4,7 +4,6 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
-      <field name="url" column="url" type="string" length="255" />
       <field name="title" column="title" type="string" length="255" />
       <field name="content" column="content" type="text" />
       <field name="date" column="date" type="date" />

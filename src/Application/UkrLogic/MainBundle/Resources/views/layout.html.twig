@@ -74,13 +74,20 @@
         </div>
     </div>
 </div>
-    {% block header %}{% endblock %}
+{% block header %}{% endblock %}
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    {% block footer %}{% endblock %}
+{% block footer %}{% endblock %}
 
-    <div id="modal">{% block modal %}{% endblock %}</div>
+<div id="modal">{% block modal %}{% endblock %}</div>
+<div class="flashbag">
+    {% for typename, type in app.session.flashBag.all %}
+        {% for message in type %}
+            <div class="message" data-type="{{ typename }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+</div>
 {% javascripts '@ApplicationUkrLogicMainBundle/Resources/public/js/uikit.min.js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}

@@ -2,6 +2,7 @@
 
 namespace Application\UkrLogic\MainBundle\Controller;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Application\UkrLogic\TourBundle\Entity\AviaTour;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,16 +22,16 @@ class DefaultController extends Controller
      * @Route("/", name="main_page")
      * @Template()
      */
-    public function indexAction ()
+    public function indexAction()
     {
         return [];
     }
 
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/profile/news", name="profile")
      * @Template()
      */
-    public function profileAction ()
+    public function profileAction()
     {
         return $this->getProfileNewsPageContent();
     }
@@ -40,11 +41,11 @@ class DefaultController extends Controller
      * @Route("/profile/edit", name="profile_edit")
      * @Template()
      */
-    public function profileEditAction (Request $request)
+    public function profileEditAction(Request $request)
     {
         $user = $this->getUser();
 
-        if (! ($user instanceof UserInterface)) {
+        if (!($user instanceof User)) {
             return new RedirectResponse($this->generateUrl('main_page'));
         }
 
@@ -52,14 +53,10 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $this->getDoctrine()
-                 ->getManager()
-                 ->persist($user)
-            ;
-            $this->getDoctrine()
-                 ->getManager()
-                 ->flush()
-            ;
+            $user->upload();
+
+            $this->getDoctrine()->getManager()->persist($user);
+            $this->getDoctrine()->getManager()->flush();
 
             return $this->redirect($this->generateUrl('profile'));
         }
@@ -71,18 +68,17 @@ class DefaultController extends Controller
      * @Route("/profile/history", name="profile_history")
      * @Template()
      */
-    public function profileHistoryAction ()
+    public function profileHistoryAction()
     {
         $user = $this->getUser();
 
-        if (! ($user instanceof UserInterface)) {
+        if (!($user instanceof UserInterface)) {
             return new RedirectResponse($this->generateUrl('main_page'));
         }
 
         $historyTours = $this->getDoctrine()
-                             ->getRepository('ApplicationUkrLogicMainBundle:History')
-                             ->findBy(['user' => $user])
-        ;
+            ->getRepository('ApplicationUkrLogicMainBundle:History')
+            ->findBy(['user' => $user]);
         $params = [];
 
         foreach ($historyTours as $historyTour) {
@@ -100,18 +96,17 @@ class DefaultController extends Controller
      * @Route("/profile/favorites", name="profile_favorites")
      * @Template()
      */
-    public function profileFavoritesAction ()
+    public function profileFavoritesAction()
     {
         $user = $this->getUser();
 
-        if (! ($user instanceof UserInterface)) {
+        if (!($user instanceof UserInterface)) {
             return new RedirectResponse($this->generateUrl('main_page'));
         }
 
         $favoritesTours = $this->getDoctrine()
-                               ->getRepository('ApplicationUkrLogicMainBundle:Favorite')
-                               ->findBy(['user' => $user])
-        ;
+            ->getRepository('ApplicationUkrLogicMainBundle:Favorite')
+            ->findBy(['user' => $user]);
 
         $params = [];
 
@@ -129,7 +124,7 @@ class DefaultController extends Controller
      * @param array $params
      * @return array
      */
-    public function getTours (array $params)
+    public function getTours(array $params)
     {
         $tours = [];
 
@@ -145,7 +140,7 @@ class DefaultController extends Controller
      * @param array $ids
      * @return array
      */
-    public function getToursByType ($type, array $ids)
+    public function getToursByType($type, array $ids)
     {
         $tours = [];
         $em = $this->get('doctrine.orm.entity_manager');
@@ -154,15 +149,14 @@ class DefaultController extends Controller
             case 'bus':
                 $qb = $em->createQueryBuilder('t');
                 $qb->select('t')
-                   ->from('ApplicationUkrLogicTourBundle:BusTour', 't')
-                   ->where(
-                       $qb->expr()
-                          ->in('t.tourId', $ids)
-                   )
-                ;
+                    ->from('ApplicationUkrLogicTourBundle:BusTour', 't')
+                    ->where(
+                        $qb->expr()
+                            ->in('t.tourId', $ids)
+                    );
 
                 foreach ($qb->getQuery()
-                            ->getResult() as $tour) {
+                             ->getResult() as $tour) {
                     $tours[] = [
                         'type' => 'bus',
                         'info' => $tour
@@ -173,16 +167,15 @@ class DefaultController extends Controller
             case 'avia':
                 $qb = $em->createQueryBuilder('t');
                 $qb->select('t')
-                   ->from('ApplicationUkrLogicTourBundle:AviaTour', 't')
-                   ->where(
-                       $qb->expr()
-                          ->in('t.tourId', $ids)
-                   )
-                ;
+                    ->from('ApplicationUkrLogicTourBundle:AviaTour', 't')
+                    ->where(
+                        $qb->expr()
+                            ->in('t.tourId', $ids)
+                    );
 
                 /** @var AviaTour $tour */
                 foreach ($qb->getQuery()
-                            ->getResult() as $tour) {
+                             ->getResult() as $tour) {
                     $tours[] = [
                         'type' => 'avia',
                         'info' => $tour->getData()
@@ -202,18 +195,17 @@ class DefaultController extends Controller
     /**
      * @return array
      */
-    public function getProfileNewsPageContent ()
+    public function getProfileNewsPageContent()
     {
         $user = $this->getUser();
 
-        if (! ($user instanceof UserInterface)) {
+        if (!($user instanceof UserInterface)) {
             return new RedirectResponse($this->generateUrl('main_page'));
         }
 
         $commentsTours = $this->getDoctrine()
-                              ->getRepository('ApplicationUkrLogicMainBundle:Comment')
-                              ->findBy(['user' => $user])
-        ;
+            ->getRepository('ApplicationUkrLogicMainBundle:Comment')
+            ->findBy(['user' => $user]);
         $params = [];
 
         foreach ($commentsTours as $commentTour) {
@@ -223,9 +215,8 @@ class DefaultController extends Controller
         $tours = $this->getTours($params);
 
         $news = $this->getDoctrine()
-                     ->getRepository('ApplicationUkrLogicMainBundle:Post')
-                     ->findAll()
-        ;
+            ->getRepository('ApplicationUkrLogicMainBundle:Post')
+            ->findAll();
 
         return [
             'commentsTours' => $tours,
@@ -237,7 +228,7 @@ class DefaultController extends Controller
      * @Route("/avia-tickets", name="avia_tickets")
      * @Template
      */
-    public function aviaTicketsAction ()
+    public function aviaTicketsAction()
     {
         return [];
     }

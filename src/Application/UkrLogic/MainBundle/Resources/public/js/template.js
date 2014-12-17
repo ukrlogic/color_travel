@@ -504,4 +504,8 @@ $(function () {
         showOverlay();
     });
 
+    $('.flashbag .message').each(function () {
+        alert($(this).html());
+    });
+
 });

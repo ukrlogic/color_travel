@@ -3,6 +3,8 @@
 namespace Application\UkrLogic\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Post
@@ -24,10 +26,6 @@ class Post
     {
         return $this->id;
     }
-    /**
-     * @var string
-     */
-    private $url;
 
     /**
      * @var string
@@ -68,30 +66,6 @@ class Post
      * @var string
      */
     private $metaKeywords;
-
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return Post
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
 
     /**
      * Set title
@@ -267,6 +241,32 @@ class Post
         return $this;
     }
 
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
     /**
      * Get metaKeywords
      *
@@ -275,5 +275,45 @@ class Post
     public function getMetaKeywords()
     {
         return $this->metaKeywords;
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->image
+            ? null
+            : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image
+            ? null
+            : $this->getUploadDir().'/'.$this->image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return '/uploads/post';
+    }
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        $this->image = sprintf("%d_%s", $this->getId(), $this->getFile()->getClientOriginalName());
+
+        $this->getFile()->move($this->getUploadRootDir(), $this->image);
+        $this->file = null;
+    }
+
+    public function __construct()
+    {
+        $this->setDate(new \DateTime());
     }
 }

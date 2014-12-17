@@ -1,13 +1,14 @@
 {% extends '@ApplicationUkrLogicMain/profile-layout.html.twig' %}
 {% block profile_content %}
-    <div class="m-header">
+    <div class="m-header masonry-brick">
         <h3>Новости</h3>
     </div>
     {% for post in news %}
-        <a href="#" class="box news">
-            <div class="flipper">
+        <a href="{{ path('post', { 'id': post.id }) }}" class="box news">
+            <div>
                 <div class="front">
-                    <img src="img/news/news-1.jpg" alt="">
+                    <img src="{% if post.webPath %}{{ post.webPath }}{% else %}http://dummyimage.com/230x230/000/fff.jpg&text=no+photo{% endif %}"
+                         alt="{{ post.title }}" height="230" width="230">
 
                     <div class="news-header">
                         <span>{{ post.title }}</span>

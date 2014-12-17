@@ -6,9 +6,9 @@
 
     <div class="user-info">
         <div class="photo">
-            <img src="http://dummyimage.com/95x95/000/fff.jpg&text=profile+image">
-            <label for="photo-edit" class="photo-edit"></label>
-            <input type="file" id="photo-edit" name="photo-edit">
+            <img src="{% if app.user.webPath %}{{ app.user.webPath }}{% else %}http://dummyimage.com/95x95/000/fff.jpg&text=profile+image{% endif %}" width="95" height="95">
+            <label for="{{ form.file.vars.id }}" class="photo-edit"></label>
+            {{ form_widget(form.file, { 'attr': { 'style': 'display: none;' } }) }}
         </div>
 
         <div>

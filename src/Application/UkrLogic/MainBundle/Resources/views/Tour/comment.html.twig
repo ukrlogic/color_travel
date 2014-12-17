@@ -20,7 +20,7 @@
     {% for comment in comments if comment.moderated %}
         <div class="review">
             <div class="author-info">
-                <img src="https://api.fnkr.net/testimg/200x200/00CED1/FFF/?text=img+placeholder">
+                <img src="{% if comment.user.webPath %}{{ comment.user.webPath }}{% else %}http://dummyimage.com/95x95/000/fff.jpg&text=profile+image{% endif %}" width="200" height="200">
 
                 <p>{{ comment.user.username }}</p>
             </div>

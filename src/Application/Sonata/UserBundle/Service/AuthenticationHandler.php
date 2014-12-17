@@ -47,7 +47,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
-        return new JsonResponse(['redirect' => $this->router->generate('main_page')]);
+        return new JsonResponse(['redirect' => $this->router->generate('profile')]);
     }
 
 } 

@@ -1,0 +1,19 @@
+{% extends "@ApplicationUkrLogicMain/layout-main.html.twig" %}
+
+{% block title %}{{ post.metaTitle }}{% endblock %}
+{% block meta_keywords %}{{ post.metaKeywords }}{% endblock %}
+{% block meta_description %}{{ post.metaDescription }}{% endblock %}
+{% block content %}
+    <div id="post">
+        <h2 id="post-title">{{ post.title }}</h2>
+        <div id="post-date">{{ post.date.format('Y-m-d') }}</div>
+
+        {% if post.webPath %}
+            <div id="main-post-image">
+                <img src="{{ post.webPath }}" alt="{{ post.title }}"/>
+            </div>
+        {% endif %}
+
+        <div id="post-content">{{ include(template_from_string(post.content)) | raw }}</div>
+    </div>
+{% endblock %}

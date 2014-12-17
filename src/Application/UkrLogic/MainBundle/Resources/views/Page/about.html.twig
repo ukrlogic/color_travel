@@ -2,22 +2,24 @@
 
 
 {% block content %}
-    <div class="content">
-        <img style="margin: 0 25% 0 25%; width: 50%;" src="{{ asset("img/logoo.jpg") }}">
+<div class="content">
+    <img style="margin: 0 25% 0 25%; width: 50%;" src="{{ asset("img/logoo.jpg") }}">
 
-        <div class="content-blue clearfix">
+    <div class="content-blue clearfix" id="feedback-content">
 
-            <p>
-                <strong style="color: black;">
-Туристическая фирма Color Travel, готова организовать Ваш отдых или путешествие от А до Я. 
-Уникальная программа поиска туров, позволяет менеджерам туристического отдела за считаные минуты подобрать горящий или заранее запланированный тур по наиболее интересной цене. 
-Наши партнеры это лидеры тиристической индустрии - поэтому Вы можете быть уверенны, что спектр предлагаемых нами услуг будет предоставлен на высшем уровне.
-                </strong>
-            </p>
+        <p>
+            <strong style="color: black;">
+                Туристическая фирма Color Travel, готова организовать Ваш отдых или путешествие от А до Я.
+                Уникальная программа поиска туров, позволяет менеджерам туристического отдела за считаные минуты
+                подобрать горящий или заранее запланированный тур по наиболее интересной цене.
+                Наши партнеры это лидеры тиристической индустрии - поэтому Вы можете быть уверенны, что спектр
+                предлагаемых нами услуг будет предоставлен на высшем уровне.
+            </strong>
+        </p>
 
-<img style="width: 100%;" src="{{ asset("img/post.jpg") }}">
+        <img style="width: 100%;" src="{{ asset("img/post.jpg") }}">
 
-        <div class="content-blue clearfix">
+        <div class="content-blue clearfix" id="feedback-form">
             <h2>Обратная связь</h2>
             {{ form_start(form, { 'attr': { 'class': 'contact-form' } }) }}
             {{ form_errors(form.captcha) }}
@@ -25,7 +27,7 @@
                 <div class="half first">
                     {{ form_widget(form.name, { 'attr': {'placeholder': "Ф.И.О"} }) }}
                     {{ form_widget(form.email, {'attr': {'placeholder' : 'E-mail' } }) }}
-                    {{ form_widget(form.phone, {'attr': {'placeholder' : 'Контактный телефон', 'class': 'phone-mask' } }) }}
+                    {{ form_widget(form.phone, {'attr': {'placeholder' : 'Контактный телефон' } }) }}
                 </div>
                 <div class="half second">
                     {{ form_widget(form.captcha, { 'width': 120, 'height': 50 }) }}
@@ -36,11 +38,11 @@
             {{ form_end(form) }}
         </div>
     </div>
-{% endblock %}
+    {% endblock %}
 
-{% form_theme form _self %}
+    {% form_theme form _self %}
 
-{% block captcha_widget %}
+    {% block captcha_widget %}
     {% spaceless %}
         <div class="captcha">
             <img src="{{ captcha_code }}" title="captcha" width="{{ captcha_width }}"
