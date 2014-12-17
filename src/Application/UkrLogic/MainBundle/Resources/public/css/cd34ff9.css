@@ -254,6 +254,7 @@ nav > ul > li:first-child a:hover {
 
 nav {
     height: 40px;
+    padding-bottom: 5px;
     position: relative;
     z-index: 2;
 }
@@ -273,7 +274,7 @@ nav > ul > li {
     vertical-align: middle;
     width: auto;
     position: relative;
-background: #262262;
+    background: #3D2A2C;
 }
 
 nav > ul > li > a {
@@ -343,7 +344,6 @@ nav ul li ul li:hover {
 #container {
     float: left;
     width: 100%;
-	margin-top: 5px;
 }
 
 .box {
@@ -1843,6 +1843,14 @@ background: url(izb0.png) no-repeat top, center;
 color: transparent;
 margin-top: 9px;
 }
+input#hotel-widget.ui-autocomplete-input {
+width: 99%;
+height: 35px;
+border: 2px solid rgb(29, 173, 248);
+border-radius: 5px;
+background-color: #F3F4F6;
+font-size: 25px;
+}
 a.button.favorite:hover {
 margin-bottom: 5px;
 float: left;
@@ -1853,14 +1861,6 @@ color: transparent;
 margin-top: 9px;
 pointer-events: auto !important;
 cursor: pointer !important;
-}
-input#hotel-widget.ui-autocomplete-input {
-width: 99%;
-height: 35px;
-border: 2px solid rgb(29, 173, 248);
-border-radius: 5px;
-background-color: #F3F4F6;
-font-size: 25px;
 }
 .hotel-tour-description .button#order {
 width: 24% !important;
@@ -2297,6 +2297,7 @@ box-shadow: 0px 3px 0px 0px rgba(202, 61, 65, 1);
 }
 
 footer {
+margin: 10px auto 0 !important;
 position: relative;
 text-shadow: 0px 1px 3px #000;
 z-index: 2;
@@ -2405,7 +2406,6 @@ body.main {
 
 .container-map {
     height: 927px;
-	background-color: #61656F;
 }
 
 .content-flags {
@@ -12040,16 +12040,17 @@ yx-axis
 }
 
 .datepick-nav, .datepick-ctrl {
-    float: left;
-    width: 100%;
-    background-color: #2e6c89;
-    color: #fff;
-    font-size: 90%;
-    font-weight: bold;
-    padding-top: 20px;
-    position: relative;
+float: left;
+width: 100%;
+background-color: #1DADF8;
+color: #fff;
+font-size: 90%;
+font-weight: bold;
+padding-top: 20px;
+border-top-left-radius: 6px;
+border-top-right-radius: 6px;
+position: relative;
 }
-
 .datepick-ctrl {
     background-color: #600;
 }
@@ -12307,7 +12308,7 @@ button.datepick-cmd {
 }
 
 .sod_select {
-    background: none repeat scroll 0 0 #1DADF8;
+    background: none repeat scroll 0 0 #2c6883;
     border: medium none;
     color: #ffffff;
     cursor: default;
