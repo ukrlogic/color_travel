@@ -151,9 +151,9 @@ class TourRepository implements RepositoryInterface
         $request->TourSearchRequest->dataLimit = $limit;
         $request->TourSearchRequest->dataOffset = ($form->get('page')->getData() - 1) * $limit;
 
-        $response = $this->curl->post('http://tourclient.ru/f/exml/58658/tours_export', [], ['request' => $request->asXML()])->send();
+        $response = $this->curl->post('http://tourclient.ru/f/exml/58658/tours_export', [], ['request' => $request->asXML()])->send()->getBody(true);
 
-        return simplexml_load_string(str_replace('&', 'and', $response->getBody(true)), "SimpleXMLElement", LIBXML_NOCDATA);
+        return simplexml_load_string(str_replace('&', 'and', $response), "SimpleXMLElement", LIBXML_NOCDATA);
     }
 
     public function getExchangeRate()

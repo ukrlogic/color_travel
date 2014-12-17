@@ -10,5 +10,6 @@
     <field name="label" type="string" column="label" length="255" nullable="false"/>
     <field name="region" type="string" column="region" length="255" nullable="false"/>
     <field name="regionName" type="string" column="regionname" length="255" nullable="false"/>
+    <field name="travelType" type="string" column="travel_type" length="255" nullable="true"/>
   </entity>
 </doctrine-mapping>

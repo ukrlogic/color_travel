@@ -36,6 +36,7 @@ class CountryAdmin extends Admin
         $listMapper
             ->addIdentifier('name')
             ->add('nick')
+            ->add('travelType', null, ['editable' => true])
             ->add('active', null, ['editable' => true])
             ->add('photos', null, ['mapped' => false, 'template' => 'ApplicationSonataAdminBundle:Country:images.html.twig'])
             ->add('regionName')

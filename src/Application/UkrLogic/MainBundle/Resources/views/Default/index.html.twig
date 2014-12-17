@@ -11,82 +11,142 @@
         <div class="content-flags world">
             <a href="javascript:void(0)" class="cloud europe-flag" data-uk-tooltip="{pos:'top'}"
                title="Европейские страны"></a>
-            <a href="{{ path('tours_search') }}?country=belorussia" class="cloud belorussia-m" data-uk-tooltip="{pos:'top'}"
+            <a href="{{ path('tours_search') }}?country=belorussia" class="cloud belorussia-m"
+               data-uk-tooltip="{pos:'top'}"
                title="Белоруссия"></a>
-            <a href="{{ path('tours_search') }}?country=1" class="cloud russia-m" data-uk-tooltip="{pos:'top'}" title="Россия"></a>
-            <a href="{{ path('tours_search') }}?country=37" class="cloud china" data-uk-tooltip="{pos:'top'}" title="Китай"></a>
-            <a href="{{ path('tours_search') }}?country=16" class="cloud morocco-m" data-uk-tooltip="{pos:'top'}" title="Марокко"></a>
-            <a href="{{ path('tours_search') }}?country=21" class="cloud tunis-m" data-uk-tooltip="{pos:'top'}" title="Тунис"></a>
-            <a href="{{ path('tours_search') }}?country=12" class="cloud egypt" data-uk-tooltip="{pos:'top'}" title="Египет"></a>
-            <a href="{{ path('tours_search') }}?country=83" class="cloud turkey-m" data-uk-tooltip="{pos:'top'}" title="Турция"></a>
-            <a href="{{ path('tours_search') }}?country=76" class="cloud cyprus-m" data-uk-tooltip="{pos:'left'}" title="Кипр"></a>
-            <a href="{{ path('tours_search') }}?country=34" class="cloud israel" data-uk-tooltip="{pos:'left'}" title="Израиль"></a>
-            <a href="{{ path('tours_search') }}?country=36" class="cloud jordan" data-uk-tooltip="{pos:'right'}" title="Иордания"></a>
-            <a href="{{ path('tours_search') }}?country=32" class="cloud uae" data-uk-tooltip="{pos:'top'}" title="ОАЭ"></a>
-            <a href="{{ path('tours_search') }}?country=35" class="cloud india" data-uk-tooltip="{pos:'top'}" title="Индия"></a>
-            <a href="{{ path('tours_search') }}?country=43" class="cloud maldives" data-uk-tooltip="{pos:'top'}" title="Мальдивы"></a>
-            <a href="{{ path('tours_search') }}?country=46" class="cloud srilanka" data-uk-tooltip="{pos:'top'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("1").travelType, 'country': "1" } } | url_encode }}"
+               class="cloud russia-m" data-uk-tooltip="{pos:'top'}" title="Россия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("37").travelType, 'country': "37" } } | url_encode }}"
+               class="cloud china" data-uk-tooltip="{pos:'top'}" title="Китай"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("16").travelType, 'country': "16" } } | url_encode }}"
+               class="cloud morocco-m" data-uk-tooltip="{pos:'top'}" title="Марокко"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("21").travelType, 'country': "21" } } | url_encode }}"
+               class="cloud tunis-m" data-uk-tooltip="{pos:'top'}" title="Тунис"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("12").travelType, 'country': "12" } } | url_encode }}"
+               class="cloud egypt" data-uk-tooltip="{pos:'top'}" title="Египет"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("83").travelType, 'country': "83" } } | url_encode }}"
+               class="cloud turkey-m" data-uk-tooltip="{pos:'top'}" title="Турция"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("76").travelType, 'country': "76" } } | url_encode }}"
+               class="cloud cyprus-m" data-uk-tooltip="{pos:'left'}" title="Кипр"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("34").travelType, 'country': "34" } } | url_encode }}"
+               class="cloud israel" data-uk-tooltip="{pos:'left'}" title="Израиль"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("36").travelType, 'country': "36" } } | url_encode }}"
+               class="cloud jordan" data-uk-tooltip="{pos:'right'}" title="Иордания"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("32").travelType, 'country': "32" } } | url_encode }}"
+               class="cloud uae" data-uk-tooltip="{pos:'top'}" title="ОАЭ"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("35").travelType, 'country': "35" } } | url_encode }}"
+               class="cloud india" data-uk-tooltip="{pos:'top'}" title="Индия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("43").travelType, 'country': "43" } } | url_encode }}"
+               class="cloud maldives" data-uk-tooltip="{pos:'top'}" title="Мальдивы"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("46").travelType, 'country': "46" } } | url_encode }}"
+               class="cloud srilanka" data-uk-tooltip="{pos:'top'}"
                title="Шри-Ланка"></a>
-            <a href="{{ path('tours_search') }}?country=25" class="cloud vietnam" data-uk-tooltip="{pos:'top'}" title="Вьетнам"></a>
-            <a href="{{ path('tours_search') }}?country=30" class="cloud thailand" data-uk-tooltip="{pos:'bottom'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("25").travelType, 'country': "25" } } | url_encode }}"
+               class="cloud vietnam" data-uk-tooltip="{pos:'top'}" title="Вьетнам"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("30").travelType, 'country': "30" } } | url_encode }}"
+               class="cloud thailand" data-uk-tooltip="{pos:'bottom'}"
                title="Тайланд"></a>
-            <a href="{{ path('tours_search') }}?country=29" class="cloud singapore" data-uk-tooltip="{pos:'bottom'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("29").travelType, 'country': "29" } } | url_encode }}"
+               class="cloud singapore" data-uk-tooltip="{pos:'bottom'}"
                title="Сингапур"></a>
-            <a href="{{ path('tours_search') }}?country=26" class="cloud indonesia" data-uk-tooltip="{pos:'bottom'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("26").travelType, 'country': "26" } } | url_encode }}"
+               class="cloud indonesia" data-uk-tooltip="{pos:'bottom'}"
                title="Индонезия"></a>
-            <a href="{{ path('tours_search') }}?country=40" class="cloud japan" data-uk-tooltip="{pos:'left'}" title="Япония"></a>
-            <a href="{{ path('tours_search') }}?country=62" class="cloud mexico" data-uk-tooltip="{pos:'top'}" title="Мексика"></a>
-            <a href="{{ path('tours_search') }}?country=60" class="cloud cuba" data-uk-tooltip="{pos:'top'}" title="Куба"></a>
-            <a href="{{ path('tours_search') }}?country=65" class="cloud jamaica" data-uk-tooltip="{pos:'bottom'}" title="Ямайка"></a>
-            <a href="{{ path('tours_search') }}?country=58" class="cloud dominicana" data-uk-tooltip="{pos:'top'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("40").travelType, 'country': "40" } } | url_encode }}"
+               class="cloud japan" data-uk-tooltip="{pos:'left'}" title="Япония"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("62").travelType, 'country': "62" } } | url_encode }}"
+               class="cloud mexico" data-uk-tooltip="{pos:'top'}" title="Мексика"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("60").travelType, 'country': "60" } } | url_encode }}"
+               class="cloud cuba" data-uk-tooltip="{pos:'top'}" title="Куба"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("65").travelType, 'country': "65" } } | url_encode }}"
+               class="cloud jamaica" data-uk-tooltip="{pos:'bottom'}" title="Ямайка"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("58").travelType, 'country': "58" } } | url_encode }}"
+               class="cloud dominicana" data-uk-tooltip="{pos:'top'}"
                title="Доминикана"></a>
 
 
         </div>
         <div class="content-flags europe">
-            <a href="{{ path('tours_search') }}?country=80" class="cloud norway" data-uk-tooltip="{pos:'top'}" title="Норвегия"></a>
-            <a href="{{ path('tours_search') }}?country=90" class="cloud sweden" data-uk-tooltip="{pos:'top'}" title="Швеция"></a>
-            <a href="{{ path('tours_search') }}?country=3" class="cloud finland" data-uk-tooltip="{pos:'bottom'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("80").travelType, 'country': "80" } } | url_encode }}"
+               class="cloud norway" data-uk-tooltip="{pos:'top'}" title="Норвегия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("90").travelType, 'country': "90" } } | url_encode }}"
+               class="cloud sweden" data-uk-tooltip="{pos:'top'}" title="Швеция"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("3").travelType, 'country': "3" } } | url_encode }}"
+               class="cloud finland" data-uk-tooltip="{pos:'bottom'}"
                title="Финляндия"></a>
-            <a href="{{ path('tours_search') }}?country=118" class="cloud estonia" data-uk-tooltip="{pos:'top'}" title="Эстония"></a>
-            <a href="{{ path('tours_search') }}?country=103" class="cloud latvia" data-uk-tooltip="{pos:'bottom'}" title="Латвия"></a>
-            <a href="{{ path('tours_search') }}?country=122" class="cloud litva" data-uk-tooltip="{pos:'bottom'}" title="Литва"></a>
-            <a href="{{ path('tours_search') }}?country=158" class="cloud belorussia" data-uk-tooltip="{pos:'top'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("118").travelType, 'country': "118" } } | url_encode }}"
+               class="cloud estonia" data-uk-tooltip="{pos:'top'}" title="Эстония"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("103").travelType, 'country': "103" } } | url_encode }}"
+               class="cloud latvia" data-uk-tooltip="{pos:'bottom'}" title="Латвия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("122").travelType, 'country': "122" } } | url_encode }}"
+               class="cloud litva" data-uk-tooltip="{pos:'bottom'}" title="Литва"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("158").travelType, 'country': "158" } } | url_encode }}"
+               class="cloud belorussia" data-uk-tooltip="{pos:'top'}"
                title="Белоруссия"></a>
-            <a href="{{ path('tours_search') }}?country=1" class="cloud russia" data-uk-tooltip="{pos:'left'}" title="Россия"></a>
-            <a href="{{ path('tours_search') }}?country=114" class="cloud ukraine" data-uk-tooltip="{pos:'bottom'}" title="Украина"></a>
-            <a href="{{ path('tours_search') }}?country=140" class="cloud poland" data-uk-tooltip="{pos:'top'}" title="Польша"></a>
-            <a href="{{ path('tours_search') }}?country=72" class="cloud denmark" data-uk-tooltip="{pos:'top'}" title="Дания"></a>
-            <a href="{{ path('tours_search') }}?country=69" class="cloud uk" data-uk-tooltip="{pos:'top'}" title="Великобритания"></a>
-            <a href="{{ path('tours_search') }}?country=2" class="cloud germany" data-uk-tooltip="{pos:'top'}" title="Германия"></a>
-            <a href="{{ path('tours_search') }}?country=79" class="cloud netherlands" data-uk-tooltip="{pos:'top'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("1").travelType, 'country': "1" } } | url_encode }}"
+               class="cloud russia" data-uk-tooltip="{pos:'left'}" title="Россия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("114").travelType, 'country': "114" } } | url_encode }}"
+               class="cloud ukraine" data-uk-tooltip="{pos:'bottom'}" title="Украина"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("140").travelType, 'country': "140" } } | url_encode }}"
+               class="cloud poland" data-uk-tooltip="{pos:'top'}" title="Польша"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("72").travelType, 'country': "72" } } | url_encode }}"
+               class="cloud denmark" data-uk-tooltip="{pos:'top'}" title="Дания"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("69").travelType, 'country': "69" } } | url_encode }}"
+               class="cloud uk" data-uk-tooltip="{pos:'top'}" title="Великобритания"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("2").travelType, 'country': "2" } } | url_encode }}"
+               class="cloud germany" data-uk-tooltip="{pos:'top'}" title="Германия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("79").travelType, 'country': "79" } } | url_encode }}"
+               class="cloud netherlands" data-uk-tooltip="{pos:'top'}"
                title="Нидерланды"></a>
-            <a href="{{ path('tours_search') }}?country=68" class="cloud belgium" data-uk-tooltip="{pos:'top'}" title="Бельгия"></a>
-            <a href="{{ path('tours_search') }}?country=84" class="cloud france" data-uk-tooltip="{pos:'top'}" title="Франция"></a>
-            <a href="{{ path('tours_search') }}?country=87" class="cloud czeh" data-uk-tooltip="{pos:'top'}" title="Чехия"></a>
-            <a href="{{ path('tours_search') }}?country=82" class="cloud slovakia" data-uk-tooltip="{pos:'top'}" title="Словакия"></a>
-            <a href="{{ path('tours_search') }}?country=austria" class="cloud austria" data-uk-tooltip="{pos:'top'}" title="Австрия"></a>
-            <a href="{{ path('tours_search') }}?country=hungary" class="cloud hungary" data-uk-tooltip="{pos:'top'}" title="Венгрия"></a>
-            <a href="{{ path('tours_search') }}?country=89" class="cloud switzerland" data-uk-tooltip="{pos:'top'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("68").travelType, 'country': "68" } } | url_encode }}"
+               class="cloud belgium" data-uk-tooltip="{pos:'top'}" title="Бельгия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("84").travelType, 'country': "84" } } | url_encode }}"
+               class="cloud france" data-uk-tooltip="{pos:'top'}" title="Франция"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("87").travelType, 'country': "87" } } | url_encode }}"
+               class="cloud czeh" data-uk-tooltip="{pos:'top'}" title="Чехия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("82").travelType, 'country': "82" } } | url_encode }}"
+               class="cloud slovakia" data-uk-tooltip="{pos:'top'}" title="Словакия"></a>
+            <a href="{{ path('tours_search') }}?country=austria" class="cloud austria" data-uk-tooltip="{pos:'top'}"
+               title="Австрия"></a>
+            <a href="{{ path('tours_search') }}?country=hungary" class="cloud hungary" data-uk-tooltip="{pos:'top'}"
+               title="Венгрия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("89").travelType, 'country': "89" } } | url_encode }}"
+               class="cloud switzerland" data-uk-tooltip="{pos:'top'}"
                title="Швейцария"></a>
-            <a href="{{ path('tours_search') }}?country=96" class="cloud slovenia" data-uk-tooltip="{pos:'top'}" title="Словения"></a>
-            <a href="{{ path('tours_search') }}?country=75" class="cloud italy" data-uk-tooltip="{pos:'top'}" title="Италия"></a>
-            <a href="{{ path('tours_search') }}?country=85" class="cloud croatia" data-uk-tooltip="{pos:'top'}" title="Хорватия"></a>
-            <a href="{{ path('tours_search') }}?country=222" class="cloud serbia" data-uk-tooltip="{pos:'top'}" title="Сербия"></a>
-            <a href="{{ path('tours_search') }}?country=86" class="cloud montenegro" data-uk-tooltip="{pos:'bottom'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("96").travelType, 'country': "96" } } | url_encode }}"
+               class="cloud slovenia" data-uk-tooltip="{pos:'top'}" title="Словения"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("75").travelType, 'country': "75" } } | url_encode }}"
+               class="cloud italy" data-uk-tooltip="{pos:'top'}" title="Италия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("85").travelType, 'country': "85" } } | url_encode }}"
+               class="cloud croatia" data-uk-tooltip="{pos:'top'}" title="Хорватия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("222").travelType, 'country': "222" } } | url_encode }}"
+               class="cloud serbia" data-uk-tooltip="{pos:'top'}" title="Сербия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("86").travelType, 'country': "86" } } | url_encode }}"
+               class="cloud montenegro" data-uk-tooltip="{pos:'bottom'}"
                title="Черногория"></a>
-            <a href="{{ path('tours_search') }}?country=100" class="cloud bolgary" data-uk-tooltip="{pos:'right'}" title="Болгария"></a>
-            <a href="{{ path('tours_search') }}?country=71" class="cloud greece" data-uk-tooltip="{pos:'top'}" title="Греция"></a>
-            <a href="{{ path('tours_search') }}?country=83" class="cloud turkey" data-uk-tooltip="{pos:'top'}" title="Турция"></a>
-            <a href="{{ path('tours_search') }}?country=76" class="cloud cyprus" data-uk-tooltip="{pos:'top'}" title="Кипр"></a>
-            <a href="{{ path('tours_search') }}?country=146" class="cloud georgia" data-uk-tooltip="{pos:'left'}" title="Грузия"></a>
-            <a href="{{ path('tours_search') }}?country=123" class="cloud romania" data-uk-tooltip="{pos:'top'}" title="Румыния"></a>
-            <a href="{{ path('tours_search') }}?country=21" class="cloud tunis" data-uk-tooltip="{pos:'top'}" title="Тунис"></a>
-            <a href="{{ path('tours_search') }}?country=67" class="cloud andorra" data-uk-tooltip="{pos:'top'}" title="Андорра"></a>
-            <a href="{{ path('tours_search') }}?country=74" class="cloud spain" data-uk-tooltip="{pos:'top'}" title="Испания"></a>
-            <a href="{{ path('tours_search') }}?country=81" class="cloud portugal" data-uk-tooltip="{pos:'right'}"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("100").travelType, 'country': "100" } } | url_encode }}"
+               class="cloud bolgary" data-uk-tooltip="{pos:'right'}" title="Болгария"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("71").travelType, 'country': "71" } } | url_encode }}"
+               class="cloud greece" data-uk-tooltip="{pos:'top'}" title="Греция"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("83").travelType, 'country': "83" } } | url_encode }}"
+               class="cloud turkey" data-uk-tooltip="{pos:'top'}" title="Турция"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("76").travelType, 'country': "76" } } | url_encode }}"
+               class="cloud cyprus" data-uk-tooltip="{pos:'top'}" title="Кипр"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("146").travelType, 'country': "146" } } | url_encode }}"
+               class="cloud georgia" data-uk-tooltip="{pos:'left'}" title="Грузия"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("123").travelType, 'country': "123" } } | url_encode }}"
+               class="cloud romania" data-uk-tooltip="{pos:'top'}" title="Румыния"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("21").travelType, 'country': "21" } } | url_encode }}"
+               class="cloud tunis" data-uk-tooltip="{pos:'top'}" title="Тунис"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("67").travelType, 'country': "67" } } | url_encode }}"
+               class="cloud andorra" data-uk-tooltip="{pos:'top'}" title="Андорра"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("74").travelType, 'country': "74" } } | url_encode }}"
+               class="cloud spain" data-uk-tooltip="{pos:'top'}" title="Испания"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("81").travelType, 'country': "81" } } | url_encode }}"
+               class="cloud portugal" data-uk-tooltip="{pos:'right'}"
                title="Португалия"></a>
-            <a href="{{ path('tours_search') }}?country=16" class="cloud morocco" data-uk-tooltip="{pos:'top'}" title="Марокко"></a>
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("16").travelType, 'country': "16" } } | url_encode }}"
+               class="cloud morocco" data-uk-tooltip="{pos:'top'}" title="Марокко"></a>
         </div>
     </div>
 

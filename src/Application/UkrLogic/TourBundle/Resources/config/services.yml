@@ -38,17 +38,14 @@ services:
         class: Application\UkrLogic\TourBundle\Service\TourRepository
         arguments: [ @application_ukrlogic_tourbundle.service.tourrepositorycontainer ]
 
-    application_ukrlogic_tourbundle.form.country:
-        class: Application\UkrLogic\TourBundle\Form\CountryType
-        tags:
-            - { name: form.type, alias: 'color_country' }
-
-    application_ukrlogic_tourbundle.form.city:
-        class: Application\UkrLogic\TourBundle\Form\CityType
-        tags:
-            - { name: form.type, alias: 'color_city' }
-
     application_ukrlogic_tourbundle.form.tour:
         class: Application\UkrLogic\TourBundle\Form\TourType
         tags:
-            - { name: form.type, alias: 'tour_form' }    	
+            - { name: form.type, alias: 'tour_form' }
+
+#     application_ukrlogic_tourbundle.voter.request:
+#            class: Application\UkrLogic\MainBundle\Voter\RequestVoter
+#            arguments:
+#                - @service_container
+#            tags:
+#                - { name: knp_menu.voter }

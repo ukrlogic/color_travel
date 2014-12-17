@@ -437,6 +437,8 @@ $(function () {
                 $('#container').masonry('reload');
 
                 hideOverlay();
+
+                window.history.pushState({}, "", "?" + $form.serialize());
             }
 
         })
@@ -489,6 +491,17 @@ $(function () {
     $('#hotel-widget').autocomplete({
         source: Routing.generate('get_hotels'),
         minLength: 2
+    });
+
+    /* Кнопка "Вернуться к поиску" */
+    $('#back_to_seach').click(function (ev) {
+        ev.preventDefault();
+        showOverlay();
+        window.history.back();
+    });
+
+    $('.cloud:not(.europe-flag), .show-overlay').click(function () {
+        showOverlay();
     });
 
 });

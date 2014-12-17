@@ -24,7 +24,8 @@ services:
         class: Application\UkrLogic\MainBundle\Menu\Builder # the service definition requires setting the class
         factory_service: application.ukrlogic.menu_builder
         factory_method: mainMenu
-        arguments: ["@security.context"]
+        scope: request
+        arguments: ["@security.context", "@service_container"]
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
 

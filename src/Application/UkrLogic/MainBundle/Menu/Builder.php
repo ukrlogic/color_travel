@@ -8,9 +8,13 @@
 namespace Application\UkrLogic\MainBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Router;
 use Symfony\Component\Security\Core\SecurityContext;
 
-class Builder
+class Builder extends ContainerAware
 {
     private $factory;
 
@@ -22,11 +26,16 @@ class Builder
         $this->factory = $factory;
     }
 
-    public function mainMenu(SecurityContext $securityContext)
+    public function mainMenu(SecurityContext $securityContext, Container $container)
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Поиск тура', ['route' => 'tours_search']);
+        $route = $container->get('router')->matchRequest($container->get('request'));
+
+        $route['_route'] === 'avia_tour' || $route['_route'] === 'bus_tour'
+            ? $menu->addChild('Назад к поиску', ['uri' => '#', 'attributes' => ['id' => 'back_to_seach', 'class' => 'show-overlay']])
+            : $menu->addChild('Поиск тура', ['route' => 'tours_search', 'attributes' => ['class' => 'show-overlay']]);
+
         $menu->addChild('Авиабилеты', ['route' => 'avia_tickets']);
 
         $subMenu = $menu->addChild('Услуги', ['uri' => '#']);

@@ -12,6 +12,7 @@ namespace Application\UkrLogic\TourBundle\Form;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class TourType
@@ -111,10 +112,18 @@ class TourType extends AbstractType
             ])
             ->add('type', 'hidden', ['data' => 'bus', 'attr' => ['class' => 'travel_type']])
 //            ->add('type', 'hidden', ['data' => 'avia', 'attr' => ['class' => 'travel_type']])
-            ->add('page', 'hidden', ['data' => 1, 'attr' => ['class' => 'page']])
+            ->add('page', 'hidden', ['empty_data' => 1, 'data' => 1, 'attr' => ['class' => 'page']])
             ->add('submit', 'submit', ['label' => 'Поиск']);
     }
-
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults([
+            'csrf_protection'   => false,
+        ]);
+    }
     /**
      * Returns the name of this type.
      *

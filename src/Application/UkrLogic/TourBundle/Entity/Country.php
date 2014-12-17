@@ -260,4 +260,32 @@ class Country
     {
         return $this->getName();
     }
+    /**
+     * @var string
+     */
+    private $travelType;
+
+
+    /**
+     * Set travelType
+     *
+     * @param string $travelType
+     * @return Country
+     */
+    public function setTravelType($travelType)
+    {
+        $this->travelType = $travelType;
+
+        return $this;
+    }
+
+    /**
+     * Get travelType
+     *
+     * @return string 
+     */
+    public function getTravelType()
+    {
+        return $this->travelType;
+    }
 }
