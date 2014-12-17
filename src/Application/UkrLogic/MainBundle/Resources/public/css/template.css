@@ -1839,7 +1839,7 @@ margin-bottom: 5px;
 float: left;
 color: red;
 width: 25% !important;
-background: url(izb0.png) no-repeat top, center;
+background: url(../img/izb0.png) no-repeat top, center;
 color: transparent;
 margin-top: 9px;
 }
@@ -1848,7 +1848,7 @@ margin-bottom: 5px;
 float: left;
 color: red;
 width: 25% !important;
-background: url(izb1.png) no-repeat top, center;
+background: url(../img/izb1.png) no-repeat top, center;
 color: transparent;
 margin-top: 9px;
 pointer-events: auto !important;
