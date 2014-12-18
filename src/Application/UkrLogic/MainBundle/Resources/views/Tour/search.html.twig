@@ -5,19 +5,19 @@
         <div id="container" class="masonry">
             <div class="box w filter">
                 {{ form_start(form) }}
-                <div class="filter-variant clear">
-                    <div class="button filter-type {% if form.type.vars.value == 'bus' %}active{% endif %}"
+                <div class="filter-variant clear" id="filter-section-travel-type">
+                    <div class="button filter-type bus {% if form.type.vars.value == 'bus' %}active{% endif %}"
                          data-class="bus">Автобусный тур
                     </div>
-                    <div class="button filter-type {% if form.type.vars.value == 'avia' %}active{% endif %}"
+                    <div class="button filter-type avia {% if form.type.vars.value == 'avia' %}active{% endif %}"
                          data-class="avia">Авиа тур
                     </div>
-                    <div class="button hot">Горящие туры</div>
+                    <div class="button filter-type hot" data-class="avia">Горящие туры</div>
                 </div>
 
                 <div class="avia-section">
 
-                    <div class="filter-section from clear hide-on-bus">
+                    <div class="filter-section from clear hide-on-bus" id="filter-section-city">
                         <h3>Вылет из города</h3>
 
                         <div>
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="filter-section to clear">
+                    <div class="filter-section to clear" id="filter-section-country">
                         <h3>Страна прибытия</h3>
 
                         <div>
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="filter-section clear">
+                    <div class="filter-section clear" id="filter-section-duration">
                         <h3>Курорт</h3>
 
                         <div>
@@ -66,7 +66,7 @@
 
                         </div>
                     </div>
-                    <div class="filter-section clear hide-on-bus">
+                    <div class="filter-section clear hide-on-bus" id="filter-section-hotel">
                         <h3>Отель</h3>
 
                         <div>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
 
-                            <h4>Категория отеля</h4>
+                            <h4 class="hide-on-active-hotel">Категория отеля</h4>
 
                             <div class="subcategory">
                                 <div class="stars">
@@ -93,9 +93,9 @@
                                 </div>
                             </div>
 
-                            <h4>Тип питания</h4>
+                            <h4 class="hide-on-active-hotel">Тип питания</h4>
 
-                            <div>
+                            <div class="subcategory">
                                 <div class="from-group customscroll">
                                     {% for child in form.meal %}
                                         <div>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
 
-                            <h4>Количество туристов</h4>
+                            <h4 class="hide-on-active-hotel">Количество туристов</h4>
 
                             <div class="subcategory">
                                 {{ form_widget(form.adult_count, {id: 'adult'}) }}
@@ -139,9 +139,7 @@
                 <div style="display: none;">{{ form_rest(form) }}</div>
                 {{ form_end(form) }}
             </div>
-            <div id="tiles">
-                {{ include('@ApplicationUkrLogicMain/Tour/tiles.html.twig', {tours: tours}) }}
-            </div>
+            {{ include('@ApplicationUkrLogicMain/Tour/tiles.html.twig', {tours: tours}) }}
         </div>
     </div>
 {% endblock %}

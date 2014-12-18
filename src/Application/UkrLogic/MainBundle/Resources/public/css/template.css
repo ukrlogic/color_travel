@@ -930,10 +930,10 @@ nav ul li ul li:hover {
     }
 
     .box.w {
-        width: 322px;
+        width: 464px;
     }
 
-    .box.w.filter {
+    .w.filter {
         width: 322px;
     }
 

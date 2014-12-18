@@ -1,7 +1,3 @@
-function search() {
-    $(".slide_search").trigger('click');
-}
-
 $(function () {
 
 
@@ -182,12 +178,13 @@ $(function () {
         var $form = $(this);
 
         $.post($form.attr('action'), $form.serialize(), function (response) {
-            console.log(response);
             if (response.redirect) {
                 window.location = response.redirect
             } else {
+                response = $(response);
+                $(response).addClass($form.parent().attr('class'));
                 $form.parent().replaceWith(response);
-                $form.parent().show();
+                response.show();
 
                 $('.signup form').submit(signup);
             }
@@ -216,33 +213,29 @@ $(function () {
         $('input.travel_type').val($(this).data('class'));
 
         $(this).data('class') == 'bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
-        $('form[name="tour_form"]').submit();
-    });
 
-    if ($('.filter-variant .filter-type[data-class="bus"]').hasClass('active')) {
-        $('.hide-on-bus').hide();
-    }
-
-    /***** Фильтр "Горящие" ******/
-    $('.filter-variant .hot').click(function () {
-        $('.rangeInlinePicker').toggle();
-        $(this).toggleClass('active');
-
+        /***** Фильтр "Горящие" ******/
         var dateFrom = $('input.date_from');
         var dateTill = $('input.date_to');
 
-        if ($(this).hasClass('active')) {
+        if ($(this).hasClass('hot')) {
+            $('.rangeInlinePicker').hide();
             localStorage.setItem('filter.dateFrom', dateFrom.val());
             localStorage.setItem('filter.dateTill', dateTill.val());
             dateFrom.val($.datepicker.formatDate('yy-mm-dd', new Date()));
             dateTill.val($.datepicker.formatDate('yy-mm-dd', new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7)));
         } else {
+            $('.rangeInlinePicker').show();
             dateFrom.val(localStorage.getItem('filter.dateFrom'));
             dateTill.val(localStorage.getItem('filter.dateTill'));
         }
 
         $('form[name="tour_form"]').submit();
     });
+
+    if ($('.filter-variant .filter-type[data-class="bus"]').hasClass('active')) {
+        $('.hide-on-bus').hide();
+    }
 
     /**** Календарь ****/
     $('.rangeInlinePicker').datepick({
@@ -490,22 +483,64 @@ $(function () {
     /* Умный поиск */
     $('#hotel-widget').autocomplete({
         source: Routing.generate('get_hotels'),
-        minLength: 2
+        minLength: 2,
+        select: function (event, ui) {
+            var elements = $('#filter-section-hotel h4.hide-on-active-hotel, #filter-section-hotel h4.hide-on-active-hotel~div.subcategory');
+            ui.item.label && ui.item.label.length > 0 && elements.hide('fast');
+
+            return ui;
+        }
+    }).focusout(function () {
+        if (!$(this).val()) {
+            $('#filter-section-hotel h4.hide-on-active-hotel, #filter-section-hotel h4.hide-on-active-hotel~div.subcategory').show('fast');
+        }
     });
 
     /* Кнопка "Вернуться к поиску" */
     $('#back_to_seach').click(function (ev) {
         ev.preventDefault();
         showOverlay();
-        window.location.href = document.referrer;;
+        window.location.href = document.referrer;
+        ;
     });
 
-    $('.cloud:not(.europe-flag), .show-overlay').click(function () {
+    $('.cloud:not(.europe-flag)').click(function () {
         showOverlay();
     });
 
     $('.flashbag .message').each(function () {
         alert($(this).html());
+    });
+
+    $('.tour-search-button').click(function (event) {
+        if ($(this).find('a').attr('href') === window.location.pathname) {
+            event.preventDefault();
+            $(this).toggleClass('hide');
+            if ($(this).hasClass('hide')) {
+                $(".box.filter").velocity({
+                    left: '-500px',
+                    width: 0,
+                    opacity: 0
+                }, 300, function () {
+                    $('#container').masonry(masonryOptions);
+                });
+            } else {
+                if ($(window).width() <= 1) {
+                    $(".box.filter").css({
+                        width: ColumnWidth,
+                        opacity: 1
+                    });
+                } else {
+                    $(".box.filter").css({
+                        width: (ColumnWidth * 2) + 5,
+                        opacity: 1
+                    });
+                }
+                $('#container').masonry(masonryOptions);
+            }
+        } else {
+            showOverlay();
+        }
     });
 
 });
