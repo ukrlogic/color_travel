@@ -6,6 +6,20 @@
 {% endblock %}
 
 {% block content %}
+    <div class="order_tour">
+        <h3>Бронирование тура</h3>
+        <form>
+            <p class="close">x</p>
+            <input type="text" name="fio" placeholder="Ф.И.О." required="required">
+            <input type="text" name="phone" placeholder="Введите ваш контактный телефон" required="required">
+            <input type="text" name="email" placeholder="Введите ваш e-mail" required="required">
+            <p class="terms">
+                <b>Продолжительность тура:</b> {{ tour.days }} ночей<br/>
+                <b>Маршрут:</b> {{ tour.route | raw }}<br/>
+            </p>
+            <button type="submit">Забронировать</button>
+        </form>
+    </div>
     <div class="content container tour">
         <div class="connected-carousels">
             <div class="stage">
@@ -81,24 +95,4 @@
         </div>
     </div>
     {% render controller('ApplicationUkrLogicMainBundle:Tour:comment', { 'request': app.request, 'tour_id': tour.tour_id, 'tour_type': 'bus' }) %}
-{% endblock %}
-
-{% block modal %}
-    <div class="order_tour">
-        <h3>Бронирование тура</h3>
-        <form>
-            <p class="close">x</p>
-            <input type="text" name="fio" placeholder="Ф.И.О." required="required">
-            <input type="text" name="phone" placeholder="Введите ваш контактный телефон" required="required">
-            <input type="text" name="email" placeholder="Введите ваш e-mail" required="required">
-            <p class="terms">
-                <b>Кол-во человек:</b> 1-4<br />
-                <b>Тип номера:</b> LUX<br />
-                <b>Тип питания:</b> Шведский стол<br />
-                <b>Продолжительность тура:</b> 14 дней<br />
-                <b>Вылет из Харьков:</b> Харьков<br />
-            </p>
-            <button type="submit">Забронировать</button>
-        </form>
-    </div>
 {% endblock %}

@@ -34,7 +34,7 @@ class Builder extends ContainerAware
 
         $route['_route'] === 'avia_tour' || $route['_route'] === 'bus_tour'
             ? $menu->addChild('Назад к поиску', ['uri' => '#', 'attributes' => ['id' => 'back_to_seach', 'class' => 'show-overlay']])
-            : $menu->addChild('Поиск тура', ['route' => 'tours_search', 'attributes' => ['class' => 'show-overlay']]);
+            : $menu->addChild('Поиск тура', ['route' => 'tours_search', 'attributes' => ['class' => 'tour-search-button']]);
 
         $menu->addChild('Авиабилеты', ['route' => 'avia_tickets']);
 
