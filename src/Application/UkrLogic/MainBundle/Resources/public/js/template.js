@@ -441,11 +441,19 @@ $(function () {
         $('form[name="tour_form"]').submit();
     });
 
+
+    var canLoadAgain = true;
     /* подгрузка туров */
     $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() == $(document).height() && $('.flip-container').length >= 40) {
+        if ($(window).scrollTop() + $(window).height() == $(document).height() && $('.flip-container').length >= 40 && canLoadAgain) {
             var page = $('form[name="tour_form"] input.page');
             page.val(page.val() + 1);
+            canLoadAgain = false;
+
+            setTimeout(function () {
+                canLoadAgain = true;
+
+            }, 15000);
 
             $('form[name="tour_form"]').data('append', 'append').submit();
         }
@@ -499,9 +507,15 @@ $(function () {
     /* Кнопка "Вернуться к поиску" */
     $('#back_to_seach').click(function (ev) {
         ev.preventDefault();
+
+        var url = localStorage.getItem('last_search');
+
+        if (!url) {
+            url = Routing.generate('tour_search');
+        }
+
         showOverlay();
-        window.location.href = document.referrer;
-        ;
+        window.location.href = url;
     });
 
     $('.cloud:not(.europe-flag)').click(function () {
@@ -542,5 +556,21 @@ $(function () {
             showOverlay();
         }
     });
+
+    $("form").on('submit', function (event) {
+        var input = $(this).find('input[type="email"], input.email');
+        var expr = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+        for (var i = 0; i < input.length; i++) if (false === expr.test(input[i].value)) {
+            alert('Введите E-mail правильно!');
+
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $('#container a.flip-container').click(function () {
+        console.log(window.location.href + ' saved to Local Storage');
+        localStorage.setItem('last_search', window.location.href);
+    })
 
 });

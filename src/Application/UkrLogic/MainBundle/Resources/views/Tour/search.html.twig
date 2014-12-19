@@ -70,7 +70,7 @@
                         <h3>Отель</h3>
 
                         <div>
-                            <h4>Название отеля</h4>
+                            <h4 id="hotel-name">Название отеля</h4>
 
                             <div class="subcategory">
                                 <div class="ui-widget">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="hide-on-active-hotel">Категория отеля</h4>
+                            <h4 class="hide-on-active-hotel" id="hotel-rate">Категория отеля</h4>
 
                             <div class="subcategory">
                                 <div class="stars">
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="hide-on-active-hotel">Тип питания</h4>
+                            <h4 class="hide-on-active-hotel" id="hotel-meal-type">Тип питания</h4>
 
                             <div class="subcategory">
                                 <div class="from-group customscroll">
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="hide-on-active-hotel">Количество туристов</h4>
+                            <h4 class="hide-on-active-hotel" id="hotel-people-count">Количество туристов</h4>
 
                             <div class="subcategory">
                                 {{ form_widget(form.adult_count, {id: 'adult'}) }}

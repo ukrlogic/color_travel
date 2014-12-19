@@ -81,10 +81,10 @@
 {% block footer %}{% endblock %}
 
 <div id="modal">{% block modal %}{% endblock %}</div>
-<div class="flashbag">
+<div class="flashbag" style="display: none;">
     {% for typename, type in app.session.flashBag.all %}
         {% for message in type %}
-            <div class="message" data-type="{{ typename }}">{{ message }}</div>
+            <div class="message" data-type="{{ typename }}">{{ message|trans({}, 'messages') }}</div>
         {% endfor %}
     {% endfor %}
 </div>

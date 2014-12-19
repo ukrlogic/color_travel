@@ -8,17 +8,27 @@
 {% block content %}
     <div class="order_tour">
         <h3>Бронирование тура</h3>
-        <form>
-            <p class="close">x</p>
-            <input type="text" name="fio" placeholder="Ф.И.О." required="required">
-            <input type="text" name="phone" placeholder="Введите ваш контактный телефон" required="required">
-            <input type="text" name="email" placeholder="Введите ваш e-mail" required="required">
-            <p class="terms">
-                <b>Продолжительность тура:</b> {{ tour.days }} ночей<br/>
-                <b>Маршрут:</b> {{ tour.route | raw }}<br/>
-            </p>
-            <button type="submit">Забронировать</button>
-        </form>
+
+        <p class="close">x</p>
+
+        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate' } }) }}
+        {{ form_errors(form) }}
+
+        {{ form_widget(form.fio, { 'required': true, 'attr': { 'placeholder': 'Ф.И.О.' } }) }}
+        {{ form_widget(form.phone, { 'required': true, 'attr': { 'placeholder': 'Введите ваш контактный телефон' } }) }}
+        {{ form_widget(form.email, { 'required': true, 'attr': { 'placeholder': 'Введите ваш e-mail', 'class': 'email' } }) }}
+
+        <p class="terms">
+            <b>Продолжительность тура:</b> {{ tour.days }} ночей<br/>
+            <b>Маршрут:</b> {{ tour.route | raw }}<br/>
+        </p>
+
+        <button type="submit">Забронировать</button>
+
+        <div style="display: none">
+            {{ form_rest(form) }}
+        </div>
+        {{ form_end(form) }}
     </div>
     <div class="content container tour">
         <div class="connected-carousels">
@@ -53,6 +63,7 @@
 
             <div class="hotel-tour-desc">
                 <p>{{ tour.name }}</p>
+
                 <p class="price">{{ tour.price_usd }} $</p>
             </div>
             <div>
@@ -71,7 +82,7 @@
 
                 <p class="nm"><b>Описание тура</b></p>
 
-                {{ tour.description | raw}}
+                {{ tour.description | raw }}
 
 
             </div>
@@ -86,7 +97,8 @@
                         <a class="button already-in favorite" href="#" style="pointer-events: none; cursor: default;">В
                             избранном</a>
                     {% else %}
-                        <a class="button favorite" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}" style="margin-bottom: 5px;">В избранное</a>
+                        <a class="button favorite" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}"
+                           style="margin-bottom: 5px;">В избранное</a>
                     {% endif %}
                 {% endif %}
 

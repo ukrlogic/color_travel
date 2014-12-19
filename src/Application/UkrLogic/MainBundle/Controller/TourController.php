@@ -5,9 +5,12 @@ namespace Application\UkrLogic\MainBundle\Controller;
 use Application\UkrLogic\MainBundle\Entity\Comment;
 use Application\UkrLogic\MainBundle\Entity\Favorite;
 use Application\UkrLogic\MainBundle\Entity\History;
+use Application\UkrLogic\MainBundle\Entity\OrderTour;
+use Application\UkrLogic\MainBundle\Form\OrderTourType;
 use Application\UkrLogic\TourBundle\Entity\AviaTour;
 use Application\UkrLogic\TourBundle\Entity\Hotel;
 use Doctrine\ORM\Query;
+use Sonata\UserBundle\Model\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -49,35 +52,55 @@ class TourController extends Controller
         ];
     }
 
+    public function getForm(Request $request)
+    {
+
+    }
+
     /**
      * @Route("/tour/avia/{id}", name="avia_tour")
      * @Template()
      */
-    public function aviaTourAction($id)
+    public function aviaTourAction($id, Request $request)
     {
-        $lastSearch = $this->get('session')
-            ->get('lastSearch');
+        $order = new OrderTour();
+        $user = $this->getUser();
+
+        if ($user instanceof User) {
+            $order->setFio($user->getUsername());
+            $order->setPhone($user->getPhone());
+            $order->setEmail($user->getEmail());
+            $order->setInfo($this->generateUrl('avia_tour', ['id' => $id], true));
+            $order->setStatus(false);
+        }
+
+        $form = $this->createForm(new OrderTourType(), $order);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->getDoctrine()->getManager()->persist($order);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->get('session')->getFlashBag()->add('notice', 'Заявка на тур подана успешно, ожидайте пока с Вами свяжется наш мененджер');
+
+            return $this->redirect($request->getRequestUri());
+        }
+
+        $lastSearch = $this->get('session')->get('lastSearch');
 
         if (!$lastSearch || !array_key_exists($id, $lastSearch)) {
             throw new NotFoundHttpException("Tour not found");
         }
 
-        $tour =
-            $this->getDoctrine()
-                ->getRepository('ApplicationUkrLogicTourBundle:AviaTour')
-                ->findOneBy(['tourId' => $id]);
+        $tour = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:AviaTour')->findOneBy(['tourId' => $id]);
 
         if (!$tour) {
             $tour = new AviaTour();
-            $tour->setTourId($id)
-                ->setData($lastSearch[$id]);
+            $tour->setTourId($id)->setData($lastSearch[$id]);
 
-            $this->getDoctrine()
-                ->getManager()
-                ->persist($tour);
-            $this->getDoctrine()
-                ->getManager()
-                ->flush();
+            $this->getDoctrine()->getManager()->persist($tour);
+            $this->getDoctrine()->getManager()->flush();
         }
 
         $hotel = $this->getDoctrine()
@@ -95,6 +118,7 @@ class TourController extends Controller
             'tour'        => $tour->getData(),
             'inFavorite'  => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'avia'),
             'description' => $description,
+            'form'       => $form->createView(),
         ];
     }
 
@@ -102,11 +126,33 @@ class TourController extends Controller
      * @Route("/tour/bus/{id}", name="bus_tour")
      * @Template()
      */
-    public function busTourAction($id)
+    public function busTourAction($id, Request $request)
     {
-        $resp = $this->get('guzzle.akkord_tour_bus')
-            ->getCommand('get_tour', ['id' => $id])
-            ->execute();
+        $order = new OrderTour();
+        $user = $this->getUser();
+
+        if ($user instanceof User) {
+            $order->setFio($user->getUsername());
+            $order->setPhone($user->getPhone());
+            $order->setEmail($user->getEmail());
+            $order->setInfo($this->generateUrl('bus_tour', ['id' => $id], true));
+            $order->setStatus(false);
+        }
+
+        $form = $this->createForm(new OrderTourType(), $order);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->getDoctrine()->getManager()->persist($order);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->get('session')->getFlashBag()->add('notice', 'Заявка на тур подана успешно, ожидайте пока с Вами свяжется наш мененджер');
+
+            return $this->redirect($request->getRequestUri());
+        }
+
+        $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $id])->execute();
         $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
         $tour = json_decode(json_encode((array)$xml, true));
 
@@ -118,7 +164,8 @@ class TourController extends Controller
 
         return [
             'tour'       => $tour->tour,
-            'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus')
+            'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus'),
+            'form'       => $form->createView(),
         ];
     }
 

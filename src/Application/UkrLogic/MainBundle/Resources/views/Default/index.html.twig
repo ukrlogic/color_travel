@@ -11,9 +11,9 @@
         <div class="content-flags world">
             <a href="javascript:void(0)" class="cloud europe-flag" data-uk-tooltip="{pos:'top'}"
                title="Европейские страны"></a>
-            <a href="{{ path('tours_search') }}?country=belorussia" class="cloud belorussia-m"
+            <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("114").travelType, 'country': "114" } } | url_encode }}" class="cloud ukraine-m"
                data-uk-tooltip="{pos:'top'}"
-               title="Белоруссия"></a>
+               title="Украина"></a>
             <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("1").travelType, 'country': "1" } } | url_encode }}"
                class="cloud russia-m" data-uk-tooltip="{pos:'top'}" title="Россия"></a>
             <a href="{{ path('tours_search') }}?{{ { 'tour_form': { 'type': getCountry("37").travelType, 'country': "37" } } | url_encode }}"

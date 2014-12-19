@@ -8,6 +8,7 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,6 +37,13 @@ class DefaultController extends Controller
         return $this->getProfileNewsPageContent();
     }
 
+    /**
+     * @Route("/profile/")
+     */
+    public function profileRedirectAction()
+    {
+        return $this->redirect($this->generateUrl('profile'));
+    }
 
     /**
      * @Route("/profile/edit", name="profile_edit")
@@ -53,6 +61,24 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            /** @var User|null $userWithIdenticalEmail */
+            $userWithIdenticalEmail = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->findOneBy(['email' => $user->getEmail()]);
+
+            if (null !== $userWithIdenticalEmail && $user->getId() !== $userWithIdenticalEmail->getId()) {
+                $form->addError(new FormError('Пользователь с таким E-mail уже существует!'));
+
+                return array_merge(['form' => $form->createView()], $this->getProfileNewsPageContent());
+            }
+
+            /** @var User|null $userWithIdenticalUsername */
+            $userWithIdenticalUsername = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->findOneBy(['username' => $user->getUsername()]);
+
+            if (null !== $userWithIdenticalUsername && $user->getId() !== $userWithIdenticalUsername->getId()) {
+                $form->addError(new FormError('Пользователь с таким именем уже существует!'));
+
+                return array_merge(['form' => $form->createView()], $this->getProfileNewsPageContent());
+            }
+
             $user->upload();
 
             $this->getDoctrine()->getManager()->persist($user);
@@ -218,9 +244,11 @@ class DefaultController extends Controller
             ->getRepository('ApplicationUkrLogicMainBundle:Post')
             ->findAll();
 
+        $paginator = $this->get('knp_paginator')->paginate($news, $this->get('request')->query->get('page'), 6);
+
         return [
             'commentsTours' => $tours,
-            'news'          => $news,
+            'news'          => $paginator,
         ];
     }
 

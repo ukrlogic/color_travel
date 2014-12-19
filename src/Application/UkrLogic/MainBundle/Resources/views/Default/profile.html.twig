@@ -2,6 +2,10 @@
 {% block profile_content %}
     <div class="m-header masonry-brick">
         <h3>Новости</h3>
+
+        <div class="pagination">
+            {{ knp_pagination_render(news) }}
+        </div>
     </div>
     {% for post in news %}
         <a href="{{ path('post', { 'id': post.id }) }}" class="box news">

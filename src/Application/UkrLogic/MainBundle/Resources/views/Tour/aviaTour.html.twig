@@ -8,20 +8,30 @@
 {% block content %}
     <div class="order_tour">
         <h3>Бронирование тура</h3>
-        <form>
-            <p class="close">x</p>
-            <input type="text" name="fio" placeholder="Ф.И.О." required="required">
-            <input type="text" name="phone" placeholder="Введите ваш контактный телефон" required="required">
-            <input type="text" name="email" placeholder="Введите ваш e-mail" required="required">
-            <p class="terms">
-                <b>Кол-во человек:</b> {{ tour.RoomSize.description }}<br/>
-                <b>Тип номера:</b> {{ tour.RoomSize.name }}<br/>
-                <b>Тип питания:</b> {{ tour.Meal.name }} ({{ tour.Meal.description }})<br/>
-                <b>Продолжительность тура:</b> {{ tour.duration }} ночей<br/>
-                <b>Вылет из:</b> {{ tour.City.name }}<br/>
-            </p>
-            <button type="submit">Забронировать</button>
-        </form>
+
+        <p class="close">x</p>
+
+        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate' } }) }}
+        {{ form_errors(form) }}
+
+        {{ form_widget(form.fio, { 'required': true, 'attr': { 'placeholder': 'Ф.И.О.' } }) }}
+        {{ form_widget(form.phone, { 'required': true, 'attr': { 'placeholder': 'Введите ваш контактный телефон' } }) }}
+        {{ form_widget(form.email, { 'required': true, 'attr': { 'placeholder': 'Введите ваш e-mail', 'class': 'email' } }) }}
+
+        <p class="terms">
+            <b>Кол-во человек:</b> {{ tour.RoomSize.description }}<br/>
+            <b>Тип номера:</b> {{ tour.RoomSize.name }}<br/>
+            <b>Тип питания:</b> {{ tour.Meal.name }} ({{ tour.Meal.description }})<br/>
+            <b>Продолжительность тура:</b> {{ tour.duration }} ночей<br/>
+            <b>Вылет из:</b> {{ tour.City.name }}<br/>
+        </p>
+
+        <button type="submit">Забронировать</button>
+
+        <div style="display: none">
+            {{ form_rest(form) }}
+        </div>
+        {{ form_end(form) }}
     </div>
     <div class="content container tour">
         <div class="connected-carousels">

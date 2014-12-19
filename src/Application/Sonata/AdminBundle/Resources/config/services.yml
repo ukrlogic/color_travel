@@ -53,3 +53,9 @@ services:
         arguments: [~, Application\UkrLogic\MainBundle\Entity\Post, SonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Post}
+
+    application_sonata_admin.admin.order_tour:
+        class: Application\Sonata\AdminBundle\Admin\OrderTourAdmin
+        arguments: [~, Application\UkrLogic\MainBundle\Entity\OrderTour, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: OrderTour}

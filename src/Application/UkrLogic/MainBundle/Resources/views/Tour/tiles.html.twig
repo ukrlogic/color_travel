@@ -41,7 +41,7 @@
         <a href="{{ path('bus_tour', { "id": tour.info.tourId }) }}" class="box {{ random(['w', '']) }} flip-container">
             <div class="flipper">
                 <div class="front">
-                    <img src="{{ asset(getTourImages((tour.info.countries|first).id, 'countries')|first|default('/images/noimagew.png')) }}" alt="" style="height: 100%;">
+                    <img src="{{ asset(random(getTourImages((tour.info.countries|first).id, 'countries')|default(['/images/noimagew.png']))) }}" alt="" style="height: 100%;">
 
                     <div class="flags">
                         {% for country in tour.info.countries %}

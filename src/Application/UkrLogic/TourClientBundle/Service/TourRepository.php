@@ -91,22 +91,15 @@ class TourRepository implements RepositoryInterface
         $request->TourSearchRequest->addChild('countryId', $form->get('country')->getData() ? $form->get('country')->getData()->getId() : '12');
 
         /* Filter by duration */
-        $durationFrom = $form->get('days_from')->getData();
-        $durationTill = $form->get('days_to')->getData();
-
-        if ($durationFrom && $durationTill) {
-            $request->TourSearchRequest->addChild('durationFrom', $durationFrom);
-            $request->TourSearchRequest->addChild('durationTill', $durationTill);
-        }
+        $request->TourSearchRequest->addChild('durationFrom', $form->get('days_from')->getData() ? : 5);
+        $request->TourSearchRequest->addChild('durationTill', $form->get('days_to')->getData() ? : 15);
 
         /* Filter by date */
-        $departureFrom = $form->get('date_from')->getData();
-        $departureTill = $form->get('date_to')->getData();
+        $departureFrom = $form->get('date_from')->getData() ? : new \DateTime();
+        $departureTill = $form->get('date_to')->getData() ? : new \DateTime('+ 1 month');
 
-        if ($departureFrom instanceof \DateTime && $departureTill instanceof \DateTime) {
-            $request->TourSearchRequest->addChild('departureFrom', $departureFrom->format('Y-m-d'));
-            $request->TourSearchRequest->addChild('departureTill', $departureTill->format('Y-m-d'));
-        }
+        $request->TourSearchRequest->addChild('departureFrom', $departureFrom->format('Y-m-d'));
+        $request->TourSearchRequest->addChild('departureTill', $departureTill->format('Y-m-d'));
 
         /* Filter by price */
         $priceFrom = $form->get('price_from')->getData();
