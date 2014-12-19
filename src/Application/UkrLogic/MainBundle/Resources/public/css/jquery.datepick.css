@@ -3,11 +3,14 @@
   width: 100%;
 }
 .datepick {
-background-color: #ffffff;
+background-color: #F3F4F6;
 color: #000000;
 font-family: Arial,Helvetica,Sans-serif;
 font-size: 90%;
-width: 100% !important;
+width: 94% !important;
+margin-left: 9px;
+margin-right: 9px;
+margin-top: 10px;
 }
 .datepick-rtl {
 	direction: rtl;

@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 .sod_select {
-    background: none repeat scroll 0 0 #2c6883;
+    background: none repeat scroll 0 0 #1DADF8;
     border: medium none;
     color: #ffffff;
     cursor: default;
@@ -70,17 +70,17 @@ width: 21px;
 .sod_select .sod_placeholder {
 }
 .sod_select .sod_list_wrapper {
-    background: none repeat scroll 0 0 #2c6883;
-    color: #ffffff;
-    display: none;
-    font-size: 15px;
-    font-weight: 300;
-    height: auto;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    width: 176px;
-    z-index: 1;
+background: none repeat scroll 0 0 #1DADF8;
+color: #ffffff;
+display: none;
+font-size: 15px;
+font-weight: 300;
+height: auto;
+left: 0;
+position: absolute;
+top: 35px;
+width: 147px;
+z-index: 1;
 }
 .sod_select.open .sod_list_wrapper {
     display: block;
@@ -122,8 +122,12 @@ width: 21px;
     color: #cccccc;
 }
 .sod_select .sod_option.active {
-    background: none repeat scroll 0 0 #f7f7f7;
+    background: none repeat scroll 0 0 #1086C3;
+	cursor: poiner;
     color: #333333;
+}
+.sod_select .sod_placeholder:hover {
+cursor: pointer;
 }
 .sod_select .sod_option.selected {
     font-weight: 700;

@@ -254,7 +254,6 @@ nav > ul > li:first-child a:hover {
 
 nav {
     height: 40px;
-    padding-bottom: 5px;
     position: relative;
     z-index: 2;
 }
@@ -274,7 +273,7 @@ nav > ul > li {
     vertical-align: middle;
     width: auto;
     position: relative;
-    background: #262262;
+    background: #223662;
 }
 
 nav > ul > li > a {
@@ -344,6 +343,7 @@ nav ul li ul li:hover {
 #container {
     float: left;
     width: 100%;
+	margin-top: 5px;
 }
 
 .box {
@@ -1524,6 +1524,7 @@ input[name="captcha"] {
 
 .content-blue p.right {
     text-align: right;
+	color: black;
 }
 
 .content-blue ul.list {
@@ -1535,6 +1536,7 @@ input[name="captcha"] {
     margin-bottom: 5px;
     padding-left: 30px;
     text-align: left;
+	color: black;
 }
 
 .content-blue ul.list.large {
@@ -1802,17 +1804,16 @@ input[name="captcha"] {
     text-align: center;
     border-radius: 5px;
 }
-
 .hotel-tour-description .button#addComment {
-    font-size: 20px;
-    height: 30px;
-    line-height: 30px;
-    margin-top: 3px;
-    width: 33% !important;
-    float: left;
-    color: #009CF8;
-    text-decoration: underline;
-    text-align: left;
+font-size: 20px;
+height: 30px;
+line-height: 30px;
+margin-top: 3px;
+width: 24% !important;
+float: left;
+color: #009CF8;
+text-decoration: underline;
+text-align: left;
 }
 
 .hotel-tour-description .button#addComment:hover {
@@ -1831,20 +1832,20 @@ input[name="captcha"] {
 }
 
 .hotel-tour-description .button#buy_o {
-    background-color: #00B981;
-    width: 30%;
-    float: right;
-    box-shadow: 0px 3px 0px 0px rgba(0, 162, 109, 1);
+background-color: #00B981;
+width: 24%;
+float: left;
+box-shadow: 0px 3px 0px 0px rgba(0, 162, 109, 1);
 }
 
 .hotel-tour-description .button#order {
-    width: 30% !important;
-    float: left;
-    text-align: center;
-    background-color: #B53C3D;
-    margin-left: 10px;
-    margin-right: 10px;
-    box-shadow: 0px 3px 0px 0px rgba(151, 60, 61, 1);
+width: 24% !important;
+float: left;
+text-align: center;
+background-color: #B53C3D;
+margin-left: 10px;
+margin-right: 10px;
+box-shadow: 0px 3px 0px 0px rgba(151, 60, 61, 1);
 }
 
 .tour .hotel-tour-description .hotel-tour-desc {
@@ -2272,7 +2273,6 @@ input[name="captcha"] {
 }
 
 footer {
-margin: 10px auto 0 !important;
 position: relative;
 text-shadow: 0px 1px 3px #000;
 z-index: 2;
@@ -2329,7 +2329,7 @@ footer .half.right {
 }
 
 .maps {
-    height: 1227px;
+    height: 1207px;
     left: 50%;
     margin-left: -850px;
     position: absolute;
@@ -2344,6 +2344,8 @@ footer .half.right {
     /*width: 100%;*/
     z-index: -1;
     text-align: center;
+	top: 20px;
+	left: -10px;
 }
 
 body.main {
@@ -2365,8 +2367,6 @@ body.main {
 }
 
 .europe-image {
-    /*display: none;*/
-    /* visibility: hidden;*/
     opacity: 0;
     top: -120px;
     left: -142px;
@@ -2377,6 +2377,7 @@ body.main {
     -moz-transform: scale(0.2); /* Firefox */
     -webkit-transform: scale(0.2); /* Safari and Chrome */
     -o-transform: scale(0.2); /* Opera */
+	margin-left: -37px;
 }
 
 .container-map {
@@ -2725,6 +2726,35 @@ body.main {
     top: 168px;
     width: 46px;
 }
+a.button.already-in.favorite {
+margin-bottom: 5px;
+width: 16%;
+float: right;
+background: url("../img/main-countr/izb1.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+color: transparent;
+}
+a.button.favorite {
+margin-bottom: 5px;
+width: 16%;
+float: right;
+background: url("../img/main-countr/izb0.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+color: transparent;
+}
+a.button.favorite:hover {
+margin-bottom: 5px;
+width: 16%;
+float: right;
+background: url("../img/main-countr/izb1.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+color: transparent;
+}
+.ukraine-m {
+background: url("../img/main-countr/ukraine.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+height: 50px;
+left: 915px;
+top: 210px;
+width: 50px;
+background-size: 100%;
+}
 
 .russia-m {
     background: url("../img/main-countr/russia-m.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -2732,6 +2762,7 @@ body.main {
     left: 1087px;
     top: 80px;
     width: 120px;
+	display: none;
 }
 
 .china {
@@ -5199,15 +5230,6 @@ select.input {
     width: 100%;
 }
 
-.datepick {
-    background-color: #ffffff;
-    color: #000000;
-    font-family: Arial, Helvetica, Sans-serif;
-    font-size: 90%;
-    width: 100% !important;
-    margin-top: 10px;
-}
-
 .datepick-rtl {
     direction: rtl;
 }
@@ -5248,7 +5270,7 @@ select.input {
 .datepick-nav, .datepick-ctrl {
     float: left;
     width: 100%;
-    background-color: #1DADF8;
+    background-color: #1DADF8 !important;
     color: #fff;
     font-size: 90%;
     font-weight: bold;
@@ -5370,7 +5392,7 @@ button.datepick-cmd {
 }
 
 .datepick-month-header, .datepick-month-header select, .datepick-month-header input {
-background-color: #1DADF8;
+background-color: #1DADF8 !important;
 color: #ffffff;
 font-family: Segoe UI;
 font-weight: 100;
@@ -8593,6 +8615,43 @@ margin-left: 9px;
 margin-right: 9px;
 }
 
+.filter-variant div.button.filter-type.bus:after {
+content: " ";
+position: absolute;
+right: 20px;
+width: 32px;
+height: 28px;
+background: url("../img/stour.png");
+background-position: 0px -24px;
+}
+.filter-variant div.button.filter-type.avia:after {
+content: " ";
+position: absolute;
+right: 20px;
+width: 32px;
+height: 28px;
+background: url("../img/stour.png");
+background-position: 0 -55px;
+}
+.filter-variant div.button.filter-type.hot:after {
+content: " ";
+position: absolute;
+right: 20px;
+width: 32px;
+height: 28px;
+background: url("../img/stour.png");
+background-position: 0 28px;
+}
+#hotel-widget {
+width: 280px;
+height: 30px;
+font-size: 25px;
+border-radius: 5px;
+border: 1px solid rgb(29, 173, 248);
+box-shadow: 0 0 4px rgba(0,0,0,0.5);
+background-color: rgb(243, 244, 246);
+margin-left: 12px;
+}
 .datepick-rtl {
     direction: rtl;
 }
@@ -11968,14 +12027,6 @@ yx-axis
 /* Default styling for jQuery Datepicker v5.0.0. */
 #rangeInlinePicker {
     width: 100%;
-}
-
-.datepick {
-    background-color: #ffffff;
-    color: #000000;
-    font-family: Arial, Helvetica, Sans-serif;
-    font-size: 90%;
-    width: 100% !important;
 }
 
 .datepick-rtl {
