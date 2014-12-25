@@ -62,9 +62,8 @@
             <h1>{{ tour.route | raw }}</h1>
 
             <div class="hotel-tour-desc">
-                <p>{{ tour.name }}</p>
-
                 <p class="price">{{ tour.price_usd }} $</p>
+                <p>{{ tour.name }}</p>
             </div>
             <div>
                 <div class="vehicle-tour">
@@ -82,7 +81,7 @@
 
                 <p class="nm"><b>Описание тура</b></p>
 
-                {{ tour.description | raw }}
+                {{ description | raw }}
 
 
             </div>
