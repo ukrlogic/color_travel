@@ -124,14 +124,9 @@ class TourParser
 
                     $this->entityManager->persist($tour);
                 }
-
-                if (! $this->entityManager->isOpen()) {
-                    $this->entityManager = $this->entityManager->create(
-                        $this->entityManager->getConnection(),
-                        $this->entityManager->getConfiguration()
-                    );
-                }
-
+                /**
+                 * исправить на запросы
+                 */
                 $this->entityManager->flush();
             } catch (\Exception $e) {
                 var_dump($e->getMessage());

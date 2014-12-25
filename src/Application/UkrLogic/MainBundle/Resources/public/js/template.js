@@ -205,127 +205,74 @@ $(function () {
         return false;
     });
 
-    /***** Вариант тура ******/
-
-    $('.filter-variant .filter-type').click(function () {
-        $('.filter-variant .filter-type').removeClass('active');
-        $(this).addClass('active');
-        $('input.travel_type').val($(this).data('class'));
-
-        $(this).data('class') == 'bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
-
-        /***** Фильтр "Горящие" ******/
-        var dateFrom = $('input.date_from');
-        var dateTill = $('input.date_to');
-
-        if ($(this).hasClass('hot')) {
-            $('.rangeInlinePicker').hide();
-            localStorage.setItem('filter.dateFrom', dateFrom.val());
-            localStorage.setItem('filter.dateTill', dateTill.val());
-            dateFrom.val($.datepicker.formatDate('yy-mm-dd', new Date()));
-            dateTill.val($.datepicker.formatDate('yy-mm-dd', new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7)));
-        } else {
-            $('.rangeInlinePicker').show();
-            dateFrom.val(localStorage.getItem('filter.dateFrom'));
-            dateTill.val(localStorage.getItem('filter.dateTill'));
-        }
-
-        $('form[name="tour_form"]').submit();
-    });
-
-    if ($('.filter-variant .filter-type[data-class="bus"]').hasClass('active')) {
-        $('.hide-on-bus').hide();
-    }
-
-    /**** Календарь ****/
-    $('.rangeInlinePicker').datepick({
-        rangeSelect: true,
-        monthsToShow: [1, 1],
-        firstDay: 1,
-        onSelect: function (dates) {
-            $('input.date_from').val($.datepicker.formatDate('yy-mm-dd', dates[0]));
-            $('input.date_to').val($.datepicker.formatDate('yy-mm-dd', dates[1]));
-        }
-    });
-
-    /**** Слайдер выбора продолжительности тура ****/
-    $('.slider-day').slider({
-        min: 1,
-        max: 30,
-        step: 1,
-        value: 5,
-        range: true,
-        values: [5, 15],
-        change: function (event, ui) {
-            $('input.days_from').val(ui.values[0]);
-            $('input.days_to').val(ui.values[1]);
-        },
-        slide: function (event, ui) {
-            // $("#slider-day .ui-slider-handle").attr('data-content', ui.value + ' дней');
-
-            $(".slider-day .ui-slider-handle:first").attr('data-content', ui.values[0] + ' дней');
-            $(".slider-day .ui-slider-handle:last").attr('data-content', ui.values[1] + ' дней');
-        }
-    });
-    $(".slider-day .ui-slider-handle:first").attr('data-content', '5 дней');
-    $(".slider-day .ui-slider-handle:last").attr('data-content', '15 дней');
-
-
-    /**** Слайдер выбора стоимости тура ****/
-    $('.slider-cost').slider({
-        min: 100,
-        max: 10000,
-        step: 50,
-        value: 100,
-        range: true,
-        values: [500, 3500],
-        change: function (event, ui) {
-            $('input.price_from').val(ui.values[0]);
-            $('input.price_to').val(ui.values[1]);
-        },
-        slide: function (event, ui) {
-            $(".slider-cost .ui-slider-handle:first").attr('data-content', ui.values[0]);
-            $(".slider-cost .ui-slider-handle:last").attr('data-content', ui.values[1]);
-        }
-    });
-    $(".slider-cost .ui-slider-handle:first").attr('data-content', 500);
-    $(".slider-cost .ui-slider-handle:last").attr('data-content', 3500);
-
-    $('.cost').on('keyup', function () {
-        $(this).val($(this).val().replace(/\D/, ''));
-    });
-
-
-    /**** Категория отеля (звезды) ****/
-    $('.stars .star:not(.active)').mouseenter(function () {
-        count = $(this).index() + 1;
-        $('.stars > :lt(' + count + ')').stop().css('opacity', '0.8');
-    }).mouseleave(function () {
-        $('.stars .star:not(.active)').stop().css('opacity', '0.5');
-    }).click(function () {
-        $('.stars .star').removeClass('active');
-        $('.intext>div').removeClass('active');
-        count = $(this).index() + 1;
-        $('.stars > :gt(' + (count - 1) + ')').css('opacity', '0.5');
-        $('.stars > :lt(' + count + ')').addClass('active');
-        $('input.hotel_rate').val($(this).data('value'))
-    });
-    $('.intext>div').click(function () {
-        $(this).addClass('active');
-        $('.stars .star').removeClass('active').css('opacity', 0.5);
-        $('input.hotel_rate').val($(this).data('value'));
-    });
-
-    /**** Селекты выбора количества туристов ****/
-    $("#adult.selectordie").selectOrDie({
-        placeholder: "Взрослых"
-    });
-    $("#child.selectordie").selectOrDie({
-        placeholder: "Детей"
-    });
-    $(".selectordie").selectOrDie({});
 
     function resetFormFilters() {
+
+        /***** Вариант тура ******/
+
+        $('.filter-variant .filter-type').click(function () {
+            $('.filter-variant .filter-type').removeClass('active');
+            $(this).addClass('active');
+            $('input.travel_type').val($(this).data('class'));
+
+            $(this).data('class') == 'bus' ? $('.hide-on-bus').hide() : $('.hide-on-bus').show();
+
+            /***** Фильтр "Горящие" ******/
+            var dateFrom = $('input.date_from');
+            var dateTill = $('input.date_to');
+
+            if ($(this).hasClass('hot')) {
+                $('.rangeInlinePicker').hide();
+                localStorage.setItem('filter.dateFrom', dateFrom.val());
+                localStorage.setItem('filter.dateTill', dateTill.val());
+                dateFrom.val($.datepicker.formatDate('yy-mm-dd', new Date()));
+                dateTill.val($.datepicker.formatDate('yy-mm-dd', new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7)));
+            } else {
+                $('.rangeInlinePicker').show();
+                dateFrom.val(localStorage.getItem('filter.dateFrom'));
+                dateTill.val(localStorage.getItem('filter.dateTill'));
+            }
+
+            $('form[name="tour_form"]').submit();
+        });
+
+        if ($('.filter-variant .filter-type[data-class="bus"]').hasClass('active')) {
+            $('.hide-on-bus').hide();
+        }
+
+        /**** Календарь ****/
+        $('.rangeInlinePicker').datepick({
+            rangeSelect: true,
+            monthsToShow: [1, 1],
+            firstDay: 1,
+            onSelect: function (dates) {
+                $('input.date_from').val($.datepicker.formatDate('yy-mm-dd', dates[0]));
+                $('input.date_to').val($.datepicker.formatDate('yy-mm-dd', dates[1]));
+            }
+        });
+
+        /**** Слайдер выбора продолжительности тура ****/
+        $('.slider-day').slider({
+            min: 1,
+            max: 30,
+            step: 1,
+            value: 5,
+            range: true,
+            values: [5, 15],
+            change: function (event, ui) {
+                $('input.days_from').val(ui.values[0]);
+                $('input.days_to').val(ui.values[1]);
+            },
+            slide: function (event, ui) {
+                // $("#slider-day .ui-slider-handle").attr('data-content', ui.value + ' дней');
+
+                $(".slider-day .ui-slider-handle:first").attr('data-content', ui.values[0] + ' дней');
+                $(".slider-day .ui-slider-handle:last").attr('data-content', ui.values[1] + ' дней');
+            }
+        });
+        $(".slider-day .ui-slider-handle:first").attr('data-content', '5 дней');
+        $(".slider-day .ui-slider-handle:last").attr('data-content', '15 дней');
+
         /**** Кастомные скролы ****/
         $(".customscroll").mCustomScrollbar({
             theme: "light-3"
@@ -349,6 +296,83 @@ $(function () {
         });
 
         $('#filter-section-country h3').click();
+
+        /**** Селекты выбора количества туристов ****/
+        $("#adult.selectordie").selectOrDie({
+            placeholder: "Взрослых"
+        });
+        $("#child.selectordie").selectOrDie({
+            placeholder: "Детей"
+        });
+        $(".selectordie").selectOrDie({});
+
+        /**** Категория отеля (звезды) ****/
+        $('.stars .star:not(.active)').mouseenter(function () {
+            count = $(this).index() + 1;
+            $('.stars > :lt(' + count + ')').stop().css('opacity', '0.8');
+        }).mouseleave(function () {
+            $('.stars .star:not(.active)').stop().css('opacity', '0.5');
+        }).click(function () {
+            $('.stars .star').removeClass('active');
+            $('.intext>div').removeClass('active');
+            count = $(this).index() + 1;
+            $('.stars > :gt(' + (count - 1) + ')').css('opacity', '0.5');
+            $('.stars > :lt(' + count + ')').addClass('active');
+            $('input.hotel_rate').val($(this).data('value'))
+        });
+        $('.intext>div').click(function () {
+            $(this).addClass('active');
+            $('.stars .star').removeClass('active').css('opacity', 0.5);
+            $('input.hotel_rate').val($(this).data('value'));
+        });
+
+        /**** Слайдер выбора стоимости тура ****/
+        $('.slider-cost').slider({
+            min: 100,
+            max: 10000,
+            step: 50,
+            value: 100,
+            range: true,
+            values: [500, 3500],
+            change: function (event, ui) {
+                $('input.price_from').val(ui.values[0]);
+                $('input.price_to').val(ui.values[1]);
+            },
+            slide: function (event, ui) {
+                $(".slider-cost .ui-slider-handle:first").attr('data-content', ui.values[0]);
+                $(".slider-cost .ui-slider-handle:last").attr('data-content', ui.values[1]);
+            }
+        });
+        $(".slider-cost .ui-slider-handle:first").attr('data-content', 500);
+        $(".slider-cost .ui-slider-handle:last").attr('data-content', 3500);
+
+        $('.cost').on('keyup', function () {
+            $(this).val($(this).val().replace(/\D/, ''));
+        });
+
+        /* Умный поиск */
+        $('#hotel-widget').autocomplete({
+            source: Routing.generate('get_hotels'),
+            minLength: 2,
+            select: function (event, ui) {
+                var elements = $('#filter-section-hotel h4.hide-on-active-hotel, #filter-section-hotel h4.hide-on-active-hotel~div.subcategory');
+                ui.item.label && ui.item.label.length > 0 && elements.hide('fast');
+
+                return ui;
+            }
+        }).focusout(function () {
+            if (!$(this).val()) {
+                $('#filter-section-hotel h4.hide-on-active-hotel, #filter-section-hotel h4.hide-on-active-hotel~div.subcategory').show('fast');
+            }
+        });
+
+        /**
+         * Аякс на страны и города
+         */
+        $('.from-group input[type="radio"]').click(function () {
+            $('form[name="tour_form"]').submit();
+        });
+
     }
 
     resetFormFilters();
@@ -414,7 +438,7 @@ $(function () {
 
     /* отправка формы аяксом  */
 
-    $('form[name="tour_form"]').submit(function (ev) {
+    $('form[name="tour_form"]').on('submit', function (ev) {
         ev.preventDefault();
         showOverlay();
         $form = $(this);
@@ -442,13 +466,9 @@ $(function () {
                 window.history.pushState({}, "", "?" + $form.serialize());
             }
 
-            $('#filter-section-country').replaceWith($(data.form).find('#filter-section-country'));
+            $form.replaceWith(data.form);
             resetFormFilters();
         })
-    });
-
-    $('.from-group input[type="radio"]').click(function () {
-        $('form[name="tour_form"]').submit();
     });
 
 
@@ -498,21 +518,6 @@ $(function () {
         }
     });
 
-    /* Умный поиск */
-    $('#hotel-widget').autocomplete({
-        source: Routing.generate('get_hotels'),
-        minLength: 2,
-        select: function (event, ui) {
-            var elements = $('#filter-section-hotel h4.hide-on-active-hotel, #filter-section-hotel h4.hide-on-active-hotel~div.subcategory');
-            ui.item.label && ui.item.label.length > 0 && elements.hide('fast');
-
-            return ui;
-        }
-    }).focusout(function () {
-        if (!$(this).val()) {
-            $('#filter-section-hotel h4.hide-on-active-hotel, #filter-section-hotel h4.hide-on-active-hotel~div.subcategory').show('fast');
-        }
-    });
 
     /* Кнопка "Вернуться к поиску" */
     $('#back_to_seach').click(function (ev) {
