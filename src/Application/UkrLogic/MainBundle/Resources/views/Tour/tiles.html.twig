@@ -1,7 +1,7 @@
 {% set countries = getCountries() %}
 {% for tour in tours %}
     {% if tour.type == 'avia' %}
-        <a href="{{ path('avia_tour', {id: tour.info.id}) }}" class="box {{ random(['w', '']) }} flip-container">
+        <a href="{{ path('avia_tour', {id: tour.info.id}) }}" class="box {{ random(['w', '']) }} flip-container" target="_blank">
             <div class="flipper">
                 <div class="front{% if tour.info.departure|date <= "+ 1 week"|date %} hot {% endif %}">
                     <img src="{{ asset(getTourImages(tour.info.Allocation.id, 'hotels')|first|default('/images/noimagew.png')) }}" alt="" style="height: 100%;">
@@ -38,7 +38,7 @@
             </div>
         </a>
     {% else %}
-        <a href="{{ path('bus_tour', { "id": tour.info.tourId }) }}" class="box {{ random(['w', '']) }} flip-container">
+        <a href="{{ path('bus_tour', { "id": tour.info.tourId }) }}" class="box {{ random(['w', '']) }} flip-container" target="_blank">
             <div class="flipper">
                 <div class="front">
                     <img src="{{ asset(random(getTourImages((tour.info.countries|first).id, 'countries')|default(['/images/noimagew.png']))) }}" alt="" style="height: 100%;">
