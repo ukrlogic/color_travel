@@ -373,6 +373,18 @@ $(function () {
             $('form[name="tour_form"]').submit();
         });
 
+        /* вызов оверлея  */
+
+        window.showOverlay = function () { //показать
+            $('.plzwait').text('Пожалуйста, подождите');
+            $('.dots').show();
+            $('.loadingoverlay').velocity("fadeIn", {duration: 200});
+        };
+
+        window.hideOverlay = function () { // скрыть
+            $('.loadingoverlay').velocity("fadeOut", {duration: 200});
+        };
+
     }
 
     resetFormFilters();
@@ -424,17 +436,7 @@ $(function () {
     });
 
 
-    /* вызов оверлея  */
 
-    function showOverlay() { //показать
-        $('.plzwait').text('Пожалуйста, подождите');
-        $('.dots').show();
-        $('.loadingoverlay').velocity("fadeIn", {duration: 200});
-    }
-
-    function hideOverlay() { // скрыть
-        $('.loadingoverlay').velocity("fadeOut", {duration: 200});
-    }
 
     /* отправка формы аяксом  */
 
