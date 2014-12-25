@@ -40,6 +40,20 @@ class TourRepositoryContainer implements \IteratorAggregate
     }
 
     /**
+     * @param string $alias
+     * @return RepositoryInterface
+     * @throws \Exception
+     */
+    public function getRepository($alias)
+    {
+        if (! array_key_exists($alias, $this->repositories)) {
+            throw new \Exception(sprintf("Tour repository '%s' not found", $alias));
+        }
+
+        return $this->repositories[$alias];
+    }
+
+    /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Retrieve an external iterator
      * @link http://php.net/manual/en/iteratoraggregate.getiterator.php

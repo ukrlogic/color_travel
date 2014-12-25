@@ -12,7 +12,10 @@ namespace Application\UkrLogic\AkkordTourBundle\Service;
 use Application\UkrLogic\TourBundle\Repository\BusTourRepository;
 use Application\UkrLogic\TourBundle\Service\RepositoryInterface;
 use Application\UkrLogic\TourBundle\Service\Tour;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Class TourRepository
@@ -53,5 +56,30 @@ class TourRepository implements RepositoryInterface
 
         return $tours;
     }
+
+    /**
+     * Adds specified fields to form builder
+     *
+     * @param FormBuilder $form
+     */
+    public function modify(FormBuilder $form)
+    {
+        $form
+            ->add('country', 'entity', [
+                'class'         => 'Application\UkrLogic\TourBundle\Entity\Country',
+                'multiple'      => false,
+                'expanded'      => true,
+                'required'      => false,
+                'empty_value'   => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.active = 1')
+                        ->andWhere('c.travelType = :travelType')
+                        ->setParameter('travelType', 'bus')
+                        ->orderBy('c.name', 'ASC');
+                },
+            ]);
+    }
+
 
 }

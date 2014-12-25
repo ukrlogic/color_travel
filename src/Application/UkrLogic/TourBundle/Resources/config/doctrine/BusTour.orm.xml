@@ -17,6 +17,8 @@
         <field name="price_usd" type="float" column="price_usd"/>
         <field name="price_eur" type="float" column="price_eur"/>
         <field name="currency" type="string" column="currency" length="3"/>
+        <field name="route" type="string"/>
+        <field name="description" type="text"/>
         <many-to-many target-entity="Application\UkrLogic\TourBundle\Entity\Country" field="countries"/>
     </entity>
 </doctrine-mapping>

@@ -1,0 +1,139 @@
+{{ form_start(form) }}
+<div class="filter-variant clear" id="filter-section-travel-type">
+    <div class="button filter-type bus {% if form.type.vars.value == 'bus' %}active{% endif %}"
+         data-class="bus">Автобусный тур
+    </div>
+    <div class="button filter-type avia {% if form.type.vars.value == 'avia' %}active{% endif %}"
+         data-class="avia">Авиа тур
+    </div>
+    <div class="button filter-type hot" data-class="avia">Горящие туры</div>
+</div>
+
+<div class="avia-section">
+
+    {% if form.children.hotel is defined %}
+        <div class="filter-section from clear hide-on-bus" id="filter-section-city">
+            <h3>Вылет из города</h3>
+
+            <div>
+                <div class="from-group customscroll short">
+                    {% for child in form.city %}
+                        <div>
+                            {{ form_widget(child) }}
+                            {{ form_label(child) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="filter-section to clear" id="filter-section-country">
+        <h3>Страна прибытия</h3>
+
+        <div>
+            <div class="from-group customscroll to">
+                {% for child in form.country %}
+                    <div>
+                        {{ form_widget(child) }}
+                        <label for="{{ child.vars.id }}">
+                            {{ child.vars.label }}
+                            <i class="flag-{{ getCountry(child.vars.value).nick }}"></i>
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-section clear" id="filter-section-duration">
+        <h3>Курорт</h3>
+
+        <div>
+            <div class="rangeInlinePicker"></div>
+            {% if form.children.days_from is defined %}
+                <h4>Продолжительность тура</h4>
+
+                <div class="subcategory">
+                    <div class="slider-day">
+                        <p class="start">1</p>
+
+                        <p class="end">30</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if form.children.hotel is defined %}
+        <div class="filter-section clear hide-on-bus" id="filter-section-hotel">
+            <h3>Отель</h3>
+
+            <div>
+                <h4 id="hotel-name">Название отеля</h4>
+
+                <div class="subcategory">
+                    <div class="ui-widget">
+                        {{ form_widget(form.hotel, { id: 'hotel-widget' }) }}
+                    </div>
+                </div>
+
+                <h4 class="hide-on-active-hotel" id="hotel-rate">Категория отеля</h4>
+
+                <div class="subcategory">
+                    <div class="stars">
+                        <span class="star" data-value="1*"></span>
+                        <span class="star" data-value="2*"></span>
+                        <span class="star" data-value="3*"></span>
+                        <span class="star" data-value="4*"></span>
+                        <span class="star" data-value="5*"></span>
+                    </div>
+                    <div class="intext">
+                        <div data-value="HV-1">HV-1</div>
+                    </div>
+                </div>
+
+                <h4 class="hide-on-active-hotel" id="hotel-meal-type">Тип питания</h4>
+
+                <div class="subcategory">
+                    <div class="from-group customscroll">
+                        {% for child in form.meal %}
+                            <div>
+                                {{ form_widget(child) }}
+                                <label for="{{ child.vars.id }}">
+                                    {{ getMeal(child.vars.value).description }}
+                                    {{ getMeal(child.vars.value).nick }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <h4 class="hide-on-active-hotel" id="hotel-people-count">Количество туристов</h4>
+
+                <div class="subcategory">
+                    {{ form_widget(form.adult_count, {id: 'adult'}) }}
+                    {{ form_widget(form.child_count, {id: 'child'}) }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="filter-section clear">
+        <h3>Стоимость тура</h3>
+
+        <div>
+            <div class="subcategory">
+                <div class="slider-cost">
+                    <p class="start">100</p>
+
+                    <p class="end">10 000</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<button type="submit" id="tour_form_submit">Поиск</button>
+<div style="display: none;">{{ form_rest(form) }}</div>
+{{ form_end(form) }}

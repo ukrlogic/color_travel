@@ -16,6 +16,8 @@ use Guzzle\Http\Message\Response;
 use Guzzle\Service\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -91,12 +93,12 @@ class TourRepository implements RepositoryInterface
         $request->TourSearchRequest->addChild('countryId', $form->get('country')->getData() ? $form->get('country')->getData()->getId() : '12');
 
         /* Filter by duration */
-        $request->TourSearchRequest->addChild('durationFrom', $form->get('days_from')->getData() ? : 5);
-        $request->TourSearchRequest->addChild('durationTill', $form->get('days_to')->getData() ? : 15);
+        $request->TourSearchRequest->addChild('durationFrom', $form->get('days_from')->getData() ?: 5);
+        $request->TourSearchRequest->addChild('durationTill', $form->get('days_to')->getData() ?: 15);
 
         /* Filter by date */
-        $departureFrom = $form->get('date_from')->getData() ? : new \DateTime();
-        $departureTill = $form->get('date_to')->getData() ? : new \DateTime('+ 1 month');
+        $departureFrom = $form->get('date_from')->getData() ?: new \DateTime();
+        $departureTill = $form->get('date_to')->getData() ?: new \DateTime('+ 1 month');
 
         $request->TourSearchRequest->addChild('departureFrom', $departureFrom->format('Y-m-d'));
         $request->TourSearchRequest->addChild('departureTill', $departureTill->format('Y-m-d'));
@@ -188,6 +190,83 @@ class TourRepository implements RepositoryInterface
         $this->session->set('exchangeRate', $exchangeRate);
 
         return $exchangeRate;
+    }
+
+    /**
+     * Adds specified fields to form builder
+     *
+     * @param FormBuilder $form
+     */
+    public function modify(FormBuilder $form)
+    {
+        $form
+            ->add('city', 'choice', [
+                'required'    => false,
+                'multiple'    => false,
+                'expanded'    => true,
+                'empty_value' => false,
+                'choices'     => [
+                    '1918' => 'Харьков',
+                    '668'  => 'Киев',
+                    '1919' => 'Днепропетровск',
+                    '1413' => 'Одесса',
+                ],
+            ])
+            ->add('country', 'entity', [
+                'class'         => 'Application\UkrLogic\TourBundle\Entity\Country',
+                'multiple'      => false,
+                'expanded'      => true,
+                'required'      => false,
+                'empty_value'   => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.active = 1')
+                        ->andWhere('c.travelType = :travelType')
+                        ->setParameter('travelType', 'avia')
+                        ->orderBy('c.name', 'ASC');
+                },
+            ])
+            ->add('hotel', 'text', ['required' => false])
+            ->add('hotel_rate', 'text', ['attr' => ['class' => 'hotel_rate'], 'required' => false])
+            ->add('meal', 'entity', [
+                'class'         => 'Application\UkrLogic\TourBundle\Entity\Meal',
+                'multiple'      => true,
+                'expanded'      => true,
+                'required'      => false,
+                'empty_value'   => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('e')->where('e.active = 1')->orderBy('e.name', 'ASC');
+                },
+            ])
+            ->add('adult_count', 'choice', [
+                'choices'     => [
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                ],
+                'attr'        => [
+                    'class' => 'selectordie'
+                ],
+                'required'    => false,
+                'data'        => '1',
+                'empty_value' => null,
+            ])
+            ->add('child_count', 'choice', [
+                'choices'     => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                ],
+                'attr'        => [
+                    'class' => 'selectordie'
+                ],
+                'required'    => false,
+                'data'        => '0',
+                'empty_value' => null,
+            ]);
     }
 
 }

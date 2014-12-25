@@ -10,6 +10,8 @@ namespace Application\UkrLogic\TourBundle\Service;
 
 
 use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Interface RepositoryInterface
@@ -23,4 +25,11 @@ interface RepositoryInterface
      * @return Tour[]
      */
     public function find(Form $form, $limit);
+
+    /**
+     * Adds specified fields to form builder
+     *
+     * @param FormBuilder $form
+     */
+    public function modify(FormBuilder $form);
 }

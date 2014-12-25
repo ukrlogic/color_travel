@@ -325,26 +325,33 @@ $(function () {
     });
     $(".selectordie").selectOrDie({});
 
-    /**** Кастомные скролы ****/
-    $(".customscroll").mCustomScrollbar({
-        theme: "light-3"
-    });
-    $(".customscroll-dark").mCustomScrollbar({
-        theme: "dark-3"
-    });
+    function resetFormFilters() {
+        /**** Кастомные скролы ****/
+        $(".customscroll").mCustomScrollbar({
+            theme: "light-3"
+        });
+        $(".customscroll-dark").mCustomScrollbar({
+            theme: "dark-3"
+        });
 
-    /**** Аккордеон в фильтре ****/
-    $(".filter-section").accordion({
-        collapsible: true,
-        heightStyle: 'content',
-        create: function () {
-            $('#container').masonry(masonryOptions);
-        },
-        activate: function (event, ui) {
-            $('.filter').addClass('flex');
-            $('#container').masonry(masonryOptions);
-        }
-    });
+        /**** Аккордеон в фильтре ****/
+        $(".filter-section").accordion({
+            collapsible: true,
+            active: 2,
+            heightStyle: 'content',
+            create: function () {
+                $('#container').masonry(masonryOptions);
+            },
+            activate: function (event, ui) {
+                $('.filter').addClass('flex');
+                $('#container').masonry(masonryOptions);
+            }
+        });
+
+        $('#filter-section-country h3').click();
+    }
+
+    resetFormFilters();
 
     /*** развернуть текст отзыва ****/
     $(function () {
@@ -412,7 +419,8 @@ $(function () {
         showOverlay();
         $form = $(this);
         $.get($form.attr('action'), $form.serialize(), function (data) {
-            if (!data) {
+            console.log(data);
+            if (!data.tours) {
                 hideOverlay();
                 swal({
                     title: "Ничего не найдено!",
@@ -426,7 +434,7 @@ $(function () {
                 } else {
                     $form.data('append', false);
                 }
-                $('#container').append(data);
+                $('#container').append(data.tours);
                 $('#container').masonry('reload');
 
                 hideOverlay();
@@ -434,6 +442,8 @@ $(function () {
                 window.history.pushState({}, "", "?" + $form.serialize());
             }
 
+            $('#filter-section-country').replaceWith($(data.form).find('#filter-section-country'));
+            resetFormFilters();
         })
     });
 

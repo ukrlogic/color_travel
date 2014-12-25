@@ -6,6 +6,7 @@ services:
             - @application_ukrlogic_tourbundle.country_repository
             - @application_ukr_logic_tourbundle.tour_repository
             - @doctrine.orm.entity_manager
+            - @guzzle.akkord_tour_bus
 
     application_ukrlogic_akkordtourbundle.service.tourrepository:
         class: Application\UkrLogic\AkkordTourBundle\Service\TourRepository

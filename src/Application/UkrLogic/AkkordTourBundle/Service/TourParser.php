@@ -42,16 +42,30 @@ class TourParser
     private $entityManager;
 
     /**
+     * @var Client
+     */
+    private $tourLoader;
+
+    /**
      * @param Client $curl
      * @param EntityRepository $countryRepository
      * @param EntityRepository $tourRepository
+     * @param EntityManager $entityManager
+     * @param Client $tourLoader
      */
-    function __construct(Client $curl, EntityRepository $countryRepository, EntityRepository $tourRepository, EntityManager $entityManager)
+    function __construct(
+        Client $curl,
+        EntityRepository $countryRepository,
+        EntityRepository $tourRepository,
+        EntityManager $entityManager,
+        Client $tourLoader
+    )
     {
         $this->curl = $curl;
         $this->countryRepository = $countryRepository;
         $this->tourRepository = $tourRepository;
         $this->entityManager = $entityManager;
+        $this->tourLoader = $tourLoader;
     }
 
     public function loadTours()
@@ -60,7 +74,6 @@ class TourParser
         $response = $this->curl->getCommand('get_tours')->execute();
         $xml = simplexml_load_string($response->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
         $this->convertTours($xml);
-        $this->entityManager->flush();
     }
 
     /**
@@ -69,39 +82,68 @@ class TourParser
     public function convertTours(\SimpleXMLElement $xml)
     {
         foreach ($xml as $xmlTour) {
-            if ((string)$xmlTour->dates === '') {
-                continue;
+            try {
+                if ((string)$xmlTour->dates === '') {
+                    continue;
+                }
+
+                $tourId = (int)$xmlTour->tour_id;
+
+                if ($this->tourRepository->findOneBy(['tourId' => $tourId])) {
+                    continue;
+                }
+
+                $dates = $this->getDatesArray($xmlTour->dates);
+
+                foreach ($dates as $date) {
+                    $tour = new BusTour();
+                    $tour->setTourId($tourId);
+                    $tour->setGateway('akkord_tour_bus');
+                    $tour->setName((string)$xmlTour->name);
+                    $tour->setDays((int)preg_replace('/[^0-9]*/', '', (string)$xmlTour->days));
+
+                    $date = new \DateTime($date);
+                    $tour->setDateFrom($date);
+                    $tour->setDateTo($date);
+                    $tour->setDates($date->format('Y-m-d'));
+
+                    $tour->setPriceUah((float)$xmlTour->price);
+                    $tour->setPriceUsd((float)$xmlTour->price_usd);
+                    $tour->setPriceEur((float)$xmlTour->price_eur);
+                    $tour->setCurrency((string)$xmlTour->tour_currency);
+
+
+                    foreach ($xmlTour->countries as $country) {
+                        $tour->addCountry($this->getCountry((string)$country->country));
+                    }
+
+                    $tourInfo = $this->getTour($tourId)->tour;
+
+                    $tour->setRoute($tourInfo->route);
+                    $tour->setDescription($tourInfo->description);
+
+                    $this->entityManager->persist($tour);
+                }
+
+                if (! $this->entityManager->isOpen()) {
+                    $this->entityManager = $this->entityManager->create(
+                        $this->entityManager->getConnection(),
+                        $this->entityManager->getConfiguration()
+                    );
+                }
+
+                $this->entityManager->flush();
+            } catch (\Exception $e) {
+                var_dump($e->getMessage());
             }
-
-            $tourId = (int)$xmlTour->tour_id;
-
-            if ($this->tourRepository->findOneBy(['tourId' => $tourId])) {
-                continue;
-            }
-
-            $tour = new BusTour();
-            $tour->setTourId($tourId);
-            $tour->setGateway('akkord_tour_bus');
-            $tour->setName((string)$xmlTour->name);
-            $tour->setDays((int)preg_replace('/[^0-9]*/', '', (string)$xmlTour->days));
-
-            $dates = $this->getDatesArray($xmlTour->dates);
-
-            $tour->setDateFrom($dates['from']);
-            $tour->setDateTo($dates['to']);
-            $tour->setDates((string)$xmlTour->dates);
-
-            $tour->setPriceUah((float)$xmlTour->price);
-            $tour->setPriceUsd((float)$xmlTour->price_usd);
-            $tour->setPriceEur((float)$xmlTour->price_eur);
-            $tour->setCurrency((string)$xmlTour->tour_currency);
-
-            foreach ($xmlTour->countries as $country) {
-                $tour->addCountry($this->getCountry((string)$country->country));
-            }
-
-            $this->entityManager->persist($tour);
         }
+    }
+
+    private function getTour($id)
+    {
+        $resp = $this->tourLoader->getCommand('get_tour', ['id' => $id])->execute();
+        $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
+        return json_decode(json_encode((array)$xml, true));
     }
 
     /**
@@ -122,33 +164,11 @@ class TourParser
 
     /**
      * @param \SimpleXMLElement $xmlDates
-     * @return \DateTime[]
+     * @return array
      */
     private function getDatesArray(\SimpleXMLElement $xmlDates)
     {
-        $dates = explode(';', (string) $xmlDates);
-
-        if (count($dates) === 1) {
-            $date = $dates[0];
-            return [
-                'from' => new \DateTime($date),
-                'to' => new \DateTime($date)
-            ];
-        }
-
-        usort($dates, function ($a, $b) {
-            $a = new \DateTime($a);
-            $b = new \DateTime($b);
-            return $a > $b;
-        });
-
-        $from = array_shift($dates);
-        $to = array_pop($dates);
-
-        return [
-            'from' => new \DateTime($from),
-            'to' => new \DateTime($to)
-        ];
+        return explode(';', (string) $xmlDates);
     }
 
 }

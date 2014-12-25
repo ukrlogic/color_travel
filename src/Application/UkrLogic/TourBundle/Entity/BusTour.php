@@ -377,4 +377,60 @@ class BusTour
     {
         return $this->countries;
     }
+    /**
+     * @var string
+     */
+    private $route;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+
+    /**
+     * Set route
+     *
+     * @param string $route
+     * @return BusTour
+     */
+    public function setRoute($route)
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
+    /**
+     * Get route
+     *
+     * @return string 
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return BusTour
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }

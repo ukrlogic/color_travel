@@ -52,7 +52,6 @@ class BusTourAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tourId')
             ->add('gateway')
             ->add('name')
             ->add('days')
@@ -63,7 +62,8 @@ class BusTourAdmin extends Admin
             ->add('price_usd')
             ->add('price_eur')
             ->add('currency')
-            ->add('id')
+            ->add('route')
+            ->add('description', 'ckeditor', ['config' => ['allowedContent' => true]])
         ;
     }
 

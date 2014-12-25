@@ -39,22 +39,25 @@ class TourController extends Controller
             ->find($form, $this->get('service_container')->getParameter('tours_for_page'));
 
         if ($request->isXmlHttpRequest()) {
-            return $this->render(
-                'ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
-                    'tours' => $tours,
-                ]
-            );
+            $data = [
+                'tours' => $this->renderView(
+                    'ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
+                        'tours' => $tours,
+                    ]
+                ),
+                'form' => $this->renderView(
+                    'ApplicationUkrLogicMainBundle:Tour:form.html.twig', [
+                        'form' => $form->createView(),
+                    ]
+                ),
+            ];
+            return new JsonResponse($data);
         }
 
         return [
             'form'  => $form->createView(),
             'tours' => $tours,
         ];
-    }
-
-    public function getForm(Request $request)
-    {
-
     }
 
     /**
@@ -152,9 +155,7 @@ class TourController extends Controller
             return $this->redirect($request->getRequestUri());
         }
 
-        $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $id])->execute();
-        $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
-        $tour = json_decode(json_encode((array)$xml, true));
+        $tour = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:BusTour')->findOneBy(['tourId' => $id]);
 
         if (!$tour) {
             throw new NotFoundHttpException("Tour not found");
@@ -163,7 +164,7 @@ class TourController extends Controller
         $this->saveToHistory($id, 'bus');
 
         return [
-            'tour'       => $tour->tour,
+            'tour'       => $tour,
             'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus'),
             'form'       => $form->createView(),
         ];

@@ -1,5 +1,6 @@
 parameters:
     application_ukrlogic_tourbundle.images_dir: "%kernel.root_dir%/../web/images"
+    application_ukrlogic_tourbundle.default_tour_type: 'bus'
 services:
     application_ukr_logic_tourbundle.tour_repository:
         class: Application\UkrLogic\TourBundle\Repository\BusTourRepository
@@ -36,16 +37,14 @@ services:
 
     application_ukrlogic_tourbundle.service.tourrepository:
         class: Application\UkrLogic\TourBundle\Service\TourRepository
-        arguments: [ @application_ukrlogic_tourbundle.service.tourrepositorycontainer ]
+        arguments:
+            - @application_ukrlogic_tourbundle.service.tourrepositorycontainer
+            - %application_ukrlogic_tourbundle.default_tour_type%
+            - @request_stack
 
     application_ukrlogic_tourbundle.form.tour:
         class: Application\UkrLogic\TourBundle\Form\TourType
+        arguments:
+            - @application_ukrlogic_tourbundle.service.tourrepository
         tags:
             - { name: form.type, alias: 'tour_form' }
-
-#     application_ukrlogic_tourbundle.voter.request:
-#            class: Application\UkrLogic\MainBundle\Voter\RequestVoter
-#            arguments:
-#                - @service_container
-#            tags:
-#                - { name: knp_menu.voter }

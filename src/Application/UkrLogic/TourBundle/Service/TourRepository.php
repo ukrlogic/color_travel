@@ -10,6 +10,11 @@ namespace Application\UkrLogic\TourBundle\Service;
 
 
 use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class TourRepository
@@ -23,11 +28,25 @@ class TourRepository
     private $repositoryContainer;
 
     /**
-     * @param TourRepositoryContainer $repositoryContainer
+     * @var string
      */
-    function __construct(TourRepositoryContainer $repositoryContainer)
+    private $defaultTourType;
+
+    /**
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * @param TourRepositoryContainer $repositoryContainer
+     * @param string $defaultTourType
+     * @param RequestStack $request
+     */
+    function __construct(TourRepositoryContainer $repositoryContainer, $defaultTourType, RequestStack $request)
     {
         $this->repositoryContainer = $repositoryContainer;
+        $this->defaultTourType = $defaultTourType;
+        $this->request = $request->getCurrentRequest();
     }
 
     /**
@@ -37,13 +56,16 @@ class TourRepository
      */
     public function find(Form $form, $limit)
     {
-        $tours = [];
+        return $this->repositoryContainer->getRepository($form->get('type')->getData() ?: $this->defaultTourType)->find($form, $limit);
+    }
 
-        /** @var RepositoryInterface $repository */
-        foreach ($this->repositoryContainer as $repository) {
-            $tours = array_merge($tours, $repository->find($form, $limit));
-        }
-
-        return $tours;
+    /**
+     * @param FormBuilderInterface $builder
+     * @throws \Exception
+     */
+    public function modify(FormBuilderInterface $builder)
+    {
+        $type = $this->request->get('tour_form') ? $this->request->get('tour_form')['type'] : $this->defaultTourType;
+        $this->repositoryContainer->getRepository($type)->modify($builder);
     }
 }
