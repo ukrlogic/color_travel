@@ -98,6 +98,12 @@ class TourParser
             INSERT INTO bustour_country (`bustour_id`, `country_id`) VALUES (:bustour_id, :country_id)
         ');
 
+        $existsTours = [];
+
+        foreach ($this->entityManager->getConnection()->prepare('select * from bus_tour')->fetchAll() as $t) {
+            $existsTours[$t['tour_id']][$t['dates']] = true;
+        };
+
         foreach ($xml as $xmlTour) {
             try {
                 if ((string)$xmlTour->dates === '') {
@@ -108,11 +114,15 @@ class TourParser
                 $dates = $this->getDatesArray($xmlTour->dates);
                 $tourInfo = $this->getTour($tourId)->tour;
 
+                $ake = array_key_exists($tourId, $existsTours);
+
                 foreach ($dates as $date) {
+                    if ($ake && array_key_exists($date, $existsTours[$tourId])) continue;
+
                     $date = new \DateTime($date);
                     $date = $date->format('Y-m-d');
 
-                    $sth1->execute([
+                    $tourInsertData = [
                         'tour_id' => $tourId,
                         'gateway' => 'akkord_tour_bus',
                         'name' => (string)$xmlTour->name,
@@ -126,15 +136,19 @@ class TourParser
                         'currency' => (string)$xmlTour->tour_currency,
                         'route' => $tourInfo->route,
                         'description' => $tourInfo->description
-                    ]);
+                    ];
+
+                    $sth1->execute($tourInsertData);
 
                     $id = $this->entityManager->getConnection()->lastInsertId();
 
                     foreach ($xmlTour->countries as $country) {
-                        $sth2->execute([
+                        $tourCountryInsetData = [
                             'bustour_id' => $id,
                             'country_id' => $this->getCountryId((string)$country->country),
-                        ]);
+                        ];
+
+                        $sth2->execute($tourCountryInsetData);
                     }
                 }
             } catch (\Exception $e) {
