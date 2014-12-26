@@ -2730,21 +2730,21 @@ a.button.already-in.favorite {
 margin-bottom: 5px;
 width: 16%;
 float: right;
-background: url("../img/main-countr/izb1.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+background: url("../img/izb1.png") no-repeat scroll left center rgba(0, 0, 0, 0);
 color: transparent;
 }
 a.button.favorite {
 margin-bottom: 5px;
 width: 16%;
 float: right;
-background: url("../img/main-countr/izb0.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+background: url("../img/izb0.png") no-repeat scroll left center rgba(0, 0, 0, 0);
 color: transparent;
 }
 a.button.favorite:hover {
 margin-bottom: 5px;
 width: 16%;
 float: right;
-background: url("../img/main-countr/izb1.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+background: url("../img/izb1.png") no-repeat scroll left center rgba(0, 0, 0, 0);
 color: transparent;
 }
 .ukraine-m {
