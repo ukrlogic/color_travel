@@ -35,7 +35,7 @@
             <div class="stage">
                 <div class="carousel carousel-stage">
                     <ul>
-                        {% for img in getTourImages(tour.countries.country|last, 'countries') %}
+                        {% for img in getTourImages((tourEntity.countries|last).id, 'countries')|default(['/images/noimagew.png']) %}
                             <li>
                                 <img src="{{ asset(img) }}" width="640" height="430">
                             </li>
@@ -49,7 +49,7 @@
 
                 <div class="carousel carousel-navigation">
                     <ul>
-                        {% for img in getTourImages(tour.countries.country|last, 'countries') %}
+                        {% for img in getTourImages((tourEntity.countries|last).id, 'countries')|default(['/images/noimagew.png']) %}
                             <li>
                                 <img src="{{ asset(img) }}" width="120" height="81">
                             </li>
@@ -81,7 +81,7 @@
 
                 <p class="nm"><b>Описание тура</b></p>
 
-                {{ description | raw }}
+                {{ tourEntity.description | raw }}
 
 
             </div>

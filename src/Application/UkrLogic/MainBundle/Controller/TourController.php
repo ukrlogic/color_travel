@@ -155,13 +155,11 @@ class TourController extends Controller
             return $this->redirect($request->getRequestUri());
         }
 
-        $tour = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:BusTour')->findOneBy(['tourId' => $id]);
+        $tourEntity = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:BusTour')->findOneBy(['tourId' => $id]);
 
-        if (!$tour) {
+        if (!$tourEntity) {
             throw new NotFoundHttpException("Tour not found");
         }
-
-        $desc = $tour->getDescription();
 
         $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $id])->execute();
         $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
@@ -173,7 +171,7 @@ class TourController extends Controller
             'tour'       => $tour->tour,
             'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus'),
             'form'       => $form->createView(),
-            'description' => $desc
+            'tourEntity' => $tourEntity
         ];
     }
 
