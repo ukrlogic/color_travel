@@ -47,6 +47,11 @@ class TourParser
     private $tourLoader;
 
     /**
+     * @var Country[]
+     */
+    private $countries = [];
+
+    /**
      * @param Client $curl
      * @param EntityRepository $countryRepository
      * @param EntityRepository $tourRepository
@@ -81,6 +86,18 @@ class TourParser
      */
     public function convertTours(\SimpleXMLElement $xml)
     {
+        $sth1 = $this->entityManager->getConnection()->prepare('
+            INSERT INTO `bus_tour`
+               (`tour_id`, `gateway`, `name`, `days`, `date_from`, `date_to`, `dates`, `price_uah`, `price_usd`, `price_eur`, `currency`, `route`, `description`)
+            VALUES
+               (:tour_id, :gateway, :name, :days, :date_from, :date_to, :dates, :price_uah, :price_usd, :price_eur, :currency, :route, :description)
+
+        ');
+
+        $sth2 = $this->entityManager->getConnection()->prepare('
+            INSERT INTO bustour_country (`bustour_id`, `country_id`) VALUES (:bustour_id, :country_id)
+        ');
+
         foreach ($xml as $xmlTour) {
             try {
                 if ((string)$xmlTour->dates === '') {
@@ -88,46 +105,38 @@ class TourParser
                 }
 
                 $tourId = (int)$xmlTour->tour_id;
-
-                if ($this->tourRepository->findOneBy(['tourId' => $tourId])) {
-                    continue;
-                }
-
                 $dates = $this->getDatesArray($xmlTour->dates);
+                $tourInfo = $this->getTour($tourId)->tour;
 
                 foreach ($dates as $date) {
-                    $tour = new BusTour();
-                    $tour->setTourId($tourId);
-                    $tour->setGateway('akkord_tour_bus');
-                    $tour->setName((string)$xmlTour->name);
-                    $tour->setDays((int)preg_replace('/[^0-9]*/', '', (string)$xmlTour->days));
-
                     $date = new \DateTime($date);
-                    $tour->setDateFrom($date);
-                    $tour->setDateTo($date);
-                    $tour->setDates($date->format('Y-m-d'));
+                    $date = $date->format('Y-m-d');
 
-                    $tour->setPriceUah((float)$xmlTour->price);
-                    $tour->setPriceUsd((float)$xmlTour->price_usd);
-                    $tour->setPriceEur((float)$xmlTour->price_eur);
-                    $tour->setCurrency((string)$xmlTour->tour_currency);
+                    $sth1->execute([
+                        'tour_id' => $tourId,
+                        'gateway' => 'akkord_tour_bus',
+                        'name' => (string)$xmlTour->name,
+                        'days' => (int)preg_replace('/[^0-9]*/', '', (string)$xmlTour->days),
+                        'date_from' => $date,
+                        'date_to' => $date,
+                        'dates' => $date,
+                        'price_uah' => (float)$xmlTour->price,
+                        'price_usd' => (float)$xmlTour->price_usd,
+                        'price_eur' => (float)$xmlTour->price_eur,
+                        'currency' => (string)$xmlTour->tour_currency,
+                        'route' => $tourInfo->route,
+                        'description' => $tourInfo->description
+                    ]);
 
+                    $id = $this->entityManager->getConnection()->lastInsertId();
 
                     foreach ($xmlTour->countries as $country) {
-                        $tour->addCountry($this->getCountry((string)$country->country));
+                        $sth2->execute([
+                            'bustour_id' => $id,
+                            'country_id' => $this->getCountryId((string)$country->country),
+                        ]);
                     }
-
-                    $tourInfo = $this->getTour($tourId)->tour;
-
-                    $tour->setRoute($tourInfo->route);
-                    $tour->setDescription($tourInfo->description);
-
-                    $this->entityManager->persist($tour);
                 }
-                /**
-                 * исправить на запросы
-                 */
-                $this->entityManager->flush();
             } catch (\Exception $e) {
                 var_dump($e->getMessage());
             }
@@ -138,6 +147,7 @@ class TourParser
     {
         $resp = $this->tourLoader->getCommand('get_tour', ['id' => $id])->execute();
         $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
+
         return json_decode(json_encode((array)$xml, true));
     }
 
@@ -146,15 +156,20 @@ class TourParser
      * @return Country
      * @throws \Exception
      */
-    private function getCountry($countryName)
+    private function getCountryId($countryName)
     {
-        $country = $this->countryRepository->findOneBy(['name' => $countryName]);
+        if (! array_key_exists($countryName, $this->countries)) {
+            $country = $this->countryRepository->findOneBy(['name' => $countryName]);
 
-        if (!$country) {
-            throw new \Exception(sprintf("Country '%s' not found", $countryName));
+            if (!$country) {
+                throw new \Exception(sprintf("Country '%s' not found", $countryName));
+            }
+
+            $this->countries[$countryName] = $country;
         }
 
-        return $country;
+
+        return $this->countries[$countryName]->getId();
     }
 
     /**
@@ -163,7 +178,7 @@ class TourParser
      */
     private function getDatesArray(\SimpleXMLElement $xmlDates)
     {
-        return explode(';', (string) $xmlDates);
+        return explode(';', (string)$xmlDates);
     }
 
 }
