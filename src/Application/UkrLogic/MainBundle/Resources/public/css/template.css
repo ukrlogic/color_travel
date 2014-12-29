@@ -1715,10 +1715,9 @@ input[name="captcha"] {
     box-sizing: border-box;
     margin: 28px 0;
     overflow: hidden;
-    padding: 0 15px;
     width: 100%;
     float: left;
-    width: 65%;
+    width: 100%;
 }
 
 .hotel-tour-description h1 {
@@ -1732,7 +1731,7 @@ input[name="captcha"] {
     text-transform: inherit;
     white-space: pre;
     float: left;
-    width: 35%;
+    width: 87%;
     text-align: left;
 }
 
