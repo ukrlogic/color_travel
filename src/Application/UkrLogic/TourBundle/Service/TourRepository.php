@@ -66,6 +66,6 @@ class TourRepository
     public function modify(FormBuilderInterface $builder)
     {
         $type = $this->request->get('tour_form') ? $this->request->get('tour_form')['type'] : $this->defaultTourType;
-        $this->repositoryContainer->getRepository($type)->modify($builder);
+//        $this->repositoryContainer->getRepository($type)->modify($builder);
     }
 }
