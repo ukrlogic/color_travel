@@ -1722,7 +1722,7 @@ input[name="captcha"] {
 
 .hotel-tour-description h1 {
     color: #34306B;
-    font-size: 33px;
+    font-size: 30px;
     font-weight: 100;
     height: 34px;
     line-height: 23px;
@@ -1731,7 +1731,7 @@ input[name="captcha"] {
     text-transform: inherit;
     white-space: pre;
     float: left;
-    width: 87%;
+    width: 100%;
     text-align: left;
 }
 
@@ -3958,7 +3958,7 @@ select.input {
   min-height: 1900px;
 }*/
     .hotel-tour-description h1 {
-        font-size: 23px;
+        font-size: 20px;
     }
 
     .tour-details p {
