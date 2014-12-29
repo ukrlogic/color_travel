@@ -102,7 +102,7 @@ class TourRepository implements RepositoryInterface
         $country = $form->get('country')->getData() ? $form->get('country')->getData()->getId() : '12';
         $countryEntity = $this->countryRepository->find($country);
 
-        if ($countryEntity->getTravelType() !== 'avia') {
+        if (trim($countryEntity->getTravelType()) !== 'avia') {
             $country = '12';
         }
 
