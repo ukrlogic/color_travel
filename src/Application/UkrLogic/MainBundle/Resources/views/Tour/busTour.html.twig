@@ -96,7 +96,7 @@
                         <a class="button already-in favorite" href="#" style="pointer-events: none; cursor: default;">В
                             избранном</a>
                     {% else %}
-                        <a class="button favorite" href="{{ path('fave_tour', { 'type': 'bus', 'id': tour.tour_id }) }}"
+                        <a class="button favorite" href="{{ path('fave_tour', { 'type': 'bus', 'id': tourEntity.id }) }}"
                            style="margin-bottom: 5px;">В избранное</a>
                     {% endif %}
                 {% endif %}
@@ -105,5 +105,5 @@
 
         </div>
     </div>
-    {% render controller('ApplicationUkrLogicMainBundle:Tour:comment', { 'request': app.request, 'tour_id': tour.tour_id, 'tour_type': 'bus' }) %}
+    {% render controller('ApplicationUkrLogicMainBundle:Tour:comment', { 'request': app.request, 'tour_id': tourEntity.id, 'tour_type': 'bus' }) %}
 {% endblock %}

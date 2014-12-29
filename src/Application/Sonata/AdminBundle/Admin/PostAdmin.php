@@ -61,6 +61,12 @@ class PostAdmin extends Admin
         $object->getFile() && $object->upload();
     }
 
+    public function preUpdate($object)
+    {
+        $object->getFile() && $object->upload();
+        $object->setDate(new \DateTime());
+    }
+
     /**
      * @param ShowMapper $showMapper
      */

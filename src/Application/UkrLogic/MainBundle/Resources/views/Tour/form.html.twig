@@ -33,7 +33,7 @@
         <div>
             <div class="from-group customscroll to">
                 {% for child in form.country %}
-                    <div>
+                    <div class="country-input {{ getCountry(child.vars.value).travelType }}">
                         {{ form_widget(child) }}
                         <label for="{{ child.vars.id }}">
                             {{ child.vars.label }}

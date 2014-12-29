@@ -178,7 +178,7 @@ class DefaultController extends Controller
                     ->from('ApplicationUkrLogicTourBundle:BusTour', 't')
                     ->where(
                         $qb->expr()
-                            ->in('t.tourId', $ids)
+                            ->in('t.id', $ids)
                     );
 
                 foreach ($qb->getQuery()
@@ -242,7 +242,7 @@ class DefaultController extends Controller
 
         $news = $this->getDoctrine()
             ->getRepository('ApplicationUkrLogicMainBundle:Post')
-            ->findAll();
+            ->findAll([], ['date' => 'DESC']);
 
         $paginator = $this->get('knp_paginator')->paginate($news, $this->get('request')->query->get('page'), 6);
 

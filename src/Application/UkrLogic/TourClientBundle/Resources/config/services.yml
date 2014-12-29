@@ -5,5 +5,6 @@ services:
             - @session
             - @guzzle.tour_client_avia
             - @application_ukrlogic_tourbundle.hotel_repository
+            - @application_ukrlogic_tourbundle.country_repository
         tags:
             - { name: 'tour_repository', alias: 'avia' }

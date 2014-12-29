@@ -64,21 +64,6 @@ class TourRepository implements RepositoryInterface
      */
     public function modify(FormBuilder $form)
     {
-        $form
-            ->add('country', 'entity', [
-                'class'         => 'Application\UkrLogic\TourBundle\Entity\Country',
-                'multiple'      => false,
-                'expanded'      => true,
-                'required'      => false,
-                'empty_value'   => false,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->where('c.active = 1')
-                        ->andWhere('c.travelType = :travelType')
-                        ->setParameter('travelType', 'bus')
-                        ->orderBy('c.name', 'ASC');
-                },
-            ]);
     }
 
 

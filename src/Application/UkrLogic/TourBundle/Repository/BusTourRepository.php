@@ -50,7 +50,10 @@ class BusTourRepository extends EntityRepository
         $qb = $this->createQueryBuilder('t')->where('1=1');
         
         /* Filter by country */
-        if ($country = $form->get('country')->getData()) {
+        $country = $form->get('country')->getData();
+        $countryEntity = $country ? $this->getEntityManager()->getRepository('ApplicationUkrLogicTourBundle:Country')->find($country) : null;
+
+        if ($countryEntity && $countryEntity->getTravelType() === 'bus') {
             $qb->andWhere(':country MEMBER OF t.countries')->setParameter('country', $country);
         }
 

@@ -44,14 +44,23 @@ class TourRepository implements RepositoryInterface
     private $hotelRepository;
 
     /**
+     * @var EntityRepository;
+     */
+    private $countryRepository;
+
+
+    /**
      * @param Session $session
      * @param Client $curl
+     * @param EntityRepository $hotelRepository
+     * @param EntityRepository $countryRepository
      */
-    function __construct(Session $session, Client $curl, EntityRepository $hotelRepository)
+    function __construct(Session $session, Client $curl, EntityRepository $hotelRepository, EntityRepository $countryRepository)
     {
         $this->session = $session;
         $this->curl = $curl;
         $this->hotelRepository = $hotelRepository;
+        $this->countryRepository = $countryRepository;
     }
 
     /**
@@ -90,7 +99,14 @@ class TourRepository implements RepositoryInterface
 
         /* Filter by city and country */
         $request->TourSearchRequest->addChild('cityId', $form->get('city')->getData() ?: '668');
-        $request->TourSearchRequest->addChild('countryId', $form->get('country')->getData() ? $form->get('country')->getData()->getId() : '12');
+        $country = $form->get('country')->getData() ? $form->get('country')->getData()->getId() : '12';
+        $countryEntity = $this->countryRepository->find($country);
+
+        if ($countryEntity->getTravelType() !== 'avia') {
+            $country = '12';
+        }
+
+        $request->TourSearchRequest->addChild('countryId', $country);
 
         /* Filter by duration */
         $request->TourSearchRequest->addChild('durationFrom', $form->get('days_from')->getData() ?: 5);
@@ -199,74 +215,7 @@ class TourRepository implements RepositoryInterface
      */
     public function modify(FormBuilder $form)
     {
-        $form
-            ->add('city', 'choice', [
-                'required'    => false,
-                'multiple'    => false,
-                'expanded'    => true,
-                'empty_value' => false,
-                'choices'     => [
-                    '1918' => 'Харьков',
-                    '668'  => 'Киев',
-                    '1919' => 'Днепропетровск',
-                    '1413' => 'Одесса',
-                ],
-            ])
-            ->add('country', 'entity', [
-                'class'         => 'Application\UkrLogic\TourBundle\Entity\Country',
-                'multiple'      => false,
-                'expanded'      => true,
-                'required'      => false,
-                'empty_value'   => false,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->where('c.active = 1')
-                        ->andWhere('c.travelType = :travelType')
-                        ->setParameter('travelType', 'avia')
-                        ->orderBy('c.name', 'ASC');
-                },
-            ])
-            ->add('hotel', 'text', ['required' => false])
-            ->add('hotel_rate', 'text', ['attr' => ['class' => 'hotel_rate'], 'required' => false])
-            ->add('meal', 'entity', [
-                'class'         => 'Application\UkrLogic\TourBundle\Entity\Meal',
-                'multiple'      => true,
-                'expanded'      => true,
-                'required'      => false,
-                'empty_value'   => false,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('e')->where('e.active = 1')->orderBy('e.name', 'ASC');
-                },
-            ])
-            ->add('adult_count', 'choice', [
-                'choices'     => [
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
-                    '4' => '4',
-                ],
-                'attr'        => [
-                    'class' => 'selectordie'
-                ],
-                'required'    => false,
-                'data'        => '1',
-                'empty_value' => null,
-            ])
-            ->add('child_count', 'choice', [
-                'choices'     => [
-                    '0' => '0',
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
-                    '4' => '4',
-                ],
-                'attr'        => [
-                    'class' => 'selectordie'
-                ],
-                'required'    => false,
-                'data'        => '0',
-                'empty_value' => null,
-            ]);
+
     }
 
 }

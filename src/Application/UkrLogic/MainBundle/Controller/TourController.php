@@ -39,19 +39,12 @@ class TourController extends Controller
             ->find($form, $this->get('service_container')->getParameter('tours_for_page'));
 
         if ($request->isXmlHttpRequest()) {
-            $data = [
-                'tours' => $this->renderView(
-                    'ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
-                        'tours' => $tours,
-                    ]
-                ),
-                'form' => $this->renderView(
-                    'ApplicationUkrLogicMainBundle:Tour:form.html.twig', [
-                        'form' => $form->createView(),
-                    ]
-                ),
-            ];
-            return new JsonResponse($data);
+
+            return new JsonResponse($this->renderView(
+                'ApplicationUkrLogicMainBundle:Tour:tiles.html.twig', [
+                    'tours' => $tours,
+                ]
+            ));
         }
 
         return [
@@ -121,7 +114,7 @@ class TourController extends Controller
             'tour'        => $tour->getData(),
             'inFavorite'  => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'avia'),
             'description' => $description,
-            'form'       => $form->createView(),
+            'form'        => $form->createView(),
         ];
     }
 
@@ -155,24 +148,26 @@ class TourController extends Controller
             return $this->redirect($request->getRequestUri());
         }
 
-        $tourEntity = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:BusTour')->findOneBy(['tourId' => $id]);
+        $tourEntity = $this->getDoctrine()->getRepository('ApplicationUkrLogicTourBundle:BusTour')->find($id);
 
         if (!$tourEntity) {
             throw new NotFoundHttpException("Tour not found");
         }
 
-        $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $id])->execute();
+        $resp = $this->get('guzzle.akkord_tour_bus')->getCommand('get_tour', ['id' => $tourEntity->getTourId()])->execute();
         $xml = simplexml_load_string($resp->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
         $tour = json_decode(json_encode((array)$xml, true));
 
         $this->saveToHistory($id, 'bus');
 
-        return [
+        $return = [
             'tour'       => $tour->tour,
             'inFavorite' => $this->in('ApplicationUkrLogicMainBundle:Favorite', $id, 'bus'),
             'form'       => $form->createView(),
             'tourEntity' => $tourEntity
         ];
+
+        return $return;
     }
 
 
