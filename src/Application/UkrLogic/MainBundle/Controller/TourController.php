@@ -66,9 +66,10 @@ class TourController extends Controller
             $order->setFio($user->getUsername());
             $order->setPhone($user->getPhone());
             $order->setEmail($user->getEmail());
-            $order->setInfo($this->generateUrl('avia_tour', ['id' => $id], true));
-            $order->setStatus(false);
         }
+
+        $order->setInfo($this->generateUrl('avia_tour', ['id' => $id], true));
+        $order->setStatus(false);
 
         $form = $this->createForm(new OrderTourType(), $order);
 
@@ -131,9 +132,11 @@ class TourController extends Controller
             $order->setFio($user->getUsername());
             $order->setPhone($user->getPhone());
             $order->setEmail($user->getEmail());
-            $order->setInfo($this->generateUrl('bus_tour', ['id' => $id], true));
-            $order->setStatus(false);
+
         }
+
+        $order->setInfo($this->generateUrl('bus_tour', ['id' => $id], true));
+        $order->setStatus(false);
 
         $form = $this->createForm(new OrderTourType(), $order);
 
